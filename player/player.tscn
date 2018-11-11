@@ -1,0 +1,53 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://player/player.gd" type="Script" id=1]
+[ext_resource path="res://player/player-idle-0.tres" type="Texture" id=2]
+[ext_resource path="res://player/player-idle-1.tres" type="Texture" id=3]
+[ext_resource path="res://player/player-idle-2.tres" type="Texture" id=4]
+[ext_resource path="res://player/player-idle-3.tres" type="Texture" id=5]
+[ext_resource path="res://player/player-idle-4.tres" type="Texture" id=6]
+[ext_resource path="res://player/player-idle-5.tres" type="Texture" id=7]
+[ext_resource path="res://player/player-idle-6.tres" type="Texture" id=8]
+[ext_resource path="res://player/player-run-0.tres" type="Texture" id=9]
+[ext_resource path="res://player/player-run-1.tres" type="Texture" id=10]
+[ext_resource path="res://player/player-run-2.tres" type="Texture" id=11]
+[ext_resource path="res://player/player-run-3.tres" type="Texture" id=12]
+[ext_resource path="res://player/player-run-4.tres" type="Texture" id=13]
+[ext_resource path="res://player/player-run-5.tres" type="Texture" id=14]
+[ext_resource path="res://player/player-run-6.tres" type="Texture" id=15]
+[ext_resource path="res://player/player-run-7.tres" type="Texture" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "run",
+"speed": 12.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[node name="Player" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+force = 60.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "idle"
+frame = 2
+playing = true
+_sections_unfolded = [ "Pause", "Visibility" ]
+
+

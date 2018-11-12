@@ -5,6 +5,7 @@ export (int) var force = 60.0
 enum {ACTION_IDLE, ACTION_LEFT, ACTION_RIGHT}
 
 var action = ACTION_IDLE
+var turning = false
 
 func _ready():
 	pass
@@ -14,12 +15,26 @@ func _process(delta):
 	update_animation()
 
 func update_action():
-	if Input.is_action_pressed('ui_left'):
-		action = ACTION_LEFT
-	elif Input.is_action_pressed('ui_right'):
-		action = ACTION_RIGHT
-	else:
-		action = ACTION_IDLE
+	var left = Input.is_action_pressed('ui_left')
+	var right = Input.is_action_pressed('ui_right')
+
+	match [action, turning, left, right]:
+		[_, _, false, false]:
+			action = ACTION_IDLE
+			turning = false
+		[_, _, true, false]:
+			action = ACTION_LEFT
+			turning = false
+		[_, _, false, true]:
+			action = ACTION_RIGHT
+			turning = false
+		[ACTION_LEFT, false, true, true]:
+			action = ACTION_RIGHT
+			turning = true
+		[ACTION_RIGHT, false, true, true]:
+			action = ACTION_LEFT
+			turning = true
+
 
 func update_animation():
 	match action:

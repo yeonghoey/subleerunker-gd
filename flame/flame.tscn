@@ -26,7 +26,7 @@ animations = [ {
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[node name="Flame" type="KinematicBody2D" index="0"]
+[node name="Flame" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -37,7 +37,7 @@ collision/safe_margin = 0.08
 
 frames = SubResource( 1 )
 animation = "burn"
-frame = 5
+frame = 6
 playing = true
 
 

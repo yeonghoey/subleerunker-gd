@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/game.gd" type="Script" id=1]
+[ext_resource path="res://wall/wall.tscn" type="PackedScene" id=2]
+
+[node name="Game" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="WallLeft" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( -10, 240 )
+
+[node name="WallRight" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 330, 240 )
+
+

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/game.gd" type="Script" id=1]
 [ext_resource path="res://wall/wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://floor/floor.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node" index="0"]
 
@@ -14,5 +15,9 @@ position = Vector2( -10, 240 )
 [node name="WallRight" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 330, 240 )
+
+[node name="Floor" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 160, 488 )
 
 

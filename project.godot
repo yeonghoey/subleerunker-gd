@@ -20,6 +20,15 @@ window/size/width=320
 window/size/height=480
 window/size/resizable=false
 
+[layer_names]
+
+2d_render/layer_1="bod"
+2d_physics/layer_1="body"
+2d_physics/layer_2="head"
+2d_physics/layer_3="flame"
+2d_physics/layer_4="wall"
+2d_physics/layer_5="floor"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

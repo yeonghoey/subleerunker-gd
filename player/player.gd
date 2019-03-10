@@ -7,22 +7,21 @@ var H = 72
 
 enum {ACTION_IDLE, ACTION_LEFT, ACTION_RIGHT}
 
+signal hit
+
 var action = ACTION_IDLE
 var turning = false
 
-
 func _ready():
-	pass
-
+	$Head.connect("body_entered", self, "_on_Head_body_entered")
 
 func _process(delta):
 	update_action()
 	update_animation()
 
-
 func update_action():
-	var left = Input.is_action_pressed('ui_left')
-	var right = Input.is_action_pressed('ui_right')
+	var left = Input.is_action_pressed("ui_left")
+	var right = Input.is_action_pressed("ui_right")
 	match [action, turning, left, right]:
 		[_, _, false, false]:
 			action = ACTION_IDLE
@@ -40,7 +39,6 @@ func update_action():
 			action = ACTION_LEFT
 			turning = true
 
-
 func update_animation():
 	match action:
 		ACTION_IDLE:
@@ -52,11 +50,9 @@ func update_animation():
 			$AnimatedSprite.animation = "run"
 			$AnimatedSprite.flip_h = false
 
-
 func _physics_process(delta):
 	update_velocity()
 	move_and_slide(velocity)
-
 
 func _acceleration():
 	match action:
@@ -67,7 +63,6 @@ func _acceleration():
 		ACTION_RIGHT:
 			return Vector2(force, 0)
 
-
 func _friction():
 	match action:
 		ACTION_IDLE:
@@ -75,6 +70,10 @@ func _friction():
 		_:
 			return 0.0
 
-
 func _max_velocity():
 	return 300.0
+
+func _on_Head_body_entered(body):
+	$Head/CollisionShape2D.disabled = true
+	emit_signal("hit")
+	queue_free()

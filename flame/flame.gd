@@ -1,20 +1,23 @@
 extends "res://mover.gd"
 
-var W = 24
-var H = 16
+const W = 24
+const H = 16
 
-func _ready():
-	pass
+signal landed
 
 func _physics_process(delta):
 	update_velocity()
-	move_and_slide(velocity)
+	var collision = move_and_collide(velocity)
+	if collision:
+		if collision.collider.is_in_group("Floor"):
+			emit_signal("landed")
+			queue_free()
 
 func _acceleration():
-	return Vector2(0, 6)
+	return Vector2(0, 0.1)
 
 func _friction():
 	return 0.0
 
 func _max_velocity():
-	return 600.0
+	return 10.0

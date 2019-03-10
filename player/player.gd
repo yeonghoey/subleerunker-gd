@@ -2,8 +2,8 @@ extends "res://mover.gd"
 
 export (int) var force = 60.0
 
-var W = 48
-var H = 72
+const W = 48
+const H = 72
 
 enum {ACTION_IDLE, ACTION_LEFT, ACTION_RIGHT}
 
@@ -74,6 +74,5 @@ func _max_velocity():
 	return 300.0
 
 func _on_Head_body_entered(body):
-	$Head/CollisionShape2D.disabled = true
 	emit_signal("hit")
 	queue_free()

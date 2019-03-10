@@ -43,7 +43,9 @@ custom_solver_bias = 0.0
 extents = Vector2( 6, 6 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
 
 position = Vector2( 160, 444 )
 input_pickable = false
@@ -61,7 +63,7 @@ force = 60.0
 
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
+frame = 3
 playing = true
 _sections_unfolded = [ "Pause", "Visibility" ]
 

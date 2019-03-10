@@ -1,7 +1,7 @@
 extends Node
 
-var WIDTH = 320
-var HEIGHT = 480
+const WIDTH = 320
+const HEIGHT = 480
 
 func _ready():
 	randomize()
@@ -18,6 +18,13 @@ func create_player():
 	player.connect("hit", self, "_on_hit", [player])
 	add_child(player)
 
+var die_scene = preload("res://player/player-die.tscn")
+
+func _on_hit(player):
+	var die = die_scene.instance()
+	die.position = player.position
+	add_child(die)
+
 var flame_scene = preload("res://flame/flame.tscn")
 var flamespawn_flip = false
 var flamespawn_threshold = 0.25
@@ -31,12 +38,13 @@ func try_spawn_flame():
 		var flame = flame_scene.instance()
 		var x = (WIDTH - flame.W*2) * randf() + flame.W
 		flame.position = Vector2(x, -flame.H)
+		flame.connect("landed", self, "_on_landed", [flame])
 		add_child(flame)
 	flamespawn_threshold *= 1.001;
 
-var burning_scene = preload("res://burning/burning.tscn")
+var land_scene = preload("res://flame/flame-land.tscn")
 
-func _on_hit(player):
-	var burning = burning_scene.instance()
-	burning.position = player.position
-	add_child(burning)
+func _on_landed(flame):
+	var land = land_scene.instance()
+	land.position = flame.position
+	add_child(land)

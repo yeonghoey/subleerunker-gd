@@ -1,4 +1,4 @@
-extends "res://mover.gd"
+extends "res://classes/mover.gd"
 
 const W = 24
 const H = 16

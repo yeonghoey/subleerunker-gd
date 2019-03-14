@@ -1,4 +1,4 @@
-extends "res://mover.gd"
+extends "res://classes/mover.gd"
 
 export (int) var force = 60.0
 

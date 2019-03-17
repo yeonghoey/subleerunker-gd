@@ -1,7 +1,7 @@
 extends "res://classes/mover.gd"
 
-const W = 24
-const H = 16
+const W := 24.0
+const H := 16.0
 
 signal landed
 

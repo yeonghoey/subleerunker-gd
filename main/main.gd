@@ -1,6 +1,5 @@
 extends Node
 
-
 func _ready():
 	add_background()
 

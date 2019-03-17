@@ -1,7 +1,7 @@
 extends Node
 
-const WIDTH = 320
-const HEIGHT = 480
+const W := 320.0
+const H := 480.0
 
 func _ready():
 	randomize()
@@ -14,7 +14,7 @@ var player_scene = preload("res://player/player.tscn")
 
 func create_player():
 	var player = player_scene.instance()
-	player.position = Vector2(WIDTH/2, HEIGHT-player.H/2)
+	player.position = Vector2(W/2, H-player.H/2)
 	player.connect("hit", self, "_on_hit", [player])
 	add_child(player)
 
@@ -36,7 +36,7 @@ func try_spawn_flame():
 
 	if randf() < flamespawn_threshold:
 		var flame = flame_scene.instance()
-		var x = (WIDTH - flame.W*2) * randf() + flame.W
+		var x = (W - flame.W*2) * randf() + flame.W
 		flame.position = Vector2(x, -flame.H)
 		flame.connect("landed", self, "_on_landed", [flame])
 		add_child(flame)

@@ -1,9 +1,8 @@
 extends "res://classes/mover.gd"
 
-export (int) var force = 60.0
-
-const W = 48
-const H = 72
+const W := 48.0
+const H := 72.0
+const FORCE := 60.0
 
 enum {ACTION_IDLE, ACTION_LEFT, ACTION_RIGHT}
 
@@ -54,23 +53,23 @@ func _physics_process(delta):
 	update_velocity()
 	move_and_slide(velocity)
 
-func _acceleration():
+func _acceleration() -> Vector2:
 	match action:
-		ACTION_IDLE:
-			return Vector2(0, 0)
 		ACTION_LEFT:
-			return Vector2(-force, 0)
+			return Vector2(-FORCE, 0)
 		ACTION_RIGHT:
-			return Vector2(force, 0)
+			return Vector2(FORCE, 0)
+		_:
+			return Vector2(0, 0)
 
-func _friction():
+func _friction() -> float:
 	match action:
 		ACTION_IDLE:
-			return force
+			return FORCE
 		_:
 			return 0.0
 
-func _max_velocity():
+func _max_velocity() -> float:
 	return 300.0
 
 func _on_Head_body_entered(body):

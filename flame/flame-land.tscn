@@ -6,7 +6,6 @@
 [ext_resource path="res://flame/flame-land.gd" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
@@ -14,11 +13,10 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
-
+[node name="AnimatedSprite" type="AnimatedSprite" groups=[
+"Object",
+]]
 position = Vector2( 62.6336, 65.5761 )
 frames = SubResource( 1 )
-animation = "default"
 script = ExtResource( 4 )
-
 

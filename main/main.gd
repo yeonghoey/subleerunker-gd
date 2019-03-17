@@ -11,6 +11,7 @@ func add_background():
 	bg.rect_size = r.size
 	bg.color = get_color("res://main/palette-background.tres")
 	add_child(bg)
+	show_menu()
 
 func get_color(res):
 	var palette = load(res)
@@ -21,8 +22,12 @@ func get_color(res):
 	image.unlock()
 	return color
 
-func _process(delta):
-	pass
+func show_menu() -> void:
+	var menu := preload("res://menu/menu.tscn").instance()
+	menu.connect("pressed", self, "start_game")
+	add_child(menu)
 
-func _physics_process(delta):
-	pass
+func start_game() -> void:
+	var game := preload("res://game/game.tscn").instance()
+	game.connect("ended", self, "show_menu")
+	add_child(game)

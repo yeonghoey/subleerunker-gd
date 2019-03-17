@@ -16,3 +16,5 @@ position = Vector2( 330, 240 )
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 160, 488 )
 
+[node name="Objects" type="Node" parent="."]
+

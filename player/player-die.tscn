@@ -11,7 +11,6 @@
 [ext_resource path="res://player/player-die.gd" type="Script" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": false,
@@ -20,10 +19,7 @@ animations = [ {
 } ]
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
-
 position = Vector2( 69.9796, 60.5752 )
 frames = SubResource( 1 )
-animation = "default"
 script = ExtResource( 9 )
-
 

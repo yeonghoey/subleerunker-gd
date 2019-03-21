@@ -1,7 +1,8 @@
-extends Node
+extends Node 
 
 func _ready():
 	add_background()
+	show_menu()
 
 func add_background():
 	var v = get_viewport()
@@ -11,7 +12,7 @@ func add_background():
 	bg.rect_size = r.size
 	bg.color = get_color("res://main/palette-background.tres")
 	add_child(bg)
-	show_menu()
+	move_child(bg, 0)
 
 func get_color(res):
 	var palette = load(res)
@@ -29,5 +30,7 @@ func show_menu() -> void:
 
 func start_game() -> void:
 	var game := preload("res://game/game.tscn").instance()
+	$UI.reset()
+	game.connect("scored", $UI, "on_scored")
 	game.connect("ended", self, "show_menu")
 	add_child(game)

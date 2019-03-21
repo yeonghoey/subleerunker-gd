@@ -3,6 +3,7 @@ extends Node
 const W := 320.0
 const H := 480.0
 
+signal scored
 signal ended
 
 var alive := true
@@ -52,3 +53,6 @@ func _on_landed(flame):
 	var land := preload("res://flame/flame-land.tscn").instance()
 	land.position = flame.position
 	$Objects.add_child(land)
+
+	if alive:
+		emit_signal("scored")

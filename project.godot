@@ -32,7 +32,6 @@ window/size/resizable=false
 
 [layer_names]
 
-2d_render/layer_1="bod"
 2d_physics/layer_1="body"
 2d_physics/layer_2="head"
 2d_physics/layer_3="flame"

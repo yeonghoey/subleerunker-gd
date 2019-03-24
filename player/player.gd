@@ -14,8 +14,10 @@ var turning = false
 func _ready():
 	$Head.connect("body_entered", self, "_on_Head_body_entered")
 
+func _unhandled_input(event):
+	update_action()	
+
 func _process(delta):
-	update_action()
 	update_animation()
 
 func update_action():

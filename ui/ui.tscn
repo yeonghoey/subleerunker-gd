@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ui/ui.gd" type="Script" id=1]
 
-[node name="HBoxContainer" type="MarginContainer"]
+[node name="UI" type="MarginContainer"]
 margin_right = 320.0
 margin_bottom = 480.0
 script = ExtResource( 1 )

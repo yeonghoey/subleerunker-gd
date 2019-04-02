@@ -1,10 +1,10 @@
 extends MarginContainer
 
-var current_score_label: Label
+onready var current_score_label := find_node("CurrentScore") as Label
+
 var current_score := 0
 
 func _ready():
-	current_score_label = find_node("CurrentScore") as Label
 	reset()
 
 func reset():

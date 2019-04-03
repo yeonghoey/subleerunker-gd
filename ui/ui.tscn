@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/ui.gd" type="Script" id=1]
+[ext_resource path="res://ShareTechMono-Regular.tres" type="DynamicFont" id=2]
 
 [node name="UI" type="MarginContainer"]
 margin_right = 320.0
@@ -13,13 +14,14 @@ margin_bottom = 480.0
 alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 312.0
+margin_left = 311.0
 margin_right = 320.0
 margin_bottom = 480.0
 
 [node name="CurrentScore" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_right = 8.0
-margin_bottom = 14.0
+margin_right = 9.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 2 )
 text = "0"
 align = 2
 

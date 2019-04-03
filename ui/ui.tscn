@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/ui.gd" type="Script" id=1]
 [ext_resource path="res://ShareTechMono-Regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/current_score.gd" type="Script" id=3]
 
 [node name="UI" type="MarginContainer"]
 anchor_right = 1.0
@@ -26,4 +27,5 @@ margin_bottom = 14.0
 custom_fonts/font = ExtResource( 2 )
 text = "0"
 align = 2
+script = ExtResource( 3 )
 

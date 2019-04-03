@@ -10,18 +10,9 @@ func add_background():
 	var bg = ColorRect.new()
 	bg.rect_position = r.position
 	bg.rect_size = r.size
-	bg.color = get_color("res://main/palette-background.tres")
+	bg.color = Palette.get("background")
 	add_child(bg)
 	move_child(bg, 0)
-
-func get_color(res):
-	var palette = load(res)
-	var image = palette.atlas.get_data()
-	image.lock()
-	var pos = palette.region.position
-	var color = image.get_pixel(pos.x, pos.y)
-	image.unlock()
-	return color
 
 func show_menu() -> void:
 	var menu := preload("res://menu/menu.tscn").instance()

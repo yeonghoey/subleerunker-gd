@@ -19,8 +19,13 @@ config/name="SUBLEERUNKER"
 run/main_scene="res://main/main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Palette="*res://autoload/palette.gd"
+
 [debug]
 
+gdscript/warnings/unused_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/return_value_discarded=false
 

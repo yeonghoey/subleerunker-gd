@@ -1,7 +1,5 @@
 extends Node
 
-signal pressed
-
 var signaled := false
 
 func _unhandled_input(event):
@@ -13,6 +11,6 @@ func _unhandled_input(event):
 		Input.is_action_pressed("ui_right"))
 
 	if pressed:
-		emit_signal("pressed")
+		Signals.emit_signal("started")
 		signaled = true
 		queue_free()

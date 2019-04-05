@@ -2,7 +2,8 @@ extends Node
 
 func _ready():
 	add_background()
-	show_menu()
+	connect_signals()
+	Signals.emit_signal("ended", 0)
 
 func add_background():
 	var v = get_viewport()
@@ -14,14 +15,21 @@ func add_background():
 	add_child(bg)
 	move_child(bg, 0)
 
-func show_menu() -> void:
-	var menu := preload("res://menu/menu.tscn").instance()
-	menu.connect("pressed", self, "start_game")
-	add_child(menu)
+func connect_signals():
+	Signals.connect("started", self, "on_started")
+	Signals.connect("ended", self, "on_ended")
+
+func on_started():
+	start_game()
+
+func on_ended(last_score):
+	# TODO: Handle Highscore Here
+	show_menu()
 
 func start_game() -> void:
 	var game := preload("res://game/game.tscn").instance()
-	$UI.reset()
-	game.connect("scored", $UI, "on_scored")
-	game.connect("ended", self, "show_menu")
 	add_child(game)
+
+func show_menu() -> void:
+	var menu := preload("res://menu/menu.tscn").instance()
+	add_child(menu)

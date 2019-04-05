@@ -6,8 +6,6 @@ const FORCE := 60.0
 
 enum {ACTION_IDLE, ACTION_LEFT, ACTION_RIGHT}
 
-signal hit
-
 var action = ACTION_IDLE
 var turning = false
 
@@ -75,5 +73,5 @@ func _max_velocity() -> float:
 	return 300.0
 
 func _on_Head_body_entered(body):
-	emit_signal("hit")
+	Signals.emit_signal("hit", self)
 	queue_free()

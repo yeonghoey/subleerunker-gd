@@ -3,14 +3,12 @@ extends "res://classes/mover.gd"
 const W := 24.0
 const H := 16.0
 
-signal landed
-
 func _physics_process(delta):
 	update_velocity()
 	var collision = move_and_collide(velocity)
 	if collision:
 		if collision.collider.is_in_group("Floor"):
-			emit_signal("landed")
+			Signals.emit_signal("landed", self)
 			queue_free()
 
 func _acceleration():

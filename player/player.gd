@@ -21,22 +21,29 @@ func _process(delta):
 func update_action():
 	var left = Input.is_action_pressed("ui_left")
 	var right = Input.is_action_pressed("ui_right")
+	var next_action
 	match [action, turning, left, right]:
 		[_, _, false, false]:
-			action = ACTION_IDLE
+			next_action = ACTION_IDLE
 			turning = false
 		[_, _, true, false]:
-			action = ACTION_LEFT
+			next_action = ACTION_LEFT
 			turning = false
 		[_, _, false, true]:
-			action = ACTION_RIGHT
+			next_action = ACTION_RIGHT
 			turning = false
 		[ACTION_LEFT, false, true, true]:
-			action = ACTION_RIGHT
+			next_action = ACTION_RIGHT
 			turning = true
 		[ACTION_RIGHT, false, true, true]:
-			action = ACTION_LEFT
+			next_action = ACTION_LEFT
 			turning = true
+	match [action, next_action]:
+		[ACTION_IDLE, ACTION_LEFT], [ACTION_IDLE, ACTION_RIGHT]:
+			Signals.emit_signal("walk_begin")
+		[ACTION_LEFT, ACTION_IDLE], [ACTION_RIGHT, ACTION_IDLE]:
+			Signals.emit_signal("walk_end")
+	action = next_action
 
 func update_animation():
 	match action:

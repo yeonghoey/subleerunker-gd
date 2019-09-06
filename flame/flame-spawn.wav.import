@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flame-spawn.wav-b2a0fb24f337332b1a02ac35a49f2b81.sample"
+
+[deps]
+
+source_file="res://flame/flame-spawn.wav"
+dest_files=[ "res://.import/flame-spawn.wav-b2a0fb24f337332b1a02ac35a49f2b81.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

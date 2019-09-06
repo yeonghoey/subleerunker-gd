@@ -40,9 +40,9 @@ func update_action():
 			turning = true
 	match [action, next_action]:
 		[ACTION_IDLE, ACTION_LEFT], [ACTION_IDLE, ACTION_RIGHT]:
-			Signals.emit_signal("walk_begin")
+			$AudioRun.play()
 		[ACTION_LEFT, ACTION_IDLE], [ACTION_RIGHT, ACTION_IDLE]:
-			Signals.emit_signal("walk_end")
+			$AudioRun.stop()
 	action = next_action
 
 func update_animation():

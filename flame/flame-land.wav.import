@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flame-land.wav-a5b2e7aa59ae1d4faa5f577a5a0d4d95.sample"
+
+[deps]
+
+source_file="res://flame/flame-land.wav"
+dest_files=[ "res://.import/flame-land.wav-a5b2e7aa59ae1d4faa5f577a5a0d4d95.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

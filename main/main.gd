@@ -2,7 +2,6 @@ extends Node
 
 func _ready():
 	add_background()
-	add_audio()
 	connect_signals()
 	Signals.emit_signal("ended", 0)
 
@@ -15,10 +14,6 @@ func add_background():
 	bg.color = Palette.get("background")
 	add_child(bg)
 	move_child(bg, 0)
-
-func add_audio():
-	var audio = preload("res://audio/audio.tscn").instance()
-	add_child(audio)
 
 func connect_signals():
 	Signals.connect("started", self, "on_started")

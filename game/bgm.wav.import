@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/walk.wav-54f8d16eb1b0755cdd4d814aa46d8f1f.sample"
+path="res://.import/bgm.wav-fa0b50a833fc75d987a773da235dc4dc.sample"
 
 [deps]
 
-source_file="res://audio/walk.wav"
-dest_files=[ "res://.import/walk.wav-54f8d16eb1b0755cdd4d814aa46d8f1f.sample" ]
+source_file="res://game/bgm.wav"
+dest_files=[ "res://.import/bgm.wav-fa0b50a833fc75d987a773da235dc4dc.sample" ]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://ShareTechMono-Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/ShareTechMono-Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/current_score.gd" type="Script" id=2]
 
 [node name="UI" type="MarginContainer"]

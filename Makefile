@@ -14,7 +14,7 @@ THEMES_PACKED_JSON = $(THEMES:%=godot/%/atlas.json)
 pack: $(THEMES_PACKED_PNG) $(THEMES_PACKED_JSON)
 
 godot/%/atlas.png \
-godot/%/atlas.json: %/*
+godot/%/atlas.json: %/*.aseprite
 	mkdir -p 'godot/$*'
 	"${ASEPRITE}" --batch \
 	--sheet-pack \

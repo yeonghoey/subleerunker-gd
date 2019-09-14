@@ -1,4 +1,3 @@
-
 # Godot-specific ignores
 .import/
 export.cfg
@@ -9,3 +8,4 @@ export_presets.cfg
 
 # YEONGHOEYRUNKER custom ignores
 .DS_Store
+.envrc

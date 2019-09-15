@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 Palette="*res://autoload/palette.gd"
 Signals="*res://autoload/signals.gd"
+ThemeLoader="*res://autoload/theme-loader.gd"
 
 [debug]
 

@@ -10,7 +10,25 @@ var action = ACTION_IDLE
 var turning = false
 
 func _ready():
+	$AnimatedSprite.frames = build_frames()
 	$Head.connect("body_entered", self, "_on_Head_body_entered")
+
+func build_frames():
+	var frames = SpriteFrames.new()
+	frames.add_animation("idle")
+	var idle_frames = ThemeLoader.default.frames["player-idle"]
+	for d in idle_frames:
+		var texture = d["texture"]
+		frames.add_frame("idle", texture)
+	frames.set_animation_speed("idle", 12)
+		
+	frames.add_animation("run")
+	var run_frames = ThemeLoader.default.frames["player-run"]
+	for d in run_frames:
+		var texture = d["texture"]
+		frames.add_frame("run", texture)
+	frames.set_animation_speed("run", 12)
+	return frames
 
 func _unhandled_input(event):
 	update_action()	

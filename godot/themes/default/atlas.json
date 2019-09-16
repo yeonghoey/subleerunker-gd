@@ -149,7 +149,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-idle-1": {
     "frame": { "x": 48, "y": 138, "w": 48, "h": 72 },
@@ -157,7 +157,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-idle-2": {
     "frame": { "x": 96, "y": 138, "w": 48, "h": 72 },
@@ -165,7 +165,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-idle-3": {
     "frame": { "x": 148, "y": 0, "w": 48, "h": 72 },
@@ -173,7 +173,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-idle-4": {
     "frame": { "x": 192, "y": 144, "w": 48, "h": 72 },
@@ -181,7 +181,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-idle-5": {
     "frame": { "x": 240, "y": 144, "w": 48, "h": 72 },
@@ -189,7 +189,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-idle-6": {
     "frame": { "x": 144, "y": 144, "w": 48, "h": 72 },
@@ -197,7 +197,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-run-0": {
     "frame": { "x": 432, "y": 72, "w": 48, "h": 72 },
@@ -205,7 +205,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-run-1": {
     "frame": { "x": 384, "y": 72, "w": 48, "h": 72 },
@@ -213,7 +213,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-run-2": {
     "frame": { "x": 336, "y": 72, "w": 48, "h": 72 },
@@ -221,7 +221,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-run-3": {
     "frame": { "x": 288, "y": 72, "w": 48, "h": 72 },
@@ -229,7 +229,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-run-4": {
     "frame": { "x": 240, "y": 72, "w": 48, "h": 72 },
@@ -237,7 +237,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-run-5": {
     "frame": { "x": 192, "y": 72, "w": 48, "h": 72 },
@@ -245,7 +245,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-run-6": {
     "frame": { "x": 144, "y": 72, "w": 48, "h": 72 },
@@ -253,7 +253,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-run-7": {
     "frame": { "x": 96, "y": 66, "w": 48, "h": 72 },
@@ -261,7 +261,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-die-0": {
     "frame": { "x": 48, "y": 66, "w": 48, "h": 72 },
@@ -269,7 +269,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-die-1": {
     "frame": { "x": 0, "y": 66, "w": 48, "h": 72 },
@@ -277,7 +277,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-die-2": {
     "frame": { "x": 436, "y": 0, "w": 48, "h": 72 },
@@ -285,7 +285,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-die-3": {
     "frame": { "x": 388, "y": 0, "w": 48, "h": 72 },
@@ -293,7 +293,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-die-4": {
     "frame": { "x": 340, "y": 0, "w": 48, "h": 72 },
@@ -301,7 +301,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-die-5": {
     "frame": { "x": 292, "y": 0, "w": 48, "h": 72 },
@@ -309,7 +309,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-die-6": {
     "frame": { "x": 244, "y": 0, "w": 48, "h": 72 },
@@ -317,7 +317,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "player-die-7": {
     "frame": { "x": 196, "y": 0, "w": 48, "h": 72 },
@@ -325,7 +325,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 72 },
     "sourceSize": { "w": 48, "h": 72 },
-    "duration": 100
+    "duration": 83
    },
    "touch-self-0": {
     "frame": { "x": 321, "y": 144, "w": 33, "h": 35 },

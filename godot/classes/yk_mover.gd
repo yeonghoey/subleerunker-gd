@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name ykMover
+
 var velocity := Vector2()
 
 func update_velocity():

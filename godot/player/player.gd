@@ -1,4 +1,4 @@
-extends "res://classes/mover.gd"
+extends ykMover
 
 const W := 48.0
 const H := 72.0
@@ -9,26 +9,16 @@ enum {ACTION_IDLE, ACTION_LEFT, ACTION_RIGHT}
 var action = ACTION_IDLE
 var turning = false
 
-func _ready():
-	$AnimatedSprite.frames = build_frames()
-	$Head.connect("body_entered", self, "_on_Head_body_entered")
+var sprite: ykAnimatedSprite
 
-func build_frames():
-	var frames = SpriteFrames.new()
-	frames.add_animation("idle")
-	var idle_frames = ThemeLoader.default.frames["player-idle"]
-	for d in idle_frames:
-		var texture = d["texture"]
-		frames.add_frame("idle", texture)
-	frames.set_animation_speed("idle", 12)
-		
-	frames.add_animation("run")
-	var run_frames = ThemeLoader.default.frames["player-run"]
-	for d in run_frames:
-		var texture = d["texture"]
-		frames.add_frame("run", texture)
-	frames.set_animation_speed("run", 12)
-	return frames
+func _ready():
+	sprite = ykAnimatedSprite.new(ThemeLoader.atlas, [
+		{"kind": "player-idle", "loop": true},
+		{"kind": "player-run", "loop": true},
+	])
+	add_child(sprite)
+	sprite.animation_player.play("player-idle")
+	$Head.connect("body_entered", self, "_on_Head_body_entered")
 
 func _unhandled_input(event):
 	update_action()	
@@ -66,13 +56,13 @@ func update_action():
 func update_animation():
 	match action:
 		ACTION_IDLE:
-			$AnimatedSprite.animation = "idle"
+			sprite.animation_player.play("player-idle")
 		ACTION_LEFT:
-			$AnimatedSprite.animation = "run"
-			$AnimatedSprite.flip_h = true
+			sprite.animation_player.play("player-run")
+			sprite.animated_sprite.flip_h = true
 		ACTION_RIGHT:
-			$AnimatedSprite.animation = "run"
-			$AnimatedSprite.flip_h = false
+			sprite.animation_player.play("player-run")
+			sprite.animated_sprite.flip_h = false
 
 func _physics_process(delta):
 	update_velocity()

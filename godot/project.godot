@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "ykAnimatedSprite",
+"language": "GDScript",
+"path": "res://classes/yk_animated_sprite.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "ykMover",
+"language": "GDScript",
+"path": "res://classes/yk_mover.gd"
+}, {
+"base": "Reference",
+"class": "ykSpritePack",
+"language": "GDScript",
+"path": "res://classes/yk_sprite_pack.gd"
+} ]
 _global_script_class_icons={
-
+"ykAnimatedSprite": "",
+"ykMover": "",
+"ykSpritePack": ""
 }
 
 [application]

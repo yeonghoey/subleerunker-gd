@@ -1,4 +1,4 @@
-extends "res://classes/mover.gd"
+extends ykMover
 
 const W := 24.0
 const H := 16.0

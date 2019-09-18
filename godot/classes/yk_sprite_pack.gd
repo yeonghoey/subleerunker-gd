@@ -1,7 +1,6 @@
 class_name ykSpritePack
 
-static func compose(atlas_path: String, json_path: String) -> Dictionary:
-	var atlas: Texture = load(atlas_path)
+static func compose(atlas: Texture, json_path: String) -> Dictionary:
 	var json: Dictionary = _load_json(json_path) as Dictionary
 	var pack = {}
 	var kinds: Dictionary = _build_kinds(json["frames"])

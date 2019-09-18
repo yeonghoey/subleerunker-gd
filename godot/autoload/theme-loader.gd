@@ -8,5 +8,5 @@ var atlas
 func _ready():
 	default = Theme.new("default")
 	atlas = ykSpritePack.compose(
-		"res://themes/default/atlas.png", 
+		load("res://themes/default/atlas.png"),
 		"res://themes/default/atlas.json")

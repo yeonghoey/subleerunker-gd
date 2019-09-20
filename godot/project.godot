@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "ySpritePack",
+"language": "GDScript",
+"path": "res://classes/y_sprite_pack.gd"
+}, {
 "base": "AnimatedSprite",
 "class": "ykAnimatedSprite",
 "language": "GDScript",
@@ -23,17 +28,12 @@ _global_script_classes=[ {
 "class": "ykMover",
 "language": "GDScript",
 "path": "res://classes/yk_mover.gd"
-}, {
-"base": "Reference",
-"class": "ykSpritePack",
-"language": "GDScript",
-"path": "res://classes/yk_sprite_pack.gd"
 } ]
 _global_script_class_icons={
+"ySpritePack": "",
 "ykAnimatedSprite": "",
 "ykAnimator": "",
-"ykMover": "",
-"ykSpritePack": ""
+"ykMover": ""
 }
 
 [application]

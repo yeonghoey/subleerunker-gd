@@ -1,4 +1,4 @@
-extends ykMover
+extends yMover
 
 const W := 48.0
 const H := 72.0

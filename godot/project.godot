@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "yMover",
+"language": "GDScript",
+"path": "res://classes/y_mover.gd"
+}, {
 "base": "AnimationPlayer",
 "class": "ySpriteAnimator",
 "language": "GDScript",
@@ -18,16 +23,11 @@ _global_script_classes=[ {
 "class": "ySpritePack",
 "language": "GDScript",
 "path": "res://classes/y_sprite_pack.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "ykMover",
-"language": "GDScript",
-"path": "res://classes/yk_mover.gd"
 } ]
 _global_script_class_icons={
+"yMover": "",
 "ySpriteAnimator": "",
-"ySpritePack": "",
-"ykMover": ""
+"ySpritePack": ""
 }
 
 [application]

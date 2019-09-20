@@ -11,7 +11,6 @@ var turning = false
 
 func _ready():
 	$ySpriteAnimator.sprite_pack = load("res://themes/default.tres")
-	$ySpriteAnimator.kinds = ["player-idle", "player-run"]
 	$ySpriteAnimator.play("player-idle")
 	$Head.connect("body_entered", self, "_on_Head_body_entered")
 

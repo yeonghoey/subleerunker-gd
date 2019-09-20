@@ -33,7 +33,7 @@ anims/player-idle = SubResource( 1 )
 anims/player-run = SubResource( 2 )
 script = ExtResource( 2 )
 animated_sprite_path = NodePath("../AnimatedSprite")
-kinds = PoolStringArray(  )
+kinds = PoolStringArray( "player-idle", "player-run" )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 

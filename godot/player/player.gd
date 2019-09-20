@@ -9,15 +9,10 @@ enum {ACTION_IDLE, ACTION_LEFT, ACTION_RIGHT}
 var action = ACTION_IDLE
 var turning = false
 
-var sprite: ykAnimatedSprite
-
 func _ready():
-	sprite = ykAnimatedSprite.new(ThemeLoader.atlas, [
-		{"kind": "player-idle", "loop": true},
-		{"kind": "player-run", "loop": true},
-	])
-	add_child(sprite)
-	sprite.animation_player.play("player-idle")
+	$ySpriteAnimator.sprite_pack = load("res://themes/default.tres")
+	$ySpriteAnimator.kinds = ["player-idle", "player-run"]
+	$ySpriteAnimator.play("player-idle")
 	$Head.connect("body_entered", self, "_on_Head_body_entered")
 
 func _unhandled_input(event):
@@ -56,13 +51,13 @@ func update_action():
 func update_animation():
 	match action:
 		ACTION_IDLE:
-			sprite.animation_player.play("player-idle")
+			$ySpriteAnimator.play("player-idle")
 		ACTION_LEFT:
-			sprite.animation_player.play("player-run")
-			sprite.animated_sprite.flip_h = true
+			$ySpriteAnimator.play("player-run")
+			$AnimatedSprite.flip_h = true
 		ACTION_RIGHT:
-			sprite.animation_player.play("player-run")
-			sprite.animated_sprite.flip_h = false
+			$ySpriteAnimator.play("player-run")
+			$AnimatedSprite.flip_h = false
 
 func _physics_process(delta):
 	update_velocity()

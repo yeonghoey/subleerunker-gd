@@ -24,15 +24,15 @@ func _update_anims() -> void:
 	# Just ignore it 
 	if not is_inside_tree():
 		return
+
 	if animated_sprite_path == "":
-		push_warning("'animated_sprite_path' is not set")
 		return
 	if sprite_pack == null or not sprite_pack is ySpritePack:
-		push_warning("'sprite_pack' is invalid")
 		return
 
 	for kind in kinds:
 		if not kind in sprite_pack.data:
+			push_warning("'%s' is not in the sprite pack" % kind)
 			continue
 		_amend_animated_sprite(kind)
 		_amend_animation(kind)

@@ -5,7 +5,9 @@ class_name ySpritePack
 
 export(Texture) var atlas setget set_atlas
 export(String, FILE, "*.json") var json setget set_json
-export(Dictionary) var data setget set_data
+
+# NOTE: Don't edit this manually.
+export(Dictionary) var data
 
 func set_atlas(texture: Texture):
 	atlas = texture
@@ -15,10 +17,6 @@ func set_json(path: String):
 	json = path
 	_update_data()
 
-func set_data(dict: Dictionary):
-	push_error("Updating ySpritePack.data directly is not allowed.")
-	return
-
 func _update_data():
 	if not Engine.editor_hint:
 		return
@@ -26,6 +24,7 @@ func _update_data():
 		return
 	if not json:
 		return
+
 	data = {}
 	var body: Dictionary = _load_json() as Dictionary
 	var kinds: Dictionary = _build_kinds(body["frames"])

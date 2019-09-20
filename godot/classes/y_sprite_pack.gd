@@ -9,17 +9,17 @@ export(Dictionary) var data setget set_data
 
 func set_atlas(texture: Texture):
 	atlas = texture
-	_update()
+	_update_data()
 
 func set_json(path: String):
 	json = path
-	_update()
+	_update_data()
 
 func set_data(dict: Dictionary):
 	push_error("Updating ySpritePack.data directly is not allowed.")
 	return
 
-func _update():
+func _update_data():
 	if not Engine.editor_hint:
 		return
 	if not atlas:

@@ -3,12 +3,17 @@ extends AnimationPlayer
 
 class_name ySpriteAnimator
 
-export(Resource) var sprite_pack
-export(NodePath) var animated_sprite_path
-
-# This should be at the bottom of exports
-# so that it can trigger _update_anims after all other values initialized.
+export(Resource) var sprite_pack setget set_sprite_pack
+export(NodePath) var animated_sprite_path setget set_animated_sprite_path
 export(Array, String) var kinds setget set_kinds
+
+func set_sprite_pack(pack: ySpritePack):
+	sprite_pack = pack
+	_update_anims()
+
+func set_animated_sprite_path(path: NodePath):
+	animated_sprite_path = path
+	_update_anims()
 
 func set_kinds(array: PoolStringArray):
 	kinds = array
@@ -24,7 +29,6 @@ func _update_anims() -> void:
 	# Just ignore it 
 	if not is_inside_tree():
 		return
-
 	if animated_sprite_path == "":
 		return
 	if sprite_pack == null or not sprite_pack is ySpritePack:

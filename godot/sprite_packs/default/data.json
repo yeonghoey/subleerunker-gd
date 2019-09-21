@@ -103,7 +103,7 @@
     "sourceSize": { "w": 148, "h": 66 },
     "duration": 100
    },
-   "palette_bg:0": {
+   "palette_background:0": {
     "frame": { "x": 402, "y": 165, "w": 48, "h": 7 },
     "rotated": false,
     "trimmed": false,

@@ -1,8 +1,8 @@
 extends Node
 
 func get(name):
-	var path = "res://autoload/palette-%s.tres" % name
-	var palette = load(path)
+	var pack = load("res://sprite_packs/default/pack.tres")
+	var palette = pack.head("palette_%s" % name)
 	var image = palette.atlas.get_data()
 	image.lock()
 	var pos = palette.region.position

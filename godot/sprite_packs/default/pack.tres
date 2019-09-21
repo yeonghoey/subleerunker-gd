@@ -264,7 +264,7 @@ data = {
 "duration": 100.0,
 "texture": SubResource( 13 )
 } ],
-"palette_bg": [ {
+"palette_background": [ {
 "duration": 100.0,
 "texture": SubResource( 14 )
 } ],

@@ -10,7 +10,7 @@ var action = ACTION_IDLE
 var turning = false
 
 func _ready():
-	$ySpriteAnimator.sprite_pack = load("res://themes/default.tres")
+	$ySpriteAnimator.sprite_pack = load("res://themes/default/atlas.tres")
 	$ySpriteAnimator.play("player-idle")
 	$Head.connect("body_entered", self, "_on_Head_body_entered")
 

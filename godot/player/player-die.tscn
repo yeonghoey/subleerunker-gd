@@ -17,6 +17,7 @@ script = ExtResource( 1 )
 
 [node name="ySpriteAnimator" type="AnimationPlayer" parent="."]
 script = ExtResource( 2 )
+sprite_pack = null
 animated_sprite_path = NodePath("../AnimatedSprite")
 kinds = PoolStringArray( "player-die" )
 

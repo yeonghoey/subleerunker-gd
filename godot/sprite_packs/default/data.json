@@ -5,7 +5,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "sourceSize": { "w": 22, "h": 16 },
-    "duration": 100
+    "duration": 80
    },
    "flame_burn:1": {
     "frame": { "x": 480, "y": 128, "w": 22, "h": 16 },
@@ -13,7 +13,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "sourceSize": { "w": 22, "h": 16 },
-    "duration": 100
+    "duration": 80
    },
    "flame_burn:2": {
     "frame": { "x": 480, "y": 112, "w": 22, "h": 16 },
@@ -21,7 +21,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "sourceSize": { "w": 22, "h": 16 },
-    "duration": 100
+    "duration": 80
    },
    "flame_burn:3": {
     "frame": { "x": 480, "y": 96, "w": 22, "h": 16 },
@@ -29,7 +29,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "sourceSize": { "w": 22, "h": 16 },
-    "duration": 100
+    "duration": 80
    },
    "flame_burn:4": {
     "frame": { "x": 480, "y": 80, "w": 22, "h": 16 },
@@ -37,7 +37,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "sourceSize": { "w": 22, "h": 16 },
-    "duration": 100
+    "duration": 80
    },
    "flame_burn:5": {
     "frame": { "x": 484, "y": 64, "w": 22, "h": 16 },
@@ -45,7 +45,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "sourceSize": { "w": 22, "h": 16 },
-    "duration": 100
+    "duration": 80
    },
    "flame_burn:6": {
     "frame": { "x": 484, "y": 48, "w": 22, "h": 16 },
@@ -53,7 +53,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "sourceSize": { "w": 22, "h": 16 },
-    "duration": 100
+    "duration": 80
    },
    "flame_land:0": {
     "frame": { "x": 484, "y": 32, "w": 22, "h": 16 },
@@ -61,7 +61,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "sourceSize": { "w": 22, "h": 16 },
-    "duration": 100
+    "duration": 40
    },
    "flame_land:1": {
     "frame": { "x": 484, "y": 16, "w": 22, "h": 16 },
@@ -69,7 +69,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "sourceSize": { "w": 22, "h": 16 },
-    "duration": 100
+    "duration": 40
    },
    "flame_land:2": {
     "frame": { "x": 484, "y": 0, "w": 22, "h": 16 },
@@ -77,7 +77,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "sourceSize": { "w": 22, "h": 16 },
-    "duration": 100
+    "duration": 40
    },
    "key_self:0": {
     "frame": { "x": 419, "y": 144, "w": 65, "h": 14 },

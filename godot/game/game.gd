@@ -24,7 +24,7 @@ func on_hit(player):
 	$Objects.add_child(die)
 
 func on_landed(flame):
-	var land := preload("res://flame/flame-land.tscn").instance()
+	var land := preload("res://flame/flame_land.tscn").instance()
 	land.position = flame.position
 	$Objects.add_child(land)
 	if alive:

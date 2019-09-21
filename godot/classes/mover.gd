@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-class_name yMover
+class_name Mover
 
 var velocity := Vector2()
 

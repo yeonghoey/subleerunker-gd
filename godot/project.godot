@@ -54,6 +54,10 @@ window/size/width=320
 window/size/height=480
 window/size/resizable=false
 
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
 [layer_names]
 
 2d_physics/layer_1="body"

@@ -1,22 +1,25 @@
 SHELL = /bin/bash
 
 ifndef ASEPRITE
-$(error Set ASEPRITE to your Aseprite binary path.)
+$(error Set ASEPRITE to your Aseprite CLI path.)
 endif
 
-.PHONY: pack
+.PHONY: compile export
 
 # Pack themes into sheets
 THEMES = $(wildcard themes/*)
 THEMES_PACKED_PNG = $(THEMES:%=godot/%/atlas.png)
 THEMES_PACKED_JSON = $(THEMES:%=godot/%/atlas.json)
 
-pack: $(THEMES_PACKED_PNG) $(THEMES_PACKED_JSON)
+compile: export
+	$(MAKE) -C 'godot' compile
 
-godot/%/atlas.png \
-godot/%/atlas.json: %/*.aseprite
+export: $(THEMES_PACKED_PNG) $(THEMES_PACKED_JSON)
+
+godot/%/atlas.png godot/%/atlas.json: %/*.aseprite
 	mkdir -p 'godot/$*'
-	"${ASEPRITE}" --batch \
+	"${ASEPRITE}" \
+	--batch \
 	--sheet-pack \
 	--sheet 'godot/$*/atlas.png' \
 	--data 'godot/$*/atlas.json' \

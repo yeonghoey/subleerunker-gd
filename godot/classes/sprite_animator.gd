@@ -1,13 +1,13 @@
 tool
 extends AnimationPlayer
 
-class_name ySpriteAnimator
+class_name SpriteAnimator
 
 export(Resource) var sprite_pack setget set_sprite_pack
 export(NodePath) var animated_sprite_path setget set_animated_sprite_path
-export(Array, String) var kinds setget set_kinds
+export(Array, String) var sprite_ids setget set_sprite_ids
 
-func set_sprite_pack(pack: ySpritePack):
+func set_sprite_pack(pack: SpritePack):
 	sprite_pack = pack
 	_update_anims()
 
@@ -15,8 +15,8 @@ func set_animated_sprite_path(path: NodePath):
 	animated_sprite_path = path
 	_update_anims()
 
-func set_kinds(array: PoolStringArray):
-	kinds = array
+func set_sprite_ids(array: PoolStringArray):
+	sprite_ids = array
 	_update_anims()
 
 func _ready():
@@ -31,44 +31,44 @@ func _update_anims() -> void:
 		return
 	if animated_sprite_path == "":
 		return
-	if sprite_pack == null or not sprite_pack is ySpritePack:
+	if sprite_pack == null or not sprite_pack is SpritePack:
 		return
 
-	for kind in kinds:
-		if not kind in sprite_pack.data:
-			push_warning("'%s' is not in the sprite pack" % kind)
+	for id in sprite_ids:
+		if not id in sprite_pack.data:
+			push_warning("'%s' is not in the sprite pack" % id)
 			continue
-		_amend_animated_sprite(kind)
-		_amend_animation(kind)
+		_amend_animated_sprite(id)
+		_amend_animation(id)
 
-func _amend_animated_sprite(kind: String):
+func _amend_animated_sprite(id: String):
 	var animated_sprite: AnimatedSprite = get_node(animated_sprite_path)
 	if animated_sprite.frames == null:
 		animated_sprite.frames = SpriteFrames.new()
 	var sprframes = animated_sprite.frames
-	if not sprframes.has_animation(kind):
-		sprframes.add_animation(kind)
-	sprframes.clear(kind)
-	for frame in sprite_pack.data[kind]:
-		sprframes.add_frame(kind, frame["texture"])
+	if not sprframes.has_animation(id):
+		sprframes.add_animation(id)
+	sprframes.clear(id)
+	for frame in sprite_pack.data[id]:
+		sprframes.add_frame(id, frame["texture"])
 
-func _amend_animation(kind: String):
+func _amend_animation(id: String):
 	var anim: Animation
-	if has_animation(kind):
-		anim = get_animation(kind)
+	if has_animation(id):
+		anim = get_animation(id)
 	else:
 		anim = Animation.new()
-		add_animation(kind, anim)
-	_amend_animation_track(kind, anim)
-	_amend_frame_track(kind, anim)
+		add_animation(id, anim)
+	_amend_animation_track(id, anim)
+	_amend_frame_track(id, anim)
 
-func _amend_animation_track(kind: String, anim: Animation):
+func _amend_animation_track(id: String, anim: Animation):
 	var idx = _get_fresh_value_track(anim, "animation")
-	anim.track_insert_key(idx, 0, kind)
+	anim.track_insert_key(idx, 0, id)
 
-func _amend_frame_track(kind: String, anim: Animation):
+func _amend_frame_track(id: String, anim: Animation):
 	var idx = _get_fresh_value_track(anim, "frame")
-	var frames = sprite_pack.data[kind]
+	var frames = sprite_pack.data[id]
 	var time := 0.0
 	for frame_idx in range(frames.size()):
 		anim.track_insert_key(idx, time, frame_idx)

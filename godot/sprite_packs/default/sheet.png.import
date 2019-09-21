@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/atlas.png-4e1f191b1e201202f339f2475062defe.stex"
+path="res://.import/sheet.png-f925b5111ff07806a8f9d24a2d44f3ac.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://themes/default/atlas.png"
-dest_files=[ "res://.import/atlas.png-4e1f191b1e201202f339f2475062defe.stex" ]
+source_file="res://sprite_packs/default/sheet.png"
+dest_files=[ "res://.import/sheet.png-f925b5111ff07806a8f9d24a2d44f3ac.stex" ]
 
 [params]
 

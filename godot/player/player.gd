@@ -10,8 +10,8 @@ var action = ACTION_IDLE
 var turning = false
 
 func _ready():
-	$ySpriteAnimator.sprite_pack = load("res://themes/default/atlas.tres")
-	$ySpriteAnimator.play("player-idle")
+	$SpriteAnimator.sprite_pack = load("res://sprite_packs/default/pack.tres")
+	$SpriteAnimator.play("player_idle")
 	$Head.connect("body_entered", self, "_on_Head_body_entered")
 
 func _unhandled_input(event):
@@ -50,12 +50,12 @@ func update_action():
 func update_animation():
 	match action:
 		ACTION_IDLE:
-			$ySpriteAnimator.play("player-idle")
+			$SpriteAnimator.play("player_idle")
 		ACTION_LEFT:
-			$ySpriteAnimator.play("player-run")
+			$SpriteAnimator.play("player_run")
 			$AnimatedSprite.flip_h = true
 		ACTION_RIGHT:
-			$ySpriteAnimator.play("player-run")
+			$SpriteAnimator.play("player_run")
 			$AnimatedSprite.flip_h = false
 
 func _physics_process(delta):

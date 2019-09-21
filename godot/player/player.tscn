@@ -1,15 +1,15 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
-[ext_resource path="res://classes/y_sprite_animator.gd" type="Script" id=2]
-[ext_resource path="res://player/player-run.wav" type="AudioStream" id=3]
+[ext_resource path="res://classes/sprite_animator.gd" type="Script" id=2]
+[ext_resource path="res://player/player_run.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "player-idle"
+resource_name = "player_idle"
 loop = true
 
 [sub_resource type="Animation" id=2]
-resource_name = "player-run"
+resource_name = "player_run"
 loop = true
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -28,13 +28,12 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ySpriteAnimator" type="AnimationPlayer" parent="."]
-anims/player-idle = SubResource( 1 )
-anims/player-run = SubResource( 2 )
+[node name="SpriteAnimator" type="AnimationPlayer" parent="."]
+anims/player_idle = SubResource( 1 )
+anims/player_run = SubResource( 2 )
 script = ExtResource( 2 )
-sprite_pack = null
 animated_sprite_path = NodePath("../AnimatedSprite")
-kinds = PoolStringArray( "player-idle", "player-run" )
+sprite_ids = PoolStringArray( "player_idle", "player_run" )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 

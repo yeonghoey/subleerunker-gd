@@ -6,12 +6,12 @@ endif
 
 .PHONY: compile
 
-THEMES = $(wildcard themes/*)
-THEMES_PACKED_TRES = $(THEMES:%=%/atlas.tres)
+SPRITE_PACKS = $(wildcard sprite_packs/*)
+SPRITE_PACKS_PACK = $(SPRITE_PACKS:%=%/pack.tres)
 
-compile: $(THEMES_PACKED_TRES)
+compile: $(SPRITE_PACKS_PACK)
 
-themes/%/atlas.tres: themes/%/atlas.png themes/%/atlas.json
+sprite_packs/%/pack.tres: sprite_packs/%/sheet.png sprite_packs/%/data.json
 	# To make sure Godot imports newly generated resources,
 	# First we launch Godot editor and quit
 	# so that it can import at its initialization timing.
@@ -20,12 +20,13 @@ themes/%/atlas.tres: themes/%/atlas.png themes/%/atlas.json
 	--editor \
 	--quit \
 	> /dev/null 2>&1
+
 	# NOTE: Custom arguments are passed in a counterintuitive way
 	# because Godot CLI only supports custom arguments
 	# in the form of "--key=value"
 	"${GODOT}" \
 	--path "$(CURDIR)" \
-	--script "_scripts/y_sprite_pack_compile.gd" \
+	--script "cli/compile_sprite_pack.gd" \
 	"--sheet=$(word 1, $^)" \
 	"--data=$(word 2, $^)" \
-	"--tres=$@"
+	"--pack=$@"

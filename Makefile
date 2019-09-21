@@ -6,22 +6,25 @@ endif
 
 .PHONY: compile export
 
-# Pack themes into sheets
-THEMES = $(wildcard themes/*)
-THEMES_PACKED_PNG = $(THEMES:%=godot/%/atlas.png)
-THEMES_PACKED_JSON = $(THEMES:%=godot/%/atlas.json)
+# Compile groups of sprites into sprite packs
+# sprites/<name>/*.aseprite
+# => godot/sprite_packs/<name>/sheet.png
+#    godot/sprite_packs/<name>/data.json
+SPRITES = $(wildcard sprites/*)
+SPRITE_PACKS_SHEET = $(SPRITES:sprites/%=godot/sprite_packs/%/sheet.png)
+SPRITE_PACKS_DATA = $(SPRITES:sprites/%=godot/sprite_packs/%/data.json)
 
 compile: export
 	$(MAKE) -C 'godot' compile
 
-export: $(THEMES_PACKED_PNG) $(THEMES_PACKED_JSON)
+export: $(SPRITE_PACKS_SHEET) $(SPRITE_PACKS_DATA)
 
-godot/%/atlas.png godot/%/atlas.json: %/*.aseprite
-	mkdir -p 'godot/$*'
+godot/sprite_packs/%/sheet.png godot/sprite_packs/%/data.json: sprites/%/*.aseprite
+	mkdir -p 'godot/sprite_packs'
 	"${ASEPRITE}" \
 	--batch \
 	--sheet-pack \
-	--sheet 'godot/$*/atlas.png' \
-	--data 'godot/$*/atlas.json' \
-	--filename-format '{title}-{tag}-{tagframe}' \
-	$*/*.aseprite
+	--sheet 'godot/sprite_packs/$*/sheet.png' \
+	--data 'godot/sprite_packs/$*/data.json' \
+	--filename-format '{title}_{tag}:{tagframe}' \
+	sprites/$*/*.aseprite

@@ -19,7 +19,7 @@ func connect_signals():
 func on_hit(player):
 	$AudioBGM.stop()
 	alive = false
-	var die := preload("res://player/player-die.tscn").instance()
+	var die := preload("res://player/player_die.tscn").instance()
 	die.position = player.position
 	$Objects.add_child(die)
 

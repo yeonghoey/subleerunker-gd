@@ -4,7 +4,11 @@ ifndef ASEPRITE
 $(error Set ASEPRITE to your Aseprite CLI path.)
 endif
 
-.PHONY: compile export
+ifndef GODOT
+$(error Set GODOT to your Godot CLI path.)
+endif
+
+.PHONY: pack export build
 
 # Compile groups of sprites into sprite packs
 # sprites/<name>/*.aseprite
@@ -14,8 +18,8 @@ SPRITES = $(wildcard sprites/*)
 SPRITE_PACKS_SHEET = $(SPRITES:sprites/%=godot/sprite_packs/%/sheet.png)
 SPRITE_PACKS_DATA = $(SPRITES:sprites/%=godot/sprite_packs/%/data.json)
 
-compile: export
-	$(MAKE) -C 'godot' compile
+pack: export
+	$(MAKE) -C 'godot' pack
 
 export: $(SPRITE_PACKS_SHEET) $(SPRITE_PACKS_DATA)
 
@@ -28,3 +32,10 @@ godot/sprite_packs/%/sheet.png godot/sprite_packs/%/data.json: sprites/%/*.asepr
 	--data 'godot/sprite_packs/$*/data.json' \
 	--filename-format '{title}_{tag}:{tagframe}' \
 	sprites/$*/*.aseprite
+
+build: 
+	mkdir -p "$(dir $@)"
+	"${GODOT}" \
+	--path "$(CURDIR)/godot" \
+	--export "macOS" \
+	'$(CURDIR)/dist/macos/release.dmg'

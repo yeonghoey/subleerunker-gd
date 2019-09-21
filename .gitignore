@@ -4,6 +4,9 @@
 # Mono-specific ignores
 .mono/
 
+# Builds
+dist/macos/*.dmg
+
 # YEONGHOEYRUNKER custom ignores
 .DS_Store
 .envrc

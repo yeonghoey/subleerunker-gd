@@ -4,12 +4,12 @@ ifndef GODOT
 $(error Set GODOT to your Godot CLI path.)
 endif
 
-.PHONY: compile
+.PHONY: pack
 
 SPRITE_PACKS = $(wildcard sprite_packs/*)
 SPRITE_PACKS_PACK = $(SPRITE_PACKS:%=%/pack.tres)
 
-compile: $(SPRITE_PACKS_PACK)
+pack: $(SPRITE_PACKS_PACK)
 
 sprite_packs/%/pack.tres: sprite_packs/%/sheet.png sprite_packs/%/data.json
 	# To make sure Godot imports newly generated resources,

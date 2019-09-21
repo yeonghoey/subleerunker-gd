@@ -55,7 +55,8 @@ func group_by_id(data: Dictionary) -> Dictionary:
 	for key in data:
 		var value = data[key]
 		var parts = key.rsplit(":", true, 1)
-		var id = parts[0]
+		# Remove trailing "_", for single tag sprites.
+		var id = parts[0].trim_suffix("_")
 		var frame_num = int(parts[1])
 		if not interim.has(id):
 			interim[id] = []

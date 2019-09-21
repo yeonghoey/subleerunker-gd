@@ -253,14 +253,14 @@ data = {
 "duration": 40.0,
 "texture": SubResource( 10 )
 } ],
-"key_self": [ {
-"duration": 100.0,
+"key": [ {
+"duration": 1000.0,
 "texture": SubResource( 11 )
 }, {
-"duration": 100.0,
+"duration": 1000.0,
 "texture": SubResource( 12 )
 } ],
-"logo_self": [ {
+"logo": [ {
 "duration": 100.0,
 "texture": SubResource( 13 )
 } ],

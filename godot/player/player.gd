@@ -11,7 +11,6 @@ var turning = false
 
 func _ready():
 	$SpriteAnimator.sprite_pack = load("res://sprite_packs/default/pack.tres")
-	$SpriteAnimator.play("player_idle")
 	$Head.connect("body_entered", self, "_on_Head_body_entered")
 
 func _unhandled_input(event):

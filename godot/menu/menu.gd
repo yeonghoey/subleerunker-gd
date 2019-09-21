@@ -1,6 +1,11 @@
-extends Node
+extends Node2D
 
 var signaled := false
+
+func _ready():
+	var pack = load("res://sprite_packs/default/pack.tres")
+	$Logo.texture = pack.head("logo")
+	$SpriteAnimator.sprite_pack = pack
 
 func _unhandled_input(event):
 	if signaled:

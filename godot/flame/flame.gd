@@ -5,7 +5,6 @@ const H := 16.0
 
 func _ready():
 	$SpriteAnimator.sprite_pack = load("res://sprite_packs/default/pack.tres")
-	$SpriteAnimator.play("flame_burn")
 
 func _physics_process(delta):
 	update_velocity()

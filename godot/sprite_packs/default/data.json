@@ -79,23 +79,23 @@
     "sourceSize": { "w": 22, "h": 16 },
     "duration": 40
    },
-   "key_self:0": {
+   "key_:0": {
     "frame": { "x": 419, "y": 144, "w": 65, "h": 14 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 65, "h": 14 },
     "sourceSize": { "w": 65, "h": 14 },
-    "duration": 100
+    "duration": 1000
    },
-   "key_self:1": {
+   "key_:1": {
     "frame": { "x": 354, "y": 144, "w": 65, "h": 14 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 65, "h": 14 },
     "sourceSize": { "w": 65, "h": 14 },
-    "duration": 100
+    "duration": 1000
    },
-   "logo_self:0": {
+   "logo_:0": {
     "frame": { "x": 0, "y": 0, "w": 148, "h": 66 },
     "rotated": false,
     "trimmed": false,

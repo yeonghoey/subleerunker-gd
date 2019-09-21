@@ -73,140 +73,140 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 402, 165, 48, 7 )
 
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 354, 165, 48, 7 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 450, 160, 48, 7 )
-
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=18]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 402, 158, 48, 7 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=44]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 354, 158, 48, 7 )
+region = Rect2( 354, 165, 48, 7 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=45]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 0, 138, 48, 72 )
+region = Rect2( 450, 160, 48, 7 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=46]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 48, 138, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 96, 138, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 148, 0, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 192, 144, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=24]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 240, 144, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=25]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 144, 144, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=26]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 432, 72, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 384, 72, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=28]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 336, 72, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=29]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 288, 72, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=30]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 240, 72, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=31]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 192, 72, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=32]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 144, 72, 48, 72 )
-
-[sub_resource type="AtlasTexture" id=33]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 96, 66, 48, 72 )
+region = Rect2( 402, 158, 48, 7 )
 
 [sub_resource type="AtlasTexture" id=34]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 48, 66, 48, 72 )
+region = Rect2( 432, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=35]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 0, 66, 48, 72 )
+region = Rect2( 384, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=36]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 436, 0, 48, 72 )
+region = Rect2( 336, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=37]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 388, 0, 48, 72 )
+region = Rect2( 288, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=38]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 340, 0, 48, 72 )
+region = Rect2( 240, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=39]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 292, 0, 48, 72 )
+region = Rect2( 192, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=40]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 244, 0, 48, 72 )
+region = Rect2( 144, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=41]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 196, 0, 48, 72 )
+region = Rect2( 96, 66, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 138, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=48]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 48, 138, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=49]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 138, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=50]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 148, 0, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=51]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 192, 144, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=52]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 240, 144, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=53]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 144, 144, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=54]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 432, 72, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=55]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 384, 72, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=56]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 336, 72, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 288, 72, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 240, 72, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=59]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 192, 72, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=60]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 144, 72, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=61]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 66, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=42]
 flags = 4
@@ -220,8 +220,6 @@ region = Rect2( 288, 144, 33, 35 )
 
 [resource]
 script = ExtResource( 2 )
-atlas = ExtResource( 1 )
-json = "res://themes/default/atlas.json"
 data = {
 "flame-burn": [ {
 "duration": 100.0,
@@ -276,87 +274,87 @@ data = {
 } ],
 "palette-current": [ {
 "duration": 100.0,
-"texture": SubResource( 15 )
+"texture": SubResource( 44 )
 } ],
 "palette-local": [ {
 "duration": 100.0,
-"texture": SubResource( 16 )
+"texture": SubResource( 45 )
 } ],
 "palette-world": [ {
 "duration": 100.0,
-"texture": SubResource( 17 )
+"texture": SubResource( 46 )
 } ],
 "player-die": [ {
-"duration": 83.0,
+"duration": 80.0,
 "texture": SubResource( 34 )
 }, {
-"duration": 83.0,
+"duration": 80.0,
 "texture": SubResource( 35 )
 }, {
-"duration": 83.0,
+"duration": 80.0,
 "texture": SubResource( 36 )
 }, {
-"duration": 83.0,
+"duration": 80.0,
 "texture": SubResource( 37 )
 }, {
-"duration": 83.0,
+"duration": 80.0,
 "texture": SubResource( 38 )
 }, {
-"duration": 83.0,
+"duration": 80.0,
 "texture": SubResource( 39 )
 }, {
-"duration": 83.0,
+"duration": 80.0,
 "texture": SubResource( 40 )
 }, {
-"duration": 83.0,
+"duration": 80.0,
 "texture": SubResource( 41 )
 } ],
 "player-idle": [ {
-"duration": 83.0,
-"texture": SubResource( 19 )
+"duration": 80.0,
+"texture": SubResource( 47 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 20 )
+"duration": 80.0,
+"texture": SubResource( 48 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 21 )
+"duration": 80.0,
+"texture": SubResource( 49 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 22 )
+"duration": 80.0,
+"texture": SubResource( 50 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 23 )
+"duration": 80.0,
+"texture": SubResource( 51 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 24 )
+"duration": 80.0,
+"texture": SubResource( 52 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 25 )
+"duration": 80.0,
+"texture": SubResource( 53 )
 } ],
 "player-run": [ {
-"duration": 83.0,
-"texture": SubResource( 26 )
+"duration": 80.0,
+"texture": SubResource( 54 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 27 )
+"duration": 80.0,
+"texture": SubResource( 55 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 28 )
+"duration": 80.0,
+"texture": SubResource( 56 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 29 )
+"duration": 80.0,
+"texture": SubResource( 57 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 30 )
+"duration": 80.0,
+"texture": SubResource( 58 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 31 )
+"duration": 80.0,
+"texture": SubResource( 59 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 32 )
+"duration": 80.0,
+"texture": SubResource( 60 )
 }, {
-"duration": 83.0,
-"texture": SubResource( 33 )
+"duration": 80.0,
+"texture": SubResource( 61 )
 } ],
 "touch-self": [ {
 "duration": 100.0,

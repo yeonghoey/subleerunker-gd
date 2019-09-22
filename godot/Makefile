@@ -18,8 +18,8 @@ sprite_packs/%/pack.tres: sprite_packs/%/sheet.png sprite_packs/%/data.json
 	"${GODOT}" \
 	--path "$(CURDIR)" \
 	--editor \
+	--quiet \
 	--quit \
-	> /dev/null 2>&1
 
 	# NOTE: Custom arguments are passed in a counterintuitive way
 	# because Godot CLI only supports custom arguments
@@ -27,6 +27,7 @@ sprite_packs/%/pack.tres: sprite_packs/%/sheet.png sprite_packs/%/data.json
 	"${GODOT}" \
 	--path "$(CURDIR)" \
 	--script "cli/compile_sprite_pack.gd" \
+	--quiet \
 	"--sheet=$(word 1, $^)" \
 	"--data=$(word 2, $^)" \
 	"--pack=$@"

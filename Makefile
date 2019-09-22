@@ -38,4 +38,5 @@ build:
 	"${GODOT}" \
 	--path "$(CURDIR)/godot" \
 	--export "macOS" \
+	--quiet \
 	'$(CURDIR)/dist/macos/release.dmg'

@@ -5,6 +5,7 @@
 [ext_resource path="res://player/player_die.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
+resource_local_to_scene = true
 resource_name = "player_die"
 
 [node name="PlayerDie" type="Node2D"]

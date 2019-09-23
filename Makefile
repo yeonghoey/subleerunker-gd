@@ -24,7 +24,7 @@ pack: export
 export: $(SPRITE_PACKS_SHEET) $(SPRITE_PACKS_DATA)
 
 godot/sprite_packs/%/sheet.png godot/sprite_packs/%/data.json: sprites/%/*.aseprite
-	mkdir -p 'godot/sprite_packs'
+	mkdir -p 'godot/sprite_packs/$*'
 	"${ASEPRITE}" \
 	--batch \
 	--sheet-pack \

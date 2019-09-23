@@ -1,21 +1,28 @@
 extends SceneTree
 
+# Pack exported image and json data into SpritePack
+
+const sheet_path := "res://sprite_packs/%s/sheet.png"
+const data_path := "res://sprite_packs/%s/data.json"
+const pack_path := "res://sprite_packs/%s/pack.tres"
+
+const pack_names = [
+	"default", "inverted"
+]
+
 func _init():
 	main()
 	quit()
 
 func main():
-	var kwargs = {}
-	for arg in OS.get_cmdline_args():
-		var kv = arg.trim_prefix("--").split("=", true, 1)
-		if kv.size() != 2:
-			continue
-		kwargs[kv[0]] = kv[1]
+	for pack_name in pack_names:
+		pack(pack_name)
 
-	var sheet = load("res://%s" % kwargs["sheet"])
-	var data = load_json("res://%s" % kwargs["data"])
+func pack(pack_name: String):
+	var sheet = load(sheet_path % pack_name)
+	var data = load_json(data_path % pack_name)
 	var sprite_pack = compile(sheet, data)
-	var ret = ResourceSaver.save("res://%s" % kwargs["pack"], sprite_pack)
+	var ret = ResourceSaver.save(pack_path % pack_name, sprite_pack)
 	assert ret == OK
 
 func load_json(path: String) -> Dictionary:

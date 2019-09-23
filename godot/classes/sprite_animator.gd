@@ -33,7 +33,6 @@ func _update_anims() -> void:
 		return
 	if sprite_pack == null or not sprite_pack is SpritePack:
 		return
-
 	for id in sprite_ids:
 		if not id in sprite_pack.data:
 			push_warning("'%s' is not in the sprite pack" % id)

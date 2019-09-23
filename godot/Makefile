@@ -4,30 +4,26 @@ ifndef GODOT
 $(error Set GODOT to your Godot CLI path.)
 endif
 
-.PHONY: pack
+.PHONY: pack render reimport
 
-SPRITE_PACKS = $(wildcard sprite_packs/*)
-SPRITE_PACKS_PACK = $(SPRITE_PACKS:%=%/pack.tres)
+pack: reimport
+	"${GODOT}" \
+	--path "$(CURDIR)" \
+	--script "cli/pack.gd" \
+	--quiet
 
-pack: $(SPRITE_PACKS_PACK)
+render: reimport
+	"${GODOT}" \
+	--path "$(CURDIR)" \
+	--script "cli/render.gd" \
+	--quiet
 
-sprite_packs/%/pack.tres: sprite_packs/%/sheet.png sprite_packs/%/data.json
+reimport:
 	# To make sure Godot imports newly generated resources,
 	# First we launch Godot editor and quit
 	# so that it can import at its initialization timing.
 	"${GODOT}" \
 	--path "$(CURDIR)" \
 	--editor \
-	--quiet \
 	--quit \
-
-	# NOTE: Custom arguments are passed in a counterintuitive way
-	# because Godot CLI only supports custom arguments
-	# in the form of "--key=value"
-	"${GODOT}" \
-	--path "$(CURDIR)" \
-	--script "cli/compile_sprite_pack.gd" \
-	--quiet \
-	"--sheet=$(word 1, $^)" \
-	"--data=$(word 2, $^)" \
-	"--pack=$@"
+	> /dev/null 2>&1

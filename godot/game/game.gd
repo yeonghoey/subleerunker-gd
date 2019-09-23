@@ -24,7 +24,7 @@ func on_hit(player):
 	$Objects.add_child(die)
 
 func on_landed(flame):
-	var land := preload("res://flame/flame_land.tscn").instance()
+	var land := preload("res://scene_templates/flame/flame_land.tscn").instance()
 	land.position = flame.position
 	$Objects.add_child(land)
 	if alive:
@@ -53,7 +53,7 @@ func try_spawn_flame():
 		return
 
 	if randf() < flamespawn_threshold:
-		var flame := preload("res://flame/flame.tscn").instance()
+		var flame = preload("res://scene_rendered/default/flame/flame.tscn").instance()
 		var x = (W - flame.W*2) * randf() + flame.W
 		flame.position = Vector2(x, -flame.H)
 		$Objects.add_child(flame)

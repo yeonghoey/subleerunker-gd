@@ -3,8 +3,10 @@ extends Mover
 const W := 24.0
 const H := 16.0
 
-func _ready():
-	$SpriteAnimator.sprite_pack = load("res://sprite_packs/default/pack.tres")
+func render(pack: SpritePack):
+	pack.render($AnimationPlayer, $AnimatedSprite, [
+		"flame_burn"
+	])
 
 func _physics_process(delta):
 	update_velocity()

@@ -4,7 +4,7 @@
 [ext_resource path="res://sprite_packs/default/sheet.png" type="Texture" id=2]
 [ext_resource path="res://player/player_run.wav" type="AudioStream" id=3]
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=1]
 length = 0.56
 loop = true
 tracks/0/type = "value"
@@ -32,7 +32,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=2]
 length = 0.64
 loop = true
 tracks/0/type = "value"
@@ -156,8 +156,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "player_idle"
-anims/player_idle = SubResource( 21 )
-anims/player_run = SubResource( 22 )
+anims/player_idle = SubResource( 1 )
+anims/player_run = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )

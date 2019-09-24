@@ -34,7 +34,7 @@ func _update_anims() -> void:
 	if sprite_pack == null or not sprite_pack is SpritePack:
 		return
 	for id in sprite_ids:
-		if not id in sprite_pack.data:
+		if not id in sprite_pack.catalog:
 			push_warning("'%s' is not in the sprite pack" % id)
 			continue
 		_amend_animated_sprite(id)
@@ -48,7 +48,7 @@ func _amend_animated_sprite(id: String):
 	if not sprframes.has_animation(id):
 		sprframes.add_animation(id)
 	sprframes.clear(id)
-	for frame in sprite_pack.data[id]:
+	for frame in sprite_pack.catalog[id]:
 		sprframes.add_frame(id, frame["texture"])
 
 func _amend_animation(id: String):
@@ -67,7 +67,7 @@ func _amend_animation_track(id: String, anim: Animation):
 
 func _amend_frame_track(id: String, anim: Animation):
 	var idx = _get_fresh_value_track(anim, "frame")
-	var frames = sprite_pack.data[id]
+	var frames = sprite_pack.catalog[id]
 	var time := 0.0
 	for frame_idx in range(frames.size()):
 		anim.track_insert_key(idx, time, frame_idx)

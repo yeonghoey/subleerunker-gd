@@ -2,11 +2,60 @@ extends Resource
 
 class_name SpritePack
 
-#warning-ignore:unused_class_variable
-export(Dictionary) var data = {}
+export(Dictionary) var catalog = {}
+
+func compile(sheet: Texture, data: Dictionary):
+	var frames_by_id: Dictionary = group_by_id(data["frames"])
+	for id in frames_by_id:
+		var frames = frames_by_id[id]
+		catalog[id] = []
+		for frame in frames:
+			var x = frame["frame"]["x"]
+			var y = frame["frame"]["y"]
+			var w = frame["frame"]["w"]
+			var h = frame["frame"]["h"]
+			var duration = frame["duration"]
+			var texture = AtlasTexture.new()
+			texture.atlas = sheet
+			texture.region = Rect2(x, y, w, h)
+			catalog[id].append({
+				"texture": texture, 
+				"duration": duration
+			})
+
+func group_by_id(data: Dictionary) -> Dictionary:
+	# Using `data`, which looks like {"{id}-{frame_num}": {value}},
+	# build `interim`, which looks like  {"{id}": [{frame_num}, {value}]}
+	var interim = {}
+	for key in data:
+		var value = data[key]
+		var parts = key.rsplit(":", true, 1)
+		# Remove trailing "_", for single tag sprites.
+		var id = parts[0].trim_suffix("_")
+		var frame_num = int(parts[1])
+		if not interim.has(id):
+			interim[id] = []
+		interim[id].append([frame_num, value])
+
+	# Sort the values of `interim` using {frame_num} and 
+	# build `result`, which looks like {"{id}": [{value}]},
+	# from `interim`.
+	var ret = {}
+	for id in interim:
+		var numframe_pair_by_id = interim[id]
+		numframe_pair_by_id.sort_custom(Sorter, "comp")
+		ret[id] = []
+		for numframe in numframe_pair_by_id:
+			var frame = numframe[1]
+			ret[id].append(frame)
+	return ret
+
+class Sorter:
+	static func comp(a, b):
+		return a[0] < b[0]
 
 func head(id: String) -> Texture:
-	return data[id][0]["texture"]
+	return catalog[id][0]["texture"]
 
 func render(
 		player: AnimationPlayer, 
@@ -17,7 +66,7 @@ func render(
 	var path_to_sprite: NodePath = root.get_path_to(sprite)
 	
 	for id in sprite_ids:
-		if not id in data:
+		if not id in catalog:
 			push_warning("'%s' is not in the sprite pack" % id)
 			continue
 		_amend_animated_sprite(sprite, id)
@@ -30,7 +79,7 @@ func _amend_animated_sprite(sprite: AnimatedSprite, id: String):
 	if not sprframes.has_animation(id):
 		sprframes.add_animation(id)
 	sprframes.clear(id)
-	for frame in data[id]:
+	for frame in catalog[id]:
 		sprframes.add_frame(id, frame["texture"])
 
 func _amend_animation(player: AnimationPlayer, path_to_sprite: NodePath, id: String):
@@ -49,7 +98,7 @@ func _amend_animation_track(anim: Animation, path_to_sprite: NodePath, id: Strin
 
 func _amend_frame_track(anim: Animation, path_to_sprite: NodePath, id: String):
 	var idx = _get_fresh_value_track(anim, path_to_sprite, "frame")
-	var frames = data[id]
+	var frames = catalog[id]
 	var time := 0.0
 	for frame_idx in range(frames.size()):
 		anim.track_insert_key(idx, time, frame_idx)

@@ -6,7 +6,6 @@ const template_path_fmt := "res://scene_templates/%s.tscn"
 const pack_path_fmt := "res://sprite_packs/%s/pack.tres"
 const rendered_path_fmt := "res://scene_rendered/%s/%s.tscn"
 
-
 const blueprint = {
 	"default": [
 		"flame/flame",

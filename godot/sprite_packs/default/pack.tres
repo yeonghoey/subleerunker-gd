@@ -177,7 +177,7 @@ region = Rect2( 288, 144, 33, 35 )
 
 [resource]
 script = ExtResource( 2 )
-data = {
+catalog = {
 "flame_burn": [ {
 "duration": 80.0,
 "texture": SubResource( 1 )

@@ -60,19 +60,21 @@ func head(id: String) -> Texture:
 func render(
 		player: AnimationPlayer, 
 		sprite: AnimatedSprite, 
-		catalog_ids: PoolStringArray):
+		specs: Array):
 
 	var root: Node = player.get_node(player.root_node)
 	var path_to_sprite: NodePath = root.get_path_to(sprite)
 	
-	for id in catalog_ids:
-		if not id in catalog:
-			push_warning("'%s' is not in the sprite pack" % id)
+	for spec in specs:
+		if not spec["catalog_id"] in catalog:
+			push_warning("'%s' is not in the sprite pack" % spec["catalog_id"])
 			continue
-		_amend_animated_sprite(sprite, id)
-		_amend_animation(player, path_to_sprite, id)
+		
+		_amend_animated_sprite(sprite, spec)
+		_amend_animation(player, path_to_sprite, spec)
 
-func _amend_animated_sprite(sprite: AnimatedSprite, id: String):
+func _amend_animated_sprite(sprite: AnimatedSprite, spec: Dictionary):
+	var id = spec["catalog_id"]
 	if sprite.frames == null:
 		sprite.frames = SpriteFrames.new()
 	var sprframes = sprite.frames
@@ -82,19 +84,24 @@ func _amend_animated_sprite(sprite: AnimatedSprite, id: String):
 	for frame in catalog[id]:
 		sprframes.add_frame(id, frame["texture"])
 
-func _amend_animation(player: AnimationPlayer, path_to_sprite: NodePath, id: String):
+func _amend_animation(player: AnimationPlayer, path_to_sprite: NodePath, spec: Dictionary):
+	var id = spec["catalog_id"]
+	var name = spec.get("name", spec["catalog_id"])
 	var anim: Animation
-	if player.has_animation(id):
-		anim = player.get_animation(id)
+	if player.has_animation(name):
+		anim = player.get_animation(name)
 	else:
 		anim = Animation.new()
-		player.add_animation(id, anim)
-	_amend_animation_track(anim, path_to_sprite, id)
-	_amend_frame_track(anim, path_to_sprite, id)
+		player.add_animation(name, anim)
 
-func _amend_animation_track(anim: Animation, path_to_sprite: NodePath, id: String):
-	var idx = _get_fresh_value_track(anim, path_to_sprite, "animation")
-	anim.track_insert_key(idx, 0, id)
+	_amend_frame_track(anim, path_to_sprite, id)
+	_amend_single_value_track(anim, path_to_sprite, "animation", id)
+	if "loop" in spec:
+		anim.loop = spec["loop"]	
+	if "flip_h" in spec:
+		_amend_single_value_track(anim, path_to_sprite, "flip_h", spec["flip_h"])
+	if "flip_v" in spec:
+		_amend_single_value_track(anim, path_to_sprite, "flip_v", spec["flip_v"])
 
 func _amend_frame_track(anim: Animation, path_to_sprite: NodePath, id: String):
 	var idx = _get_fresh_value_track(anim, path_to_sprite, "frame")
@@ -105,6 +112,10 @@ func _amend_frame_track(anim: Animation, path_to_sprite: NodePath, id: String):
 		var duration = frames[frame_idx]["duration"]
 		time += duration / 1000
 	anim.length = time
+
+func _amend_single_value_track(anim: Animation, path_to_sprite: NodePath, value_name: String, value):
+	var idx = _get_fresh_value_track(anim, path_to_sprite, value_name)
+	anim.track_insert_key(idx, 0, value)
 
 func _get_fresh_value_track(anim: Animation, path_to_sprite: NodePath, property: String):
 	var path = NodePath("%s:%s" % [path_to_sprite, property])

@@ -8,28 +8,32 @@ const blueprints = [
 		"pack": "res://sprite_packs/default/pack.tres",
 		"animation_player": NodePath("./AnimationPlayer"),
 		"animated_sprite": NodePath("./AnimatedSprite"),
-		"catalog_ids": ["player_idle", "player_run"],
+		"specs": [
+			{catalog_id = "player_idle", loop = true},
+			{catalog_id = "player_run", name = "player_run_left", loop = true, flip_h = true},
+			{catalog_id = "player_run", name = "player_run_right", loop = true, flip_h = false},
+		],
 	},
 	{
 		"scene": "res://player_die/default/player_die.tscn",
 		"pack": "res://sprite_packs/default/pack.tres",
 		"animation_player": NodePath("./AnimationPlayer"),
 		"animated_sprite": NodePath("./AnimatedSprite"),
-		"catalog_ids": ["player_die"],
+		"specs": [{catalog_id = "player_die"}],
 	},
 	{
 		"scene": "res://flame/default/flame.tscn",
 		"pack": "res://sprite_packs/default/pack.tres",
 		"animation_player": NodePath("./AnimationPlayer"),
 		"animated_sprite": NodePath("./AnimatedSprite"),
-		"catalog_ids": ["flame_burn"],
+		"specs": [{catalog_id = "flame_burn"}],
 	},
 	{
 		"scene": "res://flame_land/default/flame_land.tscn",
 		"pack": "res://sprite_packs/default/pack.tres",
 		"animation_player": NodePath("./AnimationPlayer"),
 		"animated_sprite": NodePath("./AnimatedSprite"),
-		"catalog_ids": ["flame_land"],
+		"specs": [{catalog_id = "flame_land"}],
 	}
 ]
 
@@ -51,8 +55,8 @@ func render(blueprint: Dictionary):
 	var pack = load(blueprint["pack"])
 	var animation_player = node.get_node(blueprint["animation_player"])
 	var animated_sprite = node.get_node(blueprint["animated_sprite"])
-	var catalog_ids = blueprint["catalog_ids"]
-	pack.render(animation_player, animated_sprite, catalog_ids)
+	var specs = blueprint["specs"]
+	pack.render(animation_player, animated_sprite, specs)
 
 	# Save it back
 	var packed_scene = PackedScene.new()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://sprite_packs/default/sheet.png" type="Texture" id=2]
@@ -36,112 +36,244 @@ tracks/1/keys = {
 length = 0.64
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "player_run" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "player_run" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 138, 48, 72 )
+[sub_resource type="Animation" id=3]
+length = 0.64
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "player_run" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 138, 48, 72 )
+[sub_resource type="Animation" id=4]
+length = 0.64
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "player_run" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 138, 48, 72 )
+[sub_resource type="Animation" id=5]
+length = 0.64
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "player_run" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
-region = Rect2( 148, 0, 48, 72 )
+region = Rect2( 432, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
-region = Rect2( 192, 144, 48, 72 )
+region = Rect2( 384, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
-region = Rect2( 240, 144, 48, 72 )
+region = Rect2( 336, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
-region = Rect2( 144, 144, 48, 72 )
+region = Rect2( 288, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
-region = Rect2( 432, 72, 48, 72 )
+region = Rect2( 240, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 2 )
-region = Rect2( 384, 72, 48, 72 )
+region = Rect2( 192, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 2 )
-region = Rect2( 336, 72, 48, 72 )
+region = Rect2( 144, 72, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
-region = Rect2( 288, 72, 48, 72 )
+region = Rect2( 96, 66, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 2 )
-region = Rect2( 240, 72, 48, 72 )
+region = Rect2( 0, 138, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 2 )
-region = Rect2( 192, 72, 48, 72 )
+region = Rect2( 48, 138, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 2 )
-region = Rect2( 144, 72, 48, 72 )
+region = Rect2( 96, 138, 48, 72 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 2 )
-region = Rect2( 96, 66, 48, 72 )
+region = Rect2( 148, 0, 48, 72 )
 
-[sub_resource type="SpriteFrames" id=18]
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 144, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 2 )
+region = Rect2( 240, 144, 48, 72 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 144, 48, 72 )
+
+[sub_resource type="SpriteFrames" id=21]
 animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "player_idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "player_run",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "player_idle",
+"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 24, 36 )
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 6, 6 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -157,14 +289,18 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "player_idle"
 anims/player_idle = SubResource( 1 )
-anims/player_run = SubResource( 2 )
+anims/player_left = SubResource( 2 )
+anims/player_right = SubResource( 3 )
+anims/player_run_left = SubResource( 4 )
+anims/player_run_right = SubResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 18 )
+frames = SubResource( 21 )
 animation = "player_idle"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 19 )
+shape = SubResource( 22 )
 
 [node name="Head" type="Area2D" parent="."]
 editor/display_folded = true
@@ -173,7 +309,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
 position = Vector2( 0, -20 )
-shape = SubResource( 20 )
+shape = SubResource( 23 )
 __meta__ = {
 "_edit_group_": true
 }

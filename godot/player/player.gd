@@ -50,11 +50,9 @@ func update_animation():
 		ACTION_IDLE:
 			$AnimationPlayer.play("player_idle")
 		ACTION_LEFT:
-			$AnimationPlayer.play("player_run")
-			$AnimatedSprite.flip_h = true
+			$AnimationPlayer.play("player_run_left")
 		ACTION_RIGHT:
-			$AnimationPlayer.play("player_run")
-			$AnimatedSprite.flip_h = false
+			$AnimationPlayer.play("player_run_right")
 
 func _physics_process(delta):
 	update_velocity()

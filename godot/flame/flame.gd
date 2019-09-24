@@ -3,11 +3,6 @@ extends Mover
 const W := 24.0
 const H := 16.0
 
-func render(pack: SpritePack):
-	pack.render($AnimationPlayer, $AnimatedSprite, [
-		"flame_burn"
-	])
-
 func _physics_process(delta):
 	update_velocity()
 	var collision = move_and_collide(velocity)

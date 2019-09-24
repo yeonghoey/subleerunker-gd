@@ -60,12 +60,12 @@ func head(id: String) -> Texture:
 func render(
 		player: AnimationPlayer, 
 		sprite: AnimatedSprite, 
-		sprite_ids: PoolStringArray):
+		catalog_ids: PoolStringArray):
 
 	var root: Node = player.get_node(player.root_node)
 	var path_to_sprite: NodePath = root.get_path_to(sprite)
 	
-	for id in sprite_ids:
+	for id in catalog_ids:
 		if not id in catalog:
 			push_warning("'%s' is not in the sprite pack" % id)
 			continue

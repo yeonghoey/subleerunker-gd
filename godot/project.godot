@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://classes/mover.gd"
 }, {
-"base": "AnimationPlayer",
-"class": "SpriteAnimator",
-"language": "GDScript",
-"path": "res://classes/sprite_animator.gd"
-}, {
 "base": "Resource",
 "class": "SpritePack",
 "language": "GDScript",
@@ -26,7 +21,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Mover": "",
-"SpriteAnimator": "",
 "SpritePack": ""
 }
 

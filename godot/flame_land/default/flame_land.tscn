@@ -45,11 +45,6 @@ region = Rect2( 484, 0, 22, 16 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "flame_land",

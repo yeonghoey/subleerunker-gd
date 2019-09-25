@@ -31,5 +31,5 @@ func start_game() -> void:
 	add_child(game)
 
 func show_menu() -> void:
-	var menu := preload("res://menu/menu.tscn").instance()
+	var menu := preload("res://menu/default/menu.tscn").instance()
 	add_child(menu)

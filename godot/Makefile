@@ -4,7 +4,7 @@ ifndef GODOT
 $(error Set GODOT to your Godot CLI path.)
 endif
 
-.PHONY: pack render reimport
+.PHONY: pack refurbish reimport
 
 pack: reimport
 	"${GODOT}" \
@@ -12,10 +12,10 @@ pack: reimport
 	--script "cli/pack.gd" \
 	--quiet
 
-render: reimport
+refurbish: reimport
 	"${GODOT}" \
 	--path "$(CURDIR)" \
-	--script "cli/render.gd" \
+	--script "cli/refurbish.gd" \
 	--quiet
 
 reimport:

@@ -11,7 +11,7 @@ func add_background():
 	var bg = ColorRect.new()
 	bg.rect_position = r.position
 	bg.rect_size = r.size
-	bg.color = Palette.get("background")
+	bg.color = PaletteDeprecated.get("background")
 	add_child(bg)
 	move_child(bg, 0)
 

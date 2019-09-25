@@ -9,14 +9,12 @@ endif
 pack: reimport
 	"${GODOT}" \
 	--path "$(CURDIR)" \
-	--script "cli/pack.gd" \
-	--quiet
+	--script "cli/pack.gd"
 
 refurbish: reimport
 	"${GODOT}" \
 	--path "$(CURDIR)" \
-	--script "cli/refurbish.gd" \
-	--quiet
+	--script "cli/refurbish.gd"
 
 reimport:
 	# To make sure Godot imports newly generated resources,

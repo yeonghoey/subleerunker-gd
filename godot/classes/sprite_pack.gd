@@ -97,13 +97,13 @@ func _amend_animated_sprite(sprite: AnimatedSprite, params: Dictionary):
 
 func _amend_animation(player: AnimationPlayer, path_to_sprite: NodePath, params: Dictionary):
 	var id = params["catalog_id"]
-	var name = params.get("name", params["catalog_id"])
+	var anim_name = params.get("anim_name", params["catalog_id"])
 	var anim: Animation
-	if player.has_animation(name):
-		anim = player.get_animation(name)
+	if player.has_animation(anim_name):
+		anim = player.get_animation(anim_name)
 	else:
 		anim = Animation.new()
-		player.add_animation(name, anim)
+		player.add_animation(anim_name, anim)
 
 	_amend_frame_track(anim, path_to_sprite, id)
 	_amend_single_value_track(anim, path_to_sprite, "animation", id)

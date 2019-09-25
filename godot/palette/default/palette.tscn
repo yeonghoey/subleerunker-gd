@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprite_packs/default/sheet.png" type="Texture" id=1]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 402, 165, 48, 7 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 354, 165, 48, 7 )
+
+[node name="Palette" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 100, 100 )
+texture = SubResource( 1 )
+
+[node name="Current" type="Sprite" parent="."]
+position = Vector2( 100, 110 )
+texture = SubResource( 2 )
+

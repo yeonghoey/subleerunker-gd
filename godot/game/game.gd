@@ -19,12 +19,12 @@ func connect_signals():
 func on_hit(player):
 	$AudioBGM.stop()
 	alive = false
-	var die := preload("res://player_die/default/player_die.tscn").instance()
+	var die := preload("res://game/player_die/default/player_die.tscn").instance()
 	die.position = player.position
 	$Objects.add_child(die)
 
 func on_landed(flame):
-	var land := preload("res://flame_land/default/flame_land.tscn").instance()
+	var land := preload("res://game/flame_land/default/flame_land.tscn").instance()
 	land.position = flame.position
 	$Objects.add_child(land)
 	if alive:
@@ -32,7 +32,7 @@ func on_landed(flame):
 		Signals.emit_signal("scored", score)
 
 func create_player():
-	var player := preload("res://player/default/player.tscn").instance()
+	var player := preload("res://game/player/default/player.tscn").instance()
 	player.position = Vector2(W/2, H-player.H/2)
 	$Objects.add_child(player)
 
@@ -53,7 +53,7 @@ func try_spawn_flame():
 		return
 
 	if randf() < flamespawn_threshold:
-		var flame = preload("res://flame/default/flame.tscn").instance()
+		var flame = preload("res://game/flame/default/flame.tscn").instance()
 		var x = (W - flame.W*2) * randf() + flame.W
 		flame.position = Vector2(x, -flame.H)
 		$Objects.add_child(flame)

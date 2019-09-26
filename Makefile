@@ -8,8 +8,6 @@ ifndef GODOT
 $(error Set GODOT to your Godot CLI path.)
 endif
 
-.PHONY: pack export build
-
 # Export groups of sprites into sprite sheets
 # sprites/<name>/*.aseprite
 # => godot/sprites/<name>/sheet.png
@@ -18,10 +16,11 @@ SPRITES = $(wildcard sprites/*)
 SPRITES_SHEET = $(SPRITES:sprites/%=godot/sprites/%/sheet.png)
 SPRITES_DATA = $(SPRITES:sprites/%=godot/sprites/%/data.json)
 
-pack: export
-	$(MAKE) -C 'godot' pack
+
+.PHONY: export build
 
 export: $(SPRITES_SHEET) $(SPRITES_DATA)
+	$(MAKE) -C 'godot' unpack
 
 godot/sprites/%/sheet.png godot/sprites/%/data.json: sprites/%/*.aseprite
 	mkdir -p 'godot/sprites/$*'
@@ -30,7 +29,7 @@ godot/sprites/%/sheet.png godot/sprites/%/data.json: sprites/%/*.aseprite
 	--sheet-pack \
 	--sheet 'godot/sprites/$*/sheet.png' \
 	--data 'godot/sprites/$*/data.json' \
-	--filename-format '{title}_{tag}:{tagframe00}' \
+	--filename-format '{title}_{tag}:{tagframe}' \
 	sprites/$*/*.aseprite
 
 build: 

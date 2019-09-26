@@ -2,6 +2,11 @@ extends Node2D
 
 var signaled := false
 
+
+func _ready():
+	$AnimatedSprite.play()
+
+
 func _unhandled_input(event):
 	if signaled:
 		return

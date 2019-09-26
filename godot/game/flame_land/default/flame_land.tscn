@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://game/flame_land/flame_land.gd" type="Script" id=1]
+[ext_resource path="res://sprites/default/flame_land/00.tres" type="Texture" id=2]
+[ext_resource path="res://sprites/default/flame_land/01.tres" type="Texture" id=3]
+[ext_resource path="res://sprites/default/flame_land/02.tres" type="Texture" id=4]
+[ext_resource path="res://game/flame_land/flame_land.wav" type="AudioStream" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "default",
+"speed": 24.0
+} ]
+
+[node name="FlameLand" type="Node2D" groups=[
+"Object",
+]]
+position = Vector2( 62.6336, 65.5761 )
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+

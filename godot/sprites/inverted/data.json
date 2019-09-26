@@ -1,0 +1,91 @@
+{ "frames": {
+   "flame_burn:00": {
+    "frame": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "sourceSize": { "w": 22, "h": 16 },
+    "duration": 80
+   },
+   "flame_burn:01": {
+    "frame": { "x": 22, "y": 0, "w": 22, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "sourceSize": { "w": 22, "h": 16 },
+    "duration": 80
+   },
+   "flame_burn:02": {
+    "frame": { "x": 44, "y": 0, "w": 22, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "sourceSize": { "w": 22, "h": 16 },
+    "duration": 80
+   },
+   "flame_burn:03": {
+    "frame": { "x": 66, "y": 0, "w": 22, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "sourceSize": { "w": 22, "h": 16 },
+    "duration": 80
+   },
+   "flame_burn:04": {
+    "frame": { "x": 88, "y": 0, "w": 22, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "sourceSize": { "w": 22, "h": 16 },
+    "duration": 80
+   },
+   "flame_burn:05": {
+    "frame": { "x": 0, "y": 16, "w": 22, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "sourceSize": { "w": 22, "h": 16 },
+    "duration": 80
+   },
+   "flame_burn:06": {
+    "frame": { "x": 22, "y": 16, "w": 22, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "sourceSize": { "w": 22, "h": 16 },
+    "duration": 80
+   },
+   "flame_land:00": {
+    "frame": { "x": 44, "y": 16, "w": 22, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "sourceSize": { "w": 22, "h": 16 },
+    "duration": 40
+   },
+   "flame_land:01": {
+    "frame": { "x": 66, "y": 16, "w": 22, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "sourceSize": { "w": 22, "h": 16 },
+    "duration": 40
+   },
+   "flame_land:02": {
+    "frame": { "x": 88, "y": 16, "w": 22, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 16 },
+    "sourceSize": { "w": 22, "h": 16 },
+    "duration": 40
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15",
+  "image": "sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 128, "h": 64 },
+  "scale": "1"
+ }
+}

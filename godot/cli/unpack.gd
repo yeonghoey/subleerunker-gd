@@ -2,9 +2,8 @@ extends SceneTree
 
 # Pack exported image and json data into SpritePack
 
-const sheet_path := "res://sprite_packs/%s/sheet.png"
-const data_path := "res://sprite_packs/%s/data.json"
-const pack_path := "res://sprite_packs/%s/pack.tres"
+const sheet_path := "res://sprites/%s/sheet.png"
+const data_path := "res://sprites/%s/data.json"
 
 const pack_names = [
 	"default", "inverted"

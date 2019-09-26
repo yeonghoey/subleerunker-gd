@@ -10,27 +10,27 @@ endif
 
 .PHONY: pack export build
 
-# Compile groups of sprites into sprite packs
+# Export groups of sprites into sprite sheets
 # sprites/<name>/*.aseprite
-# => godot/sprite_packs/<name>/sheet.png
-#    godot/sprite_packs/<name>/data.json
+# => godot/sprites/<name>/sheet.png
+#    godot/sprites/<name>/data.json
 SPRITES = $(wildcard sprites/*)
-SPRITE_PACKS_SHEET = $(SPRITES:sprites/%=godot/sprite_packs/%/sheet.png)
-SPRITE_PACKS_DATA = $(SPRITES:sprites/%=godot/sprite_packs/%/data.json)
+SPRITES_SHEET = $(SPRITES:sprites/%=godot/sprites/%/sheet.png)
+SPRITES_DATA = $(SPRITES:sprites/%=godot/sprites/%/data.json)
 
 pack: export
 	$(MAKE) -C 'godot' pack
 
-export: $(SPRITE_PACKS_SHEET) $(SPRITE_PACKS_DATA)
+export: $(SPRITES_SHEET) $(SPRITES_DATA)
 
-godot/sprite_packs/%/sheet.png godot/sprite_packs/%/data.json: sprites/%/*.aseprite
-	mkdir -p 'godot/sprite_packs/$*'
+godot/sprites/%/sheet.png godot/sprites/%/data.json: sprites/%/*.aseprite
+	mkdir -p 'godot/sprites/$*'
 	"${ASEPRITE}" \
 	--batch \
 	--sheet-pack \
-	--sheet 'godot/sprite_packs/$*/sheet.png' \
-	--data 'godot/sprite_packs/$*/data.json' \
-	--filename-format '{title}_{tag}:{tagframe}' \
+	--sheet 'godot/sprites/$*/sheet.png' \
+	--data 'godot/sprites/$*/data.json' \
+	--filename-format '{title}_{tag}:{tagframe00}' \
 	sprites/$*/*.aseprite
 
 build: 

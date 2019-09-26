@@ -5,7 +5,7 @@
 .mono/
 
 # Builds
-dist/macos/*.dmg
+dist/**/*
 
 # YEONGHOEYRUNKER custom ignores
 .DS_Store

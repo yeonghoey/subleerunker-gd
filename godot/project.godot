@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Signals="*res://autoload/signals.gd"
+SteamAPI="*res://autoload/steam_api.gd"
 
 [debug]
 

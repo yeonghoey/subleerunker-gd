@@ -1,9 +1,16 @@
 extends Node 
 
+
 func _ready():
+	SteamAPI.init()
 	_add_background()
 	_connect_signals()
 	Signals.emit_signal("ended", 0)
+
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		SteamAPI.shutdown()
 
 
 func _add_background():

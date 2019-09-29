@@ -24,6 +24,7 @@ export: $(SPRITES_SHEET) $(SPRITES_DATA)
 
 godot/sprites/%/sheet.png godot/sprites/%/data.json: sprites/%/*.aseprite
 	mkdir -p 'godot/sprites/$*'
+	find 'godot/sprites/$*' -name '*.tres' -delete
 	"${ASEPRITE}" \
 	--batch \
 	--sheet-pack \

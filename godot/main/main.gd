@@ -2,15 +2,17 @@ extends Node
 
 
 func _ready():
-	SteamAPI.init()
+	_add_steam()
 	_add_background()
 	_connect_signals()
+	# TODO: Added this temporarily. Remove this
+	Signals.emit_signal("domain_changed", "default")
 	Signals.emit_signal("ended", 0)
 
 
-func _notification(what):
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		SteamAPI.shutdown()
+func _add_steam():
+	var steam_client = preload("res://steam/steam_client.gd").new()
+	add_child(steam_client)
 
 
 func _add_background():

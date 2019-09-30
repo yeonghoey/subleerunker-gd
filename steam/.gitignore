@@ -1,0 +1,8 @@
+sdk/**
+!sdk/README.md
+
+content/**
+!content/README.md
+
+output/**
+!output/README.md

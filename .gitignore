@@ -1,12 +1,9 @@
-# Godot-specific ignores
-.import/
+# Python Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Mono-specific ignores
-.mono/
-
-# Builds
-dist/**/*
-
-# YEONGHOEYRUNKER custom ignores
+# Local files
 .DS_Store
 .envrc
+.python-version

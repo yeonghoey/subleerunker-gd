@@ -1,33 +1,35 @@
 import functools
+import re
+import subprocess
 import sys
-
-import pexpect
-
-
-spawn = functools.partial(pexpect.spawn,
-                          encoding='utf-8',
-                          logfile=sys.stdout)
+import textwrap
 
 
-EOF = pexpect.EOF
+def run(cmd, *args, **kwargs):
+    cmd = cmd.strip()
+    cmd = re.sub(r'\n\s*', ' \\\n  ', cmd)
+    print(f'$ {cmd}')
+    kwargs_with_default = dict(
+        shell=True,
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=300,
+    )
+    kwargs_with_default.update(kwargs)
+    try:
+        return subprocess.run(cmd, *args, **kwargs_with_default)
+    except subprocess.CalledProcessError as err:
+        print(err.args)
+        raise RunError(*err.args, output=err.output, stderr=err.stderr)
 
 
-def run(*args, **kwargs):
-    p = spawn(*args, **kwargs)
-    p.expect(EOF)
-    p.wait()
-
-
-def attach_dmg(dmg_path):
-    p = spawn('hdiutil', ['attach', dmg_path])
-    p.expect(r'(?P<dev>/dev/disk\w+)\s+'
-             r'(?P<scheme>Apple_HFS)\s+'
-             r'(?P<volume>/Volumes/.+)\r\n')
-    assert p.match is not None
-    attach_info = p.match.groupdict()
-    p.expect(EOF)
-    p.wait()
-    return attach_info
+class RunError(subprocess.CalledProcessError):
+    def __str__(self):
+        return '\n'.join([f'cmd={self.cmd}',
+                          f'returncode={self.returncode}',
+                          f'stdout={self.stdout}',
+                          f'stderr={self.stderr}'])
 
 
 def copy_contents(src, dst):
@@ -37,7 +39,3 @@ def copy_contents(src, dst):
     run(f"rm -rf '{dst}'")
     run(f"mkdir '{dst}'")
     run(f"cp -a '{src}'/. '{dst}/'")
-
-
-def detach_dev(dev):
-    run(f"hdiutil detach '{dev}'")

@@ -1,6 +1,9 @@
 sdk/**
 !sdk/README.md
 
+lib/**
+!lib/README.md
+
 content/**
 !content/README.md
 

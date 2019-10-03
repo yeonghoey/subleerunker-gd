@@ -1,32 +1,22 @@
-import itertools
-import sys
-
-from utils import run, RunError, copy_contents
+from utils import run, RunError, step
 
 
-NAME = 'SUBLEERUNKER'
-DMG = f'dist/macos/{NAME}.dmg'
-VOLUME = f'/Volumes/{NAME}'
-STEAM_CONTENT_ROOT = 'steam/content/macos'
-STEAM_CONTENT_APP = f'steam/content/macos/{NAME}.app'
+@step
+def export(ctx):
+    build_id = ctx['build_id']
+
+    run(f"mkdir -p '{cwd}/bin/macos/{build_id}'")
+    out = run(f"""
+        'godot/Godot 3.1.1.Steam.app/Contents/MacOS/Godot'
+            --path "{cwd}/{NAME}"
+            --export "macOS"
+            --quiet
+            '{cwd}/bin/macos/{build_id}/{NAME}.dmg'
+    """)
 
 
-def main(startfrom):
-    STEPS = [
-        notarize,
-        extract_app,
-        staple,
-    ]
-
-    if startfrom is None:
-        startfrom = STEPS[0].__name__
-
-    steps = itertools.dropwhile(lambda f: f.__name__ != startfrom, STEPS)
-    for f in steps:
-        f()
-
-
-def notarize():
+@step
+def notarize(ctx):
     try:
         run(f"""
             xcrun altool
@@ -44,7 +34,8 @@ def notarize():
             raise
 
 
-def extract_app():
+@step
+def extract_app(ctx):
     run(f"hdiutil attach '{DMG}'")
     run(f"rm -rf '{STEAM_CONTENT_ROOT}'")
     run(f"mkdir '{STEAM_CONTENT_ROOT}'")
@@ -52,10 +43,6 @@ def extract_app():
     run(f"hdiutil detach '{VOLUME}'")
 
 
-def staple():
+@step
+def staple(ctx):
     run(f"xcrun stapler staple '{STEAM_CONTENT_APP}'")
-
-
-if __name__ == '__main__':
-    startfrom = (None if len(sys.argv) < 2 else sys.argv[1])
-    main(startfrom)

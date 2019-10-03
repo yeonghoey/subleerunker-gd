@@ -9,8 +9,6 @@ DMG = f'dist/macos/{NAME}.dmg'
 VOLUME = f'/Volumes/{NAME}'
 STEAM_CONTENT_ROOT = 'steam/content/macos'
 STEAM_CONTENT_APP = f'steam/content/macos/{NAME}.app'
-STEAM_CONTENT_BIN = f'{STEAM_CONTENT_APP}/Contents/MacOS'
-STEAM_LIB = 'steam/lib/macos'
 
 
 def main(startfrom):
@@ -18,7 +16,6 @@ def main(startfrom):
         notarize,
         extract_app,
         staple,
-        copy_lib,
     ]
 
     if startfrom is None:
@@ -39,6 +36,9 @@ def notarize():
                 --username 'yeonghoey@gmail.com'
                 --password '@keychain:yeonghoey-notarization'
         """)
+        # NOTE: It's complicated to check if it's fully approved.
+        # Just wait 30 seconds.
+        run('sleep 30')
     except RunError as err:
         if 'The software asset has already been uploaded' not in err.stderr:
             raise
@@ -54,10 +54,6 @@ def extract_app():
 
 def staple():
     run(f"xcrun stapler staple '{STEAM_CONTENT_APP}'")
-
-
-def copy_lib():
-    run(f"cp -a '{STEAM_LIB}'/. '{STEAM_CONTENT_BIN}'/")
 
 
 if __name__ == '__main__':

@@ -49,10 +49,30 @@ def step(f):
     """Marks a function as a top-most step of the build process."""
     @functools.wraps(f)
     def g(ctx):
-        print(f'Step > {f.__name__}')
+        print_boxed(f'Step > {f.__module__}.{f.__name__}')
         f(ctx)
-        pprint.pprint(ctx)
+        print('\n' * 2, end='')
     return g
+
+
+def dump(ctx, old=None):
+    if old is None:
+        old = {k for k in ctx}
+    for k, v in ctx.items():
+        m = ' ' if k in old else '+'
+        print(f'{m} {k:20}\t{v}')
+
+
+def print_boxed(text):
+    print(boxed(text))
+
+
+def boxed(text):
+    side = '-' * len(text)
+    return (f"+-{side}-+\n" +
+            f"| {text} |\n" +
+            f"+-{side}-+"
+            )
 
 
 @step
@@ -62,3 +82,8 @@ def stop(ctx):
     Intended to be used for testing.
     """
     raise SystemExit(1)
+
+
+def excerpt(pattern, string):
+    mo = re.search(pattern, string)
+    return mo.group(1)

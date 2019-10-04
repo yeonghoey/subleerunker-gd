@@ -1,28 +1,50 @@
-from utils import run, RunError, step
+from utils import run, RunError, step, excerpt, dump
+
+
+@step
+def params(ctx):
+    name = ctx['name']
+    cwd = ctx['cwd']
+    build_id = ctx['build_id']
+
+    macos_root = f'{cwd}/builds/{build_id}/macos'
+    macos_dmg = f'{macos_root}/{name}.dmg'
+    macos_app = f'{macos_root}/{name}.app'
+
+    old = {k for k in ctx}
+    ctx['macos_root'] = macos_root
+    ctx['macos_dmg'] = macos_dmg
+    ctx['macos_app'] = macos_app
+    dump(ctx, old)
 
 
 @step
 def export(ctx):
-    build_id = ctx['build_id']
+    godot_cmd = ctx['godot_cmd']
+    godot_project = ctx['godot_project']
+    macos_root = ctx['macos_root']
+    macos_dmg = ctx['macos_dmg']
 
-    run(f"mkdir -p '{cwd}/bin/macos/{build_id}'")
-    out = run(f"""
-        'godot/Godot 3.1.1.Steam.app/Contents/MacOS/Godot'
-            --path "{cwd}/{NAME}"
-            --export "macOS"
+    run(f"mkdir -p '{macos_root}'")
+    run(f"""
+        '{godot_cmd}'
+            --path '{godot_project}'
+            --export 'macOS'
             --quiet
-            '{cwd}/bin/macos/{build_id}/{NAME}.dmg'
+            '{macos_dmg}'
     """)
 
 
 @step
 def notarize(ctx):
+    macos_dmg = ctx['macos_dmg']
+
     try:
         run(f"""
             xcrun altool
                 --notarize-app
                 --primary-bundle-id 'com.yeonghoey.subleerunker.dmg'
-                --file '{DMG}'
+                --file '{macos_dmg}'
                 --username 'yeonghoey@gmail.com'
                 --password '@keychain:yeonghoey-notarization'
         """)
@@ -36,13 +58,18 @@ def notarize(ctx):
 
 @step
 def extract_app(ctx):
-    run(f"hdiutil attach '{DMG}'")
-    run(f"rm -rf '{STEAM_CONTENT_ROOT}'")
-    run(f"mkdir '{STEAM_CONTENT_ROOT}'")
-    run(f"cp -a '{VOLUME}'/. '{STEAM_CONTENT_ROOT}/'")
-    run(f"hdiutil detach '{VOLUME}'")
+    macos_root = ctx['macos_root']
+    macos_dmg = ctx['macos_dmg']
+
+    ret = run(f"hdiutil attach '{macos_dmg}'")
+    dev_name = excerpt(r'/dev/(\w+)\s+GUID_partition_scheme', ret.stdout)
+    volume = excerpt(r'(/Volumes/[^\n]+)', ret.stdout)
+    run(f"cp -a '{volume}'/. '{macos_root}/'")
+    run(f"hdiutil detach '{dev_name}'")
 
 
 @step
 def staple(ctx):
-    run(f"xcrun stapler staple '{STEAM_CONTENT_APP}'")
+    macos_app = ctx['macos_app']
+
+    run(f"xcrun stapler staple '{macos_app}'")

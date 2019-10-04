@@ -4,8 +4,8 @@ from utils import run, RunError, step, excerpt, dump
 @step
 def params(ctx):
     name = ctx['name']
-    cwd = ctx['cwd']
     build_id = ctx['build_id']
+    cwd = ctx['cwd']
 
     osx_root = f'{cwd}/builds/{build_id}/osx'
     osx_dmg = f'{osx_root}/{name}.dmg'

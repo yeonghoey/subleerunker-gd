@@ -1,16 +1,16 @@
 import prepare
-import macos
+import osx
 import utils
 
 
 STEPS = [
     prepare.params,
 
-    macos.params,
-    macos.export,
-    macos.notarize,
-    macos.extract_app,
-    macos.staple,
+    osx.params,
+    osx.export,
+    osx.notarize,
+    osx.extract_app,
+    osx.staple,
 ]
 
 ctx = {}

@@ -7,14 +7,14 @@ def params(ctx):
     cwd = ctx['cwd']
     build_id = ctx['build_id']
 
-    macos_root = f'{cwd}/builds/{build_id}/macos'
-    macos_dmg = f'{macos_root}/{name}.dmg'
-    macos_app = f'{macos_root}/{name}.app'
+    osx_root = f'{cwd}/builds/{build_id}/osx'
+    osx_dmg = f'{osx_root}/{name}.dmg'
+    osx_app = f'{osx_root}/{name}.app'
 
     old = {k for k in ctx}
-    ctx['macos_root'] = macos_root
-    ctx['macos_dmg'] = macos_dmg
-    ctx['macos_app'] = macos_app
+    ctx['osx_root'] = osx_root
+    ctx['osx_dmg'] = osx_dmg
+    ctx['osx_app'] = osx_app
     dump(ctx, old)
 
 
@@ -22,29 +22,29 @@ def params(ctx):
 def export(ctx):
     godot_cmd = ctx['godot_cmd']
     godot_project = ctx['godot_project']
-    macos_root = ctx['macos_root']
-    macos_dmg = ctx['macos_dmg']
+    osx_root = ctx['osx_root']
+    osx_dmg = ctx['osx_dmg']
 
-    run(f"mkdir -p '{macos_root}'")
+    run(f"mkdir -p '{osx_root}'")
     run(f"""
         '{godot_cmd}'
             --path '{godot_project}'
-            --export 'macOS'
+            --export 'osx'
             --quiet
-            '{macos_dmg}'
+            '{osx_dmg}'
     """)
 
 
 @step
 def notarize(ctx):
-    macos_dmg = ctx['macos_dmg']
+    osx_dmg = ctx['osx_dmg']
 
     try:
         run(f"""
             xcrun altool
                 --notarize-app
                 --primary-bundle-id 'com.yeonghoey.subleerunker.dmg'
-                --file '{macos_dmg}'
+                --file '{osx_dmg}'
                 --username 'yeonghoey@gmail.com'
                 --password '@keychain:yeonghoey-notarization'
         """)
@@ -58,18 +58,18 @@ def notarize(ctx):
 
 @step
 def extract_app(ctx):
-    macos_root = ctx['macos_root']
-    macos_dmg = ctx['macos_dmg']
+    osx_root = ctx['osx_root']
+    osx_dmg = ctx['osx_dmg']
 
-    ret = run(f"hdiutil attach '{macos_dmg}'")
+    ret = run(f"hdiutil attach '{osx_dmg}'")
     dev_name = excerpt(r'/dev/(\w+)\s+GUID_partition_scheme', ret.stdout)
     volume = excerpt(r'(/Volumes/[^\n]+)', ret.stdout)
-    run(f"cp -a '{volume}'/. '{macos_root}/'")
+    run(f"cp -a '{volume}'/. '{osx_root}/'")
     run(f"hdiutil detach '{dev_name}'")
 
 
 @step
 def staple(ctx):
-    macos_app = ctx['macos_app']
+    osx_app = ctx['osx_app']
 
-    run(f"xcrun stapler staple '{macos_app}'")
+    run(f"xcrun stapler staple '{osx_app}'")

@@ -9,7 +9,7 @@ def params(ctx):
     name = 'SUBLEERUNKER'
     cwd = os.getcwd()
     godot_project = f'{cwd}/{name}'
-    godot_cmd = f'{cwd}/godot/Godot 3.1.1.Steam.app/Contents/MacOS/Godot'
+    godot_cmd = f'{cwd}/godot/Godot 3.1.1 Steam 1.46.app/Contents/MacOS/Godot'
     build_id = datetime.utcnow().strftime('%Y%m%d-%H%M%S')
 
     old = {k for k in ctx}

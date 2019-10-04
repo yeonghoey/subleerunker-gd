@@ -32,11 +32,3 @@ godot/sprites/%/sheet.png godot/sprites/%/data.json: sprites/%/*.aseprite
 	--data 'godot/sprites/$*/data.json' \
 	--filename-format '{title}_{tag}:{tagframe}' \
 	sprites/$*/*.aseprite
-
-build: 
-	mkdir -p "$(dir $@)"
-	"${GODOT}" \
-	--path "$(CURDIR)/godot" \
-	--export "macOS" \
-	--quiet \
-	'$(CURDIR)/dist/macos/release.dmg'

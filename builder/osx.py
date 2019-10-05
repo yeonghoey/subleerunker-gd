@@ -4,10 +4,9 @@ from utils import run, RunError, step, excerpt, dump
 @step
 def params(ctx):
     name = ctx['name']
-    build_id = ctx['build_id']
-    cwd = ctx['cwd']
+    build_root = ctx['build_root']
 
-    osx_root = f'{cwd}/builds/{build_id}/osx'
+    osx_root = f'{build_root}/osx'
     osx_dmg = f'{osx_root}/{name}.dmg'
     osx_app = f'{osx_root}/{name}.app'
 
@@ -19,7 +18,7 @@ def params(ctx):
 
 
 @step
-def export(ctx):
+def export_dmg(ctx):
     godot_cmd = ctx['godot_cmd']
     godot_project = ctx['godot_project']
     osx_root = ctx['osx_root']
@@ -66,6 +65,7 @@ def extract_app(ctx):
     volume = excerpt(r'(/Volumes/[^\n]+)', ret.stdout)
     run(f"cp -a '{volume}'/. '{osx_root}/'")
     run(f"hdiutil detach '{dev_name}'")
+    run(f"rm {osx_dmg}")
 
 
 @step

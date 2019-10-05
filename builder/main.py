@@ -22,6 +22,7 @@ STEPS = [
     steam.generate_app_vdf,
     steam.generate_depot_osx_vdf,
     steam.generate_depot_win_vdf,
+    steam.deploy,
 ]
 
 ctx = {}

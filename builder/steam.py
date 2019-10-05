@@ -1,7 +1,7 @@
 import textwrap
 from os.path import relpath, dirname
 
-from utils import step, dump
+from utils import step, run, dump
 
 
 @step
@@ -104,3 +104,19 @@ def generate_depot_win_vdf(ctx):
     with open(steam_depot_win_vdf, 'wt') as f:
         f.write(content)
     print(content)
+
+
+@step
+def deploy(ctx):
+    steamcmd = ctx['steamcmd']
+    steam_app_vdf = ctx['steam_app_vdf']
+    steam_app_vdf_rel = relpath(steam_app_vdf, dirname(steamcmd))
+
+    ret = run('security find-generic-password -l yeonghoey-steam -w')
+    password = ret.stdout.strip()
+    run(f"""
+        '{steamcmd}'
+            +login 'yeonghoey' '{password}'
+            +run_app_build '{steam_app_vdf_rel}'
+            +quit
+    """)

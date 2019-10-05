@@ -32,3 +32,6 @@ godot/sprites/%/sheet.png godot/sprites/%/data.json: sprites/%/*.aseprite
 	--data 'godot/sprites/$*/data.json' \
 	--filename-format '{title}_{tag}:{tagframe}' \
 	sprites/$*/*.aseprite
+
+build:
+	python builder/main.py

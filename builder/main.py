@@ -12,11 +12,15 @@ STEPS = [
     osx.export_dmg,
     osx.notarize,
     osx.extract_app,
-    osx.staple,
 
     win.params,
     win.export_exe,
     win.copy_steam_dll,
+
+    # NOTE: Finish osx build after doing windows build,
+    # because notarization takes time.
+    osx.wait_until_notarized,
+    osx.staple,
 
     steam.params,
     steam.generate_app_vdf,

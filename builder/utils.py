@@ -74,7 +74,7 @@ def dump(ctx, old=None):
         old = {k for k in ctx}
     for k, v in ctx.items():
         m = ' ' if k in old else '+'
-        print(f'{m} {k:20}\t{v}')
+        print(f'{m} {k:24} {v}')
 
 
 def print_boxed(text):

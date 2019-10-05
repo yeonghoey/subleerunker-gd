@@ -38,21 +38,46 @@ def export_dmg(ctx):
 def notarize(ctx):
     osx_dmg = ctx['osx_dmg']
 
+    ret = run(f"""
+        xcrun altool
+            --notarize-app
+            --primary-bundle-id 'com.yeonghoey.subleerunker.dmg'
+            --file '{osx_dmg}'
+            --username 'yeonghoey@gmail.com'
+            --password '@keychain:yeonghoey-notarization'
+    """)
+    osx_notarization_uuid = excerpt(
+        r'RequestUUID = ([a-zA-Z0-9-]+)', ret.stdout)
+
+    old = {k for k in ctx}
+    ctx['osx_notarization_uuid'] = osx_notarization_uuid
+    dump(ctx, old)
+
+
+@step
+def wait_until_notarized(ctx):
+    osx_notarization_uuid = ctx['osx_notarization_uuid']
+
+    t, step = 0, 30
+    while not check_if_notarized(osx_notarization_uuid):
+        if t > 600:
+            raise RuntimeError('Notarization failed')
+        run(f'sleep {step}')
+        t += step
+
+
+def check_if_notarized(uuid):
     try:
-        run(f"""
-            xcrun altool
-                --notarize-app
-                --primary-bundle-id 'com.yeonghoey.subleerunker.dmg'
-                --file '{osx_dmg}'
+        ret = run(f"""
+            xcrun altool 
+                --notarization-info '{uuid}'
                 --username 'yeonghoey@gmail.com'
                 --password '@keychain:yeonghoey-notarization'
         """)
-        # NOTE: It's complicated to check if it's fully approved.
-        # Just wait 30 seconds.
-        run('sleep 30')
-    except RunError as err:
-        if 'The software asset has already been uploaded' not in err.stderr:
-            raise
+        print(excerpt(r'(Status: [^\n]+)', ret.stdout))
+        return 'Status: success' in ret.stdout
+    except RunError:
+        return False
 
 
 @step

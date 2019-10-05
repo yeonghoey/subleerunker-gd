@@ -1,6 +1,6 @@
 import prepare
 import osx
-import windows
+import win
 import utils
 
 
@@ -13,9 +13,9 @@ STEPS = [
     osx.extract_app,
     osx.staple,
 
-    windows.params,
-    windows.export_exe,
-    windows.copy_steam_dll,
+    win.params,
+    win.export_exe,
+    win.copy_steam_dll,
 ]
 
 ctx = {}

@@ -6,12 +6,12 @@ def params(ctx):
     name = ctx['name']
     build_root = ctx['build_root']
 
-    windows_root = f'{build_root}/windows'
-    windows_exe = f'{windows_root}/{name}.exe'
+    win_root = f'{build_root}/win'
+    win_exe = f'{win_root}/{name}.exe'
 
     old = {k for k in ctx}
-    ctx['windows_root'] = windows_root
-    ctx['windows_exe'] = windows_exe
+    ctx['win_root'] = win_root
+    ctx['win_exe'] = win_exe
     dump(ctx, old)
 
 
@@ -19,21 +19,21 @@ def params(ctx):
 def export_exe(ctx):
     godot_cmd = ctx['godot_cmd']
     godot_project = ctx['godot_project']
-    windows_root = ctx['windows_root']
-    windows_exe = ctx['windows_exe']
+    win_root = ctx['win_root']
+    win_exe = ctx['win_exe']
 
-    run(f"mkdir -p '{windows_root}'")
+    run(f"mkdir -p '{win_root}'")
     run(f"""
         '{godot_cmd}'
             --path '{godot_project}'
-            --export 'windows'
+            --export 'win'
             --quiet
-            '{windows_exe}'
+            '{win_exe}'
     """)
 
 
 @step
 def copy_steam_dll(ctx):
-    windows_root = ctx['windows_root']
+    win_root = ctx['win_root']
     steam_dll = ctx['steam_dll']
-    run(f"cp '{steam_dll}' '{windows_root}/'")
+    run(f"cp '{steam_dll}' '{win_root}/'")

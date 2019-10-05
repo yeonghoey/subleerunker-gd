@@ -10,28 +10,45 @@ endif
 
 # Export groups of sprites into sprite sheets
 # sprites/<name>/*.aseprite
-# => godot/sprites/<name>/sheet.png
-#    godot/sprites/<name>/data.json
+# => SUBLEERUNKER/sprites/<name>/sheet.png
+#    SUBLEERUNKER/sprites/<name>/data.json
 SPRITES = $(wildcard sprites/*)
-SPRITES_SHEET = $(SPRITES:sprites/%=godot/sprites/%/sheet.png)
-SPRITES_DATA = $(SPRITES:sprites/%=godot/sprites/%/data.json)
+SPRITES_SHEET = $(SPRITES:sprites/%=SUBLEERUNKER/sprites/%/sheet.png)
+SPRITES_DATA = $(SPRITES:sprites/%=SUBLEERUNKER/sprites/%/data.json)
 
 
-.PHONY: export build
+.PHONY: sprites icon export release 
 
-export: $(SPRITES_SHEET) $(SPRITES_DATA)
-	$(MAKE) -C 'godot' unpack
+sprites: $(SPRITES_SHEET) $(SPRITES_DATA)
+	$(MAKE) -C 'SUBLEERUNKER' unpack
 
-godot/sprites/%/sheet.png godot/sprites/%/data.json: sprites/%/*.aseprite
-	mkdir -p 'godot/sprites/$*'
-	find 'godot/sprites/$*' -name '*.tres' -delete
+SUBLEERUNKER/sprites/%/sheet.png SUBLEERUNKER/sprites/%/data.json: sprites/%/*.aseprite
+	mkdir -p 'SUBLEERUNKER/sprites/$*'
+	find 'SUBLEERUNKER/sprites/$*' -name '*.tres' -delete
 	"${ASEPRITE}" \
 	--batch \
 	--sheet-pack \
-	--sheet 'godot/sprites/$*/sheet.png' \
-	--data 'godot/sprites/$*/data.json' \
+	--sheet 'SUBLEERUNKER/sprites/$*/sheet.png' \
+	--data 'SUBLEERUNKER/sprites/$*/data.json' \
 	--filename-format '{title}_{tag}:{tagframe}' \
 	sprites/$*/*.aseprite
 
-build:
-	python builder/main.py
+icon: SUBLEERUNKER/icon.png misc/icon.ico
+
+SUBLEERUNKER/icon.png: misc/icon.png
+	cp '$<' '$@'
+
+misc/icon.ico: misc/icon.png
+	magick convert '$<' -define icon:auto-resize=256,128,64,48,32,16 '$@'
+
+misc/icon.png: misc/icon.aseprite
+	"${ASEPRITE}" \
+	--batch \
+	'$<' \
+	--save-as '$@'
+
+canary:
+	python builder/do_canary.py
+
+release:
+	python builder/do_release.py

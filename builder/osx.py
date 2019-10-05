@@ -98,3 +98,19 @@ def staple(ctx):
     osx_app = ctx['osx_app']
 
     run(f"xcrun stapler staple '{osx_app}'")
+
+
+@step
+def add_steam_appid_txt(ctx):
+    """Add steam_appid.txt for testing."""
+
+    osx_app = ctx['osx_app']
+    steam_appid = ctx['steam_appid']
+
+    osx_steam_appid_txt = f'{osx_app}/Contents/MacOS/steam_appid.txt'
+    with open(osx_steam_appid_txt, 'wt') as f:
+        f.write(f'{steam_appid}')
+
+    old = {k for k in ctx}
+    ctx['osx_steam_appid_txt'] = osx_steam_appid_txt
+    dump(ctx, old)

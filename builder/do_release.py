@@ -5,7 +5,7 @@ import steam
 import utils
 
 
-STEPS = [
+utils.main([
     prepare.params,
 
     osx.params,
@@ -15,6 +15,7 @@ STEPS = [
 
     win.params,
     win.export_exe,
+    win.set_icon,
     win.copy_steam_dll,
 
     # NOTE: Finish osx build after doing windows build,
@@ -27,12 +28,4 @@ STEPS = [
     steam.generate_depot_osx_vdf,
     steam.generate_depot_win_vdf,
     steam.deploy,
-]
-
-ctx = {}
-try:
-    for f in STEPS:
-        f(ctx)
-finally:
-    utils.print_boxed('Summary')
-    utils.dump(ctx)
+])

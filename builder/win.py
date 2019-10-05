@@ -33,7 +33,36 @@ def export_exe(ctx):
 
 
 @step
+def set_icon(ctx):
+    rcedit = ctx['rcedit']
+    icon_ico = ctx['icon_ico']
+    win_exe = ctx['win_exe']
+
+    run(f"""
+        wine '{rcedit}'
+        '{win_exe}' 
+        --set-icon '{icon_ico}'
+    """)
+
+
+@step
 def copy_steam_dll(ctx):
     win_root = ctx['win_root']
     steam_dll = ctx['steam_dll']
     run(f"cp '{steam_dll}' '{win_root}/'")
+
+
+@step
+def add_steam_appid_txt(ctx):
+    """Add steam_appid.txt for testing."""
+
+    win_root = ctx['win_root']
+    steam_appid = ctx['steam_appid']
+
+    win_steam_appid_txt = f'{win_root}/steam_appid.txt'
+    with open(win_steam_appid_txt, 'wt') as f:
+        f.write(f'{steam_appid}')
+
+    old = {k for k in ctx}
+    ctx['win_steam_appid_txt'] = win_steam_appid_txt
+    dump(ctx, old)

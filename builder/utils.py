@@ -6,6 +6,16 @@ import sys
 import textwrap
 
 
+def main(steps):
+    ctx = {}
+    try:
+        for f in steps:
+            f(ctx)
+    finally:
+        print_boxed('Summary')
+        dump(ctx)
+
+
 def run(cmd, *args, **kwargs):
     """Wraps subprocess.run.
 

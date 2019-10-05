@@ -1,7 +1,7 @@
 from datetime import datetime
 import os
 
-from utils import step, dump
+from utils import step, run, dump
 
 
 @step
@@ -13,6 +13,7 @@ def params(ctx):
     godot_cmd = f'{cwd}/godot/Godot 3.1.1 Steam 1.46.app/Contents/MacOS/Godot'
     steam_dll = f'{cwd}/godot/steam_api64.dll'
     build_root = f'{cwd}/builds/{build_id}'
+    run(f"mkdir -p '{build_root}'")
 
     old = {k for k in ctx}
     ctx['name'] = name

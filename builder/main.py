@@ -1,6 +1,7 @@
 import prepare
 import osx
 import win
+import steam
 import utils
 
 
@@ -16,6 +17,11 @@ STEPS = [
     win.params,
     win.export_exe,
     win.copy_steam_dll,
+
+    steam.params,
+    steam.generate_app_vdf,
+    steam.generate_depot_osx_vdf,
+    steam.generate_depot_win_vdf,
 ]
 
 ctx = {}

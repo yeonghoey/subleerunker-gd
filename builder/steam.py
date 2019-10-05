@@ -1,79 +1,106 @@
-APP = """
-"appbuild"
-{
-	"appid"	"1167150"
-	"desc" "Your build description here" // description for this build
-	"buildoutput" "../output/" // build output folder for .log, .csm & .csd files, relative to location of this file
-	"setlive"	"" // branch to set live after successful build, non if empty
-	"preview" "0" // to enable preview builds
-	"local"	""	// set to flie path of local content server 
-	
-	"depots"
-	{
-		"1167151" "depot_build_1167151.vdf"
-		"1167152" "depot_build_1167152.vdf"
-	}
-}
-"""
+import textwrap
+from os.path import relpath, dirname
 
-DEPOT_MACOS = """
-"DepotBuildConfig"
-{
-	// Set your assigned depot ID here
-	"DepotID" "1167151"
+from utils import step, dump
 
-	// Set a root for all content.
-	// All relative paths specified below (LocalPath in FileMapping entries, and FileExclusion paths)
-	// will be resolved relative to this root.
-	// If you don't define ContentRoot, then it will be assumed to be
-	// the location of this script file, which probably isn't what you want
-	"ContentRoot"	"../content/macos/"
 
-	// include all files recursivley
-  "FileMapping"
-  {
-  	// This can be a full path, or a path relative to ContentRoot
-    "LocalPath" "*"
-    
-    // This is a path relative to the install folder of your game
-    "DepotPath" "."
-    
-    // If LocalPath contains wildcards, setting this means that all
-    // matching files within subdirectories of LocalPath will also
-    // be included.
-    "recursive" "1"
-  }
-  "FileExclusion" ".DS_Store"
-}
-"""
+@step
+def params(ctx):
+    build_root = ctx['build_root']
 
-DEPOT_WINDOWS = """
-"DepotBuildConfig"
-{
-	// Set your assigned depot ID here
-	"DepotID" "1167152"
+    steam_appid = '1167150'
+    steam_depotid_osx = '1167151'
+    steam_depotid_win = '1167152'
+    steam_app_vdf = f'{build_root}/app.vdf'
+    steam_depot_osx_vdf = f'{build_root}/depot_osx.vdf'
+    steam_depot_win_vdf = f'{build_root}/depot_win.vdf'
 
-	// Set a root for all content.
-	// All relative paths specified below (LocalPath in FileMapping entries, and FileExclusion paths)
-	// will be resolved relative to this root.
-	// If you don't define ContentRoot, then it will be assumed to be
-	// the location of this script file, which probably isn't what you want
-	"ContentRoot"	"../content/windows/"
+    old = {k for k in ctx}
+    ctx['steam_appid'] = steam_appid
+    ctx['steam_depotid_osx'] = steam_depotid_osx
+    ctx['steam_depotid_win'] = steam_depotid_win
+    ctx['steam_app_vdf'] = steam_app_vdf
+    ctx['steam_depot_osx_vdf'] = steam_depot_osx_vdf
+    ctx['steam_depot_win_vdf'] = steam_depot_win_vdf
+    dump(ctx, old)
 
-	// include all files recursivley
-  "FileMapping"
-  {
-  	// This can be a full path, or a path relative to ContentRoot
-    "LocalPath" "*"
-    
-    // This is a path relative to the install folder of your game
-    "DepotPath" "."
-    
-    // If LocalPath contains wildcards, setting this means that all
-    // matching files within subdirectories of LocalPath will also
-    // be included.
-    "recursive" "1"
-  }
-  "FileExclusion" ".DS_Store"
-}
-"""
+
+@step
+def generate_app_vdf(ctx):
+    build_id = ctx['build_id']
+    steam_appid = ctx['steam_appid']
+    steam_depotid_osx = ctx['steam_depotid_osx']
+    steam_depotid_win = ctx['steam_depotid_win']
+
+    steam_app_vdf = ctx['steam_app_vdf']
+    steam_depot_osx_vdf = ctx['steam_depot_osx_vdf']
+    steam_depot_win_vdf = ctx['steam_depot_win_vdf']
+
+    depot_osx_vdf_rel = relpath(steam_depot_osx_vdf, dirname(steam_app_vdf))
+    depot_win_vdf_rel = relpath(steam_depot_win_vdf, dirname(steam_app_vdf))
+
+    content = textwrap.dedent(f'''\
+        "appbuild"
+        {{
+            "appid"       "{steam_appid}"
+            "desc"        "Build {build_id}"
+            "buildoutput" "./output/"
+            "setlive"     ""
+            "preview"     "0"
+            "local"       ""
+            "depots"
+            {{
+                "{steam_depotid_osx}" "{depot_osx_vdf_rel}"
+                "{steam_depotid_win}" "{depot_win_vdf_rel}"
+            }}
+        }}
+    ''')
+    with open(steam_app_vdf, 'wt') as f:
+        f.write(content)
+    print(content)
+
+
+@step
+def generate_depot_osx_vdf(ctx):
+    steam_depotid_osx = ctx['steam_depotid_osx']
+    steam_depot_osx_vdf = ctx['steam_depot_osx_vdf']
+
+    content = textwrap.dedent(f'''\
+        "DepotBuildConfig"
+        {{
+            "DepotID"     "{steam_depotid_osx}"
+            "ContentRoot" "./osx/"
+            "FileMapping"
+            {{
+                "LocalPath" "*"
+                "DepotPath" "."
+                "recursive" "1"
+            }}
+        }}
+    ''')
+    with open(steam_depot_osx_vdf, 'wt') as f:
+        f.write(content)
+    print(content)
+
+
+@step
+def generate_depot_win_vdf(ctx):
+    steam_depotid_win = ctx['steam_depotid_win']
+    steam_depot_win_vdf = ctx['steam_depot_win_vdf']
+
+    content = textwrap.dedent(f'''\
+        "DepotBuildConfig"
+        {{
+            "DepotID"     "{steam_depotid_win}"
+            "ContentRoot" "./win/"
+            "FileMapping"
+            {{
+                "LocalPath" "*"
+                "DepotPath" "."
+                "recursive" "1"
+            }}
+        }}
+    ''')
+    with open(steam_depot_win_vdf, 'wt') as f:
+        f.write(content)
+    print(content)

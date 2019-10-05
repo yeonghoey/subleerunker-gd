@@ -9,15 +9,29 @@ import textwrap
 def run(cmd, *args, **kwargs):
     """Wraps subprocess.run.
 
-    Formats multiline string `cmd` into one single escaped command,
-    while keeping it easy to be read by human.
+    `cmd` can be both a string which contains the shell command,
+    or a tuple, which contains a format string of the shell command
+    and its kwargs,`(cmd_format, cmd_kwargs)`.
 
-    Put some defaults parameters which are commonly applicable
-    across the scripts.
+    The tuple form of `cmd` can be used for concealing 
+    some sensitive information, because this only prints out `cmd_format`.
+
+    Before printing out and actually running it,
+    this reformats multiline string `cmd` or `cmd_format`,
+    into a single escaped command, while keeping it easy to be read by human.
+
+    Finally, this puts some defaults parameters which are commonly applicable
+    across the builder scripts.
     """
-    cmd = cmd.strip()
-    cmd = re.sub(r'\n\s*', ' \\\n  ', cmd)
-    print(f'$ {cmd}')
+    if isinstance(cmd, tuple):
+        cmd_format, cmd_kwargs = cmd
+    else:
+        cmd_format, cmd_kwargs = cmd, {}
+
+    cmd_format = cmd_format.strip()
+    cmd_format = re.sub(r'\n\s*', ' \\\n  ', cmd_format)
+    print(f'$ {cmd_format}')
+    cmd_rendered = cmd_format.format(**cmd_kwargs)
     kwargs_with_default = dict(
         shell=True,
         check=True,
@@ -27,7 +41,7 @@ def run(cmd, *args, **kwargs):
     )
     kwargs_with_default.update(kwargs)
     try:
-        return subprocess.run(cmd, *args, **kwargs_with_default)
+        return subprocess.run(cmd_rendered, *args, **kwargs_with_default)
     except subprocess.CalledProcessError as err:
         raise RunError(*err.args, output=err.output, stderr=err.stderr)
 

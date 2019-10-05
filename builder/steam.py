@@ -114,9 +114,9 @@ def deploy(ctx):
 
     ret = run('security find-generic-password -l yeonghoey-steam -w')
     password = ret.stdout.strip()
-    run(f"""
+    run((f"""
         '{steamcmd}'
-            +login 'yeonghoey' '{password}'
+            +login 'yeonghoey' '{{password}}'
             +run_app_build '{steam_app_vdf_rel}'
             +quit
-    """)
+    """, {'password': password}))

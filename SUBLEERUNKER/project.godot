@@ -39,7 +39,8 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=320
 window/size/height=480
-window/size/resizable=false
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 

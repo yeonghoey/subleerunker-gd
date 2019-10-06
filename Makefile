@@ -1,5 +1,7 @@
 SHELL = /bin/bash
 
+PROJECT = SUBLEERUNKER
+
 ifndef ASEPRITE
 $(error Set ASEPRITE to your Aseprite CLI path.)
 endif
@@ -10,32 +12,44 @@ endif
 
 # Export groups of sprites into sprite sheets
 # sprites/<name>/*.aseprite
-# => SUBLEERUNKER/sprites/<name>/sheet.png
-#    SUBLEERUNKER/sprites/<name>/data.json
+# => $(PROJECT)/sprites/<name>/sheet.png
+#    $(PROJECT)/sprites/<name>/data.json
 SPRITES = $(wildcard sprites/*)
-SPRITES_SHEET = $(SPRITES:sprites/%=SUBLEERUNKER/sprites/%/sheet.png)
-SPRITES_DATA = $(SPRITES:sprites/%=SUBLEERUNKER/sprites/%/data.json)
+SPRITES_SHEET = $(SPRITES:sprites/%=$(PROJECT)/sprites/%/sheet.png)
+SPRITES_DATA = $(SPRITES:sprites/%=$(PROJECT)/sprites/%/data.json)
+SPRITES_UNPACKED = $(SPRITES:sprites/%=$(PROJECT)/sprites/%/unpacked)
 
 
 .PHONY: sprites icon export release 
 
-sprites: $(SPRITES_SHEET) $(SPRITES_DATA)
-	$(MAKE) -C 'SUBLEERUNKER' unpack
+sprites: $(SPRITES_UNPACKED) $(SPRITES_SHEET) $(SPRITES_DATA)
 
-SUBLEERUNKER/sprites/%/sheet.png SUBLEERUNKER/sprites/%/data.json: sprites/%/*.aseprite
-	mkdir -p 'SUBLEERUNKER/sprites/$*'
-	find 'SUBLEERUNKER/sprites/$*' -name '*.tres' -delete
+$(PROJECT)/sprites/%/unpacked: $(PROJECT)/sprites/%/sheet.png $(PROJECT)/sprites/%/data.json
+	# Unpack a sprite sheet into AtlasTextures
+	"${GODOT}" \
+	--path "$(CURDIR)/$(PROJECT)" \
+	--script "cli/unpack.gd" \
+	"--sheet=sprites/$*/sheet.png" \
+	"--data=sprites/$*/data.json" \
+	"--base=sprites/$*"
+	# Mark as unpacked
+	touch '$@'
+
+$(PROJECT)/sprites/%/sheet.png $(PROJECT)/sprites/%/data.json: sprites/%/*.aseprite
+	mkdir -p '$(PROJECT)/sprites/$*'
+	find '$(PROJECT)/sprites/$*' -name '*.tres' -delete
 	"${ASEPRITE}" \
 	--batch \
 	--sheet-pack \
-	--sheet 'SUBLEERUNKER/sprites/$*/sheet.png' \
-	--data 'SUBLEERUNKER/sprites/$*/data.json' \
+	--sheet '$(PROJECT)/sprites/$*/sheet.png' \
+	--data '$(PROJECT)/sprites/$*/data.json' \
 	--filename-format '{title}_{tag}:{tagframe}' \
 	sprites/$*/*.aseprite
 
-icon: SUBLEERUNKER/icon.png misc/icon.ico
 
-SUBLEERUNKER/icon.png: misc/icon.png
+icon: $(PROJECT)/icon.png misc/icon.ico
+
+$(PROJECT)/icon.png: misc/icon.png
 	cp '$<' '$@'
 
 misc/icon.ico: misc/icon.png

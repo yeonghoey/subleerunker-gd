@@ -39,7 +39,7 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=320
 window/size/height=480
-window/stretch/mode="2d"
+window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [editor_plugins]
@@ -76,3 +76,7 @@ texture={
 2d_physics/layer_3="flame"
 2d_physics/layer_4="wall"
 2d_physics/layer_5="floor"
+
+[rendering]
+
+quality/dynamic_fonts/use_oversampling=false

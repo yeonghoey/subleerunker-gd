@@ -1,7 +1,8 @@
-extends Node
+extends Node2D
 
-const W := 320.0
-const H := 480.0
+const GameConstants = preload("res://game/constants.gd")
+const W = GameConstants.WIDTH
+const H = GameConstants.HEIGHT
 
 var score := 0
 var alive := true

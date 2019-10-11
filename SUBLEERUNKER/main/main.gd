@@ -16,5 +16,5 @@ func _on_intro_ended():
 
 
 func show_title():
-	var title = preload("res://title/title.tscn").instance()
+	var title = preload("res://title/default/title.tscn").instance()
 	add_child(title)

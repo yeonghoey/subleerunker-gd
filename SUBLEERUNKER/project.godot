@@ -37,8 +37,8 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
-window/size/width=800
-window/size/height=480
+window/size/width=960
+window/size/height=540
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

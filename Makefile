@@ -12,37 +12,46 @@ endif
 
 # Export groups of sprites into sprite sheets
 # sprites/<name>/*.aseprite
-# => $(PROJECT)/sprites/<name>/sheet.png
-#    $(PROJECT)/sprites/<name>/data.json
+# => $(PROJECT)/assets/textures/<name>/sheet.png
+#    $(PROJECT)/assets/textures/<name>/data.json
 SPRITES = $(wildcard sprites/*)
-SPRITES_SHEET = $(SPRITES:sprites/%=$(PROJECT)/sprites/%/sheet.png)
-SPRITES_DATA = $(SPRITES:sprites/%=$(PROJECT)/sprites/%/data.json)
-SPRITES_UNPACKED = $(SPRITES:sprites/%=$(PROJECT)/sprites/%/unpacked)
+SPRITES_SHEET = $(SPRITES:sprites/%=$(PROJECT)/assets/textures/%/sheet.png)
+SPRITES_DATA = $(SPRITES:sprites/%=$(PROJECT)/assets/textures/%/data.json)
+SPRITES_UNPACKED = $(SPRITES:sprites/%=$(PROJECT)/assets/textures/%/unpacked)
 
 
 .PHONY: sprites icon export release 
 
 sprites: $(SPRITES_UNPACKED) $(SPRITES_SHEET) $(SPRITES_DATA)
 
-$(PROJECT)/sprites/%/unpacked: $(PROJECT)/sprites/%/sheet.png $(PROJECT)/sprites/%/data.json
+$(PROJECT)/%/unpacked: $(PROJECT)/%/sheet.png $(PROJECT)/%/data.json
+	# To make sure Godot imports newly generated resources,
+	# First we launch Godot editor and quit	
+	# so that it can import at its initialization timing.	
+	"${GODOT}" \
+	--path "$(CURDIR)/$(PROJECT)" \
+	--editor \
+	--quit \
+	> /dev/null 2>&1 
+
 	# Unpack a sprite sheet into AtlasTextures
 	"${GODOT}" \
 	--path "$(CURDIR)/$(PROJECT)" \
 	--script "cli/unpack.gd" \
-	"--sheet=sprites/$*/sheet.png" \
-	"--data=sprites/$*/data.json" \
-	"--base=sprites/$*"
+	"--sheet=$*/sheet.png" \
+	"--data=$*/data.json" \
+	"--base=$*"
 	# Mark as unpacked
 	touch '$@'
 
-$(PROJECT)/sprites/%/sheet.png $(PROJECT)/sprites/%/data.json: sprites/%/*.aseprite
-	mkdir -p '$(PROJECT)/sprites/$*'
-	find '$(PROJECT)/sprites/$*' -name '*.tres' -delete
+$(PROJECT)/assets/textures/%/sheet.png $(PROJECT)/assets/textures/%/data.json: sprites/%/*.aseprite
+	mkdir -p '$(PROJECT)/assets/textures/$*'
+	find '$(PROJECT)/assets/textures/$*' -name '*.tres' -delete
 	"${ASEPRITE}" \
 	--batch \
 	--sheet-pack \
-	--sheet '$(PROJECT)/sprites/$*/sheet.png' \
-	--data '$(PROJECT)/sprites/$*/data.json' \
+	--sheet '$(PROJECT)/assets/textures/$*/sheet.png' \
+	--data '$(PROJECT)/assets/textures/$*/data.json' \
 	--filename-format '{title}_{tag}:{tagframe}' \
 	sprites/$*/*.aseprite
 

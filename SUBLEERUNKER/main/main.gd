@@ -1,59 +1,20 @@
-extends Node 
-
-const GameConstants = preload("res://game/constants.gd")
-
-onready var viewport_size = get_viewport().size
-onready var center_pos = Vector2((viewport_size.x - GameConstants.WIDTH)/2, 0)
+extends Node
 
 
 func _ready():
-	_add_steam()
-	_add_background()
-	_connect_signals()
-	# TODO: Added this temporarily. Remove this
-	Signals.emit_signal("domain_changed", "default")
-	Signals.emit_signal("ended", 0)
+	show_intro()
 
 
-func _add_steam():
-	var steam_client = preload("res://steam/steam_client.gd").new()
-	add_child(steam_client)
+func show_intro():
+	var intro = preload("res://intro/intro.tscn").instance()
+	intro.connect("ended", self, "_on_intro_ended")
+	add_child(intro)
 
 
-func _add_background():
-	var bg = ColorRect.new()
-	bg.rect_position = center_pos
-	bg.rect_size = GameConstants.SIZE
-	bg.color = _get_background_color()
-	add_child(bg)
+func _on_intro_ended():
+	show_title()
 
 
-func _get_background_color() -> Color:
-	var palette = preload("res://palette/default/palette.tscn").instance()
-	return palette.pick("Background")
-
-
-func _connect_signals():
-	Signals.connect("started", self, "on_started")
-	Signals.connect("ended", self, "on_ended")
-
-
-func on_started():
-	start_game()
-
-
-func on_ended(last_score):
-	# TODO: Handle Highscore Here
-	show_menu()
-
-
-func start_game() -> void:
-	var game := preload("res://game/game.tscn").instance()
-	game.position = center_pos
-	add_child(game)
-
-
-func show_menu() -> void:
-	var menu := preload("res://menu/default/menu.tscn").instance()
-	menu.position = center_pos
-	add_child(menu)
+func show_title():
+	var title = preload("res://title/title.tscn").instance()
+	add_child(title)

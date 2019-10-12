@@ -25,15 +25,6 @@ SPRITES_UNPACKED = $(SPRITES:sprites/%=$(PROJECT)/assets/textures/%/unpacked)
 sprites: $(SPRITES_UNPACKED) $(SPRITES_SHEET) $(SPRITES_DATA)
 
 $(PROJECT)/%/unpacked: $(PROJECT)/%/sheet.png $(PROJECT)/%/data.json
-	# To make sure Godot imports newly generated resources,
-	# First we launch Godot editor and quit	
-	# so that it can import at its initialization timing.	
-	"${GODOT}" \
-	--path "$(CURDIR)/$(PROJECT)" \
-	--editor \
-	--quit \
-	> /dev/null 2>&1 
-
 	# Unpack a sprite sheet into AtlasTextures
 	"${GODOT}" \
 	--path "$(CURDIR)/$(PROJECT)" \

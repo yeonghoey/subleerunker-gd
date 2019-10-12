@@ -26,16 +26,20 @@ func show_title():
 
 
 func on_title_play():
-	print('play')
+	var play = preload("res://play/play.tscn").instance()
+	add_child(play)
 
 
 func on_title_vs():
-	print('vs')
+	var vs = preload("res://vs/vs.tscn").instance()
+	add_child(vs)
 
 
 func on_title_achievements():
-	print('achievements')
+	var achievements = preload("res://achievements/achievements.tscn").instance()
+	add_child(achievements)
 
 
 func on_title_options():
-	print('options')
+	var options = preload("res://options/options.tscn").instance()
+	add_child(options)

@@ -1,11 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/default/logo/00.tres" type="Texture" id=2]
+[ext_resource path="res://assets/textures/title/logo/00.tres" type="Texture" id=2]
 [ext_resource path="res://assets/textures/default/key/00.tres" type="Texture" id=3]
 [ext_resource path="res://assets/textures/default/key/01.tres" type="Texture" id=4]
-
-
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -25,4 +23,3 @@ texture = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 160, 442 )
 frames = SubResource( 1 )
-

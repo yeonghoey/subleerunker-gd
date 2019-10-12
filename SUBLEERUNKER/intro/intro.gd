@@ -1,7 +1,7 @@
 extends Control
 
 
-signal ended()
+signal ended
 
 
 func _unhandled_input(event):

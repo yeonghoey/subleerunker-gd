@@ -2,6 +2,7 @@ extends Node
 
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	show_intro()
 
 
@@ -16,5 +17,5 @@ func _on_intro_ended():
 
 
 func show_title():
-	var title = preload("res://title/default/title.tscn").instance()
+	var title = preload("res://title/title.tscn").instance()
 	add_child(title)

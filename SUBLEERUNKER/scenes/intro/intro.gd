@@ -14,4 +14,3 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func end():
 	emit_signal("ended")
-	queue_free()

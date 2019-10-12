@@ -25,7 +25,7 @@ animations = [ {
 
 [sub_resource type="Animation" id=3]
 resource_name = "default"
-length = 2.5
+length = 3.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("AnimatedSprite")
 tracks/0/interp = 1

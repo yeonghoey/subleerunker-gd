@@ -1,26 +1,26 @@
 extends Control
 
-signal play
-signal vs
-signal achievements
-signal options
+signal play_selected
+signal vs_selected
+signal achievements_selected
+signal options_selected
 
 
 onready var menuitem_play = {
 	label = find_node("MenuItemPlay"), 
-	signal_name = "play",
+	signal_name = "play_selected",
 }
 onready var menuitem_vs = {
 	label = find_node("MenuItemVS"),
-	signal_name = "vs",
+	signal_name = "vs_selected",
 }
 onready var menuitem_achievements = {
 	label = find_node("MenuItemAchievements"),
-	signal_name = "achievements",
+	signal_name = "achievements_selected",
 }
 onready var menuitem_options = {
 	label = find_node("MenuItemOptions"),
-	signal_name = "options",
+	signal_name = "options_selected",
 }
 onready var menu_layout = [
 	[menuitem_play, menuitem_vs],
@@ -61,7 +61,6 @@ func move_selection(ox, oy):
 func run_selection():
 	var signal_name = get_current_selection()["signal_name"]
 	emit_signal(signal_name)
-	queue_free()
 
 
 func get_current_selection() -> Dictionary:

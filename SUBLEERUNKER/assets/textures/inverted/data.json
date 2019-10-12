@@ -1,5 +1,5 @@
 { "frames": {
-   "flame_burn:00": {
+   "flame_burn:0": {
     "frame": { "x": 0, "y": 0, "w": 22, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -7,7 +7,7 @@
     "sourceSize": { "w": 22, "h": 16 },
     "duration": 80
    },
-   "flame_burn:01": {
+   "flame_burn:1": {
     "frame": { "x": 22, "y": 0, "w": 22, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -15,7 +15,7 @@
     "sourceSize": { "w": 22, "h": 16 },
     "duration": 80
    },
-   "flame_burn:02": {
+   "flame_burn:2": {
     "frame": { "x": 44, "y": 0, "w": 22, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -23,7 +23,7 @@
     "sourceSize": { "w": 22, "h": 16 },
     "duration": 80
    },
-   "flame_burn:03": {
+   "flame_burn:3": {
     "frame": { "x": 66, "y": 0, "w": 22, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -31,7 +31,7 @@
     "sourceSize": { "w": 22, "h": 16 },
     "duration": 80
    },
-   "flame_burn:04": {
+   "flame_burn:4": {
     "frame": { "x": 88, "y": 0, "w": 22, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -39,7 +39,7 @@
     "sourceSize": { "w": 22, "h": 16 },
     "duration": 80
    },
-   "flame_burn:05": {
+   "flame_burn:5": {
     "frame": { "x": 0, "y": 16, "w": 22, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -47,7 +47,7 @@
     "sourceSize": { "w": 22, "h": 16 },
     "duration": 80
    },
-   "flame_burn:06": {
+   "flame_burn:6": {
     "frame": { "x": 22, "y": 16, "w": 22, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -55,7 +55,7 @@
     "sourceSize": { "w": 22, "h": 16 },
     "duration": 80
    },
-   "flame_land:00": {
+   "flame_land:0": {
     "frame": { "x": 44, "y": 16, "w": 22, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -63,7 +63,7 @@
     "sourceSize": { "w": 22, "h": 16 },
     "duration": 40
    },
-   "flame_land:01": {
+   "flame_land:1": {
     "frame": { "x": 66, "y": 16, "w": 22, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -71,7 +71,7 @@
     "sourceSize": { "w": 22, "h": 16 },
     "duration": 40
    },
-   "flame_land:02": {
+   "flame_land:2": {
     "frame": { "x": 88, "y": 16, "w": 22, "h": 16 },
     "rotated": false,
     "trimmed": false,

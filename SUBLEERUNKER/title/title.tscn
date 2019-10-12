@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://title/title.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/default/logo/00.tres" type="Texture" id=2]
+[ext_resource path="res://assets/textures/title/logo/00.tres" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/press_start_2p.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="Theme" id=1]
@@ -76,10 +76,10 @@ custom_constants/separation = 48
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu"]
 margin_right = 960.0
 margin_bottom = 32.0
-custom_constants/margin_right = 16
+custom_constants/margin_right = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Menu/MarginContainer"]
-margin_right = 944.0
+margin_right = 952.0
 margin_bottom = 32.0
 theme = SubResource( 3 )
 custom_constants/separation = 32
@@ -88,8 +88,8 @@ alignment = 1
 [node name="MenuItemPlay" type="Label" parent="MarginContainer/VBoxContainer/Menu/MarginContainer/HBoxContainer" groups=[
 "TitleMenuItems",
 ]]
-margin_left = 360.0
-margin_right = 488.0
+margin_left = 364.0
+margin_right = 492.0
 margin_bottom = 32.0
 size_flags_horizontal = 4
 text = "Play"
@@ -99,8 +99,8 @@ valign = 1
 [node name="MenuItemVS" type="Label" parent="MarginContainer/VBoxContainer/Menu/MarginContainer/HBoxContainer" groups=[
 "TitleMenuItems",
 ]]
-margin_left = 520.0
-margin_right = 584.0
+margin_left = 524.0
+margin_right = 588.0
 margin_bottom = 32.0
 size_flags_horizontal = 4
 text = "VS"

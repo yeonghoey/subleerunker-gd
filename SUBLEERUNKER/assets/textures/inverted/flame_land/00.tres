@@ -2,8 +2,6 @@
 
 [ext_resource path="res://assets/textures/inverted/sheet.png" type="Texture" id=1]
 
-
-
 [resource]
 atlas = ExtResource( 1 )
 region = Rect2( 44, 16, 22, 16 )

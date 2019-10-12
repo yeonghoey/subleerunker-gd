@@ -20,11 +20,13 @@ SPRITES_DATA = $(SPRITES:sprites/%=$(PROJECT)/assets/textures/%/data.json)
 SPRITES_UNPACKED = $(SPRITES:sprites/%=$(PROJECT)/assets/textures/%/unpacked)
 
 
-.PHONY: sprites icon export release 
+.PHONY: pack unpack icon export release 
 
-sprites: $(SPRITES_UNPACKED) $(SPRITES_SHEET) $(SPRITES_DATA)
+pack:  $(SPRITES_SHEET) $(SPRITES_DATA)
 
-$(PROJECT)/%/unpacked: $(PROJECT)/%/sheet.png $(PROJECT)/%/data.json
+unpack: $(SPRITES_UNPACKED) pack
+
+$(PROJECT)/%/unpacked: $(PROJECT)/%/sheet.png $(PROJECT)/%/sheet.png.import $(PROJECT)/%/data.json
 	# Unpack a sprite sheet into AtlasTextures
 	"${GODOT}" \
 	--path "$(CURDIR)/$(PROJECT)" \

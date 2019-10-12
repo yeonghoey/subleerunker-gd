@@ -30,7 +30,7 @@ onready var menu_layout = [
 
 var sel_x := 0
 var sel_y := 0
-var sel_style = preload("res://title/selection.tres")
+var sel_style = preload("res://scenes/title/selection.tres")
 var sel_empty = StyleBoxEmpty.new()
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://title/title.gd" type="Script" id=1]
+[ext_resource path="res://scenes/title/title.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/title/logo/00.tres" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/press_start_2p.ttf" type="DynamicFontData" id=3]
 

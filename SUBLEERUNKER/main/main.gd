@@ -7,7 +7,7 @@ func _ready():
 
 
 func show_intro():
-	var intro = preload("res://intro/intro.tscn").instance()
+	var intro = preload("res://scenes/intro/intro.tscn").instance()
 	intro.connect("ended", self, "on_intro_ended")
 	add_child(intro)
 
@@ -17,7 +17,7 @@ func on_intro_ended():
 
 
 func show_title():
-	var title = preload("res://title/title.tscn").instance()
+	var title = preload("res://scenes/title/title.tscn").instance()
 	title.connect("play", self, "on_title_play")
 	title.connect("vs", self, "on_title_vs")
 	title.connect("achievements", self, "on_title_achievements")
@@ -26,20 +26,20 @@ func show_title():
 
 
 func on_title_play():
-	var play = preload("res://play/play.tscn").instance()
+	var play = preload("res://scenes/play/play.tscn").instance()
 	add_child(play)
 
 
 func on_title_vs():
-	var vs = preload("res://vs/vs.tscn").instance()
+	var vs = preload("res://scenes/vs/vs.tscn").instance()
 	add_child(vs)
 
 
 func on_title_achievements():
-	var achievements = preload("res://achievements/achievements.tscn").instance()
+	var achievements = preload("res://scenes/achievements/achievements.tscn").instance()
 	add_child(achievements)
 
 
 func on_title_options():
-	var options = preload("res://options/options.tscn").instance()
+	var options = preload("res://scenes/options/options.tscn").instance()
 	add_child(options)

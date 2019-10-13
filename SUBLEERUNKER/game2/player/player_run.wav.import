@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/player_run.wav-7db0b2dc6d02c88e4e62539da5e6e086.sample"
+path="res://.import/player_run.wav-0c6031f4cad0a5fe20b7faf01e4d760c.sample"
 
 [deps]
 
-source_file="res://game/player/player_run.wav"
-dest_files=[ "res://.import/player_run.wav-7db0b2dc6d02c88e4e62539da5e6e086.sample" ]
+source_file="res://game2/player/player_run.wav"
+dest_files=[ "res://.import/player_run.wav-0c6031f4cad0a5fe20b7faf01e4d760c.sample" ]
 
 [params]
 

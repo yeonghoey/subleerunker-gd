@@ -1,10 +1,12 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://game/flame_land/flame_land.gd" type="Script" id=1]
+[ext_resource path="res://game2/flame_land/flame_land.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/default/flame_land/00.tres" type="Texture" id=2]
 [ext_resource path="res://assets/textures/default/flame_land/01.tres" type="Texture" id=3]
 [ext_resource path="res://assets/textures/default/flame_land/02.tres" type="Texture" id=4]
-[ext_resource path="res://game/flame_land/flame_land.wav" type="AudioStream" id=5]
+[ext_resource path="res://game2/flame_land/flame_land.wav" type="AudioStream" id=5]
+
+
 
 
 

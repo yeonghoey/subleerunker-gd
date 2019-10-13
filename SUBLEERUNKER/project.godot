@@ -9,25 +9,13 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "ControllerPlay",
-"language": "GDScript",
-"path": "res://game/controller/controller_play.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "Mover",
 "language": "GDScript",
 "path": "res://classes/mover.gd"
-}, {
-"base": "Node",
-"class": "SessionPlay",
-"language": "GDScript",
-"path": "res://game/session/session_play.gd"
 } ]
 _global_script_class_icons={
-"ControllerPlay": "",
-"Mover": "",
-"SessionPlay": ""
+"Mover": ""
 }
 
 [application]

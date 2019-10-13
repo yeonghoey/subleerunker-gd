@@ -1,10 +1,8 @@
-extends Node
+extends Control
 
-class_name SessionPlay
 
-const GameConstants = preload("res://game/constants.gd")
-const W = GameConstants.WIDTH
-const H = GameConstants.HEIGHT
+onready var W = rect_size.x
+onready var H = rect_size.y
 
 var viewport: Viewport
 var seed_secs := 0
@@ -34,7 +32,8 @@ func _ready():
 func init_player():
 	player = preload("res://game/player/default/player.tscn").instance()
 	player.position = Vector2(W/2, H-player.H/2)
-	controller = ControllerPlay.new(player)
+	controller = preload("res://game/controller/controller_play.tscn").instance()
+	controller.player = player
 	game_objects.add_child(player)
 	add_child(controller)
 

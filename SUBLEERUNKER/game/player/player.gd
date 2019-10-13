@@ -12,15 +12,12 @@ var turning = false
 func _ready():
 	$Head.connect("body_entered", self, "_on_Head_body_entered")
 
-func _unhandled_input(event):
-	update_action()	
 
 func _process(delta):
 	update_animation()
 
-func update_action():
-	var left = Input.is_action_pressed("ui_left")
-	var right = Input.is_action_pressed("ui_right")
+
+func update_action(left, right):
 	var next_action
 	match [action, turning, left, right]:
 		[_, _, false, false]:
@@ -45,6 +42,7 @@ func update_action():
 			$AudioRun.stop()
 	action = next_action
 
+
 func update_animation():
 	match action:
 		ACTION_IDLE:
@@ -54,9 +52,11 @@ func update_animation():
 		ACTION_RIGHT:
 			$AnimationPlayer.play("player_run_right")
 
+
 func _physics_process(delta):
 	update_velocity()
 	move_and_slide(velocity)
+
 
 func _acceleration() -> Vector2:
 	match action:
@@ -67,6 +67,7 @@ func _acceleration() -> Vector2:
 		_:
 			return Vector2(0, 0)
 
+
 func _friction() -> float:
 	match action:
 		ACTION_IDLE:
@@ -74,9 +75,10 @@ func _friction() -> float:
 		_:
 			return 0.0
 
+
 func _max_velocity() -> float:
 	return 300.0
 
+
 func _on_Head_body_entered(body):
 	Signals.emit_signal("hit", self)
-	queue_free()

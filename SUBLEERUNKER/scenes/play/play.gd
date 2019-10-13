@@ -3,8 +3,14 @@ extends Control
 signal closed
 
 
+onready var viewport = find_node("Viewport")
+const packed_session = preload("res://game/session/session_play.tscn")
+
+
 func _ready():
-	pass
+	var session = packed_session.instance()
+	session.viewport = viewport
+	add_child(session)
 
 
 func _unhandled_input(event):

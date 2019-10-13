@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/player_die.wav-6618bbbbb022a4e1ff5be2add04ac767.sample"
+path="res://.import/player_die.wav-1b22450f03de81a6e31c2f9bbe2b43e6.sample"
 
 [deps]
 
-source_file="res://game2/player_die/player_die.wav"
-dest_files=[ "res://.import/player_die.wav-6618bbbbb022a4e1ff5be2add04ac767.sample" ]
+source_file="res://game/player_die/player_die.wav"
+dest_files=[ "res://.import/player_die.wav-1b22450f03de81a6e31c2f9bbe2b43e6.sample" ]
 
 [params]
 

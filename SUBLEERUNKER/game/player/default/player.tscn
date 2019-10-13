@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=2]
 
-[ext_resource path="res://game2/player/default/player.gd" type="Script" id=1]
+[ext_resource path="res://game/player/default/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/default/player_idle/00.tres" type="Texture" id=2]
 [ext_resource path="res://assets/textures/default/player_idle/01.tres" type="Texture" id=3]
 [ext_resource path="res://assets/textures/default/player_idle/02.tres" type="Texture" id=4]
@@ -31,11 +31,7 @@
 [ext_resource path="res://assets/textures/default/eyelids_run/05.tres" type="Texture" id=29]
 [ext_resource path="res://assets/textures/default/eyelids_run/06.tres" type="Texture" id=30]
 [ext_resource path="res://assets/textures/default/eyelids_run/07.tres" type="Texture" id=31]
-[ext_resource path="res://game2/player/player_run.wav" type="AudioStream" id=32]
-
-
-
-
+[ext_resource path="res://game/player/player_run.wav" type="AudioStream" id=32]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -206,7 +202,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
@@ -219,7 +215,7 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": true,
@@ -252,13 +248,13 @@ anims/player_run_left = SubResource( 2 )
 anims/player_run_right = SubResource( 3 )
 
 [node name="Body" type="AnimatedSprite" parent="."]
-frames = SubResource( 5 )
+frames = SubResource( 4 )
 animation = "player_idle"
 
 [node name="Eyelids" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0, -25 )
-frames = SubResource( 4 )
+frames = SubResource( 5 )
 animation = "player_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

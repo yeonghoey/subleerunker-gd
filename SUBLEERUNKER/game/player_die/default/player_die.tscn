@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://game2/player_die/player_die.gd" type="Script" id=1]
+[ext_resource path="res://game/player_die/player_die.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/default/player_die/00.tres" type="Texture" id=2]
 [ext_resource path="res://assets/textures/default/player_die/01.tres" type="Texture" id=3]
 [ext_resource path="res://assets/textures/default/player_die/02.tres" type="Texture" id=4]
@@ -9,11 +9,7 @@
 [ext_resource path="res://assets/textures/default/player_die/05.tres" type="Texture" id=7]
 [ext_resource path="res://assets/textures/default/player_die/06.tres" type="Texture" id=8]
 [ext_resource path="res://assets/textures/default/player_die/07.tres" type="Texture" id=9]
-[ext_resource path="res://game2/player_die/player_die.wav" type="AudioStream" id=10]
-
-
-
-
+[ext_resource path="res://game/player_die/player_die.wav" type="AudioStream" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -32,4 +28,3 @@ frames = SubResource( 1 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 autoplay = true
-

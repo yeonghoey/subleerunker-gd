@@ -8,9 +8,10 @@ const packed_session = preload("res://game/session/session_play.tscn")
 
 
 func _ready():
-	var session = packed_session.instance()
-	session.viewport = viewport
-	add_child(session)
+#	var session = packed_session.instance()
+#	session.viewport = viewport
+#	add_child(session)
+	pass
 
 
 func _unhandled_input(event):

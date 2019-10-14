@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://ui/press_start_2p.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/PressStart2P-Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/top_score.gd" type="Script" id=2]
 [ext_resource path="res://ui/current_score.gd" type="Script" id=3]
 

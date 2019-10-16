@@ -1,6 +1,5 @@
 extends Control
 
-
 onready var W = rect_size.x
 onready var H = rect_size.y
 
@@ -32,8 +31,7 @@ func _ready():
 func init_player():
 	player = preload("res://game/player/default/player.tscn").instance()
 	player.position = Vector2(W/2, H-player.H/2)
-	controller = preload("res://game/controller/controller_play.tscn").instance()
-	controller.player = player
+	controller = preload("controller.gd").new(player)
 	game_objects.add_child(player)
 	add_child(controller)
 
@@ -65,7 +63,6 @@ func on_landed(flame):
 func _process(delta):
 	if !alive and game_objects.get_child_count() == 0:
 		Signals.emit_signal("ended", score)
-		queue_free()
 
 
 func _physics_process(delta):

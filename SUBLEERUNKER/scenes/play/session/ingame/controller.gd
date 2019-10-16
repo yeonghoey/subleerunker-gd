@@ -1,7 +1,10 @@
 extends Node
 
+var player
 
-var player: Node
+
+func _init(player1):
+	player = player1
 
 
 func _unhandled_input(event):

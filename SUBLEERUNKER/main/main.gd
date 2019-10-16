@@ -10,7 +10,7 @@ onready var options = preload("res://scenes/options/options.tscn").instance()
 
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	# Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	connect_signals()
 	add_child(intro)
 

@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/play/session/standby/view/highscores/highscores.tscn" type="PackedScene" id=1]
+
+[node name="TopMargin" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+
+[node name="TopRows" type="VBoxContainer" parent="."]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 288.0
+margin_bottom = 448.0
+
+[node name="HighScores" type="VBoxContainer" parent="TopRows" instance=ExtResource( 1 )]
+margin_right = 256.0
+margin_bottom = 168.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopRows"]
+margin_top = 172.0
+margin_right = 256.0
+margin_bottom = 416.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopRows/VBoxContainer"]
+margin_top = 106.0
+margin_right = 256.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+
+[node name="LastScore" type="HBoxContainer" parent="TopRows/VBoxContainer/VBoxContainer"]
+editor/display_folded = true
+margin_right = 256.0
+margin_bottom = 14.0
+alignment = 2
+
+[node name="Label" type="Label" parent="TopRows/VBoxContainer/VBoxContainer/LastScore"]
+margin_left = 194.0
+margin_right = 220.0
+margin_bottom = 14.0
+text = "Last"
+
+[node name="Label2" type="Label" parent="TopRows/VBoxContainer/VBoxContainer/LastScore"]
+margin_left = 224.0
+margin_right = 256.0
+margin_bottom = 14.0
+text = "1234"
+
+[node name="BestScore" type="HBoxContainer" parent="TopRows/VBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 256.0
+margin_bottom = 32.0
+alignment = 2
+
+[node name="Label" type="Label" parent="TopRows/VBoxContainer/VBoxContainer/BestScore"]
+margin_left = 191.0
+margin_right = 220.0
+margin_bottom = 14.0
+text = "Best"
+
+[node name="Label2" type="Label" parent="TopRows/VBoxContainer/VBoxContainer/BestScore"]
+margin_left = 224.0
+margin_right = 256.0
+margin_bottom = 14.0
+text = "1234"

@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/fonts/press_start_2p_16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/play/session/standby/view/highscores/entry_1st.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/fonts/press_start_2p_08.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/play/session/standby/view/highscores/entry_2nd.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/play/session/standby/view/highscores/entry_3rd.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/play/session/standby/view/highscores/entry_4th.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/play/session/standby/view/highscores/entry_5th.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/play/session/standby/view/highscores/entry_6th.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/play/session/standby/view/highscores/entry_7th.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/play/session/standby/view/highscores/entry_8th.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/play/session/standby/view/highscores/entry_9th.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/play/session/standby/view/highscores/entry_10th.tscn" type="PackedScene" id=12]
+
+
+
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 3 )
+
+[node name="HighScores" type="VBoxContainer"]
+margin_left = 73.0
+margin_right = 281.0
+margin_bottom = 172.0
+
+[node name="TitleContainer" type="MarginContainer" parent="."]
+editor/display_folded = true
+margin_right = 208.0
+margin_bottom = 48.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="Title" type="Label" parent="TitleContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 192.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 1 )
+text = "HIGH SCORES"
+align = 1
+valign = 1
+
+[node name="Entries" type="VBoxContainer" parent="."]
+margin_top = 52.0
+margin_right = 208.0
+margin_bottom = 168.0
+
+[node name="Entry1st" parent="Entries" instance=ExtResource( 2 )]
+margin_top = 0.0
+margin_bottom = 8.0
+theme = SubResource( 1 )
+
+[node name="Entry2nd" parent="Entries" instance=ExtResource( 4 )]
+theme = SubResource( 1 )
+
+[node name="Entry3rd" parent="Entries" instance=ExtResource( 5 )]
+margin_top = 24.0
+margin_bottom = 32.0
+theme = SubResource( 1 )
+
+[node name="Entry4th" parent="Entries" instance=ExtResource( 6 )]
+margin_top = 36.0
+margin_bottom = 44.0
+theme = SubResource( 1 )
+
+[node name="Entry5th" parent="Entries" instance=ExtResource( 7 )]
+margin_top = 48.0
+margin_bottom = 56.0
+theme = SubResource( 1 )
+
+[node name="Entry6th" parent="Entries" instance=ExtResource( 8 )]
+margin_top = 60.0
+margin_bottom = 68.0
+theme = SubResource( 1 )
+
+[node name="Entry7th" parent="Entries" instance=ExtResource( 9 )]
+margin_top = 72.0
+margin_bottom = 80.0
+theme = SubResource( 1 )
+
+[node name="Entry8th" parent="Entries" instance=ExtResource( 10 )]
+margin_top = 84.0
+margin_bottom = 92.0
+theme = SubResource( 1 )
+
+[node name="Entry9th" parent="Entries" instance=ExtResource( 11 )]
+margin_top = 96.0
+margin_bottom = 104.0
+theme = SubResource( 1 )
+
+[node name="Entry10th" parent="Entries" instance=ExtResource( 12 )]
+margin_top = 108.0
+margin_bottom = 116.0
+theme = SubResource( 1 )

@@ -1,9 +1,11 @@
-extends Control
+extends Node
 
-onready var W = rect_size.x
-onready var H = rect_size.y
 
 var viewport: Viewport
+
+var W
+var H
+
 var seed_secs := 0
 var score := 0
 var alive := true
@@ -16,6 +18,8 @@ var controller: Node
 
 
 func _ready():
+	W = viewport.size.x
+	H = viewport.size.y
 	seed_secs = OS.get_system_time_secs()
 	seed(seed_secs)
 	game_objects = Node.new()

@@ -1,10 +1,9 @@
-extends Control
+extends Node
 
 const packed_view = preload("view/view.tscn")
 
 var viewport: Viewport
-
-onready var signaled := false
+var signaled := false
 
 
 func _ready():

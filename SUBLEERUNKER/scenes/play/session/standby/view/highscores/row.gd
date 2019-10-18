@@ -1,19 +1,25 @@
 extends HBoxContainer
 
 
-func populate_entry(entry):
-	$Rank.text = _get_rank_name(entry)
-	$Name.text = _get_renderable_name(entry)
-	$Score.text = _get_score(entry)
+func _ready():
+	var idx = get_index()
+	var rank = idx+1
+	$Rank.text = _get_rank_name(rank)
+	$Name.text = "-"
+	$Score.text = "-"
 
 
-func _get_rank_name(entry):
-	var rank = entry["global_rank"]
+func _get_rank_name(rank):
 	match rank:
 		1: return "1ST"
 		2: return "2ND"
 		3: return "3RD"
 		_: return "%dTH" % rank
+
+
+func populate_entry(entry):
+	$Name.text = _get_renderable_name(entry)
+	$Score.text = _get_score(entry)
 
 
 func _get_renderable_name(entry):

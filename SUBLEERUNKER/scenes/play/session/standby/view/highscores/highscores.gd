@@ -6,9 +6,12 @@ onready var rows = $Rows
 
 
 func _ready():
-	Signals.emit_signal("steamagent_highscores_request", "default")
-	var entries = yield(Signals, "steamagent_highscores_response")
-	_populate_entries(entries)
+	for rank in range(1, 11):
+		var row = packed_row.instance()
+		rows.add_child(row)
+
+	Signals.connect("highscores_response", self, "_populate_entries")
+	Signals.emit_signal("highscores_request", "default")
 
 
 func _populate_entries(entries):
@@ -18,7 +21,6 @@ func _populate_entries(entries):
 		d[rank] = e
 
 	for rank in range(1, 11):
-		var row = packed_row.instance()
+		var idx = rank-1
 		var entry = d.get(rank, {"global_rank": rank, "name": "-", "score": "-"})
-		row.populate_entry(entry)
-		rows.add_child(row)
+		rows.get_child(idx).populate_entry(entry)

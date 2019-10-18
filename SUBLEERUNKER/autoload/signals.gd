@@ -9,5 +9,5 @@ signal hit(player)
 signal ended(last_score)
 signal top_changed(name, score)
 
-signal steamagent_highscores_request(domain)
-signal steamagent_highscores_response(entries)
+signal highscores_request(domain)
+signal highscores_response(entries)

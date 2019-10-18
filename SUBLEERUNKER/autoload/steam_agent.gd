@@ -34,10 +34,10 @@ func _try_init():
 
 
 func _connect_signals():
-	Signals.connect("steamagent_highscores_request", self, "_on_steamagent_highscores_request")
+	Signals.connect("highscores_request", self, "_on_highscores_request")
 
 
-func _on_steamagent_highscores_request(domain):
+func _on_highscores_request(domain):
 	# Find the leaderboard first because
 	# the leaderboard handle managed by GodotSteam internally
 	# will be used for the next request
@@ -52,4 +52,4 @@ func _on_steamagent_highscores_request(domain):
 	for entry in entries:
 		var name = Steam.getFriendPersonaName(entry["steamID"])
 		entry["name"] = name
-	Signals.emit_signal("steamagent_highscores_response", entries)
+	Signals.emit_signal("highscores_response", entries)

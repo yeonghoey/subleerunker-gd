@@ -2,6 +2,7 @@ extends Control
 
 signal closed
 
+const packed_loading = preload("loading/loading.tscn")
 const packed_standby = preload("session/standby/standby.tscn")
 const packed_ingame = preload("session/ingame/ingame.tscn")
 
@@ -31,9 +32,23 @@ func _on_started():
 
 
 func _on_ended(last_score):
-	Signals.emit_signal("score_upload_requested", last_score)
-	var result = yield(Signals, "score_upload_responded")
+	_show_loading()
+	Signals.connect("score_upload_responded", self, "_on_score_upload_responded", [], CONNECT_ONESHOT)
+	Signals.emit_signal("score_upload_requested", "default", last_score)
+
+
+func _on_score_upload_responded(result):
+	Signals.connect("myrank_responded", self, "_on_myrank_responded", [result], CONNECT_ONESHOT)
+	Signals.emit_signal("myrank_requested", "default")
+
+
+func _on_myrank_responded(entries, result):
 	_session_standby(result)
+
+
+func _show_loading():
+	_clear_session()
+	viewport.add_child(packed_loading.instance())
 
 
 func _session_standby(last_result):

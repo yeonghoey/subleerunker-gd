@@ -7,10 +7,7 @@ onready var rows = $Rows
 
 
 func _ready():
-	for i in range(NUM_ROWS):
-		var row = packed_row.instance()
-		rows.add_child(row)
-
+	assert rows.get_child_count() == NUM_ROWS
 	Signals.connect("highscores_responded", self, "_populate_entries")
 	Signals.emit_signal("highscores_requested", "default")
 

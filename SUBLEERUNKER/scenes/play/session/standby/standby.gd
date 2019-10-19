@@ -1,14 +1,12 @@
 extends Node
 
-const packed_view = preload("view/view.tscn")
-
 var viewport: Viewport
 var signaled := false
 
 
 func _ready():
-	var view = packed_view.instance()
-	viewport.add_child(view)
+	viewport.add_child(preload("res://game/background/default/background.tscn").instance())
+	viewport.add_child(preload("view/view.tscn").instance())
 
 
 func _unhandled_input(event):

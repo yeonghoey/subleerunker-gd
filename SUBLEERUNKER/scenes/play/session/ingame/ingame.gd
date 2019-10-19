@@ -6,7 +6,6 @@ var viewport: Viewport
 var W
 var H
 
-var seed_secs := 0
 var score := 0
 var alive := true
 var flamespawn_flip = false
@@ -20,13 +19,12 @@ var controller: Node
 func _ready():
 	W = viewport.size.x
 	H = viewport.size.y
-	seed_secs = OS.get_system_time_secs()
-	seed(seed_secs)
-	game_objects = Node.new()
-	var stage = preload("res://game/stage/stage.tscn").instance()
-	viewport.add_child(stage)
-	viewport.add_child(game_objects)
 
+	viewport.add_child(preload("res://game/background/default/background.tscn").instance())
+	viewport.add_child(preload("res://game/stage/stage.tscn").instance())
+	
+	game_objects = Node.new()
+	viewport.add_child(game_objects)
 	init_player()
 	connect_signals()
 	Signals.emit_signal("scored", score)

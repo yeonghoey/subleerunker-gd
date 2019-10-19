@@ -65,6 +65,7 @@ func on_landed(flame):
 func _process(delta):
 	if !alive and game_objects.get_child_count() == 0:
 		Signals.emit_signal("ended", score)
+		set_process(false)
 
 
 func _physics_process(delta):

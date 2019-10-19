@@ -33,7 +33,7 @@ func _get_renderable_name(entry):
 	if renderable:
 		return name
 	else:
-		return String(entry["steamID"])
+		return "<%d>" % entry["steamID"]
 
 
 func _get_score(entry):

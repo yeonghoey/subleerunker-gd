@@ -10,8 +10,8 @@ func _ready():
 		var row = packed_row.instance()
 		rows.add_child(row)
 
-	Signals.connect("highscores_response", self, "_populate_entries")
-	Signals.emit_signal("highscores_request", "default")
+	Signals.connect("highscores_responded", self, "_populate_entries")
+	Signals.emit_signal("highscores_requested", "default")
 
 
 func _populate_entries(entries):

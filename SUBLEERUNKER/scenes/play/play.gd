@@ -11,8 +11,9 @@ onready var session: Node = null
 
 
 func _ready():
-	connect_signals()
-	session_standby()
+	_connect_signals()
+	var last_score = 0
+	Signals.emit_signal("ended", last_score)
 
 
 func _unhandled_input(event):
@@ -20,34 +21,36 @@ func _unhandled_input(event):
 		emit_signal("closed")
 
 
-func connect_signals():
-	Signals.connect("started", self, "on_started")
-	Signals.connect("ended", self, "on_ended")
+func _connect_signals():
+	Signals.connect("started", self, "_on_started")
+	Signals.connect("ended", self, "_on_ended")
 
 
-func on_started():
-	session_ingame()
+func _on_started():
+	_session_ingame()
 
 
-func on_ended(score):
-	session_standby()
+func _on_ended(last_score):
+	Signals.emit_signal("score_upload_requested", last_score)
+	var result = yield(Signals, "score_upload_responded")
+	_session_standby(result)
 
 
-func session_standby():
-	clear_session()
+func _session_standby(last_result):
+	_clear_session()
 	session = packed_standby.instance()
 	session.viewport = viewport
 	add_child(session)
 
 
-func session_ingame():
-	clear_session()
+func _session_ingame():
+	_clear_session()
 	session = packed_ingame.instance()
 	session.viewport = viewport
 	add_child(session)
 
 
-func clear_session():
+func _clear_session():
 	if session:
 		session.queue_free()
 		session = null

@@ -8,11 +8,8 @@ enum LeaderboardDataRequest {
 
 
 func _ready():
-	var err = _try_init()
-	if err == OK:
-		_connect_signals()
-	else:
-		queue_free()
+	Signals.connect("highscores_requested", self, "_on_highscores_requested")
+	Signals.connect("score_upload_requested", self, "_on_score_upload_requested")
 
 
 func _process(delta):
@@ -24,20 +21,7 @@ func _notification(what):
 		Steam.shutdown()
 
 
-func _try_init():
-	var ret = Steam.steamInit()
-	if ret["status"] == 0:
-		return OK
-	else:
-		push_warning('Steam.steamInit() failed: %s' % ret)
-		return FAILED
-
-
-func _connect_signals():
-	Signals.connect("highscores_request", self, "_on_highscores_request")
-
-
-func _on_highscores_request(domain):
+func _on_highscores_requested(domain):
 	# Find the leaderboard first because
 	# the leaderboard handle managed by GodotSteam internally
 	# will be used for the next request
@@ -52,4 +36,18 @@ func _on_highscores_request(domain):
 	for entry in entries:
 		var name = Steam.getFriendPersonaName(entry["steamID"])
 		entry["name"] = name
-	Signals.emit_signal("highscores_response", entries)
+	Signals.emit_signal("highscores_responded", entries)
+
+
+func _on_score_upload_requested(score):
+	var keep_best = true
+	Steam.uploadLeaderboardScore(score, keep_best)
+	var ret = yield(Steam, "leaderboard_score_uploaded")
+	var result = {
+		success = (ret[0] != 0),
+		score = ret[1],
+		score_changed = (ret[2] != 0),
+		global_rank_new = ret[3],
+		global_rank_previous = ret[4]
+	}
+	Signals.emit_signal("score_upload_responded", result)

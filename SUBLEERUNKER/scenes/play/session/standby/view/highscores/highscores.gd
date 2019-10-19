@@ -1,12 +1,13 @@
 extends VBoxContainer
 
 const packed_row = preload("row.tscn")
+const NUM_ROWS = 10
 
 onready var rows = $Rows
 
 
 func _ready():
-	for rank in range(1, 11):
+	for i in range(NUM_ROWS):
 		var row = packed_row.instance()
 		rows.add_child(row)
 
@@ -15,12 +16,8 @@ func _ready():
 
 
 func _populate_entries(entries):
-	var d = {}
-	for e in entries:
-		var rank = e["global_rank"]
-		d[rank] = e
-
-	for rank in range(1, 11):
-		var idx = rank-1
-		var entry = d.get(rank, {"global_rank": rank, "name": "-", "score": "-"})
+	while entries.size() > NUM_ROWS:
+		entries.pop_back()
+	for idx in range(entries.size()):
+		var entry = entries[idx]
 		rows.get_child(idx).populate_entry(entry)

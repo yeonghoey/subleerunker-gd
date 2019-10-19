@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Mover",
 "language": "GDScript",
 "path": "res://classes/mover.gd"
+}, {
+"base": "Reference",
+"class": "Utils",
+"language": "GDScript",
+"path": "res://classes/utils.gd"
 } ]
 _global_script_class_icons={
-"Mover": ""
+"Mover": "",
+"Utils": ""
 }
 
 [application]

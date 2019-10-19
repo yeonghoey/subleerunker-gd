@@ -1,25 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/play/session/standby/view/highscores/highscores.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/play/session/standby/view/you/you.tscn" type="PackedScene" id=3]
 
 [node name="View" index="0" instance=ExtResource( 1 )]
 
 [node name="TopMargin" type="MarginContainer" parent="." index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 32
-custom_constants/margin_top = 32
-custom_constants/margin_left = 32
-custom_constants/margin_bottom = 32
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
 
 [node name="TopRows" type="VBoxContainer" parent="TopMargin" index="0"]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 288.0
-margin_bottom = 448.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 304.0
+margin_bottom = 464.0
+custom_constants/separation = 24
 
 [node name="HighScores" parent="TopMargin/TopRows" index="0" instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_right = 256.0
-margin_bottom = 168.0
+margin_right = 288.0
+margin_bottom = 192.0
+
+[node name="You" parent="TopMargin/TopRows" index="1" instance=ExtResource( 3 )]

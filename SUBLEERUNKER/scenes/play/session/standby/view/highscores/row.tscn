@@ -11,11 +11,11 @@ margin_top = 12.0
 margin_right = 208.0
 margin_bottom = 20.0
 theme = SubResource( 1 )
-custom_constants/separation = 8
+custom_constants/separation = 16
 script = ExtResource( 2 )
 
 [node name="Rank" type="Label" parent="."]
-margin_right = 32.0
+margin_right = 29.0
 margin_bottom = 8.0
 size_flags_horizontal = 3
 text = "-"
@@ -24,8 +24,8 @@ valign = 1
 uppercase = true
 
 [node name="Name" type="Label" parent="."]
-margin_left = 40.0
-margin_right = 168.0
+margin_left = 45.0
+margin_right = 162.0
 margin_bottom = 8.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
@@ -35,7 +35,7 @@ clip_text = true
 uppercase = true
 
 [node name="Score" type="Label" parent="."]
-margin_left = 176.0
+margin_left = 178.0
 margin_right = 208.0
 margin_bottom = 8.0
 size_flags_horizontal = 3

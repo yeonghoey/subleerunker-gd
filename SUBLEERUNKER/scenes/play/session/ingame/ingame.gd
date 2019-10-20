@@ -2,11 +2,14 @@ extends Node
 
 
 var viewport: Viewport
+var myrecord: Dictionary
 
 var W
 var H
 
 var score := 0
+var end_score := score
+
 var alive := true
 var flamespawn_flip = false
 var flamespawn_threshold = 0.25
@@ -44,6 +47,10 @@ func connect_signals():
 
 
 func on_hit(player):
+	end_score = score
+#	if end_score > best_score:
+#		_try_upload()
+
 	$AudioBGM.stop()
 	controller.queue_free()
 	player.queue_free()
@@ -66,6 +73,11 @@ func _process(delta):
 	if !alive and game_objects.get_child_count() == 0:
 		Signals.emit_signal("ended", score)
 		set_process(false)
+
+
+func _try_score_upload():
+	Signals.connect("score_upload_responded", self, "_on_score_upload_responded", [], CONNECT_ONESHOT)
+	Signals.emit_signal("score_upload_requested", "default", end_score)
 
 
 func _physics_process(delta):

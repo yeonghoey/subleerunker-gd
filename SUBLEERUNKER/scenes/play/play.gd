@@ -9,6 +9,7 @@ const packed_ingame = preload("session/ingame/ingame.tscn")
 onready var viewport = find_node("Viewport")
 onready var is_playing := false
 onready var session: Node = null
+onready var cached_best := -1
 
 
 func _ready():
@@ -27,22 +28,11 @@ func _connect_signals():
 	Signals.connect("ended", self, "_on_ended")
 
 
-func _on_started():
-	_session_ingame()
+func _on_started(myrecord):
+	_session_ingame(myrecord)
 
 
-func _on_ended(last_score):
-	_show_loading()
-	Signals.connect("score_upload_responded", self, "_on_score_upload_responded", [], CONNECT_ONESHOT)
-	Signals.emit_signal("score_upload_requested", "default", last_score)
-
-
-func _on_score_upload_responded(result):
-	Signals.connect("myrank_responded", self, "_on_myrank_responded", [result], CONNECT_ONESHOT)
-	Signals.emit_signal("myrank_requested", "default")
-
-
-func _on_myrank_responded(entries, result):
+func _on_ended(result):
 	_session_standby(result)
 
 
@@ -58,10 +48,11 @@ func _session_standby(last_result):
 	add_child(session)
 
 
-func _session_ingame():
+func _session_ingame(myrecord: Dictionary):
 	_clear_session()
 	session = packed_ingame.instance()
 	session.viewport = viewport
+	session.myrecord = myrecord
 	add_child(session)
 
 

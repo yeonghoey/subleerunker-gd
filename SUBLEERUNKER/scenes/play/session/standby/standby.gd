@@ -1,12 +1,20 @@
 extends Node
 
 var viewport: Viewport
+var last_result := {}
+
+var myrecord_fetched := false
+var myrecord := {}
 var signaled := false
+
+onready var background = preload("res://game/background/default/background.tscn").instance()
+onready var view = preload("view/view.tscn").instance()
 
 
 func _ready():
-	viewport.add_child(preload("res://game/background/default/background.tscn").instance())
-	viewport.add_child(preload("view/view.tscn").instance())
+	viewport.add_child(background)
+	viewport.add_child(view)
+	SteamAgent.fetch_myrecord("default", self, "_on_fetch_myrecord")
 
 
 func _unhandled_input(event):
@@ -14,6 +22,21 @@ func _unhandled_input(event):
 		Input.is_action_pressed("ui_left") or 
 		Input.is_action_pressed("ui_right"))
 
-	if pressed and not signaled:
-		Signals.emit_signal("started")
+	if pressed and myrecord_fetched and not signaled:
+		Signals.emit_signal("started", myrecord)
 		signaled = true
+
+
+func _on_fetch_myrecord(entries):
+	myrecord_fetched = true
+	myrecord = {}
+	if entries.size() == 1:
+		var entry = entries[0]
+		myrecord["global_rank"] = entry["global_rank"]
+		myrecord["score"] = entry["score"]
+	view.update_myrecord(myrecord, last_result)
+	SteamAgent.fetch_highscores("default", self, "_on_fetch_highscores")
+
+
+func _on_fetch_highscores(entries):
+	view.update_highscores(entries)

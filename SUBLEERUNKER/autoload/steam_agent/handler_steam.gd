@@ -10,8 +10,6 @@ var current_domain := ""
 
 
 func _ready():
-	Signals.connect("myrank_requested", self, "_on_myrank_requested")
-	Signals.connect("highscores_requested", self, "_on_highscores_requested")
 	Signals.connect("score_upload_requested", self, "_on_score_upload_requested")
 
 
@@ -24,23 +22,23 @@ func _notification(what):
 		Steam.shutdown()
 
 
-func _on_myrank_requested(domain):
+func fetch_myrecord(domain):
 	if current_domain != domain:
 		yield(_select_leaderboard(domain), "completed")
 	var y = _download_leaderboard_entries(0, 0, LeaderboardDataRequest.GlobalAroundUser)
 	var entries = yield(y, "completed")
-	Signals.emit_signal("myrank_responded", entries)
+	return entries
 
 
-func _on_highscores_requested(domain):
+func fetch_highscores(domain):
 	if current_domain != domain:
 		yield(_select_leaderboard(domain), "completed")
 	var y = _download_leaderboard_entries(1, 10, LeaderboardDataRequest.Global)
 	var entries = yield(y, "completed")
-	Signals.emit_signal("highscores_responded", entries)
+	return entries
 
 
-func _on_score_upload_requested(domain, score):
+func upload_score(domain, score):
 	if current_domain != domain:
 		yield(_select_leaderboard(domain), "completed")
 	var keep_best = true
@@ -53,7 +51,7 @@ func _on_score_upload_requested(domain, score):
 		global_rank_new = ret[3],
 		global_rank_previous = ret[4]
 	}
-	Signals.emit_signal("score_upload_responded", result)
+	return result
 
 
 func _select_leaderboard(domain):

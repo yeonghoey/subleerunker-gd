@@ -29,11 +29,11 @@ func _unhandled_input(event):
 
 func _on_fetch_myrecord(entries):
 	myrecord_fetched = true
-	myrecord = {}
+	myrecord = {rank = 0, score = 0}
 	if entries.size() == 1:
 		var entry = entries[0]
-		myrecord["global_rank"] = entry["global_rank"]
 		myrecord["score"] = entry["score"]
+		myrecord["rank"] = entry["global_rank"]
 	view.update_myrecord(myrecord, last_result)
 	SteamAgent.fetch_highscores("default", self, "_on_fetch_highscores")
 

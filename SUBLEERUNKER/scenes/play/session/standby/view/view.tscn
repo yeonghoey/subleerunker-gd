@@ -28,4 +28,4 @@ margin_left = 0.0
 margin_right = 288.0
 margin_bottom = 192.0
 
-[node name="You" parent="TopMargin/TopRows" index="1" instance=ExtResource( 4 )]
+[node name="MyRecord" parent="TopMargin/TopRows" index="1" instance=ExtResource( 4 )]

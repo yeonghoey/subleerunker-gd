@@ -1,14 +1,13 @@
 extends Control
 
 
-onready var highscores = find_node("HighScores")
-onready var myrecord = find_node("MyRecord")
+onready var view_highscores = find_node("HighScores")
+onready var view_myrecord = find_node("MyRecord")
 
 
 func update_highscores(entries):
-	highscores.populate_entries(entries)
+	view_highscores.populate_entries(entries)
 
 
 func update_myrecord(myrecord, last_result):
-	print(myrecord)
-	pass
+	view_myrecord.populate(myrecord, last_result)

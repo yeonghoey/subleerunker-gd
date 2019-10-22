@@ -1,4 +1,17 @@
 extends Node
+"""Wraps GodotSteam.
+
+This class is auto-loaded as SteamAgent.
+
+After Steam.steamInit(), this delegates actual API calls to handlers.
+If Steam.steamInit() fails, SteamAgent instanciates a dummy handler
+so that the whole game can go on without Steam features.
+
+SteamAgent also makes GodotSteam API calls consecutive. In other words,
+this makes only one GodotSteam API call at a time. This is because GodotSteam
+uses the same Godot signals for the same API calls, which may deliver wrong signals to
+wrong handlers if there are two or more same ongoing API calls at a moment.
+"""
 
 var handler: Node
 var tasks := []
@@ -16,7 +29,7 @@ func _ready():
 		add_child(handler)
 
 
-func _process(delta):
+func _process(delta: float):
 	if running:
 		return
 	if tasks.empty():

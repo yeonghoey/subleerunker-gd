@@ -9,10 +9,6 @@ enum LeaderboardDataRequest {
 var current_domain := ""
 
 
-func _ready():
-	Signals.connect("score_upload_requested", self, "_on_score_upload_requested")
-
-
 func _process(delta):
 	Steam.run_callbacks()
 

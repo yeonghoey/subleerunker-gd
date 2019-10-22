@@ -9,7 +9,7 @@ var H
 var score := 0
 var end_score := 0
 var last_result := {}
-var wait_upload := false
+var wait_score_upload := false
 
 var alive := true
 var flamespawn_flip = false
@@ -48,7 +48,7 @@ func _process(delta):
 	"""
 	if alive:
 		return
-	if wait_upload:
+	if wait_score_upload:
 		return
 	if game_objects.get_child_count() > 0:
 		return
@@ -77,7 +77,7 @@ func _connect_signals():
 func _on_hit(player):
 	end_score = score
 	if end_score > myrecord["score"]:
-		wait_upload = true
+		wait_score_upload = true
 		_try_score_upload()
 
 	$AudioBGM.stop()
@@ -104,8 +104,20 @@ func _try_score_upload():
 
 func _on_upload_score(result):
 	if not result["success"]:
-		# TODO: Show a message and wait/retry
-		return
+		var retry_score_upload = preload("retry_score_upload.tscn").instance()
+		retry_score_upload.init(end_score)
+		Signals.connect("retry_score_upload_succeeded", self, "_on_retry_score_upload_succeeded")
+		viewport.add_child(retry_score_upload)
+	else:
+		_finalize_upload_score(result)
+
+
+func _on_retry_score_upload_succeeded(result):
+	_finalize_upload_score(result)
+
+
+func _finalize_upload_score(result):
+	assert result["success"]
 	last_result = {}
 	# NOTE: Because we only try to upload the score when
 	# breaking the record, this is always expected to be true
@@ -116,7 +128,7 @@ func _on_upload_score(result):
 			score_prev = myrecord["score"],
 			score_new = end_score,
 		}
-	wait_upload = false
+	wait_score_upload = false
 
 
 func _try_spawn_flame():

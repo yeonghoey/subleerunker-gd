@@ -1,13 +1,10 @@
 SHELL = /bin/bash
 
+GODOT = godot-steamed/bin/GodotSteamed.app/Contents/MacOS/Godot
 PROJECT = SUBLEERUNKER
 
 ifndef ASEPRITE
 $(error Set ASEPRITE to your Aseprite CLI path.)
-endif
-
-ifndef GODOT
-$(error Set GODOT to your Godot CLI path.)
 endif
 
 # Export groups of sprites into sprite sheets
@@ -28,7 +25,7 @@ unpack: $(SPRITES_UNPACKED) pack
 
 $(PROJECT)/%/unpacked: $(PROJECT)/%/sheet.png $(PROJECT)/%/sheet.png.import $(PROJECT)/%/data.json
 	# Unpack a sprite sheet into AtlasTextures
-	"${GODOT}" \
+	'$(GODOT)' \
 	--path "$(CURDIR)/$(PROJECT)" \
 	--script "cli/unpack.gd" \
 	"--sheet=$*/sheet.png" \

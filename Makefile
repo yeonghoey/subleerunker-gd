@@ -17,11 +17,23 @@ SPRITES_DATA = $(SPRITES:sprites/%=$(PROJECT)/assets/textures/%/data.json)
 SPRITES_UNPACKED = $(SPRITES:sprites/%=$(PROJECT)/assets/textures/%/unpacked)
 
 
-.PHONY: pack unpack icon export release 
+.PHONY: run pack unpack icon canary release 
+
+run:
+	open 'godot-steamed/bin/GodotSteamed.app'
 
 pack:  $(SPRITES_SHEET) $(SPRITES_DATA)
 
 unpack: $(SPRITES_UNPACKED) pack
+
+icon: $(PROJECT)/icon.png misc/icon.ico
+
+canary:
+	python builder/do_canary.py
+
+release:
+	python builder/do_release.py
+
 
 $(PROJECT)/%/unpacked: $(PROJECT)/%/sheet.png $(PROJECT)/%/sheet.png.import $(PROJECT)/%/data.json
 	# Unpack a sprite sheet into AtlasTextures
@@ -33,6 +45,7 @@ $(PROJECT)/%/unpacked: $(PROJECT)/%/sheet.png $(PROJECT)/%/sheet.png.import $(PR
 	"--base=$*"
 	# Mark as unpacked
 	touch '$@'
+
 
 $(PROJECT)/assets/textures/%/sheet.png $(PROJECT)/assets/textures/%/data.json: sprites/%/*.aseprite
 	mkdir -p '$(PROJECT)/assets/textures/$*'
@@ -46,22 +59,16 @@ $(PROJECT)/assets/textures/%/sheet.png $(PROJECT)/assets/textures/%/data.json: s
 	sprites/$*/*.aseprite
 
 
-icon: $(PROJECT)/icon.png misc/icon.ico
-
 $(PROJECT)/icon.png: misc/icon.png
 	cp '$<' '$@'
 
+
 misc/icon.ico: misc/icon.png
 	magick convert '$<' -define icon:auto-resize=256,128,64,48,32,16 '$@'
+
 
 misc/icon.png: misc/icon.aseprite
 	"${ASEPRITE}" \
 	--batch \
 	'$<' \
 	--save-as '$@'
-
-canary:
-	python builder/do_canary.py
-
-release:
-	python builder/do_release.py

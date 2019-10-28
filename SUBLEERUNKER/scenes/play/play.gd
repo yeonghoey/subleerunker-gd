@@ -1,7 +1,5 @@
 extends Control
 
-signal closed
-
 const packed_standby = preload("session/standby/standby.tscn")
 const packed_ingame = preload("session/ingame/ingame.tscn")
 
@@ -17,7 +15,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
-		emit_signal("closed")
+		Signals.emit_signal("scene_play_closed")
 
 
 func _connect_signals():

@@ -8,19 +8,19 @@ signal options_selected
 
 onready var menuitem_play = {
 	label = find_node("MenuItemPlay"), 
-	signal_name = "play_selected",
+	signal_name = "scene_play_selected",
 }
 onready var menuitem_vs = {
 	label = find_node("MenuItemVS"),
-	signal_name = "vs_selected",
+	signal_name = "scene_vs_selected",
 }
 onready var menuitem_achievements = {
 	label = find_node("MenuItemAchievements"),
-	signal_name = "achievements_selected",
+	signal_name = "scene_achievements_selected",
 }
 onready var menuitem_options = {
 	label = find_node("MenuItemOptions"),
-	signal_name = "options_selected",
+	signal_name = "scene_options_selected",
 }
 onready var menu_layout = [
 	[menuitem_play, menuitem_vs],
@@ -60,7 +60,7 @@ func move_selection(ox, oy):
 
 func run_selection():
 	var signal_name = get_current_selection()["signal_name"]
-	emit_signal(signal_name)
+	Signals.emit_signal(signal_name)
 
 
 func get_current_selection() -> Dictionary:

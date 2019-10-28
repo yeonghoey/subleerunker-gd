@@ -1,73 +1,33 @@
 extends Node
 
-
-onready var intro = preload("res://scenes/intro/intro.tscn").instance()
-onready var title = preload("res://scenes/title/title.tscn").instance()
-onready var play = preload("res://scenes/play/play.tscn").instance()
-onready var vs = preload("res://scenes/vs/vs.tscn").instance()
-onready var achievements = preload("res://scenes/achievements/achievements.tscn").instance()
-onready var options = preload("res://scenes/options/options.tscn").instance()
+onready var _scenes = {
+	"intro": preload("res://scenes/intro/intro.tscn").instance(),
+	"title": preload("res://scenes/title/title.tscn").instance(),
+	"play": preload("res://scenes/play/play.tscn").instance(),
+	"vs": preload("res://scenes/vs/vs.tscn").instance(),
+	"achievements": preload("res://scenes/achievements/achievements.tscn").instance(),
+	"options": preload("res://scenes/options/options.tscn").instance(),
+}
 
 
 func _ready():
 	# Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	connect_signals()
-	add_child(intro)
+	_connect_signals()
+	add_child(_scenes["intro"])
 
 
-func connect_signals():
-	intro.connect("ended", self, "on_intro_ended")
-	title.connect("play_selected", self, "on_title_play_selected")
-	title.connect("vs_selected", self, "on_title_vs_selected")
-	title.connect("achievements_selected", self, "on_title_achievements_selected")
-	title.connect("options_selected", self, "on_title_options_selected")
-	
-	play.connect("closed", self, "on_play_closed")
-	vs.connect("closed", self, "on_vs_closed")
-	achievements.connect("closed", self, "on_achievements_closed")
-	options.connect("closed", self, "on_options_closed")
+func _connect_signals():
+	Signals.connect("scene_intro_ended", self, "_transit", ["intro", "title"])
+	Signals.connect("scene_play_selected", self, "_transit", ["title", "play"])
+	Signals.connect("scene_vs_selected", self, "_transit", ["title", "vs"])
+	Signals.connect("scene_achievements_selected", self, "_transit", ["title", "achievements"])
+	Signals.connect("scene_options_selected", self, "_transit", ["title", "options"])
+	Signals.connect("scene_play_closed", self, "_transit", ["play", "title"])
+	Signals.connect("scene_vs_closed", self, "_transit", ["vs", "title"])
+	Signals.connect("scene_achievements_closed", self, "_transit", ["achievements", "title"])
+	Signals.connect("scene_options_closed", self, "_transit", ["options", "title"])
 
 
-func on_intro_ended():
-	remove_child(intro)
-	add_child(title)
-
-
-func on_title_play_selected():
-	remove_child(title)
-	add_child(play)
-
-
-func on_title_vs_selected():
-	remove_child(title)
-	add_child(vs)
-
-
-func on_title_achievements_selected():
-	remove_child(title)
-	add_child(achievements)
-
-
-func on_title_options_selected():
-	remove_child(title)
-	add_child(options)
-
-
-func on_play_closed():
-	remove_child(play)
-	add_child(title)
-
-
-func on_vs_closed():
-	remove_child(vs)
-	add_child(title)
-
-
-func on_achievements_closed():
-	remove_child(achievements)
-	add_child(title)
-
-
-func on_options_closed():
-	remove_child(options)
-	add_child(title)
+func _transit(from: String, to: String):
+	remove_child(_scenes[from])
+	add_child(_scenes[to])

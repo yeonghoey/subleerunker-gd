@@ -1,16 +1,13 @@
 extends Control
 
 
-signal ended
-
-
 func _unhandled_input(event):
-	end()
+	_end()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	end()
+	_end()
 
 
-func end():
-	emit_signal("ended")
+func _end():
+	Signals.emit_signal("scene_intro_ended")

@@ -11,7 +11,6 @@ onready var _scenes = {
 
 
 func _ready():
-	# Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	_connect_signals()
 	add_child(_scenes["intro"])
 

@@ -40,3 +40,4 @@ shape = SubResource( 2 )
 stream = ExtResource( 9 )
 volume_db = -4.0
 autoplay = true
+bus = "Sound"

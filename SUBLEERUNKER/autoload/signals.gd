@@ -11,6 +11,14 @@ signal scene_vs_closed()
 signal scene_achievements_closed()
 signal scene_options_closed()
 
+# Options
+signal option_get_requested(key)
+signal option_set_requested(key, value)
+signal option_fullscreen_updated(value)
+signal option_hidecursor_updated(value)
+signal option_music_updated(value)
+signal option_sound_updated(value)
+
 signal domain_changed(name)
 signal started(best_score)
 signal landed(flame)

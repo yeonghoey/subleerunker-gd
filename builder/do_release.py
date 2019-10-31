@@ -6,6 +6,7 @@ import utils
 
 
 utils.main([
+    prepare.prompt_build_description,
     prepare.params,
 
     osx.params,

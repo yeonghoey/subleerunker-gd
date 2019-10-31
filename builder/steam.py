@@ -28,6 +28,7 @@ def params(ctx):
 @step
 def generate_app_vdf(ctx):
     build_id = ctx['build_id']
+    build_description = ctx['build_description']
     steam_appid = ctx['steam_appid']
     steam_depotid_osx = ctx['steam_depotid_osx']
     steam_depotid_win = ctx['steam_depotid_win']
@@ -43,7 +44,7 @@ def generate_app_vdf(ctx):
         "appbuild"
         {{
             "appid"       "{steam_appid}"
-            "desc"        "Build {build_id}"
+            "desc"        "Build {build_id}: {build_description}"
             "buildoutput" "./output/"
             "setlive"     ""
             "preview"     "0"

@@ -36,3 +36,12 @@ def issue_build_id():
     kst = timezone(timedelta(hours=9))
     now = datetime.now(kst)
     return now.strftime('%Y%m%d-%H%M%S')
+
+
+@step
+def prompt_build_description(ctx):
+    build_description = input('Build description: ')
+    if '"' in build_description:
+        raise ValueError(
+            "Steamworks build script doesn't allow putting double quotes")
+    ctx['build_description'] = build_description

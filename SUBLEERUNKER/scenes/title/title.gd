@@ -1,67 +1,61 @@
 extends Control
 
-signal play_selected
-signal vs_selected
-signal achievements_selected
-signal options_selected
-
-
-onready var menuitem_play = {
-	label = find_node("MenuItemPlay"), 
-	signal_name = "scene_play_selected",
-}
-onready var menuitem_vs = {
-	label = find_node("MenuItemVS"),
-	signal_name = "scene_vs_selected",
-}
-onready var menuitem_achievements = {
-	label = find_node("MenuItemAchievements"),
-	signal_name = "scene_achievements_selected",
-}
-onready var menuitem_options = {
-	label = find_node("MenuItemOptions"),
-	signal_name = "scene_options_selected",
-}
-onready var menu_layout = [
-	[menuitem_play, menuitem_vs],
-	[menuitem_achievements, menuitem_achievements],
-	[menuitem_options, menuitem_options],
+const _menu_labels = {}
+const _menu_layout = [
+	['play', 'vs'],
+	['achievements', 'achievements'],
+	['options', 'options'],
 ]
 
-var sel_x := 0
-var sel_y := 0
-var sel_style = preload("res://scenes/title/selection.tres")
-var sel_empty = StyleBoxEmpty.new()
+var _sel_x := 0
+var _sel_y := 0
+var _sel_style = preload("res://scenes/title/selection.tres")
+var _sel_empty = StyleBoxEmpty.new()
 
 
 func _ready():
-	move_selection(0, 0)
+	for label in get_tree().get_nodes_in_group("TitleMenuItems"):
+		assert label is Label
+		var key = label.name.to_lower()
+		_menu_labels[key] = label
+	_move_selection(0, 0)
 
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_up"):
-		move_selection(0, -1)
+		_move_selection(0, -1)
 	if event.is_action_pressed("ui_right"):
-		move_selection(1, 0)
+		_move_selection(1, 0)
 	if event.is_action_pressed("ui_down"):
-		move_selection(0, 1)
+		_move_selection(0, 1)
 	if event.is_action_pressed("ui_left"):
-		move_selection(-1, 0)
+		_move_selection(-1, 0)
 	if event.is_action_pressed("ui_accept"):
-		run_selection()
+		_run_selection()
 
 
-func move_selection(ox, oy):
-	get_current_selection()["label"].add_stylebox_override("normal", sel_empty)
-	sel_y = int(clamp(sel_y + oy, 0, menu_layout.size()-1))
-	sel_x = int(clamp(sel_x + ox, 0, menu_layout[sel_y].size()-1))
-	get_current_selection()["label"].add_stylebox_override("normal", sel_style)
+func _move_selection(ox, oy):
+	_deselect(_get_current_selection())
+	_sel_y = int(clamp(_sel_y + oy, 0, _menu_layout.size()-1))
+	_sel_x = int(clamp(_sel_x + ox, 0, _menu_layout[_sel_y].size()-1))
+	_select(_get_current_selection())
 
 
-func run_selection():
-	var signal_name = get_current_selection()["signal_name"]
+func _deselect(key: String):
+	var label = _menu_labels[key]
+	label.add_stylebox_override("normal", _sel_empty)
+
+
+func _select(key: String):
+	var label = _menu_labels[key]
+	label.add_stylebox_override("normal", _sel_style)
+
+
+func _run_selection():
+	var key = _get_current_selection()
+	var signal_name = "scene_%s_selected" % key
 	Signals.emit_signal(signal_name)
 
 
-func get_current_selection() -> Dictionary:
-	return menu_layout[sel_y][sel_x]
+func _get_current_selection() -> String:
+	return _menu_layout[_sel_y][_sel_x]

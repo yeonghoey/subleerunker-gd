@@ -85,7 +85,7 @@ theme = SubResource( 3 )
 custom_constants/separation = 32
 alignment = 1
 
-[node name="MenuItemPlay" type="Label" parent="MarginContainer/VBoxContainer/Menu/MarginContainer/HBoxContainer" groups=[
+[node name="Play" type="Label" parent="MarginContainer/VBoxContainer/Menu/MarginContainer/HBoxContainer" groups=[
 "TitleMenuItems",
 ]]
 margin_left = 364.0
@@ -96,7 +96,7 @@ text = "Play"
 align = 1
 valign = 1
 
-[node name="MenuItemVS" type="Label" parent="MarginContainer/VBoxContainer/Menu/MarginContainer/HBoxContainer" groups=[
+[node name="VS" type="Label" parent="MarginContainer/VBoxContainer/Menu/MarginContainer/HBoxContainer" groups=[
 "TitleMenuItems",
 ]]
 margin_left = 524.0
@@ -114,7 +114,7 @@ margin_bottom = 124.0
 theme = SubResource( 5 )
 custom_constants/separation = 12
 
-[node name="MenuItemAchievements" type="Label" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer" groups=[
+[node name="Achievements" type="Label" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer" groups=[
 "TitleMenuItems",
 ]]
 margin_left = 384.0
@@ -125,7 +125,7 @@ text = "Achievements"
 align = 1
 valign = 1
 
-[node name="MenuItemOptions" type="Label" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer" groups=[
+[node name="Options" type="Label" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer" groups=[
 "TitleMenuItems",
 ]]
 margin_left = 424.0

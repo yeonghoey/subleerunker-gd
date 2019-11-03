@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/play/play.gd" type="Script" id=1]
-[ext_resource path="res://scenes/play/ui/score.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/play/ui/indicator.tscn" type="PackedScene" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.65098, 0.698039, 0.694118, 1 )
@@ -49,4 +49,8 @@ disable_3d = true
 usage = 0
 render_target_update_mode = 3
 
-[node name="Score" parent="." instance=ExtResource( 2 )]
+[node name="Indicator" parent="." instance=ExtResource( 2 )]
+margin_left = 654.0
+margin_top = 28.0
+margin_right = -178.0
+margin_bottom = 80.0

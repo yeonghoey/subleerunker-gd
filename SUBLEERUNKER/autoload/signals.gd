@@ -19,12 +19,16 @@ signal option_hidecursor_updated(value)
 signal option_music_updated(value)
 signal option_sound_updated(value)
 
+# Game related signals
+# TODO: Refactor signals; eg) Put "game_" prefix.
 signal domain_changed(name)
 signal started(best_score)
 signal landed(flame)
-signal scored(score)
+signal scored(score, n_combo)
 signal hit(player)
 signal ended(result)
 signal top_changed(name, score)
+signal game_combo_succeeded(combo)
+signal game_combo_failed(combo)
 
 signal retry_score_upload_succeeded(result)

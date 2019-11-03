@@ -15,6 +15,12 @@ var alive := true
 var flamespawn_flip = false
 var flamespawn_threshold = 0.25
 
+var combo_exists = false
+const COMBO_COOLTIME_MIN := 0.75
+const COMBO_COOLTIME_MAX := 1.5
+var combo_cooltime := 0.0
+var n_combo := 0
+
 var game_objects: Node
 var player: Node
 var controller: Node
@@ -31,7 +37,8 @@ func _ready():
 	viewport.add_child(game_objects)
 	_init_player()
 	_connect_signals()
-	Signals.emit_signal("scored", score)
+	# Init
+	Signals.emit_signal("scored", score, n_combo)
 
 
 func _process(delta):
@@ -59,6 +66,7 @@ func _process(delta):
 func _physics_process(delta):
 	if alive:
 		_try_spawn_flame()
+		_try_place_combo(delta)
 
 
 func _init_player():
@@ -72,6 +80,8 @@ func _init_player():
 func _connect_signals():
 	Signals.connect("hit", self, "_on_hit")
 	Signals.connect("landed", self, "_on_landed")
+	Signals.connect("game_combo_succeeded", self, "_on_game_combo_succeeded")
+	Signals.connect("game_combo_failed", self, "_on_game_combo_failed")
 
 
 func _on_hit(player):
@@ -94,8 +104,8 @@ func _on_landed(flame):
 	land.position = flame.position
 	game_objects.add_child(land)
 	if alive:
-		score += 1
-		Signals.emit_signal("scored", score)
+		score += n_combo
+		Signals.emit_signal("scored", score, n_combo)
 
 
 func _try_score_upload():
@@ -142,3 +152,39 @@ func _try_spawn_flame():
 		flame.position = Vector2(x, -flame.H)
 		game_objects.add_child(flame)
 	flamespawn_threshold *= 1.001;
+
+
+func _try_place_combo(delta):
+	if combo_exists:
+		return
+	
+	if combo_cooltime > 0:
+		combo_cooltime = max(combo_cooltime - delta, 0)
+		return
+
+	var combo = preload("res://game/combo/default/combo.tscn").instance()
+	var x = (W - combo.W*2) * randf() + combo.W
+	combo.position = Vector2(x, H - combo.H)
+	game_objects.add_child(combo)
+	combo_exists = true
+
+
+func _on_game_combo_succeeded(combo):
+	n_combo += 1
+	var combo_effect = preload("res://game/combo_effect/default/combo_effect.tscn").instance()
+	combo_effect.init(n_combo)
+	combo_effect.position = combo.position
+	game_objects.add_child(combo_effect)
+	combo_cooltime = _next_combo_cooltime()
+	combo_exists = false
+
+
+func _on_game_combo_failed(combo):
+	n_combo = 0
+	combo_cooltime = _next_combo_cooltime()
+	combo_exists = false
+
+
+func _next_combo_cooltime():
+	var r = COMBO_COOLTIME_MAX - COMBO_COOLTIME_MIN
+	return COMBO_COOLTIME_MIN + (r * randf())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://game/player/default/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/default/player_run/00.tres" type="Texture" id=2]
@@ -234,6 +234,9 @@ extents = Vector2( 24, 36 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 6, 6 )
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 16, 4 )
+
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
@@ -263,7 +266,6 @@ shape = SubResource( 6 )
 
 [node name="Head" type="Area2D" parent="."]
 editor/display_folded = true
-visible = false
 collision_layer = 2
 collision_mask = 4
 
@@ -277,3 +279,11 @@ __meta__ = {
 [node name="AudioRun" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 32 )
 bus = "Sound"
+
+[node name="Feet" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Feet"]
+position = Vector2( 0.140884, 29.0184 )
+shape = SubResource( 8 )

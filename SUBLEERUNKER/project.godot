@@ -115,6 +115,8 @@ ui_down={
 2d_physics/layer_3="flame"
 2d_physics/layer_4="wall"
 2d_physics/layer_5="floor"
+2d_physics/layer_6="combo"
+2d_physics/layer_7="feet"
 
 [rendering]
 

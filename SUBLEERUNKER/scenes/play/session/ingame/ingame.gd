@@ -38,7 +38,7 @@ func _ready():
 	_init_player()
 	_connect_signals()
 	# Init
-	Signals.emit_signal("scored", score, n_combo)
+	Signals.emit_signal("scored", score)
 
 
 func _process(delta):
@@ -105,7 +105,7 @@ func _on_landed(flame):
 	game_objects.add_child(land)
 	if alive:
 		score += n_combo
-		Signals.emit_signal("scored", score, n_combo)
+		Signals.emit_signal("scored", score)
 
 
 func _try_score_upload():
@@ -171,6 +171,8 @@ func _try_place_combo(delta):
 
 func _on_game_combo_succeeded(combo):
 	n_combo += 1
+	Signals.emit_signal("game_combo_updated", n_combo)
+
 	var combo_effect = preload("res://game/combo_effect/default/combo_effect.tscn").instance()
 	combo_effect.init(n_combo)
 	combo_effect.position = combo.position
@@ -181,6 +183,8 @@ func _on_game_combo_succeeded(combo):
 
 func _on_game_combo_failed(combo):
 	n_combo = 0
+	Signals.emit_signal("game_combo_updated", n_combo)
+
 	combo_cooltime = _next_combo_cooltime()
 	combo_exists = false
 

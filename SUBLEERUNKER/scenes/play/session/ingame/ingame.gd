@@ -19,7 +19,8 @@ var combo_exists = false
 const COMBO_COOLTIME_MIN := 0.75
 const COMBO_COOLTIME_MAX := 1.5
 var combo_cooltime := 0.0
-var n_combo := 0
+const N_COMBO_BASE := 1
+var n_combo := N_COMBO_BASE
 
 var game_objects: Node
 var player: Node
@@ -39,6 +40,7 @@ func _ready():
 	_connect_signals()
 	# Init
 	Signals.emit_signal("scored", score)
+	Signals.emit_signal("game_combo_updated", n_combo)
 
 
 func _process(delta):
@@ -182,7 +184,7 @@ func _on_game_combo_succeeded(combo):
 
 
 func _on_game_combo_failed(combo):
-	n_combo = 0
+	n_combo = N_COMBO_BASE
 	Signals.emit_signal("game_combo_updated", n_combo)
 
 	combo_cooltime = _next_combo_cooltime()

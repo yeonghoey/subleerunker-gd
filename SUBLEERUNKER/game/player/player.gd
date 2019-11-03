@@ -9,8 +9,17 @@ enum {ACTION_IDLE, ACTION_LEFT, ACTION_RIGHT}
 var action = ACTION_IDLE
 var turning = false
 
+
+func _enter_tree():
+	# NOTE: Add controller for testing if ran by itself
+	if get_parent() == get_node("/root"):
+		var controller = load("res://scenes/play/session/ingame/controller.gd").new(self)
+		add_child(controller)
+
+
 func _ready():
 	$Head.connect("body_entered", self, "_on_Head_body_entered")
+	$Feet.connect("area_entered", self, "_on_Feet_area_entered")
 
 
 func _process(delta):
@@ -82,3 +91,7 @@ func _max_velocity() -> float:
 
 func _on_Head_body_entered(body):
 	Signals.emit_signal("hit", self)
+
+
+func _on_Feet_area_entered(area):
+	Signals.emit_signal("game_combo_succeeded", area)

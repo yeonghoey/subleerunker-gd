@@ -1,3 +1,4 @@
+import git
 import prepare
 import osx
 import win
@@ -5,7 +6,9 @@ import steam
 import utils
 
 
-utils.main([
+utils.main(stage='release', steps=[
+    git.assert_repo_is_clean,
+
     prepare.prompt_build_description,
     prepare.params,
 
@@ -29,4 +32,6 @@ utils.main([
     steam.generate_depot_osx_vdf,
     steam.generate_depot_win_vdf,
     steam.deploy,
+
+    git.publish_tag,
 ])

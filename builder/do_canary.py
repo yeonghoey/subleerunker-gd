@@ -5,7 +5,7 @@ import steam
 import utils
 
 
-utils.main([
+utils.main(stage='canary', steps=[
     prepare.params,
 
     osx.params,

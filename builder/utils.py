@@ -6,8 +6,8 @@ import sys
 import textwrap
 
 
-def main(steps):
-    ctx = {}
+def main(stage, steps):
+    ctx = {'stage': stage}
     try:
         for f in steps:
             f(ctx)

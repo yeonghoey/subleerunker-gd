@@ -33,8 +33,7 @@ def params(ctx):
 
 
 def issue_build_id():
-    kst = timezone(timedelta(hours=9))
-    now = datetime.now(kst)
+    now = datetime.utcnow()
     return now.strftime('%Y%m%d-%H%M%S')
 
 

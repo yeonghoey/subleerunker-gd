@@ -19,7 +19,8 @@ var combo_exists = false
 const COMBO_COOLTIME_MIN := 0.75
 const COMBO_COOLTIME_MAX := 1.5
 var combo_cooltime := 0.0
-const N_COMBO_BASE := 1
+const N_COMBO_BASE := 0
+const N_COMBO_MAX := 4
 var n_combo := N_COMBO_BASE
 
 var game_objects: Node
@@ -173,7 +174,9 @@ func _try_place_combo(delta):
 
 
 func _on_game_combo_succeeded(combo):
-	n_combo += 1
+	n_combo = (
+		n_combo + 1 if n_combo < N_COMBO_MAX else 
+		N_COMBO_MAX)
 	Signals.emit_signal("game_combo_updated", n_combo)
 
 	var combo_effect = preload("res://game/combo_effect/default/combo_effect.tscn").instance()

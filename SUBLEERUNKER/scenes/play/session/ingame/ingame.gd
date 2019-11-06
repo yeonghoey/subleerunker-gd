@@ -41,6 +41,7 @@ func _ready():
 	# Init
 	Signals.emit_signal("scored", score)
 	Signals.emit_signal("game_combo_updated", n_combo)
+	combo_cooltime = _next_combo_cooltime()
 
 
 func _process(delta):

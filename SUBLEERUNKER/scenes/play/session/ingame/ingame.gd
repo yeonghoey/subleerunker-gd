@@ -188,11 +188,12 @@ func _on_game_combo_succeeded(combo):
 
 
 func _on_game_combo_failed(combo):
-	n_combo = N_COMBO_MIN
-	Signals.emit_signal("game_combo_updated", n_combo)
-
 	combo_cooltime = _next_combo_cooltime()
 	combo_exists = false
+
+	if alive:
+		n_combo = N_COMBO_MIN
+		Signals.emit_signal("game_combo_updated", n_combo)
 
 
 func _next_combo_cooltime():

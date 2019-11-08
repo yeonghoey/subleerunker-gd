@@ -12,16 +12,17 @@ var last_result := {}
 var wait_score_upload := false
 
 var alive := true
-var flamespawn_flip = false
-var flamespawn_threshold = 0.25
+var flamespawn_per_sec = 5
+var flamespawn_increase_speed_per_sec = 0.0
+var flamespawn_increase_accel_per_sec = 0.005
 
 var combo_exists = false
 const COMBO_COOLTIME_MIN := 0.75
 const COMBO_COOLTIME_MAX := 1.5
 var combo_cooltime := 0.0
-const N_COMBO_BASE := 0
-const N_COMBO_MAX := 4
-var n_combo := N_COMBO_BASE
+const N_COMBO_MIN := 1
+const N_COMBO_MAX := 99
+var n_combo := N_COMBO_MIN
 
 var game_objects: Node
 var player: Node
@@ -69,7 +70,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if alive:
-		_try_spawn_flame()
+		_try_spawn_flame(delta)
 		_try_place_combo(delta)
 
 
@@ -145,17 +146,16 @@ func _finalize_upload_score(result):
 	wait_score_upload = false
 
 
-func _try_spawn_flame():
-	flamespawn_flip = not flamespawn_flip
-	if not flamespawn_flip:
-		return
+func _try_spawn_flame(delta: float):
+	flamespawn_increase_speed_per_sec += flamespawn_increase_accel_per_sec * delta
+	flamespawn_per_sec += flamespawn_increase_speed_per_sec * delta
 
-	if randf() < flamespawn_threshold:
+	var threshold = flamespawn_per_sec * delta
+	if randf() < threshold:
 		var flame = preload("res://game/flame/default/flame.tscn").instance()
 		var x = (W - flame.W*2) * randf() + flame.W
 		flame.position = Vector2(x, -flame.H)
 		game_objects.add_child(flame)
-	flamespawn_threshold *= 1.001;
 
 
 func _try_place_combo(delta):
@@ -188,7 +188,7 @@ func _on_game_combo_succeeded(combo):
 
 
 func _on_game_combo_failed(combo):
-	n_combo = N_COMBO_BASE
+	n_combo = N_COMBO_MIN
 	Signals.emit_signal("game_combo_updated", n_combo)
 
 	combo_cooltime = _next_combo_cooltime()

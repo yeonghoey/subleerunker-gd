@@ -1,12 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/play/session/ingame/ingame.gd" type="Script" id=1]
-[ext_resource path="res://assets/music/stage/default.wav" type="AudioStream" id=2]
+[ext_resource path="res://game/bgm/default/bgm.tscn" type="PackedScene" id=2]
 
 [node name="SessionPlay" type="Node"]
 script = ExtResource( 1 )
 
-[node name="AudioBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-autoplay = true
-bus = "Music"
+[node name="BGM" parent="." instance=ExtResource( 2 )]

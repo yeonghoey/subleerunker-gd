@@ -3,6 +3,12 @@ extends Mover
 const W := 24.0
 const H := 16.0
 
+var _px := "p1"
+
+
+func init(px: String):
+	_px = px
+
 
 func _ready():
 	$AnimatedSprite.play("default")
@@ -13,7 +19,7 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity)
 	if collision:
 		if collision.collider.is_in_group("Floor"):
-			Signals.emit_signal("landed", self)
+			Signals.emit_signal("landed", _px, self)
 			queue_free()
 
 

@@ -23,7 +23,7 @@ signal option_sound_updated(value)
 # TODO: Refactor signals; eg) Put "game_" prefix.
 signal domain_changed(name)
 signal started(best_score)
-signal landed(flame)
+signal landed(px, flame)
 signal scored(score)
 signal hit(px, player)
 signal ended(result)

@@ -33,3 +33,6 @@ signal game_combo_failed(combo)
 signal game_combo_updated(n_combo)
 
 signal retry_score_upload_succeeded(result)
+
+signal scene_vs_game_started()
+signal scene_vs_game_ended()

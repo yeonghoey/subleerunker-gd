@@ -2,7 +2,8 @@ extends Control
 
 
 func _unhandled_input(event):
-	_end()
+	if event.is_pressed():
+		_end()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

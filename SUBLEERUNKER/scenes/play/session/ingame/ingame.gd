@@ -89,7 +89,7 @@ func _connect_signals():
 	Signals.connect("game_combo_failed", self, "_on_game_combo_failed")
 
 
-func _on_hit(player):
+func _on_hit(px, player):
 	end_score = score
 	if end_score > myrecord["score"]:
 		wait_score_upload = true

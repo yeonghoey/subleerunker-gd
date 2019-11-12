@@ -4,10 +4,16 @@ const W := 48.0
 const H := 72.0
 const FORCE := 60.0
 
+var _px := "p1"
+
 enum {ACTION_IDLE, ACTION_LEFT, ACTION_RIGHT}
 
 var action = ACTION_IDLE
 var turning = false
+
+
+func init(px: String):
+	_px = px
 
 
 func _enter_tree():
@@ -90,7 +96,7 @@ func _max_velocity() -> float:
 
 
 func _on_Head_body_entered(body):
-	Signals.emit_signal("hit", self)
+	Signals.emit_signal("hit", _px, self)
 
 
 func _on_Feet_area_entered(area):

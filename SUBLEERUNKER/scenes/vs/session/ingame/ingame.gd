@@ -133,6 +133,7 @@ func _process(delta):
 		if gameobject_group.get_child_count() > 0:
 			return
 	Signals.emit_signal("scene_vs_game_ended")
+	set_process(false)
 	_cleanup()
 
 

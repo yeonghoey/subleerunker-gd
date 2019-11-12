@@ -1,9 +1,10 @@
 extends Control
 
 const _packed_standby = preload("session/standby/standby.tscn")
+const _packed_ingame = preload("session/ingame/ingame.tscn")
 
-onready var _p1_view = find_node("P1").find_node("Viewport")
-onready var _p2_view = find_node("P2").find_node("Viewport")
+onready var _viewport_p1 = find_node("P1").find_node("Viewport")
+onready var _viewport_p2 = find_node("P2").find_node("Viewport")
 
 
 func _ready():
@@ -21,7 +22,9 @@ func _on_scene_vs_game_started():
 
 
 func _start_game():
-	pass
+	var ingame = _packed_ingame.instance()
+	ingame.init({"p1": _viewport_p1, "p2": _viewport_p2})
+	add_child(ingame)
 
 
 func _on_scene_vs_game_ended():
@@ -30,7 +33,7 @@ func _on_scene_vs_game_ended():
 
 func _standby_game():
 	var standby = _packed_standby.instance()
-	standby.init(_p1_view, _p2_view)
+	standby.init(_viewport_p1, _viewport_p2)
 	add_child(standby)
 
 

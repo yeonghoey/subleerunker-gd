@@ -89,13 +89,12 @@ func _connect_signals():
 	Signals.connect("game_combo_failed", self, "_on_game_combo_failed")
 
 
-func _on_hit(player):
+func _on_hit(px, player):
 	end_score = score
 	if end_score > myrecord["score"]:
 		wait_score_upload = true
 		_try_score_upload()
 
-	$AudioBGM.stop()
 	controller.queue_free()
 	player.queue_free()
 	alive = false
@@ -104,7 +103,7 @@ func _on_hit(player):
 	game_objects.add_child(die)
 
 
-func _on_landed(flame):
+func _on_landed(px, flame):
 	var land := preload("res://game/flame_land/default/flame_land.tscn").instance()
 	land.position = flame.position
 	game_objects.add_child(land)

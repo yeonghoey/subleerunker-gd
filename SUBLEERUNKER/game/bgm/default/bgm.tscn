@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/music/stage/default.wav" type="AudioStream" id=1]
+[ext_resource path="res://game/bgm/bgm.gd" type="Script" id=2]
+
+[node name="BGM" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "Music"
+script = ExtResource( 2 )

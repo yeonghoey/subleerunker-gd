@@ -8,8 +8,13 @@ func init(player_num: int):
 
 
 func _ready():
-	var label = find_node("Label")
-	label.text = "PLAYER %d" % _player_num
+	var label_player = find_node("Player")
+	label_player.text = "PLAYER %d" % _player_num
+	var label_presskey = find_node("PressKey")
+	if _player_num == 1:
+		label_presskey.text = "Press [A] or [D]"
+	else:
+		label_presskey.text = "Press [<] or [>]"
 	_connect_signals()
 
 

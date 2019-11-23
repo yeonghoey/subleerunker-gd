@@ -3,3 +3,6 @@
 
 # Mono-specific ignores
 .mono/
+
+# SUBLEERUNKER specific ignores
+/build_id.gd

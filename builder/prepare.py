@@ -44,3 +44,23 @@ def prompt_build_description(ctx):
         raise ValueError(
             "Steamworks build script doesn't allow putting double quotes")
     ctx['build_description'] = build_description
+
+
+@step
+def create_build_id_dump(ctx):
+    build_id = ctx['build_id']
+    godot_project = ctx['godot_project']
+
+    build_id_dump = f'{godot_project}/build_id.gd'
+    build_id_dump_content = f'const VALUE = "{build_id}"'
+    with open(build_id_dump, 'wt') as f:
+        f.write(build_id_dump_content)
+
+    ctx['build_id_dump'] = build_id_dump
+    ctx['build_id_dump_content'] = build_id_dump_content
+
+
+@step
+def delete_build_id_dump(ctx):
+    build_id_dump = ctx['build_id_dump']
+    run(f"rm -f '{build_id_dump}'")

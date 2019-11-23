@@ -7,6 +7,7 @@ import utils
 
 utils.main(stage='canary', steps=[
     prepare.params,
+    prepare.create_build_id_dump,
 
     osx.params,
     osx.export_dmg,
@@ -21,4 +22,6 @@ utils.main(stage='canary', steps=[
     steam.params,
     osx.add_steam_appid_txt,
     win.add_steam_appid_txt,
+
+    prepare.delete_build_id_dump
 ])

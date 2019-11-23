@@ -11,6 +11,7 @@ utils.main(stage='release', steps=[
 
     prepare.prompt_build_description,
     prepare.params,
+    prepare.create_build_id_dump,
 
     osx.params,
     osx.export_dmg,
@@ -33,5 +34,6 @@ utils.main(stage='release', steps=[
     steam.generate_depot_win_vdf,
     steam.deploy,
 
+    prepare.delete_build_id_dump
     git.publish_tag,
 ])

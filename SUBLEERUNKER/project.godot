@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Factory",
+"language": "GDScript",
+"path": "res://factory/factory.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Mover",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://classes/utils.gd"
 } ]
 _global_script_class_icons={
+"Factory": "",
 "Mover": "",
 "Utils": ""
 }

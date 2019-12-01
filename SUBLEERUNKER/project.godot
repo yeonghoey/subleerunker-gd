@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Mover",
 "language": "GDScript",
-"path": "res://classes/mover.gd"
+"path": "res://game/mover/mover.gd"
 }, {
 "base": "Reference",
 "class": "Utils",

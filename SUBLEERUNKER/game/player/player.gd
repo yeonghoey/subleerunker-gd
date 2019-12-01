@@ -2,7 +2,7 @@ extends Mover
 
 const W := 48.0
 const H := 72.0
-const FORCE := 60.0
+const FORCE := 3600.0
 
 var _px := "p1"
 
@@ -68,9 +68,8 @@ func update_animation():
 			$AnimationPlayer.play("player_run_right")
 
 
-func _physics_process(delta):
-	update_velocity()
-	move_and_slide(velocity)
+func _physics_process(delta: float):
+	move(delta)
 
 
 func _acceleration() -> Vector2:
@@ -91,7 +90,7 @@ func _friction() -> float:
 			return 0.0
 
 
-func _max_velocity() -> float:
+func _max_speed() -> float:
 	return 300.0
 
 

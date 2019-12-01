@@ -75,21 +75,23 @@ func _physics_process(delta):
 
 
 func _init_player():
-	player = preload("res://game/player/default/player.tscn").instance()
-	player.position = Vector2(W/2, H-player.H/2)
+	player = preload("res://game/hero/sublee.tscn").instance()
+	player.position = Vector2(W/2, H-player.height/2)
 	controller = preload("controller.gd").new(player)
 	game_objects.add_child(player)
 	add_child(controller)
 
 
 func _connect_signals():
-	Signals.connect("hit", self, "_on_hit")
+	player.connect("hit", self, "_on_hit")
+	player.connect("pedaled", self, "_on_pedaled")
 	Signals.connect("landed", self, "_on_landed")
-	Signals.connect("game_combo_succeeded", self, "_on_game_combo_succeeded")
+
 	Signals.connect("game_combo_failed", self, "_on_game_combo_failed")
 
 
-func _on_hit(px, player):
+func _on_hit(head, drop):
+	Signals.emit_signal("hit", "p1", player)
 	end_score = score
 	if end_score > myrecord["score"]:
 		wait_score_upload = true
@@ -172,7 +174,8 @@ func _try_place_combo(delta):
 	combo_exists = true
 
 
-func _on_game_combo_succeeded(combo):
+func _on_pedaled(feet, pedal):
+	Signals.emit_signal("game_combo_succeeded", pedal)
 	n_combo = (
 		n_combo + 1 if n_combo < N_COMBO_MAX else 
 		N_COMBO_MAX)
@@ -180,7 +183,7 @@ func _on_game_combo_succeeded(combo):
 
 	var combo_effect = preload("res://game/combo_effect/default/combo_effect.tscn").instance()
 	combo_effect.init(n_combo)
-	combo_effect.position = combo.position
+	combo_effect.position = pedal.position
 	game_objects.add_child(combo_effect)
 	combo_cooltime = _next_combo_cooltime()
 	combo_exists = false

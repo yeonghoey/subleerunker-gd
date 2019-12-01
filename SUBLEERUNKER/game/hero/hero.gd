@@ -1,34 +1,60 @@
 extends Mover
 
+class_name Hero
+"""Hero is a base class for the player character.
+
+Hero has 8 parameters:
+	- width: of desired ingame size
+	- height: of desired ingame size
+	- head_path: NodePath to Area2D (for hit)
+	- feet_path: NodePath to Area2D (for pedaled)
+	- animation_player_path: NodePath to AnimationPlayer
+		- The AnimationPlayer should contain animations named 'idle', 'left', right'
+	For Mover implementation,
+	- acceleration_amount: float
+	- friction_amount: float
+	- max_speed: float
+
+Hero emits three signals:
+	- action_changed
+	- hit
+	- pedaled
+"""
+
 enum {
 	ACTION_REST, 
 	ACTION_LEFT,
 	ACTION_RIGHT,
 }
 
+# Ingame size
+export(float) var width
+export(float) var height
+
 # These should be Area2D
 export(NodePath) var head_path
 export(NodePath) var feet_path
-
 # AnimationPlayer should contain animations named "idle", "left", "right"
 export(NodePath) var animation_player_path
 
-export(float) var acceleration_size
+export(float) var acceleration_amount
 export(float) var friction_amount
 export(float) var max_speed
 
 signal action_changed(prev_action, action)
-signal hit()
-signal pedaled()
+signal hit(head, drop)
+signal pedaled(feet, pedal)
 
 var _action := ACTION_REST
 # For handling when LR keys are pressed simultaneously
 var _action_overridden := false
 
+onready var _head: Area2D = get_node(head_path)
+onready var _feet: Area2D = get_node(feet_path)
 onready var _animation_player: AnimationPlayer = get_node(animation_player_path)
 
 
-func process_input(left, right):
+func handle_action_input(left, right):
 	var prev_action := _action
 	match [_action, _action_overridden, left, right]:
 		[_, _, false, false]:
@@ -51,16 +77,16 @@ func process_input(left, right):
 
 
 func _ready():
-	get_node(head_path).connect("body_entered", self, "_on_head_body_entered")
-	get_node(feet_path).connect("area_entered", self, "_on_feet_area_entered")
+	_head.connect("body_entered", self, "_on_head_body_entered")
+	_feet.connect("area_entered", self, "_on_feet_area_entered")
 
 
 func _on_head_body_entered(body):
-	emit_signal("hit")
+	emit_signal("hit", _head, body)
 
 
 func _on_feet_area_entered(area):
-	emit_signal("pedaled")
+	emit_signal("pedaled", _feet, area)
 
 
 func _process(delta):
@@ -85,9 +111,9 @@ func _physics_process(delta: float):
 func _acceleration() -> Vector2:
 	match _action:
 		ACTION_LEFT:
-			return Vector2(-acceleration_size, 0.0)
+			return Vector2(-acceleration_amount, 0.0)
 		ACTION_RIGHT:
-			return Vector2(acceleration_size, 0.0)
+			return Vector2(acceleration_amount, 0.0)
 		_:
 			return Vector2(0.0, 0.0)
 

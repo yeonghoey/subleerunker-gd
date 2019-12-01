@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=2]
 
-[ext_resource path="res://game/player/default/player.gd" type="Script" id=1]
+[ext_resource path="res://game/hero/sublee.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/default/player_run/00.tres" type="Texture" id=2]
 [ext_resource path="res://assets/textures/default/player_run/01.tres" type="Texture" id=3]
 [ext_resource path="res://assets/textures/default/player_run/02.tres" type="Texture" id=4]
@@ -31,9 +31,10 @@
 [ext_resource path="res://assets/textures/default/eyelids_idle/04.tres" type="Texture" id=29]
 [ext_resource path="res://assets/textures/default/eyelids_idle/05.tres" type="Texture" id=30]
 [ext_resource path="res://assets/textures/default/eyelids_idle/06.tres" type="Texture" id=31]
-[ext_resource path="res://game/player/player_run.wav" type="AudioStream" id=32]
+[ext_resource path="res://game/hero/sublee_run.wav" type="AudioStream" id=32]
 
 [sub_resource type="Animation" id=1]
+resource_name = "idle"
 length = 0.001
 loop = true
 step = 1.0
@@ -75,6 +76,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=2]
+resource_name = "left"
 length = 0.001
 loop = true
 tracks/0/type = "value"
@@ -139,6 +141,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=3]
+resource_name = "right"
 length = 0.001
 loop = true
 tracks/0/type = "value"
@@ -243,12 +246,20 @@ extents = Vector2( 16, 4 )
 position = Vector2( 151.841, 436.657 )
 collision_mask = 8
 script = ExtResource( 1 )
+width = 48.0
+height = 72.0
+head_path = NodePath("Head")
+feet_path = NodePath("Feet")
+animation_player_path = NodePath("AnimationPlayer")
+acceleration_amount = 3600.0
+friction_amount = 3600.0
+max_speed = 300.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "player_idle"
-anims/player_idle = SubResource( 1 )
-anims/player_run_left = SubResource( 2 )
-anims/player_run_right = SubResource( 3 )
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+anims/left = SubResource( 2 )
+anims/right = SubResource( 3 )
 
 [node name="Body" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
@@ -265,6 +276,7 @@ visible = false
 shape = SubResource( 6 )
 
 [node name="Head" type="Area2D" parent="."]
+editor/display_folded = true
 collision_layer = 2
 collision_mask = 4
 

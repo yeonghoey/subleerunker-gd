@@ -26,7 +26,7 @@ func _acceleration():
 	return Vector2(0, 360)
 
 
-func _friction():
+func _friction_amount():
 	return 0.0
 
 

@@ -4,7 +4,7 @@ class_name Mover
 """Mover is the base class for moving objects in game.
 
 Subclasses should implement virtual methods: 
-'_acceleration', '_friction', '_max_speed'.
+'_acceleration', '_friction_amount', '_max_speed'.
 All units here are per second. Subclasses should call 'move(delta)'
 in their '_physics_process' to make the body actually move.
 """
@@ -21,7 +21,7 @@ func move(delta: float) -> KinematicCollision2D:
 
 func _next_velocity(delta: float) -> Vector2:
 	var a := _acceleration() * delta
-	var f := _velocity.normalized() * _friction() * delta
+	var f := _velocity.normalized() * _friction_amount() * delta
 	var x := _velocity + a - f
 	# Zero set the velocity if the direction is completely changed
 	# so that the movement looks consistent.
@@ -36,7 +36,7 @@ func _acceleration() -> Vector2:
 	return Z
 
 
-func _friction() -> float:
+func _friction_amount() -> float:
 	return 0.0
 
 

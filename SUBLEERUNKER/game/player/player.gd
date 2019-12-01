@@ -82,7 +82,7 @@ func _acceleration() -> Vector2:
 			return Vector2(0, 0)
 
 
-func _friction() -> float:
+func _friction_amount() -> float:
 	match action:
 		ACTION_IDLE:
 			return FORCE

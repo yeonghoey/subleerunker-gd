@@ -166,14 +166,16 @@ func _try_place_combo(delta):
 		combo_cooltime = max(combo_cooltime - delta, 0)
 		return
 
-	var combo = preload("res://game/combo/default/combo.tscn").instance()
-	var x = (W - combo.W*2) * randf() + combo.W
-	combo.position = Vector2(x, H - combo.H)
-	game_objects.add_child(combo)
+	var pedal = preload("res://game/pedal/yellowbar.tscn").instance()
+	var x = (W - pedal.width*2) * randf() + pedal.width
+	pedal.position = Vector2(x, H - pedal.height)
+	pedal.connect("triggered", self, "_on_pedal_triggered", [pedal])
+	pedal.connect("disappeared", self, "_on_pedal_disappeared")
+	game_objects.add_child(pedal)
 	combo_exists = true
 
 
-func _on_pedaled(feet, pedal):
+func _on_pedal_triggered(pedal):
 	Signals.emit_signal("game_combo_succeeded", pedal)
 	n_combo = (
 		n_combo + 1 if n_combo < N_COMBO_MAX else 
@@ -188,7 +190,7 @@ func _on_pedaled(feet, pedal):
 	combo_exists = false
 
 
-func _on_game_combo_failed(combo):
+func _on_pedal_disappeared():
 	combo_cooltime = _next_combo_cooltime()
 	combo_exists = false
 

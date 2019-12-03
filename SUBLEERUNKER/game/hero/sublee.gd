@@ -2,6 +2,7 @@ extends Hero
 
 const BLINK_CONTINUANCE = 4
 
+onready var _animation_player: AnimationPlayer = $AnimationPlayer
 onready var _body: AnimatedSprite = $Body
 onready var _eyelids: AnimatedSprite = $Eyelids
 onready var _audio_run: AudioStreamPlayer = $AudioRun

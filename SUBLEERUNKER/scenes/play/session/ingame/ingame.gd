@@ -84,9 +84,7 @@ func _init_player():
 
 func _connect_signals():
 	player.connect("hit", self, "_on_hit")
-	player.connect("pedaled", self, "_on_pedaled")
 	Signals.connect("landed", self, "_on_landed")
-
 	Signals.connect("game_combo_failed", self, "_on_game_combo_failed")
 
 

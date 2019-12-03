@@ -14,10 +14,6 @@ func init(where_hero_was: Vector2):
 	position = where_hero_was
 
 
-func _ready():
-	connect("finished", self, "_on_finished")
-
-
 func finish():
 	emit_signal("finished")
 	queue_free()

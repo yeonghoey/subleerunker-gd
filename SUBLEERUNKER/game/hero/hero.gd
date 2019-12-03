@@ -34,16 +34,14 @@ export(float) var height
 # These should be Area2D
 export(NodePath) var head_path
 export(NodePath) var feet_path
-# AnimationPlayer should contain animations named "idle", "left", "right"
-export(NodePath) var animation_player_path
 
 export(float) var acceleration_amount
 export(float) var friction_amount
 export(float) var max_speed
 
 signal action_changed(prev_action, action)
-signal hit(head, drop)
-signal pedaled(feet, pedal)
+signal hit()
+signal pedaled()
 
 var _action := ACTION_REST
 # For handling when LR keys are pressed simultaneously
@@ -51,7 +49,6 @@ var _action_overridden := false
 
 onready var _head: Area2D = get_node(head_path)
 onready var _feet: Area2D = get_node(feet_path)
-onready var _animation_player: AnimationPlayer = get_node(animation_player_path)
 
 
 func handle_action_input(left, right):
@@ -82,25 +79,36 @@ func _ready():
 
 
 func _on_head_body_entered(body):
-	emit_signal("hit", _head, body)
+	# TODO: assert(body is Drop)
+	body.queue_free()
+	emit_signal("hit")
+	queue_free()
 
 
 func _on_feet_area_entered(area):
-	emit_signal("pedaled", _feet, area)
+	emit_signal("pedaled")
 
 
 func _process(delta):
-	update_animation()
-
-
-func update_animation():
 	match _action:
 		ACTION_REST:
-			_animation_player.play("idle")
+			_process_idle()
 		ACTION_LEFT:
-			_animation_player.play("left")
+			_process_left()
 		ACTION_RIGHT:
-			_animation_player.play("right")
+			_process_right()
+
+
+func _process_idle():
+	pass
+
+
+func _process_left():
+	pass
+
+
+func _process_right():
+	pass
 
 
 func _physics_process(delta: float):

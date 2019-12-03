@@ -1,36 +1,36 @@
 [gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://game/hero/sublee.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/default/player_run/00.tres" type="Texture" id=2]
-[ext_resource path="res://assets/textures/default/player_run/01.tres" type="Texture" id=3]
-[ext_resource path="res://assets/textures/default/player_run/02.tres" type="Texture" id=4]
-[ext_resource path="res://assets/textures/default/player_run/03.tres" type="Texture" id=5]
-[ext_resource path="res://assets/textures/default/player_run/04.tres" type="Texture" id=6]
-[ext_resource path="res://assets/textures/default/player_run/05.tres" type="Texture" id=7]
-[ext_resource path="res://assets/textures/default/player_run/06.tres" type="Texture" id=8]
-[ext_resource path="res://assets/textures/default/player_run/07.tres" type="Texture" id=9]
-[ext_resource path="res://assets/textures/default/player_idle/00.tres" type="Texture" id=10]
-[ext_resource path="res://assets/textures/default/player_idle/01.tres" type="Texture" id=11]
-[ext_resource path="res://assets/textures/default/player_idle/02.tres" type="Texture" id=12]
-[ext_resource path="res://assets/textures/default/player_idle/03.tres" type="Texture" id=13]
-[ext_resource path="res://assets/textures/default/player_idle/04.tres" type="Texture" id=14]
-[ext_resource path="res://assets/textures/default/player_idle/05.tres" type="Texture" id=15]
-[ext_resource path="res://assets/textures/default/player_idle/06.tres" type="Texture" id=16]
-[ext_resource path="res://assets/textures/default/eyelids_run/00.tres" type="Texture" id=17]
-[ext_resource path="res://assets/textures/default/eyelids_run/01.tres" type="Texture" id=18]
-[ext_resource path="res://assets/textures/default/eyelids_run/02.tres" type="Texture" id=19]
-[ext_resource path="res://assets/textures/default/eyelids_run/03.tres" type="Texture" id=20]
-[ext_resource path="res://assets/textures/default/eyelids_run/04.tres" type="Texture" id=21]
-[ext_resource path="res://assets/textures/default/eyelids_run/05.tres" type="Texture" id=22]
-[ext_resource path="res://assets/textures/default/eyelids_run/06.tres" type="Texture" id=23]
-[ext_resource path="res://assets/textures/default/eyelids_run/07.tres" type="Texture" id=24]
-[ext_resource path="res://assets/textures/default/eyelids_idle/00.tres" type="Texture" id=25]
-[ext_resource path="res://assets/textures/default/eyelids_idle/01.tres" type="Texture" id=26]
-[ext_resource path="res://assets/textures/default/eyelids_idle/02.tres" type="Texture" id=27]
-[ext_resource path="res://assets/textures/default/eyelids_idle/03.tres" type="Texture" id=28]
-[ext_resource path="res://assets/textures/default/eyelids_idle/04.tres" type="Texture" id=29]
-[ext_resource path="res://assets/textures/default/eyelids_idle/05.tres" type="Texture" id=30]
-[ext_resource path="res://assets/textures/default/eyelids_idle/06.tres" type="Texture" id=31]
+[ext_resource path="res://assets/textures/default/player_idle/00.tres" type="Texture" id=2]
+[ext_resource path="res://assets/textures/default/player_idle/01.tres" type="Texture" id=3]
+[ext_resource path="res://assets/textures/default/player_idle/02.tres" type="Texture" id=4]
+[ext_resource path="res://assets/textures/default/player_idle/03.tres" type="Texture" id=5]
+[ext_resource path="res://assets/textures/default/player_idle/04.tres" type="Texture" id=6]
+[ext_resource path="res://assets/textures/default/player_idle/05.tres" type="Texture" id=7]
+[ext_resource path="res://assets/textures/default/player_idle/06.tres" type="Texture" id=8]
+[ext_resource path="res://assets/textures/default/player_run/00.tres" type="Texture" id=9]
+[ext_resource path="res://assets/textures/default/player_run/01.tres" type="Texture" id=10]
+[ext_resource path="res://assets/textures/default/player_run/02.tres" type="Texture" id=11]
+[ext_resource path="res://assets/textures/default/player_run/03.tres" type="Texture" id=12]
+[ext_resource path="res://assets/textures/default/player_run/04.tres" type="Texture" id=13]
+[ext_resource path="res://assets/textures/default/player_run/05.tres" type="Texture" id=14]
+[ext_resource path="res://assets/textures/default/player_run/06.tres" type="Texture" id=15]
+[ext_resource path="res://assets/textures/default/player_run/07.tres" type="Texture" id=16]
+[ext_resource path="res://assets/textures/default/eyelids_idle/00.tres" type="Texture" id=17]
+[ext_resource path="res://assets/textures/default/eyelids_idle/01.tres" type="Texture" id=18]
+[ext_resource path="res://assets/textures/default/eyelids_idle/02.tres" type="Texture" id=19]
+[ext_resource path="res://assets/textures/default/eyelids_idle/03.tres" type="Texture" id=20]
+[ext_resource path="res://assets/textures/default/eyelids_idle/04.tres" type="Texture" id=21]
+[ext_resource path="res://assets/textures/default/eyelids_idle/05.tres" type="Texture" id=22]
+[ext_resource path="res://assets/textures/default/eyelids_idle/06.tres" type="Texture" id=23]
+[ext_resource path="res://assets/textures/default/eyelids_run/00.tres" type="Texture" id=24]
+[ext_resource path="res://assets/textures/default/eyelids_run/01.tres" type="Texture" id=25]
+[ext_resource path="res://assets/textures/default/eyelids_run/02.tres" type="Texture" id=26]
+[ext_resource path="res://assets/textures/default/eyelids_run/03.tres" type="Texture" id=27]
+[ext_resource path="res://assets/textures/default/eyelids_run/04.tres" type="Texture" id=28]
+[ext_resource path="res://assets/textures/default/eyelids_run/05.tres" type="Texture" id=29]
+[ext_resource path="res://assets/textures/default/eyelids_run/06.tres" type="Texture" id=30]
+[ext_resource path="res://assets/textures/default/eyelids_run/07.tres" type="Texture" id=31]
 [ext_resource path="res://game/hero/sublee_run.wav" type="AudioStream" id=32]
 
 [sub_resource type="Animation" id=1]
@@ -207,27 +207,27 @@ tracks/4/keys = {
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "player_run",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "player_idle",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "player_run",
 "speed": 12.0
 } ]
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "player_run",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "player_idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "player_run",
 "speed": 5.0
 } ]
 
@@ -250,7 +250,6 @@ width = 48.0
 height = 72.0
 head_path = NodePath("Head")
 feet_path = NodePath("Feet")
-animation_player_path = NodePath("AnimationPlayer")
 acceleration_amount = 3600.0
 friction_amount = 3600.0
 max_speed = 300.0

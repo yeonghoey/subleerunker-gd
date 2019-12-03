@@ -30,3 +30,15 @@ func _process(delta):
 			_eyelids.visible = false
 		else:
 			_eyelids.visible = randf() < 0.02
+
+
+func _process_idle():
+	_animation_player.play("idle")
+
+
+func _process_left():
+	_animation_player.play("left")
+
+
+func _process_right():
+	_animation_player.play("right")

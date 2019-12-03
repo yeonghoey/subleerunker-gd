@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Dying",
+"language": "GDScript",
+"path": "res://game/dying/dying.gd"
+}, {
 "base": "Reference",
 "class": "Factory",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://classes/utils.gd"
 } ]
 _global_script_class_icons={
+"Dying": "",
 "Factory": "",
 "Hero": "",
 "Mover": "",

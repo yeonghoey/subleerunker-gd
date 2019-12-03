@@ -90,7 +90,7 @@ func _connect_signals():
 	Signals.connect("game_combo_failed", self, "_on_game_combo_failed")
 
 
-func _on_hit(head, drop):
+func _on_hit():
 	Signals.emit_signal("hit", "p1", player)
 	end_score = score
 	if end_score > myrecord["score"]:
@@ -98,11 +98,10 @@ func _on_hit(head, drop):
 		_try_score_upload()
 
 	controller.queue_free()
-	player.queue_free()
 	alive = false
-	var die := preload("res://game/player_die/default/player_die.tscn").instance()
-	die.position = player.position
-	game_objects.add_child(die)
+	var dying := preload("res://game/dying/burning.tscn").instance()
+	dying.init(player.position)
+	game_objects.add_child(dying)
 
 
 func _on_landed(px, flame):

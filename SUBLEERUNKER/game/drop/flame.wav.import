@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/flame_spawn.wav-64c0a75aa0d46fedaf263d53441db581.sample"
+path="res://.import/flame.wav-836946e12ca6b0885f192530aa4546ce.sample"
 
 [deps]
 
-source_file="res://game/flame/flame_spawn.wav"
-dest_files=[ "res://.import/flame_spawn.wav-64c0a75aa0d46fedaf263d53441db581.sample" ]
+source_file="res://game/drop/flame.wav"
+dest_files=[ "res://.import/flame.wav-836946e12ca6b0885f192530aa4546ce.sample" ]
 
 [params]
 

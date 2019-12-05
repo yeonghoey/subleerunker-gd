@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://game/flame/flame.gd" type="Script" id=1]
+[ext_resource path="res://game/drop/flame.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/default/flame_burn/00.tres" type="Texture" id=2]
 [ext_resource path="res://assets/textures/default/flame_burn/01.tres" type="Texture" id=3]
 [ext_resource path="res://assets/textures/default/flame_burn/02.tres" type="Texture" id=4]
@@ -9,8 +9,6 @@
 [ext_resource path="res://assets/textures/default/flame_burn/05.tres" type="Texture" id=7]
 [ext_resource path="res://assets/textures/default/flame_burn/06.tres" type="Texture" id=8]
 [ext_resource path="res://game/drop/flame.wav" type="AudioStream" id=9]
-
-
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -30,6 +28,10 @@ position = Vector2( 55.0574, 43.6155 )
 collision_layer = 4
 collision_mask = 18
 script = ExtResource( 1 )
+width = 24.0
+height = 16.0
+acceleration_amount = 360.0
+max_speed = 600.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

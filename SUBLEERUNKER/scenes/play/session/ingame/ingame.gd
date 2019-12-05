@@ -76,7 +76,8 @@ func _physics_process(delta):
 
 func _init_player():
 	player = preload("res://game/hero/sublee.tscn").instance()
-	player.position = Vector2(W/2, H-player.height/2)
+	var initial_pos = Vector2(W/2, H-player.height/2)
+	player.init(initial_pos)
 	controller = preload("controller.gd").new(player)
 	game_objects.add_child(player)
 	add_child(controller)
@@ -98,13 +99,13 @@ func _on_hit():
 	controller.queue_free()
 	alive = false
 	var dying := preload("res://game/dying/burning.tscn").instance()
-	dying.init(player.position)
+	dying.init(player)
 	game_objects.add_child(dying)
 
 
-func _on_landed(px, flame):
-	var land := preload("res://game/flame_land/default/flame_land.tscn").instance()
-	land.position = flame.position
+func _on_landed(drop):
+	var land := preload("res://game/landing/dispersing.tscn").instance()
+	land.init(drop)
 	game_objects.add_child(land)
 	if alive:
 		score += n_combo
@@ -150,10 +151,12 @@ func _try_spawn_flame(delta: float):
 
 	var threshold = flamespawn_per_sec * delta
 	if randf() < threshold:
-		var flame = preload("res://game/flame/default/flame.tscn").instance()
-		var x = (W - flame.W*2) * randf() + flame.W
-		flame.position = Vector2(x, -flame.H)
-		game_objects.add_child(flame)
+		var drop = preload("res://game/drop/flame.tscn").instance()
+		var x = (W - drop.width*2) * randf() + drop.width
+		var initial_pos = Vector2(x, -drop.height)
+		drop.init(initial_pos)
+		drop.connect("landed", self, "_on_landed", [drop])
+		game_objects.add_child(drop)
 
 
 func _try_place_combo(delta):

@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Mover",
 "language": "GDScript",
-"path": "res://game/_base/mover.gd"
+"path": "res://game/mover.gd"
 }, {
 "base": "Area2D",
 "class": "Pedal",

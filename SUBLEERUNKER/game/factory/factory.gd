@@ -10,7 +10,7 @@ const FIELDS: Array = [
 
 
 static func of(mode_name: String) -> Factory:
-	return load("res://factory/%s.gd" % mode_name).new()
+	return load("res://game/factory/%s.gd" % mode_name).new()
 
 
 var _preset: Dictionary = {}

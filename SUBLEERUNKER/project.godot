@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Factory",
 "language": "GDScript",
-"path": "res://factory/factory.gd"
+"path": "res://game/factory/factory.gd"
 }, {
 "base": "Mover",
 "class": "Hero",
@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Mover",
 "language": "GDScript",
-"path": "res://game/mover/mover.gd"
+"path": "res://game/_base/mover.gd"
 }, {
 "base": "Area2D",
 "class": "Pedal",

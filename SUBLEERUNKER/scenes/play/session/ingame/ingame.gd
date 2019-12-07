@@ -33,8 +33,7 @@ func _ready():
 	W = viewport.size.x
 	H = viewport.size.y
 
-	viewport.add_child(preload("res://game/background/default/background.tscn").instance())
-	viewport.add_child(preload("res://game/stage/stage.tscn").instance())
+	viewport.add_child(preload("res://game/background/black.tscn").instance())
 	
 	game_objects = Node.new()
 	viewport.add_child(game_objects)

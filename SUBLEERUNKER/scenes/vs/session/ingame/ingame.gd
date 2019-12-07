@@ -40,7 +40,7 @@ func _add_background(px: String):
 
 
 func _add_stage(px: String):
-	_viewports[px].add_child(preload("res://game/stage/stage.tscn").instance())
+	_viewports[px].add_child(preload("res://game/background/black.tscn").instance())
 
 
 func _add_gameobject_group(px: String):

@@ -240,16 +240,16 @@ extents = Vector2( 6, 6 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 16, 4 )
 
-[node name="Player" type="KinematicBody2D" groups=[
+[node name="Sublee" type="KinematicBody2D" groups=[
 "Player",
 ]]
-position = Vector2( 151.841, 436.657 )
+editor/display_folded = true
 collision_mask = 8
 script = ExtResource( 1 )
 width = 48.0
 height = 72.0
-head_path = NodePath("Head")
-feet_path = NodePath("Feet")
+head_path = NodePath("../Sublee/Head")
+feet_path = NodePath("../Sublee/Feet")
 acceleration_amount = 3600.0
 friction_amount = 3600.0
 max_speed = 300.0

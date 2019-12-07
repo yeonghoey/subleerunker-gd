@@ -1,7 +1,7 @@
 extends Mover
 
 class_name Hero
-"""Hero is a base class for the player character.
+"""Hero is the base class for the player character.
 
 Hero has 8 parameters:
 	- width: of desired ingame size
@@ -49,6 +49,10 @@ var _action_overridden := false
 
 onready var _head: Area2D = get_node(head_path)
 onready var _feet: Area2D = get_node(feet_path)
+
+
+func init(initial_pos: Vector2):
+	position = initial_pos
 
 
 func handle_action_input(left, right):

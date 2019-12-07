@@ -10,8 +10,8 @@ when it's finished.
 signal finished()
 
 
-func init(where_hero_was: Vector2):
-	position = where_hero_was
+func init(hero: Hero):
+	position = hero.position
 
 
 func finish():

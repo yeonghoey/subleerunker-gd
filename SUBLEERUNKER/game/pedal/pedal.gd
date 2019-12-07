@@ -1,9 +1,7 @@
 extends Area2D
 
 class_name Pedal
-"""Pedal is a base class for pedals, which is for combo system.
-
-
+"""Pedal is the base class for pedals, which are for the combo system.
 
 Subclasses should call two methods when:
 	- trigger, when the hero triggered this
@@ -17,6 +15,10 @@ signal triggered()
 signal disappeared()
 
 var _signaled := false
+
+
+func init(initial_pos: Vector2):
+	position = initial_pos
 
 
 func trigger():

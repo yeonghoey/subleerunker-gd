@@ -169,7 +169,8 @@ func _try_place_combo(delta):
 
 	var pedal = preload("res://game/pedal/yellowbar.tscn").instance()
 	var x = (W - pedal.width*2) * randf() + pedal.width
-	pedal.position = Vector2(x, H - pedal.height)
+	var initial_pos = Vector2(x, H - pedal.height)
+	pedal.init(initial_pos)
 	pedal.connect("triggered", self, "_on_pedal_triggered", [pedal])
 	pedal.connect("disappeared", self, "_on_pedal_disappeared")
 	game_objects.add_child(pedal)

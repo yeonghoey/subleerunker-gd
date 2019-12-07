@@ -17,8 +17,15 @@ signal disappeared()
 var _signaled := false
 
 
-func init(initial_pos: Vector2):
-	position = initial_pos
+func within(boundary: Vector2) -> Pedal:
+	"""Place the pedal in the bottom random of the boundary.
+	
+	This can be overriden if necessary.
+	Returns self so that this can be method-chained.
+	"""
+	var x = (boundary.x - width*2) * randf() + width
+	position = Vector2(x, boundary.y - height)
+	return self
 
 
 func trigger():

@@ -15,8 +15,15 @@ export(float) var max_speed
 signal landed()
 
 
-func init(initial_pos: Vector2):
-	position = initial_pos
+func within(boundary: Vector2) -> Drop:
+	"""Place the drop in the top random of the boundary.
+	
+	This can be overriden if necessary.
+	Returns self so that this can be method-chained.
+	"""
+	var x = (boundary.x - width*2) * randf() + width
+	position = Vector2(x, -height)
+	return self
 
 
 func _physics_process(delta: float):

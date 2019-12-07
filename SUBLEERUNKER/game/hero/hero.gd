@@ -51,8 +51,14 @@ onready var _head: Area2D = get_node(head_path)
 onready var _feet: Area2D = get_node(feet_path)
 
 
-func init(initial_pos: Vector2):
-	position = initial_pos
+func within(boundary: Vector2) -> Hero:
+	"""Place the hero in the bottom center of the boundary.
+	
+	This can be overriden if necessary.
+	Returns self so that this can be method-chained.
+	"""
+	position = Vector2(boundary.x/2, boundary.y - height/2)
+	return self
 
 
 func handle_action_input(left, right):

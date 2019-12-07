@@ -1,12 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://game/flame_land/flame_land.gd" type="Script" id=1]
+[ext_resource path="res://game/landing/dispersing.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/default/flame_land/00.tres" type="Texture" id=2]
 [ext_resource path="res://assets/textures/default/flame_land/01.tres" type="Texture" id=3]
 [ext_resource path="res://assets/textures/default/flame_land/02.tres" type="Texture" id=4]
 [ext_resource path="res://game/landing/dispersing.wav" type="AudioStream" id=5]
-
-
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,8 +17,11 @@ animations = [ {
 [node name="FlameLand" type="Node2D" groups=[
 "Object",
 ]]
-position = Vector2( 62.6336, 65.5761 )
+position = Vector2( 157.484, 136.194 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

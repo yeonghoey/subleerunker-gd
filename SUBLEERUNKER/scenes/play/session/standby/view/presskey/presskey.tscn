@@ -37,7 +37,6 @@ tracks/1/keys = {
 }
 
 [node name="PressKey" type="MarginContainer"]
-editor/display_folded = true
 margin_top = 332.0
 margin_right = 288.0
 margin_bottom = 422.0

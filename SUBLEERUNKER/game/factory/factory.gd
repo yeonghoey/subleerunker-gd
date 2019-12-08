@@ -24,3 +24,8 @@ func _init(preset: Dictionary):
 
 func make(name: String) -> Node:
 	return _preset[name].instance()
+
+
+func take(name: String):
+	return _preset[name]
+

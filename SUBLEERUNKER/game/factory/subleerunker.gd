@@ -8,5 +8,6 @@ func _init().({
 	drop = preload("res://game/drop/flame.tscn"),
 	landing = preload("res://game/landing/dispersing.tscn"),
 	pedal = preload("res://game/pedal/yellowbar.tscn"),
+	labelcolor = Color("#ffffff"),
 }):
     pass

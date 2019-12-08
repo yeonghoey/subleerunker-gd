@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/view/view.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/view/mode_selection.gd" type="Script" id=2]
+[ext_resource path="res://game/view/modeselection.gd" type="Script" id=2]
 
 [node name="ModeSelection" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )

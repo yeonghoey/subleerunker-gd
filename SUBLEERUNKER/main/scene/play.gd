@@ -18,6 +18,7 @@ func _display_modeselection():
 
 func _on_modeselection_selected(mode_name: String):
 	_current_mode = mode_name
+	_display_leaderboard()
 
 
 func _on_modeselection_canceled():

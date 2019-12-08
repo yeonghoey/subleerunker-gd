@@ -13,8 +13,8 @@ theme = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="0"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_constants/margin_right = 16
 custom_constants/margin_top = 16
 custom_constants/margin_left = 16
@@ -23,18 +23,16 @@ custom_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
 margin_left = 16.0
 margin_top = 16.0
-margin_right = 280.0
-margin_bottom = 428.0
+margin_right = 304.0
+margin_bottom = 464.0
 custom_constants/separation = 24
 
 [node name="HighScores" parent="MarginContainer/VBoxContainer" index="0" instance=ExtResource( 3 )]
 margin_left = 0.0
-margin_right = 264.0
+margin_right = 288.0
 margin_bottom = 192.0
 
 [node name="MyRecord" parent="MarginContainer/VBoxContainer" index="1" instance=ExtResource( 4 )]
-margin_right = 264.0
 
 [node name="PressKey" parent="MarginContainer/VBoxContainer" index="2" instance=ExtResource( 5 )]
-margin_right = 264.0
 margin_bottom = 412.0

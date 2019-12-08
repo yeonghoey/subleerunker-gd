@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scene/play/play.gd" type="Script" id=1]
+[ext_resource path="res://main/scene/play.gd" type="Script" id=1]
 [ext_resource path="res://game/frame.tscn" type="PackedScene" id=2]
 
 [node name="Play" type="Control"]

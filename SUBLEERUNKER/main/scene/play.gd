@@ -10,7 +10,7 @@ func _ready():
 
 
 func _display_modeselection():
-	var modeselection = preload("res://game/view/modeselection.tscn").instance()
+	var modeselection := GameView.of("modeselection")
 	modeselection.connect("selected", self, "_on_modeselection_selected")
 	modeselection.connect("canceled", self, "_on_modeselection_canceled")	
 	_frame.display(modeselection)
@@ -26,7 +26,7 @@ func _on_modeselection_canceled():
 
 
 func _display_leaderboard():
-	var leaderboard := preload("res://game/view/leaderboard.tscn").instance()
+	var leaderboard := GameView.of("leaderboard")
 	var preset := GamePreset.of(_current_mode)
 	leaderboard.init(preset)
 	_frame.display(leaderboard)

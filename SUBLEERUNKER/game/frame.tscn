@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/frame.gd" type="Script" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.65098, 0.698039, 0.694118, 1 )
@@ -12,6 +14,7 @@ margin_right = 328.0
 margin_bottom = 488.0
 size_flags_horizontal = 5
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 margin_left = 4.0

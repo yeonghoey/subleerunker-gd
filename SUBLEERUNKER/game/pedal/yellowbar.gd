@@ -1,4 +1,4 @@
-extends Pedal
+extends GamePedal
 
 var _succeeded := false
 

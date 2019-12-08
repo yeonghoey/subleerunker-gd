@@ -1,4 +1,4 @@
-extends Factory
+extends GameFactory
 
 
 func _init().({

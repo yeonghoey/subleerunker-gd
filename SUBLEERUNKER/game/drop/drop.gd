@@ -1,7 +1,7 @@
-extends Mover
+extends GameMover
 
-class_name Drop
-"""Drop is the base class for dropping objects like flames.
+class_name GameDrop
+"""GameDrop is the base class for dropping objects like flames.
 """
 
 # Ingame size
@@ -15,7 +15,7 @@ export(float) var max_speed
 signal landed()
 
 
-func within(boundary: Vector2) -> Drop:
+func within(boundary: Vector2) -> GameDrop:
 	"""Place the drop in the top random of the boundary.
 	
 	This can be overriden if necessary.

@@ -1,4 +1,4 @@
-extends Drop
+extends GameDrop
 
 
 func _ready():

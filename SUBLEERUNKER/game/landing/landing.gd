@@ -1,13 +1,13 @@
 extends Node2D
 
-class_name Landing
-"""Landing is the base class for landing effects of drops.
+class_name GameLanding
+"""GameLanding is the base class for landing effects of drops.
 """
 
 signal finished()
 
 
-func init(drop: Drop):
+func init(drop: GameDrop):
 	position = drop.position
 
 

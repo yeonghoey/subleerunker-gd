@@ -1,7 +1,7 @@
 extends Area2D
 
-class_name Pedal
-"""Pedal is the base class for pedals, which are for the combo system.
+class_name GamePedal
+"""GamePedal is the base class for pedals, which are for the combo system.
 
 Subclasses should call two methods when:
 	- trigger, when the hero triggered this
@@ -17,7 +17,7 @@ signal disappeared()
 var _signaled := false
 
 
-func within(boundary: Vector2) -> Pedal:
+func within(boundary: Vector2) -> GamePedal:
 	"""Place the pedal in the bottom random of the boundary.
 	
 	This can be overriden if necessary.

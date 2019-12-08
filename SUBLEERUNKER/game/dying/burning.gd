@@ -1,4 +1,4 @@
-extends Dying
+extends GameDying
 
 
 func _ready():

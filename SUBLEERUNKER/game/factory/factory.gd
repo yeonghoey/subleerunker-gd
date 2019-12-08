@@ -1,6 +1,6 @@
 extends Reference
 
-class_name Factory
+class_name GameFactory
 
 const FIELDS: Array = [
 	"hero",
@@ -9,7 +9,7 @@ const FIELDS: Array = [
 ]
 
 
-static func of(mode_name: String) -> Factory:
+static func of(mode_name: String) -> GameFactory:
 	return load("res://game/factory/%s.gd" % mode_name).new()
 
 

@@ -1,4 +1,4 @@
-extends Hero
+extends GameHero
 
 const BLINK_CONTINUANCE = 4
 

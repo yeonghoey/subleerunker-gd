@@ -1,4 +1,4 @@
-extends Mover
+extends GameMover
 
 const W := 24.0
 const H := 16.0

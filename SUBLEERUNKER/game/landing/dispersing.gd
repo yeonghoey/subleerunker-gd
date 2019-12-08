@@ -1,4 +1,4 @@
-extends Landing
+extends GameLanding
 
 
 func _ready():

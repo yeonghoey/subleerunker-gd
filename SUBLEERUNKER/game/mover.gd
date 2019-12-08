@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-class_name Mover
-"""Mover is the base class for moving objects in game.
+class_name GameMover
+"""GameMover is the base class for moving objects in game.
 
 Subclasses should implement virtual methods: 
 '_acceleration', '_friction_amount', '_max_speed'.

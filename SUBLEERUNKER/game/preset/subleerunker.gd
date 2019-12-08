@@ -1,4 +1,4 @@
-extends GameFactory
+extends GamePreset
 
 
 func _init().({

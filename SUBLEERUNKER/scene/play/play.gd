@@ -26,6 +26,6 @@ func _on_modeselection_canceled():
 
 func _display_leaderboard():
 	var leaderboard := preload("res://game/view/leaderboard.tscn").instance()
-	var factory := GameFactory.of(_current_mode)
-	leaderboard.init(factory)
+	var preset := GamePreset.of(_current_mode)
+	leaderboard.init(preset)
 	_frame.display(leaderboard)

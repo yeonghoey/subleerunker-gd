@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/dying/dying.gd"
 }, {
-"base": "Reference",
-"class": "GameFactory",
-"language": "GDScript",
-"path": "res://game/factory/factory.gd"
-}, {
 "base": "PanelContainer",
 "class": "GameFrame",
 "language": "GDScript",
@@ -49,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/pedal/pedal.gd"
 }, {
+"base": "Reference",
+"class": "GamePreset",
+"language": "GDScript",
+"path": "res://game/preset/preset.gd"
+}, {
 "base": "Control",
 "class": "GameView",
 "language": "GDScript",
@@ -62,12 +62,12 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "GameDrop": "",
 "GameDying": "",
-"GameFactory": "",
 "GameFrame": "",
 "GameHero": "",
 "GameLanding": "",
 "GameMover": "",
 "GamePedal": "",
+"GamePreset": "",
 "GameView": "",
 "Utils": ""
 }

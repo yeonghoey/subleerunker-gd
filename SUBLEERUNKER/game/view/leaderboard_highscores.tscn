@@ -29,7 +29,6 @@ align = 2
 valign = 1
 
 [node name="Rows" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_top = 76.0
 margin_right = 264.0
 margin_bottom = 192.0

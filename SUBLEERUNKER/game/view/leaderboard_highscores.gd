@@ -2,16 +2,16 @@ extends VBoxContainer
 
 const NUM_ROWS = 10
 
-onready var rows = $Rows
+onready var _ui_rows = $Rows
 
 
 func _ready():
-	assert rows.get_child_count() == NUM_ROWS
+	assert _ui_rows.get_child_count() == NUM_ROWS
 
 
-func populate_entries(entries):
-	while entries.size() > NUM_ROWS:
-		entries.pop_back()
-	for idx in range(entries.size()):
-		var entry = entries[idx]
-		rows.get_child(idx).populate_entry(entry)
+func populate(records: Array):
+	while records.size() > NUM_ROWS:
+		records.pop_back()
+	for idx in range(records.size()):
+		var record = records[idx]
+		_ui_rows.get_child(idx).populate(record)

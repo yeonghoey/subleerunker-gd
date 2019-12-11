@@ -30,25 +30,25 @@ custom_fonts/font = ExtResource( 2 )
 text = "YOU"
 align = 1
 
-[node name="Main" type="HBoxContainer" parent="."]
-editor/display_folded = true
+[node name="Main" type="VBoxContainer" parent="."]
 margin_top = 76.0
 margin_right = 288.0
-margin_bottom = 92.0
-custom_constants/separation = 24
+margin_bottom = 116.0
+custom_constants/separation = 8
 alignment = 1
 
 [node name="RankContainer" type="HBoxContainer" parent="Main"]
 editor/display_folded = true
-margin_left = 108.0
-margin_right = 132.0
+margin_right = 288.0
 margin_bottom = 16.0
 alignment = 1
 
-[node name="RankPrev" type="Label" parent="Main/RankContainer" groups=[
+[node name="RankOld" type="Label" parent="Main/RankContainer" groups=[
 "GameLabel",
 ]]
+margin_left = 132.0
 margin_top = 8.0
+margin_right = 132.0
 margin_bottom = 16.0
 size_flags_horizontal = 9
 size_flags_vertical = 8
@@ -57,9 +57,9 @@ custom_fonts/font = ExtResource( 3 )
 [node name="RankTo" type="Label" parent="Main/RankContainer" groups=[
 "GameLabel",
 ]]
-margin_left = 4.0
+margin_left = 136.0
 margin_top = 8.0
-margin_right = 4.0
+margin_right = 136.0
 margin_bottom = 16.0
 size_flags_vertical = 8
 custom_fonts/font = ExtResource( 3 )
@@ -67,22 +67,25 @@ custom_fonts/font = ExtResource( 3 )
 [node name="RankNew" type="Label" parent="Main/RankContainer" groups=[
 "GameLabel",
 ]]
-margin_left = 8.0
-margin_right = 24.0
+margin_left = 140.0
+margin_right = 156.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 4 )
 text = "-"
 
 [node name="ScoreContainer" type="HBoxContainer" parent="Main"]
-margin_left = 156.0
-margin_right = 180.0
-margin_bottom = 16.0
+editor/display_folded = true
+margin_top = 24.0
+margin_right = 288.0
+margin_bottom = 40.0
 alignment = 1
 
-[node name="ScorePrev" type="Label" parent="Main/ScoreContainer" groups=[
+[node name="ScoreOld" type="Label" parent="Main/ScoreContainer" groups=[
 "GameLabel",
 ]]
+margin_left = 132.0
 margin_top = 8.0
+margin_right = 132.0
 margin_bottom = 16.0
 size_flags_horizontal = 9
 size_flags_vertical = 8
@@ -91,9 +94,9 @@ custom_fonts/font = ExtResource( 3 )
 [node name="ScoreTo" type="Label" parent="Main/ScoreContainer" groups=[
 "GameLabel",
 ]]
-margin_left = 4.0
+margin_left = 136.0
 margin_top = 8.0
-margin_right = 4.0
+margin_right = 136.0
 margin_bottom = 16.0
 size_flags_vertical = 8
 custom_fonts/font = ExtResource( 3 )
@@ -101,8 +104,8 @@ custom_fonts/font = ExtResource( 3 )
 [node name="ScoreNew" type="Label" parent="Main/ScoreContainer" groups=[
 "GameLabel",
 ]]
-margin_left = 8.0
-margin_right = 24.0
+margin_left = 140.0
+margin_right = 156.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 4 )
 text = "-"

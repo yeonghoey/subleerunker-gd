@@ -2,6 +2,7 @@ extends GamePreset
 
 
 func _init().({
+	name = "subleerunker",
 	background = preload("res://game/background/black.tscn"),
 	hero = preload("res://game/hero/sublee.tscn"),
 	dying = preload("res://game/dying/burning.tscn"),

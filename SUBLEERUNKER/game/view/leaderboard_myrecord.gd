@@ -1,45 +1,41 @@
 extends VBoxContainer
 
-onready var label_rank_prev: Label = find_node("RankPrev")
-onready var label_rank_to: Label = find_node("RankTo")
-onready var label_rank_new: Label = find_node("RankNew")
-onready var label_score_prev: Label = find_node("ScorePrev")
-onready var label_score_to: Label = find_node("ScoreTo")
-onready var label_score_new: Label = find_node("ScoreNew")
 
-
-func populate(myrecord: Dictionary, last_result: Dictionary):
-	var rank_prev: int = last_result.get("rank_prev", 0)
-	var rank_new: int = last_result.get("rank_new", myrecord["rank"])
-	var score_prev: int = last_result.get("score_prev", 0)
-	var score_new: int = last_result.get("score_new", myrecord["score"])
-
-	if rank_prev == 0:
-		rank_prev = rank_new
-	if score_prev == 0:
-		score_prev = score_new
-
-	_populate_rank(rank_prev, rank_new)
-	_populate_score(score_prev, score_new)
-
-
-func _populate_rank(rank_prev: int, rank_new: int):
-	if rank_prev == rank_new:
-		label_rank_prev.text = ""
-		label_rank_to.text = ""
-		label_rank_new.text = Utils.get_rank_name(rank_new)
+func populate(myrecord: Dictionary, myrecord_break: Dictionary):
+	if myrecord_break.empty():
+		_populate_rank(myrecord.rank, myrecord.rank)
+		_populate_score(myrecord.score, myrecord.score)
 	else:
-		label_rank_prev.text = Utils.get_rank_name(rank_prev)
-		label_rank_to.text = ">"
-		label_rank_new.text = Utils.get_rank_name(rank_new)
+		_populate_rank(myrecord_break.rank_old, myrecord_break.rank_new)
+		_populate_score(myrecord_break.score_old, myrecord_break.score_new)
+	visible = true
 
 
-func _populate_score(score_prev: int, score_new: int):
-	if score_prev == score_new:
-		label_score_prev.text = ""
-		label_score_to.text = ""
-		label_score_new.text = String(score_new)
+func _populate_rank(rank_old: int, rank_new: int):
+	var a: Label = find_node("RankOld")
+	var b: Label = find_node("RankTo")
+	var c: Label = find_node("RankNew")
+
+	if rank_old == rank_new:
+		a.text = ""
+		b.text = ""
+		c.text = Util.get_rank_name(rank_new)
 	else:
-		label_score_prev.text = String(score_prev)
-		label_score_to.text = ">"
-		label_score_new.text = String(score_new)
+		a.text = Util.get_rank_name(rank_old)
+		b.text = ">"
+		c.text = Util.get_rank_name(rank_new)
+
+
+func _populate_score(score_old: int, score_new: int):
+	var a: Label = find_node("ScoreOld")
+	var b: Label = find_node("ScoreTo")
+	var c: Label = find_node("ScoreNew")
+
+	if score_old == score_new:
+		a.text = ""
+		b.text = ""
+		c.text = String(score_new)
+	else:
+		a.text = String(score_old)
+		b.text = ">"
+		c.text = String(score_new)

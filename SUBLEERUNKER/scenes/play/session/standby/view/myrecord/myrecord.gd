@@ -27,11 +27,11 @@ func _populate_rank(rank_prev: int, rank_new: int):
 	if rank_prev == rank_new:
 		label_rank_prev.text = ""
 		label_rank_to.text = ""
-		label_rank_new.text = Utils.get_rank_name(rank_new)
+		label_rank_new.text = Util.get_rank_name(rank_new)
 	else:
-		label_rank_prev.text = Utils.get_rank_name(rank_prev)
+		label_rank_prev.text = Util.get_rank_name(rank_prev)
 		label_rank_to.text = ">"
-		label_rank_new.text = Utils.get_rank_name(rank_new)
+		label_rank_new.text = Util.get_rank_name(rank_new)
 
 
 func _populate_score(score_prev: int, score_new: int):

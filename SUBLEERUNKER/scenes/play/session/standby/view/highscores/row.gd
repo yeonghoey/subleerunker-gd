@@ -4,7 +4,7 @@ extends HBoxContainer
 func _ready():
 	var idx = get_index()
 	var rank = idx+1
-	$Rank.text = Utils.get_rank_name(rank)
+	$Rank.text = Util.get_rank_name(rank)
 	$Name.text = "-"
 	$Score.text = "-"
 
@@ -17,7 +17,7 @@ func populate_entry(entry):
 
 func _get_rank_name(entry):
 	var rank = entry["global_rank"]
-	return Utils.get_rank_name(rank)
+	return Util.get_rank_name(rank)
 
 
 func _get_renderable_name(entry):

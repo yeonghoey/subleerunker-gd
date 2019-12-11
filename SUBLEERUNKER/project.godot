@@ -55,9 +55,9 @@ _global_script_classes=[ {
 "path": "res://game/view/view.gd"
 }, {
 "base": "Reference",
-"class": "Utils",
+"class": "Util",
 "language": "GDScript",
-"path": "res://classes/utils.gd"
+"path": "res://misc/util.gd"
 } ]
 _global_script_class_icons={
 "GameDrop": "",
@@ -69,7 +69,7 @@ _global_script_class_icons={
 "GamePedal": "",
 "GamePreset": "",
 "GameView": "",
-"Utils": ""
+"Util": ""
 }
 
 [application]

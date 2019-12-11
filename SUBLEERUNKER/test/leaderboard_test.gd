@@ -1,7 +1,8 @@
 extends Node
 
+const Leaderboard := preload("res://game/view/leaderboard.tscn")
+
 onready var _preset := GamePreset.of("subleerunker")
-onready var _packed_leaderboard := preload("res://game/view/leaderboard.tscn")
 
 
 func _ready():
@@ -20,6 +21,6 @@ func _on_Button_toggled(button_pressed: bool):
 
 
 func _refresh(myrecord_break: Dictionary):
-	var leaderboard = _packed_leaderboard.instance()
+	var leaderboard = Leaderboard.instance()
 	leaderboard.init(_preset, myrecord_break)
 	$Frame.display(leaderboard)

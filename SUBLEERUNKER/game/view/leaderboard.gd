@@ -3,9 +3,9 @@ extends GameView
 var _preset: GamePreset
 var _myrecord_break: Dictionary
 
-onready var _ui_highscores = find_node("HighScores")
-onready var _ui_myrecord = find_node("MyRecord")
-onready var _ui_presskey = find_node("PressKey")
+onready var HighScores = find_node("HighScores")
+onready var MyRecord = find_node("MyRecord")
+onready var PressKey = find_node("PressKey")
 
 
 func init(preset: GamePreset, myrecord_break: Dictionary):
@@ -40,7 +40,7 @@ func _on_fetch_myrecord(entries):
 		myrecord["rank"] = entry["global_rank"]
 		myrecord["score"] = entry["score"]
 
-	_ui_myrecord.populate(myrecord, _myrecord_break)
+	MyRecord.populate(myrecord, _myrecord_break)
 	SteamAgent.fetch_highscores("default", self, "_on_fetch_highscores")
 
 
@@ -56,4 +56,4 @@ func _on_fetch_highscores(entries):
 			rank = entry["global_rank"],
 			score = entry["score"],
 		})
-	_ui_highscores.populate(records)
+	HighScores.populate(records)

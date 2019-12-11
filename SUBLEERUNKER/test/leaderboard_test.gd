@@ -23,4 +23,10 @@ func _on_Button_toggled(button_pressed: bool):
 func _refresh(myrecord_break: Dictionary):
 	var leaderboard = Leaderboard.instance()
 	leaderboard.init(_preset, myrecord_break)
+	leaderboard.connect("started", self, "_echo", ["started"])
+	leaderboard.connect("canceled", self, "_echo", ["canceled"])
 	$Frame.display(leaderboard)
+
+
+func _echo(s):
+	print(s)

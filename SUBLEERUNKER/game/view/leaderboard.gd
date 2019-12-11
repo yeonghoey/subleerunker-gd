@@ -1,5 +1,8 @@
 extends GameView
 
+signal started()
+signal canceled()
+
 var _preset: GamePreset
 var _myrecord_break: Dictionary
 
@@ -19,6 +22,7 @@ func _ready():
 	_prepend_background()
 	_ovrride_labelcolor()
 	SteamAgent.fetch_myrecord("default", self, "_on_fetch_myrecord")
+	SteamAgent.fetch_highscores("default", self, "_on_fetch_highscores")
 
 
 func _prepend_background():
@@ -39,9 +43,7 @@ func _on_fetch_myrecord(entries):
 		var entry = entries[0]
 		myrecord["rank"] = entry["global_rank"]
 		myrecord["score"] = entry["score"]
-
 	MyRecord.populate(myrecord, _myrecord_break)
-	SteamAgent.fetch_highscores("default", self, "_on_fetch_highscores")
 
 
 func _on_fetch_highscores(entries):
@@ -57,3 +59,20 @@ func _on_fetch_highscores(entries):
 			score = entry["score"],
 		})
 	HighScores.populate(records)
+
+
+func _input(event):
+	var start := (
+		Input.is_action_pressed("ui_left") or 
+		Input.is_action_pressed("ui_right") or
+		Input.is_action_pressed("ui_accept"))
+	var cancel := (
+		Input.is_action_pressed("ui_cancel"))
+	var s := (
+		"started" if start else
+		"canceled" if cancel else
+		"")
+	if s != "":
+		set_process_input(false)
+		queue_free()
+		emit_signal(s)

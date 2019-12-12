@@ -6,10 +6,14 @@ const SCHEMA: Dictionary = {
 
 	Background = PackedScene,
 	Hero = PackedScene,
+	HeroDying = PackedScene,
 	Drop = PackedScene,
+	DropLanding = PackedScene,
+	DropSpawner = PackedScene,
 	Pedal = PackedScene,
-	Landing = PackedScene,
-	Dying = PackedScene,
+	PedalHitting = PackedScene,
+	PedalMissing = PackedScene,
+	PedalSpawner = PackedScene,
 }
 
 var _spec: Dictionary = {}
@@ -35,4 +39,6 @@ func take(name: String):
 
 
 func make(name: String) -> Node:
-	return _spec[name].instance()
+	var node: Node = _spec[name].instance()
+	node.name = name
+	return node

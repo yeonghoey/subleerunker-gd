@@ -7,9 +7,13 @@ func _init().({
 
 	Background = preload("res://game/background/black.tscn"),
 	Hero = preload("res://game/hero/sublee.tscn"),
+	HeroDying = preload("res://game/herodying/burning.tscn"),
 	Drop = preload("res://game/drop/flame.tscn"),
+	DropLanding = preload("res://game/droplanding/dispersing.tscn"),
+	DropSpawner = preload("res://game/dropspawner/framerand.tscn"),
 	Pedal = preload("res://game/pedal/yellowbar.tscn"),
-	Landing = preload("res://game/landing/dispersing.tscn"),
-	Dying = preload("res://game/dying/burning.tscn"),
+	PedalHitting = preload("res://game/pedalhitting/xnum.tscn"),
+	PedalMissing = preload("res://game/pedalmissing/dummy.tscn"),
+	PedalSpawner = preload("res://game/pedalspawner/oneatatime.tscn"),
 }):
     pass

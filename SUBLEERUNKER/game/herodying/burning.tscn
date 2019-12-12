@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://game/dying/burning.gd" type="Script" id=1]
+[ext_resource path="res://game/herodying/burning.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/default/player_die/00.tres" type="Texture" id=2]
 [ext_resource path="res://assets/textures/default/player_die/01.tres" type="Texture" id=3]
 [ext_resource path="res://assets/textures/default/player_die/02.tres" type="Texture" id=4]
@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/textures/default/player_die/05.tres" type="Texture" id=7]
 [ext_resource path="res://assets/textures/default/player_die/06.tres" type="Texture" id=8]
 [ext_resource path="res://assets/textures/default/player_die/07.tres" type="Texture" id=9]
-[ext_resource path="res://game/dying/burning.wav" type="AudioStream" id=10]
+[ext_resource path="res://game/herodying/burning.wav" type="AudioStream" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

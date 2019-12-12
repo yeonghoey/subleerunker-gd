@@ -6,6 +6,8 @@ Subclasses should call two methods when:
 	- disappear, when running out of duration.
 """
 
+const Hero := preload("res://game/hero/hero.gd")
+
 export(float) var width
 export(float) var height
 
@@ -15,7 +17,7 @@ signal disappeared()
 var _signaled := false
 
 
-func init_within(boundary: Vector2) -> void:
+func init(boundary: Vector2, hero: Hero, hint = null) -> void:
 	"""Place the pedal in the bottom random of the boundary.
 	
 	This can be overriden if necessary.

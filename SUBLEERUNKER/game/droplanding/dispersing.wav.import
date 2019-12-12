@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/dispersing.wav-2ccc9640d6ca64cf17f1fcaea8f9f7f0.sample"
+path="res://.import/dispersing.wav-7d4f42f1dd196838099bc7a8e8118f2d.sample"
 
 [deps]
 
-source_file="res://game/landing/dispersing.wav"
-dest_files=[ "res://.import/dispersing.wav-2ccc9640d6ca64cf17f1fcaea8f9f7f0.sample" ]
+source_file="res://game/droplanding/dispersing.wav"
+dest_files=[ "res://.import/dispersing.wav-7d4f42f1dd196838099bc7a8e8118f2d.sample" ]
 
 [params]
 

@@ -75,7 +75,7 @@ func _physics_process(delta):
 
 func _init_player():
 	player = preload("res://game/hero/sublee.tscn").instance()
-	player.init_within(Vector2(W, H))
+	player.init(Vector2(W, H))
 	controller = preload("controller.gd").new(player)
 	game_objects.add_child(player)
 	add_child(controller)
@@ -96,13 +96,13 @@ func _on_hit():
 
 	controller.queue_free()
 	alive = false
-	var dying := preload("res://game/dying/burning.tscn").instance()
+	var dying := preload("res://game/herodying/burning.tscn").instance()
 	dying.init(player)
 	game_objects.add_child(dying)
 
 
 func _on_landed(drop):
-	var land := preload("res://game/landing/dispersing.tscn").instance()
+	var land := preload("res://game/droplanding/dispersing.tscn").instance()
 	land.init(drop)
 	game_objects.add_child(land)
 	if alive:
@@ -150,7 +150,7 @@ func _try_spawn_flame(delta: float):
 	var threshold = flamespawn_per_sec * delta
 	if randf() < threshold:
 		var drop = preload("res://game/drop/flame.tscn").instance()
-		drop.init_within(Vector2(W, H))
+		drop.init(Vector2(W, H), null)
 		drop.connect("landed", self, "_on_landed", [drop])
 		game_objects.add_child(drop)
 
@@ -164,7 +164,7 @@ func _try_place_combo(delta):
 		return
 
 	var pedal = preload("res://game/pedal/yellowbar.tscn").instance()
-	pedal.init_within(Vector2(W, H))
+	pedal.init(Vector2(W, H), null)
 	pedal.connect("triggered", self, "_on_pedal_triggered", [pedal])
 	pedal.connect("disappeared", self, "_on_pedal_disappeared")
 	game_objects.add_child(pedal)

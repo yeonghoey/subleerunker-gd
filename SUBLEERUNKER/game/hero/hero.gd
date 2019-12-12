@@ -49,7 +49,7 @@ onready var _head: Area2D = get_node(head_path)
 onready var _feet: Area2D = get_node(feet_path)
 
 
-func init_within(boundary: Vector2) -> void:
+func init(boundary: Vector2) -> void:
 	"""Place the hero in the bottom center of the boundary.
 	
 	This can be overriden if necessary.

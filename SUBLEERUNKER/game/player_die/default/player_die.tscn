@@ -9,7 +9,9 @@
 [ext_resource path="res://assets/textures/default/player_die/05.tres" type="Texture" id=7]
 [ext_resource path="res://assets/textures/default/player_die/06.tres" type="Texture" id=8]
 [ext_resource path="res://assets/textures/default/player_die/07.tres" type="Texture" id=9]
-[ext_resource path="res://game/dying/burning.wav" type="AudioStream" id=10]
+[ext_resource path="res://game/herodying/burning.wav" type="AudioStream" id=10]
+
+
 
 
 

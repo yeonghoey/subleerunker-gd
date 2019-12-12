@@ -2,6 +2,8 @@ extends "res://game/mover/mover.gd"
 """The base class of dropping objects like flames.
 """
 
+const Hero := preload("res://game/hero/hero.gd")
+
 # Ingame size
 export(float) var width
 export(float) var height
@@ -13,13 +15,14 @@ export(float) var max_speed
 signal landed()
 
 
-func init_within(boundary: Vector2) -> void:
-	"""Place the drop in the top random of the boundary.
-	
-	This can be overriden if necessary.
+func init(boundary: Vector2, hero: Hero, hint = null) -> void:
+	"""This will be called when a Spanwer decided to create this.
+
+	'boundary' represents the size of the game area and
+	'hero' is the hero which the player controls.
+	'hint' will be an arbitrary parameter of the hint.
 	"""
-	var x = (boundary.x - width*2) * randf() + width
-	position = Vector2(x, -height)
+	pass
 
 
 func _physics_process(delta: float):

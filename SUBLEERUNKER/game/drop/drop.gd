@@ -1,7 +1,5 @@
-extends GameMover
-
-class_name GameDrop
-"""GameDrop is the base class for dropping objects like flames.
+extends "res://game/mover/mover.gd"
+"""The base class of dropping objects like flames.
 """
 
 # Ingame size
@@ -15,15 +13,13 @@ export(float) var max_speed
 signal landed()
 
 
-func within(boundary: Vector2) -> GameDrop:
+func init_within(boundary: Vector2) -> void:
 	"""Place the drop in the top random of the boundary.
 	
 	This can be overriden if necessary.
-	Returns self so that this can be method-chained.
 	"""
 	var x = (boundary.x - width*2) * randf() + width
 	position = Vector2(x, -height)
-	return self
 
 
 func _physics_process(delta: float):
@@ -34,13 +30,13 @@ func _physics_process(delta: float):
 			queue_free()
 
 
-func _acceleration():
+func _acceleration() -> Vector2:
 	return Vector2(0, acceleration_amount)
 
 
-func _friction_amount():
+func _friction_amount() -> float:
 	return friction_amount
 
 
-func _max_speed():
+func _max_speed() -> float:
 	return max_speed

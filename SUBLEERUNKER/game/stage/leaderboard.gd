@@ -1,9 +1,11 @@
-extends GameView
+extends "res://game/stage/stage.gd"
+
+const Preset := preload("res://game/preset/preset.gd")
 
 signal started()
 signal canceled()
 
-var _preset: GamePreset
+var _preset: Preset
 var _myrecord_break: Dictionary
 
 onready var HighScores = find_node("HighScores")
@@ -11,7 +13,7 @@ onready var MyRecord = find_node("MyRecord")
 onready var PressKey = find_node("PressKey")
 
 
-func init(preset: GamePreset, myrecord_break: Dictionary):
+func init(preset: Preset, myrecord_break: Dictionary) -> void:
 	assert _myrecord_break.empty() or _myrecord_break.has_all(
 			["rank_old", "rank_new", "score_old", "score_new"])
 	_preset = preset

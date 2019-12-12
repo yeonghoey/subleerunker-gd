@@ -1,4 +1,4 @@
-extends GameMover
+extends "res://game/mover/mover.gd"
 
 const W := 48.0
 const H := 72.0

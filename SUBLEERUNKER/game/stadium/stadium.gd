@@ -1,15 +1,15 @@
 extends PanelContainer
-
-class_name GameFrame
-"""GameFrame is the class for containing in game views.
+"""This class for containing in game views.
 """
+
+const Stage := preload("res://game/stage/stage.gd")
 
 onready var _viewport: Viewport = find_node("Viewport")
 
 
-func display(view: GameView):
+func present(stage: Stage):
 	_clear_viewport()
-	_viewport.add_child(view)
+	_viewport.add_child(stage)
 
 
 func _clear_viewport():

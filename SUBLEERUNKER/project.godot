@@ -8,68 +8,9 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "GameMover",
-"class": "GameDrop",
-"language": "GDScript",
-"path": "res://game/drop/drop.gd"
-}, {
-"base": "Node2D",
-"class": "GameDying",
-"language": "GDScript",
-"path": "res://game/dying/dying.gd"
-}, {
-"base": "PanelContainer",
-"class": "GameFrame",
-"language": "GDScript",
-"path": "res://game/frame.gd"
-}, {
-"base": "GameMover",
-"class": "GameHero",
-"language": "GDScript",
-"path": "res://game/hero/hero.gd"
-}, {
-"base": "Node2D",
-"class": "GameLanding",
-"language": "GDScript",
-"path": "res://game/landing/landing.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "GameMover",
-"language": "GDScript",
-"path": "res://game/mover.gd"
-}, {
-"base": "Area2D",
-"class": "GamePedal",
-"language": "GDScript",
-"path": "res://game/pedal/pedal.gd"
-}, {
-"base": "Reference",
-"class": "GamePreset",
-"language": "GDScript",
-"path": "res://game/preset/preset.gd"
-}, {
-"base": "Control",
-"class": "GameView",
-"language": "GDScript",
-"path": "res://game/view/view.gd"
-}, {
-"base": "Reference",
-"class": "Util",
-"language": "GDScript",
-"path": "res://misc/util.gd"
-} ]
+_global_script_classes=[  ]
 _global_script_class_icons={
-"GameDrop": "",
-"GameDying": "",
-"GameFrame": "",
-"GameHero": "",
-"GameLanding": "",
-"GameMover": "",
-"GamePedal": "",
-"GamePreset": "",
-"GameView": "",
-"Util": ""
+
 }
 
 [application]

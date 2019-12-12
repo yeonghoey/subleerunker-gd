@@ -1,17 +1,10 @@
 extends Reference
 
-class_name GamePreset
-
 const FIELDS: Array = [
 	"hero",
 	"drop", 
 	"pedal",
 ]
-
-
-static func of(mode_name: String) -> GamePreset:
-	return load("res://game/preset/%s.gd" % mode_name).new()
-
 
 var _spec: Dictionary = {}
 

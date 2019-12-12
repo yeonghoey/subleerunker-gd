@@ -1,4 +1,4 @@
-extends GameHero
+extends "res://game/hero/hero.gd"
 
 const BLINK_CONTINUANCE = 4
 

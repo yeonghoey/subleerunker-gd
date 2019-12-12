@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+const Util := preload("res://misc/util.gd")
+
 
 func populate(myrecord: Dictionary, myrecord_break: Dictionary):
 	if myrecord_break.empty():

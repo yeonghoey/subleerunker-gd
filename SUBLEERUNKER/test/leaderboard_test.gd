@@ -1,8 +1,8 @@
 extends Node
 
-const Leaderboard := preload("res://game/view/leaderboard.tscn")
+const Leaderboard := preload("res://game/stage/leaderboard.tscn")
 
-onready var _preset := GamePreset.of("subleerunker")
+onready var _preset := preload("res://game/preset/subleerunker.gd").new()
 
 
 func _ready():
@@ -25,7 +25,7 @@ func _refresh(myrecord_break: Dictionary):
 	leaderboard.init(_preset, myrecord_break)
 	leaderboard.connect("started", self, "_echo", ["started"])
 	leaderboard.connect("canceled", self, "_echo", ["canceled"])
-	$Frame.display(leaderboard)
+	$Stadium.present(leaderboard)
 
 
 func _echo(s):

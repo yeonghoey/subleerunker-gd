@@ -1,5 +1,7 @@
 extends HBoxContainer
 
+const Util := preload("res://misc/util.gd")
+
 
 func _ready():
 	var idx = get_index()

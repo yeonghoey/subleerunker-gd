@@ -1,4 +1,4 @@
-extends GameDying
+extends "res://game/dying/dying.gd"
 
 
 func _ready():

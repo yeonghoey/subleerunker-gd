@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/play/session/standby/view/highscores/highscores.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/press_start_2p_24.tres" type="DynamicFont" id=2]
-[ext_resource path="res://game/view/leaderboard_highscores_row.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/stage/leaderboard_highscores_row.tscn" type="PackedScene" id=3]
 
 [node name="HighScores" type="VBoxContainer"]
 margin_left = 73.0

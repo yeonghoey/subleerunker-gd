@@ -1,4 +1,4 @@
-extends GameDrop
+extends "res://game/drop/drop.gd"
 
 
 func _ready():

@@ -1,4 +1,4 @@
-extends GameView
+extends "res://game/stage/stage.gd"
 
 signal selected(mode_name)
 signal canceled()

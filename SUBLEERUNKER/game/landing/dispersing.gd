@@ -1,4 +1,4 @@
-extends GameLanding
+extends "res://game/landing/landing.gd"
 
 
 func _ready():

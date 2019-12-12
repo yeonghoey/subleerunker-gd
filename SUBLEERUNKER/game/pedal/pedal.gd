@@ -1,7 +1,5 @@
 extends Area2D
-
-class_name GamePedal
-"""GamePedal is the base class for pedals, which are for the combo system.
+"""The base class of pedals, which are for the combo system.
 
 Subclasses should call two methods when:
 	- trigger, when the hero triggered this
@@ -17,15 +15,13 @@ signal disappeared()
 var _signaled := false
 
 
-func within(boundary: Vector2) -> GamePedal:
+func init_within(boundary: Vector2) -> void:
 	"""Place the pedal in the bottom random of the boundary.
 	
 	This can be overriden if necessary.
-	Returns self so that this can be method-chained.
 	"""
 	var x = (boundary.x - width*2) * randf() + width
 	position = Vector2(x, boundary.y - height)
-	return self
 
 
 func trigger():

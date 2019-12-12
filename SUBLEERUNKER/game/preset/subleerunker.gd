@@ -1,4 +1,4 @@
-extends GamePreset
+extends "res://game/preset/preset.gd"
 
 
 func _init().({

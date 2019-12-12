@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+const Util := preload("res://misc/util.gd")
+
 onready var label_rank_prev: Label = find_node("RankPrev")
 onready var label_rank_to: Label = find_node("RankTo")
 onready var label_rank_new: Label = find_node("RankNew")

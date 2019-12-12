@@ -1,6 +1,3 @@
-class_name Util
-
-
 static func get_rank_name(rank: int) -> String:
 	if rank == 0:
 		return "-" # Unranked

@@ -1,16 +1,16 @@
 extends Node2D
-
-class_name GameLanding
-"""GameLanding is the base class for landing effects of drops.
+"""The base class of landing effects of drops.
 """
+
+const Drop := preload("res://game/drop/drop.gd")
 
 signal finished()
 
 
-func init(drop: GameDrop):
+func init(drop: Drop) -> void:
 	position = drop.position
 
 
-func finish():
+func finish() -> void:
 	emit_signal("finished")
 	queue_free()

@@ -75,7 +75,7 @@ func _physics_process(delta):
 
 func _init_player():
 	player = preload("res://game/hero/sublee.tscn").instance()
-	player.within(Vector2(W, H))
+	player.init_within(Vector2(W, H))
 	controller = preload("controller.gd").new(player)
 	game_objects.add_child(player)
 	add_child(controller)
@@ -149,7 +149,8 @@ func _try_spawn_flame(delta: float):
 
 	var threshold = flamespawn_per_sec * delta
 	if randf() < threshold:
-		var drop = preload("res://game/drop/flame.tscn").instance().within(Vector2(W, H))
+		var drop = preload("res://game/drop/flame.tscn").instance()
+		drop.init_within(Vector2(W, H))
 		drop.connect("landed", self, "_on_landed", [drop])
 		game_objects.add_child(drop)
 
@@ -162,7 +163,8 @@ func _try_place_combo(delta):
 		combo_cooltime = max(combo_cooltime - delta, 0)
 		return
 
-	var pedal = preload("res://game/pedal/yellowbar.tscn").instance().within(Vector2(W, H))
+	var pedal = preload("res://game/pedal/yellowbar.tscn").instance()
+	pedal.init_within(Vector2(W, H))
 	pedal.connect("triggered", self, "_on_pedal_triggered", [pedal])
 	pedal.connect("disappeared", self, "_on_pedal_disappeared")
 	game_objects.add_child(pedal)

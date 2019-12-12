@@ -1,4 +1,4 @@
-extends GamePedal
+extends "res://game/pedal/pedal.gd"
 
 var _succeeded := false
 

@@ -1,15 +1,10 @@
 extends Control
-
-class_name GameView
-"""GameView is the base class of all in-game UI views, which are supposed to be
-placed within Frame.
+"""The base class of all in-game scenes, which are supposed to be
+placed within Stadium.
 
 View defines the base size of the game. Sub-scenes should inherit this
 to make sure all of the view have the same size, which is 320x480.
 """
-
-static func of(name: String) -> Node:
-	return load("res://game/view/%s.tscn" % name).instance()
 
 
 func _input(event):

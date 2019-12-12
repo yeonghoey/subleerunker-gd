@@ -1,9 +1,7 @@
-extends GameMover
+extends "res://game/mover/mover.gd"
+"""The base class of the player characters.
 
-class_name GameHero
-"""GameHero is the base class for the player character.
-
-GameHero has 8 parameters:
+Parameters:
 	- width: of desired ingame size
 	- height: of desired ingame size
 	- head_path: NodePath to Area2D (for hit)
@@ -15,7 +13,7 @@ GameHero has 8 parameters:
 	- friction_amount: float
 	- max_speed: float
 
-GameHero emits three signals:
+Signals:
 	- action_changed
 	- hit
 	- pedaled
@@ -51,14 +49,13 @@ onready var _head: Area2D = get_node(head_path)
 onready var _feet: Area2D = get_node(feet_path)
 
 
-func within(boundary: Vector2) -> GameHero:
+func init_within(boundary: Vector2) -> void:
 	"""Place the hero in the bottom center of the boundary.
 	
 	This can be overriden if necessary.
 	Returns self so that this can be method-chained.
 	"""
 	position = Vector2(boundary.x/2, boundary.y - height/2)
-	return self
 
 
 func handle_action_input(left, right):

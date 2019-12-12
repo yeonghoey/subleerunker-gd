@@ -22,18 +22,18 @@ func init(preset: Preset, myrecord_break: Dictionary) -> void:
 
 func _ready():
 	_prepend_background()
-	_ovrride_labelcolor()
+	_override_labelcolor()
 	SteamAgent.fetch_myrecord("default", self, "_on_fetch_myrecord")
 	SteamAgent.fetch_highscores("default", self, "_on_fetch_highscores")
 
 
 func _prepend_background():
-	var background := _preset.make("background")
+	var background := _preset.make("Background")
 	add_child(background)
 	move_child(background, 0)
 
 	
-func _ovrride_labelcolor():
+func _override_labelcolor():
 	var labelcolor: Color = _preset.take("labelcolor")
 	for label in get_tree().get_nodes_in_group("GameLabel"):
 		label.add_color_override("font_color", labelcolor)

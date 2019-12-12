@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 const Leaderboard := preload("res://game/stage/leaderboard.tscn")
 

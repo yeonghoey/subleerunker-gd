@@ -9,7 +9,7 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 
-[node name="Frame" type="PanelContainer"]
+[node name="Stadium" type="PanelContainer"]
 margin_right = 328.0
 margin_bottom = 488.0
 size_flags_horizontal = 5

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://test/ingame_test.gd" type="Script" id=1]
+[ext_resource path="res://test/test_ingame.gd" type="Script" id=1]
 [ext_resource path="res://game/stadium/stadium.tscn" type="PackedScene" id=2]
 
 [node name="InGameTest" type="Control"]

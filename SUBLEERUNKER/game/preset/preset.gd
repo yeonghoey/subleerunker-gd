@@ -1,7 +1,9 @@
 extends Reference
 
 const SCHEMA: Dictionary = {
-	name = TYPE_STRING,
+	displayname = TYPE_STRING,
+	leaderboardname = TYPE_STRING,
+
 	labelcolor = TYPE_COLOR,
 
 	Background = PackedScene,

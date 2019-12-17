@@ -4,7 +4,12 @@ placed within Stadium.
 
 View defines the base size of the game. Sub-scenes should inherit this
 to make sure all of the view have the same size, which is 320x480.
+
+When trying to free Stage, subclasses should call close() and Stadium
+will handle the cleanup.
 """
+
+signal closed()
 
 
 func _input(event):
@@ -18,3 +23,10 @@ func _input(event):
 	won't use any GUI inputs.
 	"""
 	pass
+
+
+func close():
+	set_process(false)
+	set_physics_process(false)
+	set_process_input(false)
+	emit_signal("closed")

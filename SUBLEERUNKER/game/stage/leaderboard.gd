@@ -2,11 +2,14 @@ extends "res://game/stage/stage.gd"
 
 const Preset := preload("res://game/preset/preset.gd")
 
-signal started()
+signal started(score_old)
 signal canceled()
 
 var _preset: Preset
 var _myrecord_break: Dictionary
+
+var _myrecord := {rank=0, score=0}
+var _myrecord_fetched := false
 
 onready var HighScores = find_node("HighScores")
 onready var MyRecord = find_node("MyRecord")
@@ -35,17 +38,17 @@ func _prepend_background():
 	
 func _override_labelcolor():
 	var labelcolor: Color = _preset.take("labelcolor")
-	for label in get_tree().get_nodes_in_group("GameLabel"):
-		label.add_color_override("font_color", labelcolor)
+	get_tree().call_group("GameLabel",
+			"add_color_override", "font_color", labelcolor)
 
 
 func _on_fetch_myrecord(entries):
-	var myrecord := {rank=0, score=0}
 	if entries != null and entries.size() == 1:
 		var entry = entries[0]
-		myrecord["rank"] = entry["global_rank"]
-		myrecord["score"] = entry["score"]
-	MyRecord.populate(myrecord, _myrecord_break)
+		_myrecord["rank"] = entry["global_rank"]
+		_myrecord["score"] = entry["score"]
+	MyRecord.populate(_myrecord, _myrecord_break)
+	_myrecord_fetched = true
 
 
 func _on_fetch_highscores(entries):
@@ -68,13 +71,14 @@ func _input(event):
 		Input.is_action_pressed("ui_left") or 
 		Input.is_action_pressed("ui_right") or
 		Input.is_action_pressed("ui_accept"))
+	if start and _myrecord_fetched:
+		emit_signal("started", _myrecord["score"])
+		close()
+		return
+		
 	var cancel := (
 		Input.is_action_pressed("ui_cancel"))
-	var s := (
-		"started" if start else
-		"canceled" if cancel else
-		"")
-	if s != "":
-		set_process_input(false)
-		queue_free()
-		emit_signal(s)
+	if cancel:
+		emit_signal("canceled")
+		close()
+		return

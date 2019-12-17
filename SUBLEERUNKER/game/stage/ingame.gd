@@ -80,7 +80,7 @@ func _add_troupe():
 
 func _on_troup_cleared():
 	emit_signal("ended")
-	queue_free()
+	close()
 
 
 func _cast_hero():

@@ -10,4 +10,4 @@ func _ready():
 
 func _input(event):
 	emit_signal("selected", "subleerunker")
-	queue_free()
+	close()

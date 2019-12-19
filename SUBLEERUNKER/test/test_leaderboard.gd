@@ -23,10 +23,15 @@ func _on_Button_toggled(button_pressed: bool):
 func _refresh(myrecord_break: Dictionary):
 	var leaderboard = Leaderboard.instance()
 	leaderboard.init(_preset, myrecord_break)
-	leaderboard.connect("started", self, "_echo", ["started"])
-	leaderboard.connect("canceled", self, "_echo", ["canceled"])
+	leaderboard.connect("started", self, "_echo1", ["started"])
+	leaderboard.connect("canceled", self, "_echo0", ["canceled"])
 	$Stadium.present(leaderboard)
 
 
-func _echo(s):
-	print(s)
+func _echo0(s):
+	print("%s()" % s)
+
+
+func _echo1(a, s):
+	print("%s(%s)" % [s, a])
+	

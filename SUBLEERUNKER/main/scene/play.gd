@@ -9,10 +9,8 @@ const InGame := preload("res://game/stage/ingame.tscn")
 const ScoreUpload := preload("res://game/stage/scoreupload.tscn")
 
 
-var _current_mode := ""
 var _preset: Preset
 var _myrecord_break := {}
-var _score_old := 0
 
 onready var _Stadium: Stadium = find_node("Stadium")
 
@@ -45,21 +43,46 @@ func _present_leaderboard():
 	_Stadium.present(leaderboard)
 
 
-
 func _on_leaderboard_started(score_old: int):
-	_score_old = score_old
-	_present_ingame()
+	_present_ingame(score_old)
 
 
 func _on_leaderboard_canceled():
 	pass
 
 
-func _present_ingame():
+func _present_ingame(score_old: int):
 	var ingame := InGame.instance()
 	ingame.init(_preset)
-	# TODO: Connect signals!
+	ingame.connect("player_hit", self, "_on_ingame_player_hit", [score_old])
+	ingame.connect("tree_exiting", self, "_on_ingame_tree_exiting")
 	_Stadium.present(ingame)
+
+
+func _on_ingame_player_hit(score_new: int, score_old: int):
+	if score_new > score_old:
+		_overlay_scoreupload(score_new, score_old)
+	else:
+		_myrecord_break.clear()
+
+
+func _on_ingame_tree_exiting():
+	# NOTE: Present leaderboard when ingame is about to be removed,
+	# instead of receiving a custom signal.
+	# This is because ingame can be closed in two ways, just "ended" or
+	# "ended" and scoreupload is "done"(when score uploading 's required)
+	_present_leaderboard()
+
+
+func _overlay_scoreupload(score_new: int, score_old: int):
+	var scoreupload := ScoreUpload.instance()
+	scoreupload.init(_preset, score_new, score_old)
+	scoreupload.connect("done", self, "_on_scoreupload_done")
+	_Stadium.overlay(scoreupload)
+
+
+func _on_scoreupload_done(myrecord_break: Dictionary) -> void:
+	_myrecord_break = myrecord_break
 
 
 func _load_preset(mode_name: String) -> Preset:

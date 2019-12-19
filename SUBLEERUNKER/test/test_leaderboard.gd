@@ -12,10 +12,11 @@ func _ready():
 func _on_Button_toggled(button_pressed: bool):
 	if button_pressed:
 		_refresh({
+			rank_new=234,
 			rank_old=1000, 
-			rank_new=234, 
+			score_new=45624,
 			score_old=12323, 
-			score_new=45624})
+		})
 	else:
 		_refresh({})
 

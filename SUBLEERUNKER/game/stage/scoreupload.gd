@@ -10,9 +10,9 @@ const Preset := preload("res://game/preset/preset.gd")
 signal done(myrecord_break)
 
 var _preset: Preset
-var _score_old := 0
 var _score_new := 0
-var _retry_count := 0
+var _score_old := 0
+var _retry_count := -1
 
 onready var _Timer: Timer = find_node("Timer")
 onready var _Body: MarginContainer = find_node("Body")
@@ -20,10 +20,10 @@ onready var _Retry = find_node("Retry")
 onready var _Seconds = find_node("Seconds")
 
 
-func init(preset: Preset, score_old: int, score_new: int):
+func init(preset: Preset, score_new: int, score_old: int):
 	_preset = preset
-	_score_old = score_old
 	_score_new = score_new
+	_score_old = score_old
 
 
 func _ready():
@@ -51,7 +51,7 @@ func _on_upload_score(result) -> void:
 		close()
 		return
 
-	if _retry_count == 0:
+	if _retry_count == -1:
 		_Body.visible = true
 		_Timer.connect("timeout", self, "_try_upload_score")
 		_Timer.start()
@@ -64,10 +64,10 @@ func _compile_myrecord_break(result: Dictionary) -> Dictionary:
 			["success", "score_changed", "global_rank_previous", "global_rank_new"])
 	if fields_exist and result["success"] and result["score_changed"]:
 		return {
-			rank_old = result["global_rank_previous"],
 			rank_new = result["global_rank_new"],
-			score_old = _score_old,
+			rank_old = result["global_rank_previous"],
 			score_new = _score_new,
+			score_old = _score_old,
 		}
 	else:
 		return {}

@@ -16,7 +16,7 @@ signal lr_changed(left, right)
 signal scored(score)
 signal combo_hit(n_combo)
 signal combo_missed(last_n_combo)
-signal player_hit()
+signal player_hit(score_new)
 signal ended()
 
 var _preset: Preset
@@ -28,6 +28,7 @@ var _hero: Hero
 
 var _is_hero_hit := false
 var _score := 0
+var _score_new := 0
 var _n_combo := 1
 
 
@@ -94,8 +95,9 @@ func _cast_hero():
 
 func _on_hero_hit():
 	_is_hero_hit = true
+	_score_new = _score
 	_cast_herodying(_hero)
-	emit_signal("player_hit")
+	emit_signal("player_hit", _score_new)
 
 
 func _cast_herodying(hero: Hero):

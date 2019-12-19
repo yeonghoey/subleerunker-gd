@@ -18,7 +18,7 @@ onready var PressKey = find_node("PressKey")
 
 func init(preset: Preset, myrecord_break: Dictionary) -> void:
 	assert _myrecord_break.empty() or _myrecord_break.has_all(
-			["rank_old", "rank_new", "score_old", "score_new"])
+			["rank_new", "rank_old", "score_new", "score_old"])
 	_preset = preset
 	_myrecord_break = myrecord_break
 
@@ -26,8 +26,9 @@ func init(preset: Preset, myrecord_break: Dictionary) -> void:
 func _ready():
 	_prepend_background()
 	_override_labelcolor()
-	SteamAgent.fetch_myrecord("default", self, "_on_fetch_myrecord")
-	SteamAgent.fetch_highscores("default", self, "_on_fetch_highscores")
+	var leaderboardname: String = _preset.take("leaderboardname")
+	SteamAgent.fetch_myrecord(leaderboardname, self, "_on_fetch_myrecord")
+	SteamAgent.fetch_highscores(leaderboardname, self, "_on_fetch_highscores")
 
 
 func _prepend_background():

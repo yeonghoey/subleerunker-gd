@@ -12,12 +12,13 @@ const PedalHitting := preload("res://game/pedalhitting/pedalhitting.gd")
 const PedalMissing := preload("res://game/pedalmissing/pedalmissing.gd")
 const PedalSpawner := preload("res://game/pedalspawner/pedalspawner.gd")
 
-signal lr_changed(left, right)
+signal started(initial_score, initial_n_combo)
 signal scored(score)
 signal combo_hit(n_combo)
-signal combo_missed(last_n_combo)
+signal combo_missed(n_combo, last_n_combo)
 signal player_hit(score_new)
 signal ended()
+signal lr_changed(left, right)
 
 var _preset: Preset
 
@@ -44,6 +45,7 @@ func _ready():
 	_add_troupe()
 	_cast_hero()
 	_wire_input_to_hero()
+	_emit_started()
 
 
 func _add_background():
@@ -151,7 +153,7 @@ func _on_pedal_disappeared(pedal: Pedal) -> void:
 	var last_n_combo := _n_combo
 	_n_combo = 1
 	_cast_pedalmissing(pedal, last_n_combo)
-	emit_signal("combo_missed", last_n_combo)
+	emit_signal("combo_missed", _n_combo, last_n_combo)
 
 
 func _cast_pedalhitting(pedal: Pedal, n_combo: int) -> void:
@@ -166,8 +168,12 @@ func _cast_pedalmissing(pedal: Pedal, last_n_combo: int) -> void:
 	_troupe.cast(pedalmissing)
 
 
-func _wire_input_to_hero():
+func _wire_input_to_hero() -> void:
 	connect("lr_changed", _hero, "handle_action_input")
+
+
+func _emit_started() -> void:
+	emit_signal("started", _score, _n_combo)
 
 
 func _input(event):

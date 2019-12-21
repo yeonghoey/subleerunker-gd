@@ -2,11 +2,10 @@ extends "res://game/preset/preset.gd"
 
 
 func _init().({
+	name = "subleerunker",
 	displayname = "subleerunker",
 	leaderboardname = "subleerunker",
-
 	labelcolor = Color("#ffffff"),
-
 	Background = preload("res://game/background/black.tscn"),
 	Hero = preload("res://game/hero/sublee.tscn"),
 	HeroDying = preload("res://game/herodying/burning.tscn"),

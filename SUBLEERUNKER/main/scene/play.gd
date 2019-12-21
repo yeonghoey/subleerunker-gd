@@ -9,6 +9,8 @@ const Leaderboard := preload("res://game/stage/leaderboard.tscn")
 const InGame := preload("res://game/stage/ingame.tscn")
 const ScoreUpload := preload("res://game/stage/scoreupload.tscn")
 
+var _last_mode := ""
+
 var _preset: Preset
 var _myrecord_break := {}
 
@@ -16,12 +18,17 @@ onready var _Stadium: Stadium = find_node("Stadium")
 onready var _Indicator: Indicator = find_node("Indicator")
 
 
+func init(last_mode: String) -> void:
+	_last_mode = last_mode
+
+
 func _ready():
-	_present_modeselection()
+	_present_modeselection(_last_mode)
 
 
-func _present_modeselection():
+func _present_modeselection(last_mode: String):
 	var modeselection := ModeSelection.instance()
+	modeselection.init(last_mode)
 	modeselection.connect("selected", self, "_on_modeselection_selected")
 	modeselection.connect("canceled", self, "_on_modeselection_canceled")
 	_Stadium.present(modeselection)
@@ -49,7 +56,7 @@ func _on_leaderboard_started(score_old: int):
 
 
 func _on_leaderboard_canceled():
-	pass
+	_present_modeselection(_preset.take("name"))
 
 
 func _present_ingame(score_old: int):

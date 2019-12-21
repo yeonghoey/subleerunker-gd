@@ -10,7 +10,7 @@
 
 [sub_resource type="Theme" id=1]
 
-[node name="Leaderboard" instance=ExtResource( 1 )]
+[node name="Leaderboard" index="0" instance=ExtResource( 1 )]
 theme = SubResource( 1 )
 script = ExtResource( 2 )
 

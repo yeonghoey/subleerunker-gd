@@ -11,9 +11,9 @@ var _myrecord_break: Dictionary
 var _myrecord := {rank=0, score=0}
 var _myrecord_fetched := false
 
-onready var HighScores = find_node("HighScores")
-onready var MyRecord = find_node("MyRecord")
-onready var PressKey = find_node("PressKey")
+onready var _HighScores = find_node("HighScores")
+onready var _MyRecord = find_node("MyRecord")
+onready var _PressKey = find_node("PressKey")
 
 
 func init(preset: Preset, myrecord_break: Dictionary) -> void:
@@ -26,6 +26,7 @@ func init(preset: Preset, myrecord_break: Dictionary) -> void:
 func _ready():
 	_prepend_background()
 	_override_labelcolor()
+	_PressKey.visible = false
 	var leaderboardname: String = _preset.take("leaderboardname")
 	SteamAgent.fetch_myrecord(leaderboardname, self, "_on_fetch_myrecord")
 	SteamAgent.fetch_highscores(leaderboardname, self, "_on_fetch_highscores")
@@ -48,8 +49,9 @@ func _on_fetch_myrecord(entries):
 		var entry = entries[0]
 		_myrecord["rank"] = entry["global_rank"]
 		_myrecord["score"] = entry["score"]
-	MyRecord.populate(_myrecord, _myrecord_break)
+	_MyRecord.populate(_myrecord, _myrecord_break)
 	_myrecord_fetched = true
+	_PressKey.visible = true
 
 
 func _on_fetch_highscores(entries):
@@ -64,7 +66,7 @@ func _on_fetch_highscores(entries):
 			rank = entry["global_rank"],
 			score = entry["score"],
 		})
-	HighScores.populate(records)
+	_HighScores.populate(records)
 
 
 func _input(event):

@@ -1,0 +1,241 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/stage/stage.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/stage/modeselection.gd" type="Script" id=2]
+[ext_resource path="res://fonts/press_start_2p_16.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/press_start_2p_08.tres" type="DynamicFont" id=4]
+
+
+[node name="ModeSelection" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 32
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 304.0
+margin_bottom = 448.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="0"]
+margin_right = 288.0
+margin_bottom = 206.0
+size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" index="0"]
+margin_left = 16.0
+margin_right = 272.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 256, 0 )
+size_flags_horizontal = 4
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer" index="0"]
+margin_left = 24.0
+margin_top = 8.0
+margin_right = 232.0
+margin_bottom = 24.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 3 )
+text = "SUBLEE|RUNKER"
+valign = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" index="1"]
+margin_left = 16.0
+margin_top = 40.0
+margin_right = 272.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 256, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 2
+custom_constants/margin_right = 16
+custom_constants/margin_top = 8
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 8
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2" index="0"]
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 240.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 4 )
+text = "Based on the original:
+https://subl.ee/runker"
+align = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" index="2"]
+margin_left = 16.0
+margin_top = 100.0
+margin_right = 272.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 256, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 2.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 8
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3" index="0"]
+margin_left = 24.0
+margin_top = 8.0
+margin_right = 240.0
+margin_bottom = 64.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/VBoxContainer" index="0"]
+editor/display_folded = true
+margin_right = 216.0
+margin_bottom = 16.0
+custom_constants/separation = 16
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer" index="0"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer" index="1"]
+margin_left = 32.0
+margin_top = 4.0
+margin_right = 176.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 4 )
+text = "Download this game"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/VBoxContainer" index="1"]
+editor/display_folded = true
+margin_top = 20.0
+margin_right = 216.0
+margin_bottom = 36.0
+custom_constants/separation = 16
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2" index="0"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2" index="1"]
+margin_left = 32.0
+margin_top = 4.0
+margin_right = 144.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 4 )
+text = "Play 100 games"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/VBoxContainer" index="2"]
+margin_top = 40.0
+margin_right = 216.0
+margin_bottom = 56.0
+custom_constants/separation = 16
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3" index="0"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3" index="1"]
+margin_left = 32.0
+margin_top = 4.0
+margin_right = 184.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 4 )
+text = "Testing testing one"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" index="1"]
+margin_top = 210.0
+margin_right = 288.0
+margin_bottom = 416.0
+size_flags_vertical = 3
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer" index="0"]
+editor/display_folded = true
+margin_left = 40.0
+margin_top = 16.0
+margin_right = 248.0
+margin_bottom = 190.0
+size_flags_horizontal = 4
+custom_constants/vseparation = 12
+custom_constants/hseparation = 12
+columns = 5
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" index="0"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" index="1"]
+margin_left = 44.0
+margin_right = 76.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="ColorRect3" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" index="2"]
+margin_left = 88.0
+margin_right = 120.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="ColorRect4" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" index="3"]
+margin_left = 132.0
+margin_right = 164.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="ColorRect5" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" index="4"]
+margin_left = 176.0
+margin_right = 208.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="ColorRect6" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" index="5"]
+margin_top = 44.0
+margin_right = 32.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="ColorRect7" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" index="6"]
+margin_left = 44.0
+margin_top = 44.0
+margin_right = 76.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="ColorRect8" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" index="7"]
+margin_left = 88.0
+margin_top = 44.0
+margin_right = 120.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="ColorRect9" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" index="8"]
+margin_left = 132.0
+margin_top = 44.0
+margin_right = 164.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="ColorRect10" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer" index="9"]
+margin_left = 176.0
+margin_top = 44.0
+margin_right = 208.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 32, 32 )

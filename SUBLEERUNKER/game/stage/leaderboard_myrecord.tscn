@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/stage/leaderboard_myrecord.gd" type="Script" id=1]
+[ext_resource path="res://fonts/press_start_2p_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/press_start_2p_08.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/press_start_2p_16.tres" type="DynamicFont" id=4]
+
+
+[node name="MyRecord" type="VBoxContainer"]
+margin_top = 216.0
+margin_right = 288.0
+margin_bottom = 308.0
+script = ExtResource( 1 )
+
+[node name="TitleContainer" type="MarginContainer" parent="."]
+margin_right = 288.0
+margin_bottom = 72.0
+custom_constants/margin_right = 24
+custom_constants/margin_top = 24
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 24
+
+[node name="Title" type="Label" parent="TitleContainer" groups=[
+"GameLabel",
+]]
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 264.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 2 )
+text = "YOU"
+align = 1
+
+[node name="Main" type="VBoxContainer" parent="."]
+margin_top = 76.0
+margin_right = 288.0
+margin_bottom = 116.0
+custom_constants/separation = 8
+alignment = 1
+
+[node name="RankContainer" type="HBoxContainer" parent="Main"]
+editor/display_folded = true
+margin_right = 288.0
+margin_bottom = 16.0
+alignment = 1
+
+[node name="RankOld" type="Label" parent="Main/RankContainer" groups=[
+"GameLabel",
+]]
+margin_left = 132.0
+margin_top = 8.0
+margin_right = 132.0
+margin_bottom = 16.0
+size_flags_horizontal = 9
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 3 )
+
+[node name="RankTo" type="Label" parent="Main/RankContainer" groups=[
+"GameLabel",
+]]
+margin_left = 136.0
+margin_top = 8.0
+margin_right = 136.0
+margin_bottom = 16.0
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 3 )
+
+[node name="RankNew" type="Label" parent="Main/RankContainer" groups=[
+"GameLabel",
+]]
+margin_left = 140.0
+margin_right = 156.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 4 )
+text = "-"
+
+[node name="ScoreContainer" type="HBoxContainer" parent="Main"]
+editor/display_folded = true
+margin_top = 24.0
+margin_right = 288.0
+margin_bottom = 40.0
+alignment = 1
+
+[node name="ScoreOld" type="Label" parent="Main/ScoreContainer" groups=[
+"GameLabel",
+]]
+margin_left = 132.0
+margin_top = 8.0
+margin_right = 132.0
+margin_bottom = 16.0
+size_flags_horizontal = 9
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 3 )
+
+[node name="ScoreTo" type="Label" parent="Main/ScoreContainer" groups=[
+"GameLabel",
+]]
+margin_left = 136.0
+margin_top = 8.0
+margin_right = 136.0
+margin_bottom = 16.0
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 3 )
+
+[node name="ScoreNew" type="Label" parent="Main/ScoreContainer" groups=[
+"GameLabel",
+]]
+margin_left = 140.0
+margin_right = 156.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 4 )
+text = "-"

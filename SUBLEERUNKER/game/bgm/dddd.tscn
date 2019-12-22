@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/bgm/bgm.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/bgm/dddd.wav" type="AudioStream" id=2]
+
+[node name="DDDD" instance=ExtResource( 1 )]
+stream = ExtResource( 2 )

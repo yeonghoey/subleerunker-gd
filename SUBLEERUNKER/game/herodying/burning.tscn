@@ -1,0 +1,35 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://game/herodying/burning.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/default/player_die/00.tres" type="Texture" id=2]
+[ext_resource path="res://assets/textures/default/player_die/01.tres" type="Texture" id=3]
+[ext_resource path="res://assets/textures/default/player_die/02.tres" type="Texture" id=4]
+[ext_resource path="res://assets/textures/default/player_die/03.tres" type="Texture" id=5]
+[ext_resource path="res://assets/textures/default/player_die/04.tres" type="Texture" id=6]
+[ext_resource path="res://assets/textures/default/player_die/05.tres" type="Texture" id=7]
+[ext_resource path="res://assets/textures/default/player_die/06.tres" type="Texture" id=8]
+[ext_resource path="res://assets/textures/default/player_die/07.tres" type="Texture" id=9]
+[ext_resource path="res://game/herodying/burning.wav" type="AudioStream" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="Burning" type="Node2D"]
+position = Vector2( 317.683, 278.174 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
+bus = "Sound"

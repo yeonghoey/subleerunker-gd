@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/burning.wav-8b027d4c536118e9cfedc8114a78fb3b.sample"
+
+[deps]
+
+source_file="res://game/herodying/burning.wav"
+dest_files=[ "res://.import/burning.wav-8b027d4c536118e9cfedc8114a78fb3b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

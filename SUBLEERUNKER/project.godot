@@ -21,7 +21,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Meta="*res://autoload/meta.gd"
 SteamAgent="*res://autoload/steam_agent/steam_agent.gd"
 
 [debug]

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/default.wav-d2a398a0ba2582bfdb21f39a87001774.sample"
+path="res://.import/dddd.wav-619feafd18a236f3b4c14a42c1a2d403.sample"
 
 [deps]
 
-source_file="res://assets/music/stage/default.wav"
-dest_files=[ "res://.import/default.wav-d2a398a0ba2582bfdb21f39a87001774.sample" ]
+source_file="res://game/bgm/dddd.wav"
+dest_files=[ "res://.import/dddd.wav-619feafd18a236f3b4c14a42c1a2d403.sample" ]
 
 [params]
 

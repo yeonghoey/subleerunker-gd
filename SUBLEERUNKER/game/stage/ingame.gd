@@ -11,6 +11,7 @@ const Pedal := preload("res://game/pedal/pedal.gd")
 const PedalHitting := preload("res://game/pedalhitting/pedalhitting.gd")
 const PedalMissing := preload("res://game/pedalmissing/pedalmissing.gd")
 const PedalSpawner := preload("res://game/pedalspawner/pedalspawner.gd")
+const BGM := preload("res://game/bgm/bgm.gd")
 
 signal started(initial_score, initial_n_combo)
 signal scored(score)
@@ -22,6 +23,7 @@ signal lr_changed(left, right)
 
 var _preset: Preset
 
+var _bgm: BGM
 var _dropspawner: DropSpawner
 var _pedalspawner: PedalSpawner
 var _troupe: Troupe
@@ -39,6 +41,7 @@ func init(preset: Preset) -> void:
 
 func _ready():
 	assert(_preset != null)
+	_add_bgm()
 	_add_background()
 	_add_dropspawner()
 	_add_pedalspawner()
@@ -46,6 +49,11 @@ func _ready():
 	_cast_hero()
 	_wire_input_to_hero()
 	_emit_started()
+
+
+func _add_bgm() -> void:
+	_bgm = _preset.make("BGM")
+	add_child(_bgm)
 
 
 func _add_background():
@@ -88,6 +96,7 @@ func _on_troup_cleared():
 func _cast_hero():
 	_hero = _preset.make("Hero")
 	_hero.init(rect_size)
+	_hero.connect("hit", _bgm, "queue_free")
 	_hero.connect("hit", _dropspawner, "queue_free")
 	_hero.connect("hit", _pedalspawner, "queue_free")
 	_hero.connect("hit", self, "_on_hero_hit")

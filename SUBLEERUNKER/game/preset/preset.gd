@@ -15,6 +15,7 @@ const SCHEMA: Dictionary = {
 	PedalHitting = PackedScene,
 	PedalMissing = PackedScene,
 	PedalSpawner = PackedScene,
+	BGM = PackedScene,
 }
 
 var _spec: Dictionary = {}

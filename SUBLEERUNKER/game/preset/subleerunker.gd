@@ -16,5 +16,6 @@ func _init().({
 	PedalHitting = preload("res://game/pedalhitting/xnum.tscn"),
 	PedalMissing = preload("res://game/pedalmissing/dummy.tscn"),
 	PedalSpawner = preload("res://game/pedalspawner/oneatatime.tscn"),
+	BGM = preload("res://game/bgm/dddd.tscn"),
 }):
     pass

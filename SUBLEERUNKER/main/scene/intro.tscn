@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://main/scene/intro.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/textures/intro/yeongho/00.tres" type="Texture" id=3]
 [ext_resource path="res://assets/textures/intro/yeongho/01.tres" type="Texture" id=4]
 [ext_resource path="res://assets/textures/intro/yeongho/02.tres" type="Texture" id=5]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/textures/intro/yeongho/05.tres" type="Texture" id=8]
 [ext_resource path="res://assets/textures/intro/yeongho/06.tres" type="Texture" id=9]
 [ext_resource path="res://assets/textures/intro/yeongho/07.tres" type="Texture" id=10]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 48

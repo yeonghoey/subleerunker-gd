@@ -83,7 +83,6 @@ func _add_troupe():
 
 func _on_troup_cleared():
 	emit_signal("ended")
-	close()
 
 
 func _cast_hero():

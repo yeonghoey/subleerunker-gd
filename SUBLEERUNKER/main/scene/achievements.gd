@@ -1,5 +1,7 @@
 extends Control
 
+signal backed()
+
 
 func _ready():
 	pass
@@ -7,4 +9,4 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
-		Signals.emit_signal("scene_achievements_closed")
+		emit_signal("backed")

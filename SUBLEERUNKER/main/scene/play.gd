@@ -1,6 +1,7 @@
-extends Control
+extends "res://main/scene/scene.gd"
 
 const Stadium := preload("res://game/stadium/stadium.gd")
+const Stage := preload("res://game/stage/stage.gd")
 const Preset := preload("res://game/preset/preset.gd")
 const Indicator := preload("res://main/scene/play_indicator.gd")
 
@@ -8,6 +9,8 @@ const ModeSelection := preload("res://game/stage/modeselection.tscn")
 const Leaderboard := preload("res://game/stage/leaderboard.tscn")
 const InGame := preload("res://game/stage/ingame.tscn")
 const ScoreUpload := preload("res://game/stage/scoreupload.tscn")
+
+signal backed()
 
 var _last_mode := ""
 
@@ -29,33 +32,36 @@ func _ready():
 func _present_modeselection(last_mode: String):
 	var modeselection := ModeSelection.instance()
 	modeselection.init(last_mode)
-	modeselection.connect("selected", self, "_on_modeselection_selected")
+	modeselection.connect("selected", self, "_on_modeselection_selected", [modeselection])
 	modeselection.connect("canceled", self, "_on_modeselection_canceled")
 	_Stadium.present(modeselection)
 
 
-func _on_modeselection_selected(mode_name: String):
+func _on_modeselection_selected(mode_name: String, modeselection: Stage):
+	modeselection.close()
 	_preset = _load_preset(mode_name)
 	_present_leaderboard()
 
 
 func _on_modeselection_canceled():
-	pass
+	emit_signal("backed")
 
 
 func _present_leaderboard():
 	var leaderboard := Leaderboard.instance()
 	leaderboard.init(_preset, _myrecord_break)
-	leaderboard.connect("started", self, "_on_leaderboard_started")
-	leaderboard.connect("canceled", self, "_on_leaderboard_canceled")
+	leaderboard.connect("started", self, "_on_leaderboard_started", [leaderboard])
+	leaderboard.connect("canceled", self, "_on_leaderboard_canceled", [leaderboard])
 	_Stadium.present(leaderboard)
 
 
-func _on_leaderboard_started(score_old: int):
+func _on_leaderboard_started(score_old: int, leaderboard: Stage):
+	leaderboard.close()
 	_present_ingame(score_old)
 
 
-func _on_leaderboard_canceled():
+func _on_leaderboard_canceled(leaderboard: Stage):
+	leaderboard.close()
 	_present_modeselection(_preset.take("name"))
 
 
@@ -67,7 +73,7 @@ func _present_ingame(score_old: int):
 	ingame.connect("combo_hit", self, "_on_ingame_combo_hit")
 	ingame.connect("combo_missed", self, "_on_ingame_combo_missed")
 	ingame.connect("player_hit", self, "_on_ingame_player_hit", [score_old])
-	ingame.connect("ended", self, "_on_ingame_ended")
+	ingame.connect("ended", self, "_on_ingame_ended", [ingame])
 	ingame.connect("tree_exiting", self, "_on_ingame_tree_exiting")
 	_Stadium.present(ingame)
 	_Indicator.display({score=true, combo=true})
@@ -99,7 +105,8 @@ func _on_ingame_player_hit(score_new: int, score_old: int) -> void:
 		_myrecord_break.clear()
 
 
-func _on_ingame_ended() -> void:
+func _on_ingame_ended(ingame: Stage) -> void:
+	ingame.close()
 	_Indicator.display({score=true, combo=false})
 
 
@@ -114,11 +121,12 @@ func _on_ingame_tree_exiting():
 func _overlay_scoreupload(score_new: int, score_old: int):
 	var scoreupload := ScoreUpload.instance()
 	scoreupload.init(_preset, score_new, score_old)
-	scoreupload.connect("done", self, "_on_scoreupload_done")
+	scoreupload.connect("done", self, "_on_scoreupload_done", [scoreupload])
 	_Stadium.overlay(scoreupload)
 
 
-func _on_scoreupload_done(myrecord_break: Dictionary) -> void:
+func _on_scoreupload_done(myrecord_break: Dictionary, scoreupload: Stage) -> void:
+	scoreupload.close()
 	_myrecord_break = myrecord_break
 
 

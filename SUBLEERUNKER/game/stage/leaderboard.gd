@@ -74,12 +74,10 @@ func _input(event):
 		Input.is_action_pressed("ui_accept"))
 	if start and _myrecord_fetched:
 		emit_signal("started", _myrecord["score"])
-		close()
 		return
 		
 	var cancel := (
 		Input.is_action_pressed("ui_cancel"))
 	if cancel:
 		emit_signal("canceled")
-		close()
 		return

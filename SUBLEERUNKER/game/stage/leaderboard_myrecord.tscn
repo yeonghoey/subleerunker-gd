@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/play/session/standby/view/myrecord/myrecord.gd" type="Script" id=1]
+[ext_resource path="res://game/stage/leaderboard_myrecord.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/press_start_2p_24.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/press_start_2p_08.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/fonts/press_start_2p_16.tres" type="DynamicFont" id=4]

@@ -1,4 +1,4 @@
-extends Node
+extends Reference
 
 const FILE_PATH = "user://options.json"
 
@@ -10,33 +10,14 @@ var _options := {
 }
 
 
-func _ready():
-	_connect_signals()
-	_load()
+func load_last():
+	var last: Dictionary = _read_last()
+	for key in last:
+		var value = last[key]
+		set_option(key, value, false)
 
 
-func _connect_signals():
-	Signals.connect("option_get_requested", self, "_on_option_get_requested")
-	Signals.connect("option_set_requested", self, "_on_option_set_requested")
-
-
-func _on_option_get_requested(key):
-	Signals.emit_signal("option_%s_updated" % key, _options[key])
-
-
-func _on_option_set_requested(key, value):
-	_set_option(key, value, true)
-	Signals.emit_signal("option_%s_updated" % key, _options[key])
-
-
-func _load():
-	var options = _last_options()
-	for key in options:
-		var value = options[key]
-		_set_option(key, value, false)
-	
-
-func _last_options():
+func _read_last() -> Dictionary:
 	var f := File.new()
 	if f.file_exists(FILE_PATH):
 		f.open(FILE_PATH, File.READ)
@@ -47,7 +28,7 @@ func _last_options():
 		return _options
 
 
-func _set_option(key, value, do_save=true):
+func set_option(key, value, do_save=true) -> void:
 	call("_set_%s" % key, value)
 	_options[key] = value
 	if do_save:
@@ -85,3 +66,7 @@ func _set_sound(b):
 func _mute_bus(name: String, enable: bool):
 	var bus_idx = AudioServer.get_bus_index(name)
 	AudioServer.set_bus_mute(bus_idx, enable)
+
+
+func get_option(key: String):
+	return _options[key]

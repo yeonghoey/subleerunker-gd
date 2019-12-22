@@ -48,7 +48,6 @@ func _on_upload_score(result) -> void:
 	if result.get("success"):
 		var myrecord_break := _compile_myrecord_break(result)
 		emit_signal("done", myrecord_break)
-		close()
 		return
 
 	if _retry_count == -1:

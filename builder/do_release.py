@@ -21,7 +21,6 @@ utils.main(stage='release', steps=[
     win.params,
     win.export_exe,
     win.set_icon,
-    win.copy_steam_dll,
 
     # NOTE: Finish osx build after doing windows build,
     # because notarization takes time.

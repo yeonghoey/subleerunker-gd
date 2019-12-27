@@ -16,7 +16,6 @@ utils.main(stage='canary', steps=[
     win.params,
     win.export_exe,
     win.set_icon,
-    win.copy_steam_dll,
 
     # Add steam_appid.txt for testing
     steam.params,

@@ -19,10 +19,6 @@ config/name="SUBLEERUNKER"
 run/main_scene="res://main/main.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-SteamAgent="*res://autoload/steam_agent/steam_agent.gd"
-
 [debug]
 
 gdscript/warnings/unused_variable=false

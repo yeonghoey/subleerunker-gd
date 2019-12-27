@@ -1,6 +1,6 @@
 SHELL = /bin/bash
 
-GODOT = godot-steamed/bin/GodotSteamed.app/Contents/MacOS/Godot
+GODOT = godot/Godot.app/Contents/MacOS/Godot
 PROJECT = SUBLEERUNKER
 
 ifndef ASEPRITE
@@ -20,7 +20,7 @@ SPRITES_UNPACKED = $(SPRITES:sprites/%=$(PROJECT)/assets/textures/%/unpacked)
 .PHONY: run pack unpack icon canary release 
 
 run:
-	open 'godot-steamed/bin/GodotSteamed.app'
+	open 'godot/Godot.app'
 
 pack:  $(SPRITES_SHEET) $(SPRITES_DATA)
 
@@ -33,7 +33,6 @@ canary:
 
 release:
 	python builder/do_release.py
-
 
 $(PROJECT)/%/unpacked: $(PROJECT)/%/sheet.png $(PROJECT)/%/sheet.png.import $(PROJECT)/%/data.json
 	# Unpack a sprite sheet into AtlasTextures

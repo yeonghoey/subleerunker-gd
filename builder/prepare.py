@@ -10,10 +10,9 @@ def params(ctx):
     build_id = issue_build_id()
     cwd = os.getcwd()
     godot_project = f'{cwd}/{name}'
-    godot_cmd = f'{cwd}/godot-steamed/bin/GodotSteamed.app/Contents/MacOS/Godot'
+    godot_cmd = f'{cwd}/godot/Godot.app/Contents/MacOS/Godot'
     rcedit = f'{cwd}/misc/rcedit-x64.exe'
     icon_ico = f'{cwd}/misc/icon.ico'
-    steam_dll = f'{cwd}/godot-steamed/bin/steam_api64.dll'
     steamcmd = f'{cwd}/steamcmd/steamcmd.sh'
     build_root = f'{cwd}/builds/{build_id}'
     run(f"mkdir -p '{build_root}'")
@@ -26,7 +25,6 @@ def params(ctx):
     ctx['godot_cmd'] = godot_cmd
     ctx['rcedit'] = rcedit
     ctx['icon_ico'] = icon_ico
-    ctx['steam_dll'] = steam_dll
     ctx['steamcmd'] = steamcmd
     ctx['build_root'] = build_root
     dump(ctx, old)

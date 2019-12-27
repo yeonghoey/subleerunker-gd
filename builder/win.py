@@ -46,13 +46,6 @@ def set_icon(ctx):
 
 
 @step
-def copy_steam_dll(ctx):
-    win_root = ctx['win_root']
-    steam_dll = ctx['steam_dll']
-    run(f"cp '{steam_dll}' '{win_root}/'")
-
-
-@step
 def add_steam_appid_txt(ctx):
     """Add steam_appid.txt for testing."""
 

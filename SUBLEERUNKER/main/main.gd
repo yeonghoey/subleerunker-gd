@@ -1,11 +1,11 @@
 extends Node
 
 onready var _scenes = {
-	"intro": preload("res://main/scene/intro.tscn").instance(),
-	"title": preload("res://main/scene/title.tscn").instance(),
-	"play": preload("res://main/scene/play.tscn").instance(),
-	"achievements": preload("res://main/scene/achievements.tscn").instance(),
-	"options": preload("res://main/scene/options.tscn").instance(),
+	"intro": preload("res://main/scene/intro/intro.tscn").instance(),
+	"title": preload("res://main/scene/title/title.tscn").instance(),
+	"play": preload("res://main/scene/play/play.tscn").instance(),
+	"achievements": preload("res://main/scene/achievements/achievements.tscn").instance(),
+	"options": preload("res://main/scene/options/options.tscn").instance(),
 }
 
 

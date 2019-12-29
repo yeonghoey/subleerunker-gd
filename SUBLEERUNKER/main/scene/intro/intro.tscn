@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main/scene/intro/intro.gd" type="Script" id=1]
+[ext_resource path="res://misc/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://main/scene/intro/intro_yeongho.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Y", "Ye", "Yeo", "Yeon", "Yeong", "Yeongh", "Yeongho", "Yeongho ", "Yeongho K", "Yeongho Ki", "Yeongho Kim" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Yeongho:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 240, 260 ), Vector2( 770, 260 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+length = 0.64
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[node name="Intro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 960.0
+margin_bottom = 540.0
+color = Color( 0.780392, 0.690196, 0.545098, 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 240.0
+margin_top = 280.0
+margin_bottom = 58.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.47451, 0.403922, 0.333333, 1 )
+text = "Yeongho Kim"
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 2 )
+
+[node name="Yeongho" type="Sprite" parent="."]
+position = Vector2( 240, 260 )
+texture = ExtResource( 3 )
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Yeongho"]
+autoplay = "default"
+anims/default = SubResource( 3 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

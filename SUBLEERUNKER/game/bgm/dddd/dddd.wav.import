@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dddd.wav-7783626177d9967f85921b83c22b3111.sample"
+
+[deps]
+
+source_file="res://game/bgm/dddd/dddd.wav"
+dest_files=[ "res://.import/dddd.wav-7783626177d9967f85921b83c22b3111.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://game/dropspawner/framerand.gd" type="Script" id=1]
-
-[node name="FrameRand" type="Node"]
-script = ExtResource( 1 )
-initial_spawn_per_sec = 5.0
-increase_accel_per_sec = 0.005
-num_drops_per_cue = 1

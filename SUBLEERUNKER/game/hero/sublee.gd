@@ -24,7 +24,6 @@ func _on_action_changed(prev_action, action):
 
 func _process(delta):
 	# Implement eye blinking
-	_eyelids.frame = _body.frame
 	_counter = (_counter + 1) % BLINK_CONTINUANCE
 	if _counter == 0:
 		if _eyelids.visible:
@@ -38,8 +37,12 @@ func _process_idle():
 
 
 func _process_left():
-	_animation_player.play("left")
+	_animation_player.play("run")
+	_body.flip_h = true
+	_eyelids.flip_h = true
 
 
 func _process_right():
-	_animation_player.play("right")
+	_animation_player.play("run")
+	_body.flip_h = false
+	_eyelids.flip_h = false

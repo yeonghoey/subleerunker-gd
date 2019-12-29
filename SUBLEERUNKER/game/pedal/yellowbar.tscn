@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/pedal/yellowbar.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/default/combo/00.tres" type="Texture" id=2]
+[ext_resource path="res://game/pedal/yellowbar.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -48,7 +48,7 @@ tracks/2/keys = {
 resource_local_to_scene = true
 extents = Vector2( 0, 4 )
 
-[node name="Combo" type="Area2D"]
+[node name="Pedal" type="Area2D"]
 position = Vector2( 90, 70 )
 collision_layer = 32
 collision_mask = 64

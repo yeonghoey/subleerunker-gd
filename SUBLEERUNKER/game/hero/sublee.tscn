@@ -1,45 +1,19 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/hero/sublee.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/default/player_run/00.tres" type="Texture" id=2]
-[ext_resource path="res://assets/textures/default/player_run/01.tres" type="Texture" id=3]
-[ext_resource path="res://assets/textures/default/player_run/02.tres" type="Texture" id=4]
-[ext_resource path="res://assets/textures/default/player_run/03.tres" type="Texture" id=5]
-[ext_resource path="res://assets/textures/default/player_run/04.tres" type="Texture" id=6]
-[ext_resource path="res://assets/textures/default/player_run/05.tres" type="Texture" id=7]
-[ext_resource path="res://assets/textures/default/player_run/06.tres" type="Texture" id=8]
-[ext_resource path="res://assets/textures/default/player_run/07.tres" type="Texture" id=9]
-[ext_resource path="res://assets/textures/default/player_idle/00.tres" type="Texture" id=10]
-[ext_resource path="res://assets/textures/default/player_idle/01.tres" type="Texture" id=11]
-[ext_resource path="res://assets/textures/default/player_idle/02.tres" type="Texture" id=12]
-[ext_resource path="res://assets/textures/default/player_idle/03.tres" type="Texture" id=13]
-[ext_resource path="res://assets/textures/default/player_idle/04.tres" type="Texture" id=14]
-[ext_resource path="res://assets/textures/default/player_idle/05.tres" type="Texture" id=15]
-[ext_resource path="res://assets/textures/default/player_idle/06.tres" type="Texture" id=16]
-[ext_resource path="res://assets/textures/default/eyelids_run/00.tres" type="Texture" id=17]
-[ext_resource path="res://assets/textures/default/eyelids_run/01.tres" type="Texture" id=18]
-[ext_resource path="res://assets/textures/default/eyelids_run/02.tres" type="Texture" id=19]
-[ext_resource path="res://assets/textures/default/eyelids_run/03.tres" type="Texture" id=20]
-[ext_resource path="res://assets/textures/default/eyelids_run/04.tres" type="Texture" id=21]
-[ext_resource path="res://assets/textures/default/eyelids_run/05.tres" type="Texture" id=22]
-[ext_resource path="res://assets/textures/default/eyelids_run/06.tres" type="Texture" id=23]
-[ext_resource path="res://assets/textures/default/eyelids_run/07.tres" type="Texture" id=24]
-[ext_resource path="res://assets/textures/default/eyelids_idle/00.tres" type="Texture" id=25]
-[ext_resource path="res://assets/textures/default/eyelids_idle/01.tres" type="Texture" id=26]
-[ext_resource path="res://assets/textures/default/eyelids_idle/02.tres" type="Texture" id=27]
-[ext_resource path="res://assets/textures/default/eyelids_idle/03.tres" type="Texture" id=28]
-[ext_resource path="res://assets/textures/default/eyelids_idle/04.tres" type="Texture" id=29]
-[ext_resource path="res://assets/textures/default/eyelids_idle/05.tres" type="Texture" id=30]
-[ext_resource path="res://assets/textures/default/eyelids_idle/06.tres" type="Texture" id=31]
-[ext_resource path="res://game/hero/sublee_run.wav" type="AudioStream" id=32]
+[ext_resource path="res://game/hero/sublee_idle.png" type="Texture" id=2]
+[ext_resource path="res://game/hero/sublee_idle_eyelids.png" type="Texture" id=3]
+[ext_resource path="res://game/hero/sublee_run.png" type="Texture" id=4]
+[ext_resource path="res://game/hero/sublee_run_eyelids.png" type="Texture" id=5]
+[ext_resource path="res://game/hero/sublee_run.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
-length = 0.001
+length = 0.56
 loop = true
-step = 1.0
+step = 0.08
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body:animation")
+tracks/0/path = NodePath("Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -48,10 +22,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "player_idle" ]
+"values": [ ExtResource( 2 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Body:playing")
+tracks/1/path = NodePath("Body:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -60,63 +34,22 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ 7 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Eyelids:animation")
+tracks/2/path = NodePath("Body:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "player_idle" ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "left"
-length = 0.001
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "player_run" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Body:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Body:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Eyelids:animation")
+tracks/3/path = NodePath("Eyelids:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -125,10 +58,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "player_run" ]
+"values": [ ExtResource( 3 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Eyelids:flip_h")
+tracks/4/path = NodePath("Eyelids:hframes")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -137,15 +70,28 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ 7 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Eyelids:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "right"
-length = 0.001
+[sub_resource type="Animation" id=9]
+resource_name = "run"
+length = 0.64
 loop = true
+step = 0.08
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body:animation")
+tracks/0/path = NodePath("Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -154,10 +100,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "player_run" ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Body:flip_h")
+tracks/1/path = NodePath("Body:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -166,22 +112,22 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ 8 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Body:playing")
+tracks/2/path = NodePath("Body:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Eyelids:animation")
+tracks/3/path = NodePath("Eyelids:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -190,10 +136,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "player_run" ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Eyelids:flip_h")
+tracks/4/path = NodePath("Eyelids:hframes")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -202,34 +148,20 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ 8 ]
 }
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "player_run",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "player_idle",
-"speed": 12.0
-} ]
-
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "player_run",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "player_idle",
-"speed": 5.0
-} ]
+tracks/5/type = "value"
+tracks/5/path = NodePath("Eyelids:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 24, 36 )
@@ -256,18 +188,18 @@ max_speed = 300.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
 anims/idle = SubResource( 1 )
-anims/left = SubResource( 2 )
-anims/right = SubResource( 3 )
+anims/run = SubResource( 9 )
 
-[node name="Body" type="AnimatedSprite" parent="."]
-frames = SubResource( 4 )
-animation = "player_idle"
+[node name="Body" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+hframes = 8
+frame = 1
 
-[node name="Eyelids" type="AnimatedSprite" parent="."]
-visible = false
+[node name="Eyelids" type="Sprite" parent="."]
 position = Vector2( 0, -25 )
-frames = SubResource( 5 )
-animation = "player_idle"
+texture = ExtResource( 5 )
+hframes = 8
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -286,7 +218,7 @@ __meta__ = {
 }
 
 [node name="AudioRun" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 32 )
+stream = ExtResource( 6 )
 bus = "Sound"
 
 [node name="Feet" type="Area2D" parent="."]

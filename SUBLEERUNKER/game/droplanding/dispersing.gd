@@ -1,6 +1,5 @@
 extends "res://game/droplanding/droplanding.gd"
 
 
-func _ready():
-	$AnimatedSprite.connect("animation_finished", self, "finish")
-	$AnimatedSprite.play()
+func _on_AnimationPlayer_animation_finished(anim_name):
+	finish()

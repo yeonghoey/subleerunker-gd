@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://main/scene/title.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/title/logo/00.tres" type="Texture" id=2]
-[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://fonts/press_start_2p_08.tres" type="DynamicFont" id=4]
+[ext_resource path="res://main/scene/title_logo.png" type="Texture" id=2]
+[ext_resource path="res://misc/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://misc/press_start_2p_08.tres" type="DynamicFont" id=4]
 [ext_resource path="res://main/scene/title_build.gd" type="Script" id=5]
 
 
@@ -46,7 +46,6 @@ margin_bottom = 540.0
 custom_constants/separation = 28
 
 [node name="MarginLogo" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-editor/display_folded = true
 margin_right = 960.0
 margin_bottom = 307.0
 size_flags_horizontal = 3

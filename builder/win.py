@@ -39,7 +39,7 @@ def set_icon(ctx):
     win_exe = ctx['win_exe']
 
     run(f"""
-        wine '{rcedit}'
+        wine64 '{rcedit}'
         '{win_exe}' 
         --set-icon '{icon_ico}'
     """)

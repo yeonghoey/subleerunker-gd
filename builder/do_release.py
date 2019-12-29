@@ -31,7 +31,6 @@ utils.main(stage='release', steps=[
     steam.generate_app_vdf,
     steam.generate_depot_osx_vdf,
     steam.generate_depot_win_vdf,
-    steam.deploy,
 
     prepare.delete_build_id_dump,
     git.publish_tag,

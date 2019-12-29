@@ -8,3 +8,10 @@ __pycache__/
 .envrc
 .python-version
 .vscode/*
+
+# Logic Pro X projects
+**/*.logicx/**/Project\ File\ Backups
+**/*.logicx/**/Undo\ Data.nosync
+**/*.logicx/**/Autosave
+**/*.logicx/**/DisplayState.plist
+**/*.logicx/**/WindowImage.jpg

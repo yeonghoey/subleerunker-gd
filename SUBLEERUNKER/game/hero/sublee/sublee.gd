@@ -2,10 +2,10 @@ extends "res://game/hero/hero.gd"
 
 const BLINK_CONTINUANCE = 4
 
-onready var _animation_player: AnimationPlayer = $AnimationPlayer
-onready var _body: AnimatedSprite = $Body
-onready var _eyelids: AnimatedSprite = $Eyelids
-onready var _audio_run: AudioStreamPlayer = $AudioRun
+onready var _AnimationPlayer: AnimationPlayer = $AnimationPlayer
+onready var _Body: AnimatedSprite = $Body
+onready var _Eyelids: AnimatedSprite = $Eyelids
+onready var _AudioRun: AudioStreamPlayer = $AudioRun
 
 var _counter := 0
 
@@ -17,32 +17,32 @@ func _ready():
 func _on_action_changed(prev_action, action):
 	match [prev_action, action]:
 		[ACTION_REST, ACTION_LEFT], [ACTION_REST, ACTION_RIGHT]:
-			_audio_run.play()
+			_AudioRun.play()
 		[ACTION_LEFT, ACTION_REST], [ACTION_RIGHT, ACTION_REST]:
-			_audio_run.stop()
+			_AudioRun.stop()
 
 
 func _process(delta):
 	# Implement eye blinking
 	_counter = (_counter + 1) % BLINK_CONTINUANCE
 	if _counter == 0:
-		if _eyelids.visible:
-			_eyelids.visible = false
+		if _Eyelids.visible:
+			_Eyelids.visible = false
 		else:
-			_eyelids.visible = randf() < 0.02
+			_Eyelids.visible = randf() < 0.02
 
 
 func _process_idle():
-	_animation_player.play("idle")
+	_AnimationPlayer.play("idle")
 
 
 func _process_left():
-	_animation_player.play("run")
-	_body.flip_h = true
-	_eyelids.flip_h = true
+	_AnimationPlayer.play("run")
+	_Body.flip_h = true
+	_Eyelids.flip_h = true
 
 
 func _process_right():
-	_animation_player.play("run")
-	_body.flip_h = false
-	_eyelids.flip_h = false
+	_AnimationPlayer.play("run")
+	_Body.flip_h = false
+	_Eyelids.flip_h = false

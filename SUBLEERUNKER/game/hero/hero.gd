@@ -20,7 +20,7 @@ Signals:
 """
 
 enum {
-	ACTION_REST, 
+	ACTION_REST,
 	ACTION_LEFT,
 	ACTION_RIGHT,
 }
@@ -45,13 +45,13 @@ var _action := ACTION_REST
 # For handling when LR keys are pressed simultaneously
 var _action_overridden := false
 
-onready var _head: Area2D = get_node(head_path)
-onready var _feet: Area2D = get_node(feet_path)
+onready var _Head: Area2D = get_node(head_path)
+onready var _Feet: Area2D = get_node(feet_path)
 
 
 func init(boundary: Vector2) -> void:
 	"""Place the hero in the bottom center of the boundary.
-	
+
 	This can be overriden if necessary.
 	Returns self so that this can be method-chained.
 	"""
@@ -81,8 +81,8 @@ func handle_action_input(left, right):
 
 
 func _ready():
-	_head.connect("body_entered", self, "_on_head_body_entered")
-	_feet.connect("area_entered", self, "_on_feet_area_entered")
+	_Head.connect("body_entered", self, "_on_head_body_entered")
+	_Feet.connect("area_entered", self, "_on_feet_area_entered")
 
 
 func _on_head_body_entered(body):

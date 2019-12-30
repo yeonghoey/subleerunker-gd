@@ -22,7 +22,7 @@ func _prepend_background():
 	add_child(background)
 	move_child(background, 0)
 
-	
+
 func _override_labelcolor():
 	var labelcolor: Color = _preset.take("labelcolor")
 	get_tree().call_group("GameLabel",
@@ -31,13 +31,13 @@ func _override_labelcolor():
 
 func _input(event):
 	var start := (
-		Input.is_action_pressed("ui_left") or 
+		Input.is_action_pressed("ui_left") or
 		Input.is_action_pressed("ui_right") or
 		Input.is_action_pressed("ui_accept"))
 	if start:
 		emit_signal("started")
 		return
-		
+
 	var cancel := (
 		Input.is_action_pressed("ui_cancel"))
 	if cancel:

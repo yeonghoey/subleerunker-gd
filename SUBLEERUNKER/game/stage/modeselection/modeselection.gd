@@ -17,7 +17,7 @@ func _input(event):
 		# TODO: send the selected mode.
 		emit_signal("selected", "subleerunker")
 		return
-		
+
 	if Input.is_action_pressed("ui_cancel"):
 		emit_signal("canceled")
 		return

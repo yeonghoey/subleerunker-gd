@@ -6,7 +6,7 @@ const Stage := preload("res://game/stage/stage.gd")
 
 var _layers := []
 
-onready var _viewport: Viewport = find_node("Viewport")
+onready var _Viewport: Viewport = find_node("Viewport")
 
 
 func present(stage: Stage):
@@ -20,7 +20,7 @@ func _clear():
 		if s.is_connected("closed", self, "_on_closed"):
 			s.disconnect("closed", self, "_on_closed")
 	_layers = []
-	for c in _viewport.get_children():
+	for c in _Viewport.get_children():
 		c.queue_free()
 
 
@@ -35,7 +35,7 @@ func _add_stage(stage: Stage) -> void:
 		"closed": false,
 	})
 	stage.connect("closed", self, "_on_closed", [idx])
-	_viewport.add_child(stage)
+	_Viewport.add_child(stage)
 
 
 func _on_closed(idx: int) -> void:

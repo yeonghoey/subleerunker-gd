@@ -1,7 +1,7 @@
 extends KinematicBody2D
 """The base class of moving objects in game.
 
-Subclasses should implement virtual methods: 
+Subclasses should implement virtual methods:
 '_acceleration', '_friction_amount', '_max_speed'.
 All units here are per second. Subclasses should call 'move(delta)'
 in their '_physics_process' to make the body actually move.

@@ -16,7 +16,7 @@ func cue(hints: Array) -> void:
 
 func on_pedal_spawned(pedal: Pedal) -> void:
 	"""on_pedal_spawned will be called with a newly spawned Pedal.
-	
+
 	This can be used for signaling
 	"""
 	pass

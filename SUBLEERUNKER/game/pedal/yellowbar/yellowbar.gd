@@ -2,8 +2,8 @@ extends "res://game/pedal/pedal.gd"
 
 var _succeeded := false
 
-onready var _sprite = $Sprite
-onready var _shape = $CollisionShape2D.shape
+onready var _Sprite = $Sprite
+onready var _Shape = $CollisionShape2D.shape
 
 
 func _ready():
@@ -21,5 +21,5 @@ func _on_animation_finished(name):
 
 func _physics_process(delta):
 	# NOTE: Sync the sprite size and the collision shape
-	var x = _sprite.get_rect().size.x * _sprite.scale.x
-	_shape.extents.x = x/2
+	var x = _Sprite.get_rect().size.x * _Sprite.scale.x
+	_Shape.extents.x = x/2

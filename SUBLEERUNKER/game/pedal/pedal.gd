@@ -19,7 +19,7 @@ var _signaled := false
 
 func init(boundary: Vector2, hero: Hero, hint = null) -> void:
 	"""Place the pedal in the bottom random of the boundary.
-	
+
 	This can be overriden if necessary.
 	"""
 	var x = (boundary.x - width*2) * randf() + width

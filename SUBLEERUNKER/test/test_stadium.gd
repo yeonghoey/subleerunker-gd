@@ -10,7 +10,7 @@ onready var _stage2 := DummyStage.new(456)
 func _ready():
 	_Stadium.present(_stage1)
 	_Stadium.overlay(_stage2)
-	
+
 
 func _on_Button1_pressed():
 	_stage1.close()

@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/drop/flame/flame.gd" type="Script" id=1]
 [ext_resource path="res://game/drop/flame/flame.png" type="Texture" id=2]
 [ext_resource path="res://game/drop/flame/flame.wav" type="AudioStream" id=3]
-
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -24,6 +22,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 3 )
+
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4, 3 )
 
@@ -32,7 +33,7 @@ extents = Vector2( 4, 3 )
 ]]
 position = Vector2( 55.0574, 43.6155 )
 collision_layer = 4
-collision_mask = 18
+collision_mask = 16
 script = ExtResource( 1 )
 width = 24.0
 height = 16.0
@@ -49,10 +50,19 @@ anims/default = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 5 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="AudioSpawn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -4.0
 autoplay = true
 bus = "Sound"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 5 )
+shape = SubResource( 3 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

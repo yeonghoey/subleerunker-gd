@@ -6,3 +6,7 @@ func init(boundary: Vector2, hero: Hero, hint = null) -> void:
 	"""
 	var x = (boundary.x - width*2) * randf() + width
 	position = Vector2(x, -height)
+
+
+func _on_Area2D_area_entered(area):
+	queue_free()

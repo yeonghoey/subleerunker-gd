@@ -4,10 +4,11 @@ extends "res://game/mover/mover.gd"
 Parameters:
 	- width: of desired ingame size
 	- height: of desired ingame size
-	- head_path: NodePath to Area2D (for hit)
-	- feet_path: NodePath to Area2D (for pedaled)
 	- animation_player_path: NodePath to AnimationPlayer
 		- The AnimationPlayer should contain animations named 'idle', 'left', right'
+
+	Should call 'hit()' when it determines the hero got hit.
+
 	For Mover implementation,
 	- acceleration_amount: float
 	- friction_amount: float
@@ -16,7 +17,6 @@ Parameters:
 Signals:
 	- action_changed
 	- hit
-	- pedaled
 """
 
 enum {
@@ -29,10 +29,6 @@ enum {
 export(float) var width
 export(float) var height
 
-# These should be Area2D
-export(NodePath) var head_path
-export(NodePath) var feet_path
-
 export(float) var acceleration_amount
 export(float) var friction_amount
 export(float) var max_speed
@@ -44,9 +40,6 @@ signal pedaled()
 var _action := ACTION_REST
 # For handling when LR keys are pressed simultaneously
 var _action_overridden := false
-
-onready var _Head: Area2D = get_node(head_path)
-onready var _Feet: Area2D = get_node(feet_path)
 
 
 func init(boundary: Vector2) -> void:
@@ -80,20 +73,9 @@ func handle_action_input(left, right):
 		emit_signal("action_changed", prev_action, _action)
 
 
-func _ready():
-	_Head.connect("body_entered", self, "_on_head_body_entered")
-	_Feet.connect("area_entered", self, "_on_feet_area_entered")
-
-
-func _on_head_body_entered(body):
-	# TODO: assert(body is Drop)
-	body.queue_free()
+func hit():
 	emit_signal("hit")
 	queue_free()
-
-
-func _on_feet_area_entered(area):
-	emit_signal("pedaled")
 
 
 func _process(delta):

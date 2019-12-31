@@ -4,9 +4,9 @@ extends "res://game/preset/preset.gd"
 func _init().({
 	name = "subleerunker",
 	displayname = "subleerunker",
-	labelcolor = Color("#ffffff"),
-	Background = preload("res://game/background/black/black.tscn"),
-	Hero = preload("res://game/hero/sublee/sublee.tscn"),
+	labelcolor = Color("#796755"),
+	Background = preload("res://game/background/mountain/mountain.tscn"),
+	Hero = preload("res://game/hero/yeongho/yeongho.tscn"),
 	HeroDying = preload("res://game/herodying/burning/burning.tscn"),
 	Drop = preload("res://game/drop/flame/flame.tscn"),
 	DropLanding = preload("res://game/droplanding/dispersing/dispersing.tscn"),

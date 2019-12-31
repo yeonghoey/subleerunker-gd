@@ -52,6 +52,7 @@ func _unhandled_input(event):
 
 
 func _move_selection(di: int) -> void:
+	var n: int = _layout.size()
 	_layout[_selection].deselect()
-	_selection = (_selection + di) % _layout.size()
+	_selection = (_selection + di + n ) % n
 	_layout[_selection].select()

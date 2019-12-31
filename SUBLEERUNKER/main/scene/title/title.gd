@@ -29,8 +29,9 @@ func _unhandled_input(event):
 
 
 func _move_selection(di: int) -> void:
+	var n: int = _menuitems.size()
 	var selection_old: int = _selection_index
-	var selection_new: int = (_selection_index + di) % _menuitems.size()
+	var selection_new: int = (_selection_index + di + n) % n
 	_deselect(selection_old)
 	_select(selection_new)
 	_selection_index = selection_new

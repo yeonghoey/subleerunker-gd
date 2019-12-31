@@ -3,9 +3,9 @@ extends "res://game/hero/hero.gd"
 const BLINK_CONTINUANCE = 4
 
 onready var _AnimationPlayer: AnimationPlayer = $AnimationPlayer
-onready var _Body: AnimatedSprite = $Body
+onready var _Body: Sprite = $Body
 onready var _Head: Area2D = $Head
-onready var _Eyelids: AnimatedSprite = $Eyelids
+onready var _Eyelids: Sprite = $Eyelids
 onready var _AudioRun: AudioStreamPlayer = $AudioRun
 
 var _counter := 0

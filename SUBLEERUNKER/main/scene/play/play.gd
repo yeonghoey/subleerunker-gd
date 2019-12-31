@@ -5,7 +5,7 @@ const Stage := preload("res://game/stage/stage.gd")
 const Preset := preload("res://game/preset/preset.gd")
 const Indicator := preload("res://main/scene/play/play_indicator.gd")
 
-const ModeSelection := preload("res://game/stage/modeselection/modeselection.tscn")
+const ModeSel := preload("res://game/stage/modesel/modesel.tscn")
 const Waiting := preload("res://game/stage/waiting/waiting.tscn")
 const InGame := preload("res://game/stage/ingame/ingame.tscn")
 
@@ -24,24 +24,24 @@ func init(last_mode: String) -> void:
 
 
 func _ready():
-	_present_modeselection(_last_mode)
+	_present_modesel(_last_mode)
 
 
-func _present_modeselection(last_mode: String):
-	var modeselection := ModeSelection.instance()
-	modeselection.init(last_mode)
-	modeselection.connect("selected", self, "_on_modeselection_selected", [modeselection])
-	modeselection.connect("canceled", self, "_on_modeselection_canceled")
-	_Stadium.present(modeselection)
+func _present_modesel(last_mode: String):
+	var modesel := ModeSel.instance()
+	modesel.init(last_mode)
+	modesel.connect("selected", self, "_on_modesel_selected", [modesel])
+	modesel.connect("canceled", self, "_on_modesel_canceled")
+	_Stadium.present(modesel)
 
 
-func _on_modeselection_selected(mode_name: String, modeselection: Stage):
-	modeselection.close()
+func _on_modesel_selected(mode_name: String, modesel: Stage):
+	modesel.close()
 	_preset = _load_preset(mode_name)
 	_present_waiting()
 
 
-func _on_modeselection_canceled():
+func _on_modesel_canceled():
 	emit_signal("backed")
 
 
@@ -60,7 +60,7 @@ func _on_waiting_started(waiting: Stage):
 
 func _on_waiting_canceled(waiting: Stage):
 	waiting.close()
-	_present_modeselection(_preset.take("name"))
+	_present_modesel(_preset.take("name"))
 
 
 func _present_ingame():

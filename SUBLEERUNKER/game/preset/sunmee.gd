@@ -6,7 +6,7 @@ func _init().({
 	displayname = "subleerunker",
 	labelcolor = Color("#ffffff"),
 	Background = preload("res://game/background/black/black.tscn"),
-	Hero = preload("res://game/hero/sublee/sublee.tscn"),
+	Hero = preload("res://game/hero/sunmee/sunmee.tscn"),
 	HeroDying = preload("res://game/herodying/burning/burning.tscn"),
 	Drop = preload("res://game/drop/flame/flame.tscn"),
 	DropLanding = preload("res://game/droplanding/dispersing/dispersing.tscn"),

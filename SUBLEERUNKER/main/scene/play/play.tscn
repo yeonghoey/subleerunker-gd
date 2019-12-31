@@ -4,8 +4,6 @@
 [ext_resource path="res://game/stadium/stadium.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/scene/play/play_indicator.tscn" type="PackedScene" id=3]
 
-
-
 [node name="Play" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,7 +15,6 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 0.963226

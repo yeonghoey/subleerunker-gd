@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/burning.wav-d4cc22f031a47fd1e659800cc4a6ffc1.sample"
+path="res://.import/burning.wav-388fff8ca6bc8c3f23ababab9d10fa6c.sample"
 
 [deps]
 
-source_file="res://game/herodying/burning/burning.wav"
-dest_files=[ "res://.import/burning.wav-d4cc22f031a47fd1e659800cc4a6ffc1.sample" ]
+source_file="res://herodying/burning/burning.wav"
+dest_files=[ "res://.import/burning.wav-388fff8ca6bc8c3f23ababab9d10fa6c.sample" ]
 
 [params]
 

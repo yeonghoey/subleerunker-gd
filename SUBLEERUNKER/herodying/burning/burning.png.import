@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/burning.png-cb5d309158f1777550e81611704c0766.stex"
+path="res://.import/burning.png-673d775c5164f46673c3517f73964cb9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/herodying/burning/burning.png"
-dest_files=[ "res://.import/burning.png-cb5d309158f1777550e81611704c0766.stex" ]
+source_file="res://herodying/burning/burning.png"
+dest_files=[ "res://.import/burning.png-673d775c5164f46673c3517f73964cb9.stex" ]
 
 [params]
 

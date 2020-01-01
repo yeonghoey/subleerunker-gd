@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://game/droplanding/dispersing/dispersing.gd" type="Script" id=1]
-[ext_resource path="res://game/droplanding/dispersing/dispersing.png" type="Texture" id=2]
-[ext_resource path="res://game/droplanding/dispersing/dispersing.wav" type="AudioStream" id=3]
+[ext_resource path="res://droplanding/dispersing/dispersing.gd" type="Script" id=1]
+[ext_resource path="res://droplanding/dispersing/dispersing.png" type="Texture" id=2]
+[ext_resource path="res://droplanding/dispersing/dispersing.wav" type="AudioStream" id=3]
+
 
 
 [sub_resource type="Animation" id=1]

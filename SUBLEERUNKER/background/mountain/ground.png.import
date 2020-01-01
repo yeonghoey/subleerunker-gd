@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ground.png-e64678ade9bde5711b25ba7f4af82db5.stex"
+path="res://.import/ground.png-8f6606e13c1ecc8979ff8ae4aa735c83.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/background/mountain/ground.png"
-dest_files=[ "res://.import/ground.png-e64678ade9bde5711b25ba7f4af82db5.stex" ]
+source_file="res://background/mountain/ground.png"
+dest_files=[ "res://.import/ground.png-8f6606e13c1ecc8979ff8ae4aa735c83.stex" ]
 
 [params]
 

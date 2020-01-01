@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sublee_run_eyelids.png-0cf4e45a727b73973579e4a0af76738f.stex"
+path="res://.import/sublee_idle.png-09cfc2823d90ab227255309cf4381500.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/hero/sublee/sublee_run_eyelids.png"
-dest_files=[ "res://.import/sublee_run_eyelids.png-0cf4e45a727b73973579e4a0af76738f.stex" ]
+source_file="res://hero/sublee/sublee_idle.png"
+dest_files=[ "res://.import/sublee_idle.png-09cfc2823d90ab227255309cf4381500.stex" ]
 
 [params]
 

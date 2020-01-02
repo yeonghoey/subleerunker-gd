@@ -32,6 +32,6 @@ func deselect():
 
 func flip():
 	var value = _options.get(key)
-	_options.set(key, not value)
+	_options.call("set_%s" % key, not value)
 	_options.save()
 	_update_value()

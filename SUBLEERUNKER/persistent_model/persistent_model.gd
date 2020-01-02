@@ -3,10 +3,8 @@ extends Reference
 
 Subclasses should implement:
 	`get_file_path()`, which returns 'user://' path
-	`get_default()`, which returns a dict of (String, Varient) pairs for when the file doesn't exist.
-
-Also, can optionally implement methods named 'on_set_{key}',
-which will get called on setting a value of the {key}.
+	`get_default()`, which returns a dict of (String, Varient) pairs for when the file doesn't exist
+	`on_load(data)`, where to init. Resposible for calling `set(k, v)` to keep the data loaded.
 """
 
 var _data := {}
@@ -22,14 +20,16 @@ func get_default() -> Dictionary:
 	return {}
 
 
-func _init():
-	var last := _load_last()
-	for key in last:
-		var value = last[key]
-		set(key, value)
+func on_load(data: Dictionary) -> void:
+	assert(false) # Not Implemented
 
 
-func _load_last() -> Dictionary:
+func _init() -> void:
+	var data := _load()
+	on_load(data)
+
+
+func _load() -> Dictionary:
 	var f := File.new()
 	var p := get_file_path()
 	if f.file_exists(p):
@@ -46,9 +46,6 @@ func get(key: String):
 
 
 func set(key: String, value) -> void:
-	var method: String = "on_set_%s" % key
-	if has_method(method):
-		call(method, value)
 	_data[key] = value
 
 

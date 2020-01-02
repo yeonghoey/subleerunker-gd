@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scene/achievements/achievements.gd" type="Script" id=1]
+[ext_resource path="res://scene/achievements_view/achievements_view.gd" type="Script" id=1]
 
-[node name="Achievements" type="Control"]
+[node name="AchievementsView" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )

@@ -1,11 +1,11 @@
 extends "res://scene/scene.gd"
 
-const Core := preload("res://scene/options/options_core.gd")
-const Item := preload("res://scene/options/options_item.gd")
+const Options := preload("res://persistent_model/options/options.gd")
+const Item := preload("item.gd")
 
 signal backed()
 
-var _core: Core
+var _options: Options
 
 onready var _Items = find_node("Items")
 onready var _FullScreen: Item = _Items.get_node("FullScreen")
@@ -23,14 +23,13 @@ onready var _layout = [
 var _selection := 0
 
 
-func init():
-	_core = Core.new()
-	_core.load_last()
+func init(options: Options):
+	_options = options
 
 
 func _ready():
 	for item in _layout:
-		item.init(_core)
+		item.init(_options)
 	_move_selection(_selection)
 
 

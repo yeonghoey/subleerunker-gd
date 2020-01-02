@@ -1,8 +1,8 @@
 extends Control
 
-const InGame := preload("res://game/stage/ingame.tscn")
+const InGame := preload("res://stage/ingame.tscn")
 
-onready var _preset := preload("res://game/preset/subleerunker.gd").new()
+onready var _preset := preload("res://preset/subleerunker.gd").new()
 onready var _Stadium := find_node("Stadium")
 onready var _Signals := find_node("Signals")
 

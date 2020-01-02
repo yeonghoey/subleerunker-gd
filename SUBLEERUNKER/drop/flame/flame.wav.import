@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flame.wav-0a9cd6a0281800b2cba26a80d9e61436.sample"
+
+[deps]
+
+source_file="res://drop/flame/flame.wav"
+dest_files=[ "res://.import/flame.wav-0a9cd6a0281800b2cba26a80d9e61436.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

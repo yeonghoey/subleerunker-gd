@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://pedalspawner/oneatatime/oneatatime.gd" type="Script" id=1]
+
+[node name="OneAtATime" type="Node"]
+script = ExtResource( 1 )
+cooltime_min = 0.75
+cooltime_max = 1.5

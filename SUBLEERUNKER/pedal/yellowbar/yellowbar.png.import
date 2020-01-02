@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/yellowbar.png-5619bc3f7a11c911db7e512a2a0f8fd5.stex"
+path="res://.import/yellowbar.png-02c54d2bf1f509f37cbf0810aee33670.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/pedal/yellowbar/yellowbar.png"
-dest_files=[ "res://.import/yellowbar.png-5619bc3f7a11c911db7e512a2a0f8fd5.stex" ]
+source_file="res://pedal/yellowbar/yellowbar.png"
+dest_files=[ "res://.import/yellowbar.png-02c54d2bf1f509f37cbf0810aee33670.stex" ]
 
 [params]
 

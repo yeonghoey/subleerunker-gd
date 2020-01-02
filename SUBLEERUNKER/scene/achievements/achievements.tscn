@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://main/scene/achievements/achievements.gd" type="Script" id=1]
+[ext_resource path="res://scene/achievements/achievements.gd" type="Script" id=1]
+
 
 [node name="Achievements" type="Control"]
 anchor_right = 1.0

@@ -1,11 +1,12 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://main/scene/options/options.gd" type="Script" id=1]
+[ext_resource path="res://scene/options/options.gd" type="Script" id=1]
 [ext_resource path="res://misc/press_start_2p_16.tres" type="DynamicFont" id=2]
-[ext_resource path="res://main/scene/options/options_fullscreen.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main/scene/options/options_hidecursor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://main/scene/options/options_music.tscn" type="PackedScene" id=5]
-[ext_resource path="res://main/scene/options/options_sound.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scene/options/options_fullscreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/options/options_hidecursor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scene/options/options_music.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/options/options_sound.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 2 )

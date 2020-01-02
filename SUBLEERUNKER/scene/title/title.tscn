@@ -1,10 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://main/scene/title/title.gd" type="Script" id=1]
-[ext_resource path="res://main/scene/title/title_logo.png" type="Texture" id=2]
+[ext_resource path="res://scene/title/title.gd" type="Script" id=1]
+[ext_resource path="res://scene/title/title_logo.png" type="Texture" id=2]
 [ext_resource path="res://misc/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://misc/press_start_2p_08.tres" type="DynamicFont" id=4]
-[ext_resource path="res://main/scene/title/title_build.gd" type="Script" id=5]
+[ext_resource path="res://scene/title/title_build.gd" type="Script" id=5]
+
 
 [sub_resource type="Theme" id=1]
 

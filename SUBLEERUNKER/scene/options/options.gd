@@ -1,7 +1,7 @@
-extends "res://main/scene/scene.gd"
+extends "res://scene/scene.gd"
 
-const Core := preload("res://main/scene/options/options_core.gd")
-const Item := preload("res://main/scene/options/options_item.gd")
+const Core := preload("res://scene/options/options_core.gd")
+const Item := preload("res://scene/options/options_item.gd")
 
 signal backed()
 

@@ -1,6 +1,6 @@
-extends "res://game/stage/stage.gd"
+extends "res://stage/stage.gd"
 
-const Preset := preload("res://game/preset/preset.gd")
+const Preset := preload("res://preset/preset.gd")
 
 signal started()
 signal canceled()

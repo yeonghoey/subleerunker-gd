@@ -5,7 +5,7 @@ The signal argument 'hints' should be array, the length of which represents
 the number of drops decided to spawn, and each element will be passed to Drop.init()
 """
 
-const Drop := preload("res://game/drop/drop.gd")
+const Drop := preload("res://drop/drop.gd")
 
 signal cued(hints)
 

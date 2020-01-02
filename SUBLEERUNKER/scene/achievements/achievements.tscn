@@ -2,7 +2,6 @@
 
 [ext_resource path="res://scene/achievements/achievements.gd" type="Script" id=1]
 
-
 [node name="Achievements" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

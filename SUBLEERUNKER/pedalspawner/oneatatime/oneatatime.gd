@@ -1,4 +1,4 @@
-extends "res://game/pedalspawner/pedalspawner.gd"
+extends "res://pedalspawner/pedalspawner.gd"
 
 export(float) var cooltime_min
 export(float) var cooltime_max

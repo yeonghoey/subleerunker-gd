@@ -1,4 +1,4 @@
-extends "res://main/scene/scene.gd"
+extends "res://scene/scene.gd"
 
 signal finished()
 

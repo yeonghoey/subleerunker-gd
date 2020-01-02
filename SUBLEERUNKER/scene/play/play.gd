@@ -1,13 +1,13 @@
-extends "res://main/scene/scene.gd"
+extends "res://scene/scene.gd"
 
-const Stadium := preload("res://game/stadium/stadium.gd")
-const Stage := preload("res://game/stage/stage.gd")
-const Preset := preload("res://game/preset/preset.gd")
-const Indicator := preload("res://main/scene/play/play_indicator.gd")
+const Stadium := preload("res://stadium/stadium.gd")
+const Stage := preload("res://stage/stage.gd")
+const Preset := preload("res://preset/preset.gd")
+const Indicator := preload("res://scene/play/play_indicator.gd")
 
-const ModeSel := preload("res://game/stage/modesel/modesel.tscn")
-const Waiting := preload("res://game/stage/waiting/waiting.tscn")
-const InGame := preload("res://game/stage/ingame/ingame.tscn")
+const ModeSel := preload("res://stage/modesel/modesel.tscn")
+const Waiting := preload("res://stage/waiting/waiting.tscn")
+const InGame := preload("res://stage/ingame/ingame.tscn")
 
 signal backed()
 
@@ -106,4 +106,4 @@ func _on_ingame_ended(ingame: Stage) -> void:
 
 
 func _load_preset(mode_name: String) -> Preset:
-	return load("res://game/preset/%s.gd" % mode_name).new()
+	return load("res://preset/%s.gd" % mode_name).new()

@@ -2,10 +2,10 @@ extends HBoxContainer
 
 export(String) var key: String
 
-const Core := preload("res://main/scene/options/options_core.gd")
+const Core := preload("res://scene/options/options_core.gd")
 
 var _core: Core
-var _style_selected: StyleBox = preload("res://main/scene/options/options_selection.tres")
+var _style_selected: StyleBox = preload("res://scene/options/options_selection.tres")
 var _style_deselected: StyleBox = StyleBoxEmpty.new()
 
 

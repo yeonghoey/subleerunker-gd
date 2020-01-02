@@ -6,7 +6,7 @@ Subclasses should call two methods when:
 	- disappear, when running out of duration.
 """
 
-const Hero := preload("res://game/hero/hero.gd")
+const Hero := preload("res://hero/hero.gd")
 
 export(float) var width
 export(float) var height

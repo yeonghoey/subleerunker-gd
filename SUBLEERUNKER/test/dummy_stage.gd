@@ -1,4 +1,4 @@
-extends "res://game/stage/stage.gd"
+extends "res://stage/stage.gd"
 
 
 func _init(n: int):

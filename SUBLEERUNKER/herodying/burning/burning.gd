@@ -1,4 +1,4 @@
-extends "res://game/herodying/herodying.gd"
+extends "res://herodying/herodying.gd"
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

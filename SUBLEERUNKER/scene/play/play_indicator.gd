@@ -1,6 +1,6 @@
 extends MarginContainer
 
-const InGame := preload("res://game/stage/ingame/ingame.gd")
+const InGame := preload("res://stage/ingame/ingame.gd")
 
 onready var _controls := {
 	score = find_node("Score"),

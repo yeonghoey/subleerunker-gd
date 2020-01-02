@@ -2,7 +2,7 @@ extends PanelContainer
 """This class for containing in game views.
 """
 
-const Stage := preload("res://game/stage/stage.gd")
+const Stage := preload("res://stage/stage.gd")
 
 var _layers := []
 

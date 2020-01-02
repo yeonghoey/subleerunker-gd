@@ -1,4 +1,4 @@
-extends "res://game/pedalhitting/pedalhitting.gd"
+extends "res://pedalhitting/pedalhitting.gd"
 
 
 func _ready():

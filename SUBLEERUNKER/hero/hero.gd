@@ -1,4 +1,4 @@
-extends "res://game/mover/mover.gd"
+extends "res://mover/mover.gd"
 """The base class of the player characters.
 
 Parameters:

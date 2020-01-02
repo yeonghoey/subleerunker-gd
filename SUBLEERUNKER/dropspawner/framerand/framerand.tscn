@@ -2,8 +2,6 @@
 
 [ext_resource path="res://dropspawner/framerand/framerand.gd" type="Script" id=1]
 
-
-
 [node name="FrameRand" type="Node"]
 script = ExtResource( 1 )
 initial_spawn_per_sec = 5.0

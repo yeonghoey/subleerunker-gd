@@ -1,8 +1,8 @@
-extends "res://game/stage/stage.gd"
+extends "res://stage/stage.gd"
 
 const Mode := preload("res://mode/mode.gd")
-const Item := preload("res://game/stage/modesel/modesel_item.gd")
-const Item_ := preload("res://game/stage/modesel/modesel_item.tscn")
+const Item := preload("res://stage/modesel/modesel_item.gd")
+const Item_ := preload("res://stage/modesel/modesel_item.tscn")
 
 signal selected(mode_name)
 signal canceled()

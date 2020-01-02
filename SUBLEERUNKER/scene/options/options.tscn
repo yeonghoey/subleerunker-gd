@@ -7,7 +7,6 @@
 [ext_resource path="res://scene/options/options_music.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scene/options/options_sound.tscn" type="PackedScene" id=6]
 
-
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 2 )
 

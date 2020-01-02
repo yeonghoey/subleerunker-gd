@@ -1,7 +1,7 @@
 extends Node
 """The class acts as the parent node of all ingame objects.
 """
-const Preset := preload("res://game/preset/preset.gd")
+const Preset := preload("res://preset/preset.gd")
 
 signal cleared()
 

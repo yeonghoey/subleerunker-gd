@@ -3,10 +3,6 @@
 [ext_resource path="res://pedalhitting/xnum/xnum.gd" type="Script" id=1]
 [ext_resource path="res://misc/press_start_2p_16.tres" type="DynamicFont" id=2]
 
-
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "default"
 length = 0.5

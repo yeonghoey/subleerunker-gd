@@ -1,8 +1,8 @@
-extends "res://game/mover/mover.gd"
+extends "res://mover/mover.gd"
 """The base class of dropping objects like flames.
 """
 
-const Hero := preload("res://game/hero/hero.gd")
+const Hero := preload("res://hero/hero.gd")
 
 # Ingame size
 export(float) var width

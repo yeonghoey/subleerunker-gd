@@ -1,4 +1,4 @@
-extends "res://game/dropspawner/dropspawner.gd"
+extends "res://dropspawner/dropspawner.gd"
 
 export(float) var initial_spawn_per_sec
 export(float) var increase_speed_per_sec

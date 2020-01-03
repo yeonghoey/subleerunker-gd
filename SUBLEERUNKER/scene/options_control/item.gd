@@ -15,7 +15,7 @@ func init(options: Options) -> void:
 
 
 func _update_value():
-	var value = _options.get(key)
+	var value = _options.dataref()[key]
 	if value:
 		$Value.text = "ON"
 	else:
@@ -31,7 +31,7 @@ func deselect():
 
 
 func flip():
-	var value = _options.get(key)
+	var value = _options.dataref()[key]
 	_options.call("set_%s" % key, not value)
 	_options.save()
 	_update_value()

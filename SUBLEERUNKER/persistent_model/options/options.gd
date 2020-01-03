@@ -1,11 +1,18 @@
 extends "res://persistent_model/persistent_model.gd"
 
 
-func get_file_path() -> String:
+func filepath() -> String:
 	return "user://options.json"
 
 
-func get_default() -> Dictionary:
+func onload() -> void:
+	var d := dataref()
+	for k in d:
+		var v = d[k]
+		call("set_%s" % k, v)
+
+
+func _v1() -> Dictionary:
 	return {
 		fullscreen = true,
 		hidecursor = true,
@@ -14,15 +21,9 @@ func get_default() -> Dictionary:
 	}
 
 
-func on_load(data: Dictionary) -> void:
-	for k in data:
-		var v = data[k]
-		call("set_%s" % k, v)
-
-
 func set_fullscreen(b: bool) -> void:
 	OS.window_fullscreen = b
-	set("fullscreen", b)
+	dataref()["fullscreen"] = b
 
 
 func set_hidecursor(b: bool) -> void:
@@ -32,17 +33,17 @@ func set_hidecursor(b: bool) -> void:
 	else:
 		mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Input.set_mouse_mode(mouse_mode)
-	set("hidecursor", b)
+	dataref()["hidecursor"] = b
 
 
 func set_music(b: bool) -> void:
 	_mute_bus("Music", not b)
-	set("music", b)
+	dataref()["music"] = b
 
 
 func set_sound(b: bool) -> void:
 	_mute_bus("Sound", not b)
-	set("sound", b)
+	dataref()["sound"] = b
 
 
 func _mute_bus(name: String, enable: bool) -> void:

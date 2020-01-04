@@ -1,4 +1,4 @@
-extends "res://persistent_model/persistent_model.gd"
+extends "res://storage/storage.gd"
 
 const Mode := preload("res://mode/mode.gd")
 

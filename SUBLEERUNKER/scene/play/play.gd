@@ -37,6 +37,7 @@ func _present_modesel():
 	modesel.connect("selected", self, "_on_modesel_selected", [modesel])
 	modesel.connect("canceled", self, "_on_modesel_canceled", [modesel])
 	_Stadium.present(modesel)
+	_Indicator.display({score=false, combo=false})
 
 
 func _compile_catalog() -> Array:
@@ -57,6 +58,7 @@ func _compile_catalog() -> Array:
 func _on_modesel_selected(name: String, modesel: Stage):
 	modesel.close()
 	_modebox.select(name)
+	_modebox.save()
 	_present_waiting()
 
 
@@ -69,10 +71,13 @@ func _on_modesel_canceled(modesel: Stage):
 func _present_waiting():
 	var waiting := Waiting.instance()
 	var mode := _modebox.get_selected()
-	waiting.init(mode)
+	var modestat := _statbox.export_modestat(mode.take("name"))
+	waiting.init(mode, modestat)
 	waiting.connect("started", self, "_on_waiting_started", [waiting])
 	waiting.connect("canceled", self, "_on_waiting_canceled", [waiting])
 	_Stadium.present(waiting)
+	_Indicator.display({score=true, combo=false})
+	_Indicator.update_score(modestat["last_score"])
 
 
 func _on_waiting_started(waiting: Stage):
@@ -93,7 +98,7 @@ func _present_ingame():
 	ingame.connect("scored", self, "_on_ingame_scored")
 	ingame.connect("combo_hit", self, "_on_ingame_combo_hit")
 	ingame.connect("combo_missed", self, "_on_ingame_combo_missed")
-	ingame.connect("player_hit", self, "_on_ingame_player_hit")
+	ingame.connect("player_hit", self, "_on_ingame_player_hit", [mode.name])
 	ingame.connect("ended", self, "_on_ingame_ended", [ingame])
 	_Stadium.present(ingame)
 	_Indicator.display({score=true, combo=true})
@@ -118,8 +123,9 @@ func _on_ingame_combo_missed(n_combo: int, last_n_combo:int) -> void:
 	_Indicator.update_combo(n_combo)
 
 
-func _on_ingame_player_hit(score_new: int) -> void:
-	pass
+func _on_ingame_player_hit(final_score: int, modename: String) -> void:
+	_statbox.update_final_score(modename, final_score)
+	_statbox.save()
 
 
 func _on_ingame_ended(ingame: Stage) -> void:

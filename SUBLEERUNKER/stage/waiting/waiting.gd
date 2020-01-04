@@ -6,15 +6,24 @@ signal started()
 signal canceled()
 
 var _mode: Mode
+var _modestat: Dictionary
+
+onready var _BestScore := find_node("BestScore")
 
 
-func init(mode: Mode) -> void:
+func init(mode: Mode, modestat: Dictionary) -> void:
 	_mode = mode
+	_modestat = modestat
 
 
 func _ready():
+	_set_bestscore()
 	_prepend_background()
 	_override_labelcolor()
+
+
+func _set_bestscore():
+	_BestScore.text = "%d" % _modestat["best_score"]
 
 
 func _prepend_background():

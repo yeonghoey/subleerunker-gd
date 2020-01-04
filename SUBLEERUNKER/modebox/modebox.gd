@@ -32,12 +32,11 @@ func list() -> Array:
 
 
 func select(name: String) -> void:
-	dataref()["selected"] = name
-	save()
+	ref()["selected"] = name
 
 
 func get_selected() -> Mode:
-	var selected: String = dataref()["selected"]
+	var selected: String = ref()["selected"]
 	if not _modes.has(selected):
 		select(_names[0])
 		return get_selected()

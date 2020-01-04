@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sublee_off.png-d372c235e27a9dc27728e943f5dd3e5a.stex"
+path="res://.import/icon_off.png-5125666a4857f58e20aec87e3c0c2cfc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mode/sublee/sublee_off.png"
-dest_files=[ "res://.import/sublee_off.png-d372c235e27a9dc27728e943f5dd3e5a.stex" ]
+source_file="res://mode/sublee/icon_off.png"
+dest_files=[ "res://.import/icon_off.png-5125666a4857f58e20aec87e3c0c2cfc.stex" ]
 
 [params]
 

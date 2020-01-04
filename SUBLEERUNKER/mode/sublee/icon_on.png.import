@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sunmee_on.png-36fe6c01b57ccaa3988bc009beb202bb.stex"
+path="res://.import/icon_on.png-ce6033cd2f7b7ecfdcdb326959419744.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mode/sunmee/sunmee_on.png"
-dest_files=[ "res://.import/sunmee_on.png-36fe6c01b57ccaa3988bc009beb202bb.stex" ]
+source_file="res://mode/sublee/icon_on.png"
+dest_files=[ "res://.import/icon_on.png-ce6033cd2f7b7ecfdcdb326959419744.stex" ]
 
 [params]
 

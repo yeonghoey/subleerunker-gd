@@ -4,7 +4,7 @@ const Modebox := preload("res://modebox/modebox.gd")
 const Item := preload("res://stage/modesel/modesel_item.gd")
 const Item_ := preload("res://stage/modesel/modesel_item.tscn")
 
-signal selected(name)
+signal selected(modename)
 signal canceled()
 
 var _catalog: Array
@@ -49,8 +49,8 @@ func _input(event):
 		_move_selected_col(-1)
 
 	if Input.is_action_pressed("ui_accept"):
-		var name := _get_selected_item().get_name()
-		emit_signal("selected", name)
+		var modename := _get_selected_item().get_name()
+		emit_signal("selected", modename)
 		return
 	if Input.is_action_pressed("ui_cancel"):
 		emit_signal("canceled")

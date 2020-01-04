@@ -34,6 +34,9 @@ Any data in the model can be accessed through `dataref()`.
 
 Subclasses should implement `filepath()`, which returns a user data path(user://)
 Plus, they can implement `onload` to do custom initialization.
+
+To make sure two same models don't overwrite each other,
+any production instance should be created once, and which is generally done in `main.gd`.
 """
 
 const VERSION_REGEX = "^_v(\\d+)$"

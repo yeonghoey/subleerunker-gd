@@ -1,6 +1,6 @@
 extends "res://stage/stage.gd"
 
-const Preset := preload("res://preset/preset.gd")
+const Mode := preload("res://mode/mode.gd")
 const Troupe := preload("res://stage/ingame/ingame_troupe.gd")
 const Hero := preload("res://hero/hero.gd")
 const HeroDying := preload("res://herodying/herodying.gd")
@@ -21,7 +21,7 @@ signal player_hit(score_new)
 signal ended()
 signal lr_changed(left, right)
 
-var _preset: Preset
+var _mode: Mode
 
 var _bgm: BGM
 var _dropspawner: DropSpawner
@@ -35,12 +35,12 @@ var _score_new := 0
 var _n_combo := 1
 
 
-func init(preset: Preset) -> void:
-	_preset = preset
+func init(mode: Mode) -> void:
+	_mode = mode
 
 
 func _ready():
-	assert(_preset != null)
+	assert(_mode != null)
 	_add_bgm()
 	_add_background()
 	_add_dropspawner()
@@ -52,17 +52,17 @@ func _ready():
 
 
 func _add_bgm() -> void:
-	_bgm = _preset.make("BGM")
+	_bgm = _mode.make("BGM")
 	add_child(_bgm)
 
 
 func _add_background():
-	var background := _preset.make("Background")
+	var background := _mode.make("Background")
 	add_child(background)
 
 
 func _add_dropspawner():
-	_dropspawner = _preset.make("DropSpawner")
+	_dropspawner = _mode.make("DropSpawner")
 	_dropspawner.connect("cued", self, "_on_dropspawner_cued")
 	add_child(_dropspawner)
 
@@ -73,7 +73,7 @@ func _on_dropspawner_cued(hints) -> void:
 
 
 func _add_pedalspawner():
-	_pedalspawner = _preset.make("PedalSpawner")
+	_pedalspawner = _mode.make("PedalSpawner")
 	_pedalspawner.connect("cued", self, "_on_pedalspawner_cued")
 	add_child(_pedalspawner)
 
@@ -94,7 +94,7 @@ func _on_troup_cleared():
 
 
 func _cast_hero():
-	_hero = _preset.make("Hero")
+	_hero = _mode.make("Hero")
 	_hero.init(rect_size)
 	_hero.connect("hit", _bgm, "queue_free")
 	_hero.connect("hit", _dropspawner, "queue_free")
@@ -111,13 +111,13 @@ func _on_hero_hit():
 
 
 func _cast_herodying(hero: Hero):
-	var herodying: HeroDying = _preset.make("HeroDying")
+	var herodying: HeroDying = _mode.make("HeroDying")
 	herodying.init(hero)
 	_troupe.cast(herodying)
 
 
 func _cast_drop(hint):
-	var drop: Drop = _preset.make("Drop")
+	var drop: Drop = _mode.make("Drop")
 	drop.init(rect_size, _hero, hint)
 	drop.connect("landed", self, "_on_drop_landed", [drop])
 	_dropspawner.on_drop_spawned(drop)
@@ -133,13 +133,13 @@ func _on_drop_landed(drop: Drop) -> void:
 
 
 func _cast_droplanding(drop: Drop) -> void:
-	var droplanding: DropLanding = _preset.make("DropLanding")
+	var droplanding: DropLanding = _mode.make("DropLanding")
 	droplanding.init(drop)
 	_troupe.cast(droplanding)
 
 
 func _cast_pedal(hint) -> void:
-	var pedal: Pedal = _preset.make("Pedal")
+	var pedal: Pedal = _mode.make("Pedal")
 	pedal.init(rect_size, _hero, hint)
 	pedal.connect("triggered", self, "_on_pedal_triggered", [pedal])
 	pedal.connect("disappeared", self, "_on_pedal_disappeared", [pedal])
@@ -165,13 +165,13 @@ func _on_pedal_disappeared(pedal: Pedal) -> void:
 
 
 func _cast_pedalhitting(pedal: Pedal, n_combo: int) -> void:
-	var pedalhitting: PedalHitting = _preset.make("PedalHitting")
+	var pedalhitting: PedalHitting = _mode.make("PedalHitting")
 	pedalhitting.init(pedal, n_combo)
 	_troupe.cast(pedalhitting)
 
 
 func _cast_pedalmissing(pedal: Pedal, last_n_combo: int) -> void:
-	var pedalmissing: PedalMissing = _preset.make("PedalMissing")
+	var pedalmissing: PedalMissing = _mode.make("PedalMissing")
 	pedalmissing.init(pedal, last_n_combo)
 	_troupe.cast(pedalmissing)
 

@@ -1,15 +1,15 @@
 extends "res://stage/stage.gd"
 
-const Preset := preload("res://preset/preset.gd")
+const Mode := preload("res://mode/mode.gd")
 
 signal started()
 signal canceled()
 
-var _preset: Preset
+var _mode: Mode
 
 
-func init(preset: Preset) -> void:
-	_preset = preset
+func init(mode: Mode) -> void:
+	_mode = mode
 
 
 func _ready():
@@ -18,13 +18,13 @@ func _ready():
 
 
 func _prepend_background():
-	var background := _preset.make("Background")
+	var background := _mode.make("Background")
 	add_child(background)
 	move_child(background, 0)
 
 
 func _override_labelcolor():
-	var labelcolor: Color = _preset.take("labelcolor")
+	var labelcolor: Color = _mode.take("labelcolor")
 	get_tree().call_group("GameLabel",
 			"add_color_override", "font_color", labelcolor)
 

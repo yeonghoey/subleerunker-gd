@@ -2,7 +2,7 @@ extends HBoxContainer
 
 export(String) var key: String
 
-const Options := preload("res://persistent_model/options/options.gd")
+const Options := preload("res://options/options.gd")
 
 var _options: Options
 var _style_selected: StyleBox = preload("selection.tres")

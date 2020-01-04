@@ -1,6 +1,6 @@
 extends "res://scene/scene.gd"
 
-const Options := preload("res://persistent_model/options/options.gd")
+const Options := preload("res://options/options.gd")
 const Item := preload("item.gd")
 
 signal backed()

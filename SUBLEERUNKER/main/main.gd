@@ -1,5 +1,10 @@
 extends Node
 
+const Modebox := preload("res://modebox/modebox.gd")
+const Options := preload("res://options/options.gd")
+
+const MODES := ["sublee", "sunmee", "yeongho"]
+
 onready var _scenes = {
 	"intro": preload("res://scene/intro/intro.tscn").instance(),
 	"title": preload("res://scene/title/title.tscn").instance(),
@@ -29,8 +34,8 @@ func _init_title() -> void:
 
 
 func _init_play() -> void:
-	# TODO: Load the last selected mode
-	_scenes["play"].init("subleerunker")
+	var modebox := Modebox.new(MODES)
+	_scenes["play"].init(modebox)
 	_scenes["play"].connect("backed", self, "_transit", ["play", "title"])
 
 
@@ -39,7 +44,7 @@ func _init_achievements_view() -> void:
 
 
 func _init_options_control() -> void:
-	var options := PersistentModel.options
+	var options := Options.new()
 	_scenes["options_control"].init(options)
 	_scenes["options_control"].connect("backed", self, "_transit", ["options_control", "title"])
 

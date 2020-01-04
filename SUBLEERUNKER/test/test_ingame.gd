@@ -1,8 +1,8 @@
 extends Control
 
-const InGame := preload("res://stage/ingame.tscn")
+const InGame := preload("res://stage/ingame/ingame.tscn")
 
-onready var _preset := preload("res://preset/subleerunker.gd").new()
+onready var _mode := preload("res://mode/sublee/sublee.gd").new()
 onready var _Stadium := find_node("Stadium")
 onready var _Signals := find_node("Signals")
 
@@ -17,7 +17,7 @@ func _on_RestartButton_pressed():
 
 func _restart():
 	var ingame = InGame.instance()
-	ingame.init(_preset)
+	ingame.init(_mode)
 	_connect_signals_to_log(ingame)
 	_Stadium.present(ingame)
 

@@ -1,8 +1,5 @@
 extends "res://stage/stage.gd"
 
-const Modebox := preload("res://modebox/modebox.gd")
-const Statbox := preload("res://statbox/statbox.gd")
-
 const Mode := preload("res://mode/mode.gd")
 const Troupe := preload("res://stage/ingame/ingame_troupe.gd")
 const Hero := preload("res://hero/hero.gd")
@@ -24,9 +21,6 @@ signal player_hit(score_new)
 signal ended()
 signal lr_changed(left, right)
 
-var _modebox: Modebox
-var _statbox: Statbox
-
 var _mode: Mode
 var _bgm: BGM
 var _dropspawner: DropSpawner
@@ -40,10 +34,8 @@ var _score_new := 0
 var _n_combo := 1
 
 
-func init(modebox: Modebox, statbox: Statbox) -> void:
-	_modebox = modebox
-	_statbox = statbox
-	_mode = _modebox.get_selected()
+func init(mode: Mode) -> void:
+	_mode = mode
 
 
 func _ready():

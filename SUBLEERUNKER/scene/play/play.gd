@@ -32,24 +32,44 @@ func _ready():
 
 func _present_modesel():
 	var modesel := ModeSel.instance()
-	modesel.init(_modebox)
+	var catalog := _compile_catalog()
+	modesel.init(catalog)
 	modesel.connect("selected", self, "_on_modesel_selected", [modesel])
-	modesel.connect("canceled", self, "_on_modesel_canceled")
+	modesel.connect("canceled", self, "_on_modesel_canceled", [modesel])
 	_Stadium.present(modesel)
 
 
-func _on_modesel_selected(modesel: Stage):
+func _compile_catalog() -> Array:
+	var last_mode := _modebox.get_selected()
+	var catalog := []
+	for mode in _modebox.list():
+		catalog.append({
+			name = mode.take("name"),
+			# TODO: implement flags
+			icon = mode.take("icon_on"),
+			is_unlocked = true,
+			is_last = (mode == last_mode),
+			is_new = false,
+		})
+	return catalog
+
+
+func _on_modesel_selected(name: String, modesel: Stage):
 	modesel.close()
+	_modebox.select(name)
 	_present_waiting()
 
 
-func _on_modesel_canceled():
+func _on_modesel_canceled(modesel: Stage):
+	modesel.close()
+	request_ready()
 	emit_signal("backed")
 
 
 func _present_waiting():
 	var waiting := Waiting.instance()
-	waiting.init(_modebox)
+	var mode := _modebox.get_selected()
+	waiting.init(mode)
 	waiting.connect("started", self, "_on_waiting_started", [waiting])
 	waiting.connect("canceled", self, "_on_waiting_canceled", [waiting])
 	_Stadium.present(waiting)
@@ -67,7 +87,8 @@ func _on_waiting_canceled(waiting: Stage):
 
 func _present_ingame():
 	var ingame := InGame.instance()
-	ingame.init(_modebox, _statbox)
+	var mode := _modebox.get_selected()
+	ingame.init(mode)
 	ingame.connect("started", self, "_on_ingame_started")
 	ingame.connect("scored", self, "_on_ingame_scored")
 	ingame.connect("combo_hit", self, "_on_ingame_combo_hit")

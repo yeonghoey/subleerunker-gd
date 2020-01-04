@@ -1,8 +1,9 @@
 extends "res://scene/scene.gd"
 
 const Modebox := preload("res://modebox/modebox.gd")
-const Mode := preload("res://mode/mode.gd")
+const Statbox := preload("res://statbox/statbox.gd")
 
+const Mode := preload("res://mode/mode.gd")
 const Stadium := preload("res://stadium/stadium.gd")
 const Stage := preload("res://stage/stage.gd")
 const Indicator := preload("res://scene/play/play_indicator.gd")
@@ -14,14 +15,15 @@ const InGame := preload("res://stage/ingame/ingame.tscn")
 signal backed()
 
 var _modebox: Modebox
-var _mode: Mode
+var _statbox: Statbox
 
 onready var _Stadium: Stadium = find_node("Stadium")
 onready var _Indicator: Indicator = find_node("Indicator")
 
 
-func init(modebox: Modebox) -> void:
+func init(modebox: Modebox, statbox: Statbox) -> void:
 	_modebox = modebox
+	_statbox = statbox
 
 
 func _ready():
@@ -36,9 +38,8 @@ func _present_modesel():
 	_Stadium.present(modesel)
 
 
-func _on_modesel_selected(mode: Mode, modesel: Stage):
+func _on_modesel_selected(modesel: Stage):
 	modesel.close()
-	_mode = mode
 	_present_waiting()
 
 
@@ -48,7 +49,7 @@ func _on_modesel_canceled():
 
 func _present_waiting():
 	var waiting := Waiting.instance()
-	waiting.init(_mode)
+	waiting.init(_modebox)
 	waiting.connect("started", self, "_on_waiting_started", [waiting])
 	waiting.connect("canceled", self, "_on_waiting_canceled", [waiting])
 	_Stadium.present(waiting)
@@ -66,7 +67,7 @@ func _on_waiting_canceled(waiting: Stage):
 
 func _present_ingame():
 	var ingame := InGame.instance()
-	ingame.init(_mode)
+	ingame.init(_modebox, _statbox)
 	ingame.connect("started", self, "_on_ingame_started")
 	ingame.connect("scored", self, "_on_ingame_scored")
 	ingame.connect("combo_hit", self, "_on_ingame_combo_hit")

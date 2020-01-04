@@ -4,7 +4,7 @@ const Modebox := preload("res://modebox/modebox.gd")
 const Item := preload("res://stage/modesel/modesel_item.gd")
 const Item_ := preload("res://stage/modesel/modesel_item.tscn")
 
-signal selected(mode_name)
+signal selected()
 signal canceled()
 
 var _modebox: Modebox
@@ -26,7 +26,7 @@ func _ready():
 func _refresh_icons():
 	for item in _Items.get_children():
 		item.queue_free()
-	var last_mode := _modebox.get_last_mode()
+	var last_mode := _modebox.get_selected()
 	var last_mode_index := 0
 	for mode in _modebox.list():
 		var item := Item_.instance()
@@ -52,7 +52,8 @@ func _input(event):
 
 	if Input.is_action_pressed("ui_accept"):
 		var name := _get_selected_item().get_name()
-		emit_signal("selected", _modebox.select(name))
+		_modebox.select(name)
+		emit_signal("selected")
 		return
 	if Input.is_action_pressed("ui_cancel"):
 		emit_signal("canceled")

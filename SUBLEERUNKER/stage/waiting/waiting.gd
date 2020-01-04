@@ -1,15 +1,18 @@
 extends "res://stage/stage.gd"
 
+const Modebox := preload("res://modebox/modebox.gd")
 const Mode := preload("res://mode/mode.gd")
 
 signal started()
 signal canceled()
 
+var _modebox: Modebox
 var _mode: Mode
 
 
-func init(mode: Mode) -> void:
-	_mode = mode
+func init(modebox: Modebox) -> void:
+	_modebox = modebox
+	_mode = _modebox.get_selected()
 
 
 func _ready():

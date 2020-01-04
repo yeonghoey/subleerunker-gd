@@ -12,7 +12,7 @@ func filepath() -> String:
 
 func _v1() -> Dictionary:
 	return {
-		last_modename = "",
+		selected = "",
 	}
 
 
@@ -31,14 +31,14 @@ func list() -> Array:
 	return a
 
 
-func select(name: String) -> Mode:
-	dataref()["last_modename"] = name
+func select(name: String) -> void:
+	dataref()["selected"] = name
 	save()
-	return _modes[name]
 
 
-func get_last_mode() -> Mode:
-	var last_modename: String = dataref()["last_modename"]
-	if not _modes.has(last_modename):
-		last_modename = _names[0]
-	return select(last_modename)
+func get_selected() -> Mode:
+	var selected: String = dataref()["selected"]
+	if not _modes.has(selected):
+		select(_names[0])
+		return get_selected()
+	return _modes[selected]

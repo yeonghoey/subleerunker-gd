@@ -21,6 +21,12 @@ const SCHEMA: Dictionary = {
 
 var _spec: Dictionary = {}
 
+var name: String setget ,name_get
+
+
+func name_get() -> String:
+	return _spec["name"]
+
 
 func _init(spec: Dictionary) -> void:
 	for f in SCHEMA:
@@ -37,11 +43,11 @@ func _init(spec: Dictionary) -> void:
 	_spec = spec
 
 
-func take(name: String):
-	return _spec[name]
+func take(key: String):
+	return _spec[key]
 
 
-func make(name: String) -> Node:
-	var node: Node = _spec[name].instance()
-	node.name = name
+func make(key: String) -> Node:
+	var node: Node = _spec[key].instance()
+	node.name = key
 	return node

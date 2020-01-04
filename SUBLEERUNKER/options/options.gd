@@ -6,9 +6,9 @@ func filepath() -> String:
 
 
 func onload() -> void:
-	var d := dataref()
-	for k in d:
-		var v = d[k]
+	var data := ref()
+	for k in data:
+		var v = data[k]
 		call("set_%s" % k, v)
 
 
@@ -23,7 +23,7 @@ func _v1() -> Dictionary:
 
 func set_fullscreen(b: bool) -> void:
 	OS.window_fullscreen = b
-	dataref()["fullscreen"] = b
+	ref()["fullscreen"] = b
 
 
 func set_hidecursor(b: bool) -> void:
@@ -33,17 +33,17 @@ func set_hidecursor(b: bool) -> void:
 	else:
 		mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Input.set_mouse_mode(mouse_mode)
-	dataref()["hidecursor"] = b
+	ref()["hidecursor"] = b
 
 
 func set_music(b: bool) -> void:
 	_mute_bus("Music", not b)
-	dataref()["music"] = b
+	ref()["music"] = b
 
 
 func set_sound(b: bool) -> void:
 	_mute_bus("Sound", not b)
-	dataref()["sound"] = b
+	ref()["sound"] = b
 
 
 func _mute_bus(name: String, enable: bool) -> void:

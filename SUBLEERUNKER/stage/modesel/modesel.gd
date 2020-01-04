@@ -4,19 +4,18 @@ const Modebox := preload("res://modebox/modebox.gd")
 const Item := preload("res://stage/modesel/modesel_item.gd")
 const Item_ := preload("res://stage/modesel/modesel_item.tscn")
 
-signal selected(mode_name)
+signal selected(modename)
 signal canceled()
 
-var _modebox: Modebox
-
+var _catalog: Array
 var _selected_row := 0
 var _selected_col := 0
 
 onready var _Items: GridContainer = find_node("Items")
 
 
-func init(modebox: Modebox) -> void:
-	_modebox = modebox
+func init(catalog: Array) -> void:
+	_catalog = catalog
 
 
 func _ready():
@@ -26,13 +25,12 @@ func _ready():
 func _refresh_icons():
 	for item in _Items.get_children():
 		item.queue_free()
-	var last_mode := _modebox.get_last_mode()
 	var last_mode_index := 0
-	for mode in _modebox.list():
+	for entry in _catalog:
 		var item := Item_.instance()
-		item.init(mode)
+		item.init(entry)
 		_Items.add_child(item)
-		if mode == last_mode:
+		if entry["is_last"]:
 			last_mode_index = item.get_index()
 	var columns := _Items.columns
 	_selected_row = last_mode_index / columns
@@ -51,8 +49,8 @@ func _input(event):
 		_move_selected_col(-1)
 
 	if Input.is_action_pressed("ui_accept"):
-		var name := _get_selected_item().get_name()
-		emit_signal("selected", _modebox.select(name))
+		var modename := _get_selected_item().get_name()
+		emit_signal("selected", modename)
 		return
 	if Input.is_action_pressed("ui_cancel"):
 		emit_signal("canceled")

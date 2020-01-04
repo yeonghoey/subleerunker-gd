@@ -30,7 +30,7 @@ var _v1 := ...
 The constructor of this class make sure any data type get migrated to the latest version,
 by running migration functions sequentially.
 
-Any data in the model can be accessed through `dataref()`.
+Any data in the model can be accessed through `ref()`.
 
 Subclasses should implement `filepath()`, which returns a user data path(user://)
 Plus, they can implement `onload` to do custom initialization.
@@ -115,7 +115,7 @@ func _get_default(version: int) -> Dictionary:
 	return {"version": version, "data": default.duplicate(true)}
 
 
-func dataref() -> Dictionary:
+func ref() -> Dictionary:
 	return _body["data"]
 
 

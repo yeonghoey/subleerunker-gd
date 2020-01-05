@@ -1,7 +1,7 @@
 extends "res://scene/scene.gd"
 
-const Modebox := preload("res://modebox/modebox.gd")
-const Statbox := preload("res://statbox/statbox.gd")
+const Modebox := preload("res://box/modebox/modebox.gd")
+const Statbox := preload("res://box/statbox/statbox.gd")
 
 const Mode := preload("res://mode/mode.gd")
 const Stadium := preload("res://stadium/stadium.gd")

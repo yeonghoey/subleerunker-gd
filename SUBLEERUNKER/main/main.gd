@@ -1,8 +1,8 @@
 extends Node
 
-const Modebox := preload("res://modebox/modebox.gd")
-const Statbox := preload("res://statbox/statbox.gd")
-const Options := preload("res://options/options.gd")
+const Modebox := preload("res://box/modebox/modebox.gd")
+const Statbox := preload("res://box/statbox/statbox.gd")
+const Confbox := preload("res://box/confbox/confbox.gd")
 
 const MODES := ["sublee", "sunmee", "yeongho"]
 
@@ -16,7 +16,7 @@ onready var _scenes = {
 
 onready var _modebox := Modebox.new(MODES)
 onready var _statbox := Statbox.new()
-onready var _options := Options.new()
+onready var _confbox := Confbox.new()
 
 
 func _ready():
@@ -48,7 +48,7 @@ func _init_achievements_view() -> void:
 
 
 func _init_options_control() -> void:
-	_scenes["options_control"].init(_options)
+	_scenes["options_control"].init(_confbox)
 	_scenes["options_control"].connect("backed", self, "_transit", ["options_control", "title"])
 
 

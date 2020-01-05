@@ -1,4 +1,4 @@
-extends "res://storage/storage.gd"
+extends "res://box/box.gd"
 
 const Mode := preload("res://mode/mode.gd")
 

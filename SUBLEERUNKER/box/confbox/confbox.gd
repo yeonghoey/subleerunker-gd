@@ -1,8 +1,8 @@
-extends "res://storage/storage.gd"
+extends "res://box/box.gd"
 
 
 func filepath() -> String:
-	return "user://options.json"
+	return "user://confbox.json"
 
 
 func onload() -> void:

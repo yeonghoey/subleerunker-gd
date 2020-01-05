@@ -1,4 +1,4 @@
-extends "res://storage/storage.gd"
+extends "res://box/box.gd"
 
 
 func filepath() -> String:

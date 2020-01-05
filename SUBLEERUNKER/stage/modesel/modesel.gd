@@ -1,6 +1,6 @@
 extends "res://stage/stage.gd"
 
-const Modebox := preload("res://modebox/modebox.gd")
+const Modebox := preload("res://box/modebox/modebox.gd")
 const Item := preload("res://stage/modesel/modesel_item.gd")
 const Item_ := preload("res://stage/modesel/modesel_item.tscn")
 

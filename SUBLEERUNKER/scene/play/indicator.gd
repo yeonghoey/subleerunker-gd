@@ -1,7 +1,5 @@
 extends MarginContainer
 
-const InGame := preload("res://stage/ingame/ingame.gd")
-
 onready var _controls := {
 	score = find_node("Score"),
 	combo = find_node("Combo"),

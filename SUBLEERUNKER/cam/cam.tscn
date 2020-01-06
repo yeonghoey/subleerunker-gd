@@ -2,7 +2,7 @@
 
 [ext_resource path="res://cam/cam.gd" type="Script" id=1]
 
-[node name="Camera2D" type="Camera2D"]
+[node name="Cam" type="Camera2D"]
 anchor_mode = 0
 current = true
 script = ExtResource( 1 )

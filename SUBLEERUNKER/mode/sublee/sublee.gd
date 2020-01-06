@@ -17,5 +17,6 @@ func _init().({
 	PedalMissing = preload("res://pedalmissing/dummy/dummy.tscn"),
 	PedalSpawner = preload("res://pedalspawner/oneatatime/oneatatime.tscn"),
 	BGM = preload("res://bgm/dddd/dddd.tscn"),
+	Cam = preload("res://cam/default/default.tscn"),
 }):
     pass

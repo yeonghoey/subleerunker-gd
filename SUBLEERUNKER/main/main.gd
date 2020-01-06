@@ -11,7 +11,7 @@ onready var _scenes = {
 	"title": preload("res://scene/title/title.tscn").instance(),
 	"play": preload("res://scene/play/play.tscn").instance(),
 	"achievements_view": preload("res://scene/achievements_view/achievements_view.tscn").instance(),
-	"options_control": preload("res://scene/options_control/options_control.tscn").instance(),
+	"options": preload("res://scene/options/options.tscn").instance(),
 }
 
 onready var _modebox := Modebox.new(MODES)
@@ -24,7 +24,7 @@ func _ready():
 	_init_title()
 	_init_play()
 	_init_achievements_view()
-	_init_options_control()
+	_init_options()
 	_show_intro()
 
 
@@ -35,7 +35,7 @@ func _init_intro() -> void:
 func _init_title() -> void:
 	_scenes["title"].connect("play_selected", self, "_transit", ["title", "play"])
 	_scenes["title"].connect("achievements_view_selected", self, "_transit", ["title", "achievements_view"])
-	_scenes["title"].connect("options_control_selected", self, "_transit", ["title", "options_control"])
+	_scenes["title"].connect("options_selected", self, "_transit", ["title", "options"])
 
 
 func _init_play() -> void:
@@ -47,9 +47,9 @@ func _init_achievements_view() -> void:
 	_scenes["achievements_view"].connect("backed", self, "_transit", ["achievements_view", "title"])
 
 
-func _init_options_control() -> void:
-	_scenes["options_control"].init(_confbox)
-	_scenes["options_control"].connect("backed", self, "_transit", ["options_control", "title"])
+func _init_options() -> void:
+	_scenes["options"].init(_confbox)
+	_scenes["options"].connect("backed", self, "_transit", ["options", "title"])
 
 
 func _show_intro() -> void:

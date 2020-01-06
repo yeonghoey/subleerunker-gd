@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/intro_yeongho.png-f0a81d6c43245f9d5a8cc31d5e779c48.stex"
+path="res://.import/yeongho.png-2949e6f9adeee2046fdaa2412fe6c67b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/intro/intro_yeongho.png"
-dest_files=[ "res://.import/intro_yeongho.png-f0a81d6c43245f9d5a8cc31d5e779c48.stex" ]
+source_file="res://scene/intro/yeongho.png"
+dest_files=[ "res://.import/yeongho.png-2949e6f9adeee2046fdaa2412fe6c67b.stex" ]
 
 [params]
 

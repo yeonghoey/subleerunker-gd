@@ -1,7 +1,6 @@
 extends "res://stage/stage.gd"
 
 const Mode := preload("res://mode/mode.gd")
-const Troupe := preload("res://stage/ingame/ingame_troupe.gd")
 const Hero := preload("res://hero/hero.gd")
 const HeroDying := preload("res://herodying/herodying.gd")
 const Drop := preload("res://drop/drop.gd")
@@ -12,6 +11,8 @@ const PedalHitting := preload("res://pedalhitting/pedalhitting.gd")
 const PedalMissing := preload("res://pedalmissing/pedalmissing.gd")
 const PedalSpawner := preload("res://pedalspawner/pedalspawner.gd")
 const BGM := preload("res://bgm/bgm.gd")
+
+const Troupe := preload("troupe.gd")
 
 signal started(initial_score, initial_n_combo)
 signal scored(score)

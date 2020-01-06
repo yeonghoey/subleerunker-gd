@@ -11,6 +11,7 @@ const PedalHitting := preload("res://pedalhitting/pedalhitting.gd")
 const PedalMissing := preload("res://pedalmissing/pedalmissing.gd")
 const PedalSpawner := preload("res://pedalspawner/pedalspawner.gd")
 const BGM := preload("res://bgm/bgm.gd")
+const Cam := preload("res://cam/cam.gd")
 
 const Troupe := preload("troupe.gd")
 
@@ -24,6 +25,7 @@ signal lr_changed(left, right)
 
 var _mode: Mode
 var _bgm: BGM
+var _cam: Cam
 var _dropspawner: DropSpawner
 var _pedalspawner: PedalSpawner
 var _troupe: Troupe
@@ -41,18 +43,25 @@ func init(mode: Mode) -> void:
 func _ready():
 	assert(_mode != null)
 	_add_bgm()
+	_add_cam()
 	_add_background()
 	_add_dropspawner()
 	_add_pedalspawner()
 	_add_troupe()
 	_cast_hero()
 	_wire_input_to_hero()
+	_wire_events_to_cam()
 	_emit_started()
 
 
 func _add_bgm() -> void:
 	_bgm = _mode.make("BGM")
 	add_child(_bgm)
+
+
+func _add_cam() -> void:
+	_cam = _mode.make("Cam")
+	add_child(_cam)
 
 
 func _add_background():
@@ -96,6 +105,7 @@ func _cast_hero():
 	_hero = _mode.make("Hero")
 	_hero.init(rect_size)
 	_hero.connect("hit", _bgm, "queue_free")
+	_hero.connect("hit", _cam, "queue_free")
 	_hero.connect("hit", _dropspawner, "queue_free")
 	_hero.connect("hit", _pedalspawner, "queue_free")
 	_hero.connect("hit", self, "_on_hero_hit")
@@ -177,6 +187,15 @@ func _cast_pedalmissing(pedal: Pedal, last_n_combo: int) -> void:
 
 func _wire_input_to_hero() -> void:
 	connect("lr_changed", _hero, "handle_action_input")
+
+
+func _wire_events_to_cam() -> void:
+	connect("started", _cam, "on_started")
+	connect("scored", _cam, "on_scored")
+	connect("combo_hit", _cam, "on_combo_hit")
+	connect("combo_missed", _cam, "on_combo_missed")
+	connect("player_hit", _cam, "on_player_hit")
+	connect("ended", _cam, "on_ended")
 
 
 func _emit_started() -> void:

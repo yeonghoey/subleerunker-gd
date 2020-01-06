@@ -58,7 +58,7 @@ func on_combo_missed(n_combo: int, last_n_combo: int) -> void:
 	pass
 
 
-func on_player_hit(final_score: int) -> void:
+func on_hero_hit(final_score: int) -> void:
 	pass
 
 

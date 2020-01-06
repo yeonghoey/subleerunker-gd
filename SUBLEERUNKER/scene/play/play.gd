@@ -97,7 +97,7 @@ func _present_ingame():
 	ingame.connect("scored", self, "_on_ingame_scored")
 	ingame.connect("combo_hit", self, "_on_ingame_combo_hit")
 	ingame.connect("combo_missed", self, "_on_ingame_combo_missed")
-	ingame.connect("player_hit", self, "_on_ingame_player_hit", [mode.name])
+	ingame.connect("hero_hit", self, "_on_ingame_hero_hit", [mode.name])
 	ingame.connect("ended", self, "_on_ingame_ended", [ingame])
 	_Stadium.present(ingame)
 	_Indicator.display({score=true, combo=true})
@@ -122,7 +122,7 @@ func _on_ingame_combo_missed(n_combo: int, last_n_combo:int) -> void:
 	_Indicator.update_combo(n_combo)
 
 
-func _on_ingame_player_hit(final_score: int, modename: String) -> void:
+func _on_ingame_hero_hit(final_score: int, modename: String) -> void:
 	_statbox.update_final_score(modename, final_score)
 	_statbox.save()
 

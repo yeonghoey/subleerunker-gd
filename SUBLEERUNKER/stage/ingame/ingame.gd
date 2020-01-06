@@ -19,7 +19,7 @@ signal started(initial_score, initial_n_combo)
 signal scored(score)
 signal combo_hit(n_combo)
 signal combo_missed(n_combo, last_n_combo)
-signal player_hit(final_score)
+signal hero_hit(final_score)
 signal ended()
 signal lr_changed(left, right)
 
@@ -116,7 +116,7 @@ func _on_hero_hit():
 	_is_hero_hit = true
 	_cast_herodying(_hero)
 	var final_score := _score
-	emit_signal("player_hit", final_score)
+	emit_signal("hero_hit", final_score)
 
 
 func _cast_herodying(hero: Hero):
@@ -194,7 +194,7 @@ func _wire_events_to_cam() -> void:
 	connect("scored", _cam, "on_scored")
 	connect("combo_hit", _cam, "on_combo_hit")
 	connect("combo_missed", _cam, "on_combo_missed")
-	connect("player_hit", _cam, "on_player_hit")
+	connect("hero_hit", _cam, "on_hero_hit")
 	connect("ended", _cam, "on_ended")
 
 

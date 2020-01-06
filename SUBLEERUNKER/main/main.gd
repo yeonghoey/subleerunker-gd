@@ -10,7 +10,7 @@ onready var _scenes = {
 	"intro": preload("res://scene/intro/intro.tscn").instance(),
 	"title": preload("res://scene/title/title.tscn").instance(),
 	"play": preload("res://scene/play/play.tscn").instance(),
-	"achievements_view": preload("res://scene/achievements_view/achievements_view.tscn").instance(),
+	"achievements": preload("res://scene/achievements/achievements.tscn").instance(),
 	"options": preload("res://scene/options/options.tscn").instance(),
 }
 
@@ -23,7 +23,7 @@ func _ready():
 	_init_intro()
 	_init_title()
 	_init_play()
-	_init_achievements_view()
+	_init_achievements()
 	_init_options()
 	_show_intro()
 
@@ -34,7 +34,7 @@ func _init_intro() -> void:
 
 func _init_title() -> void:
 	_scenes["title"].connect("play_selected", self, "_transit", ["title", "play"])
-	_scenes["title"].connect("achievements_view_selected", self, "_transit", ["title", "achievements_view"])
+	_scenes["title"].connect("achievements_selected", self, "_transit", ["title", "achievements"])
 	_scenes["title"].connect("options_selected", self, "_transit", ["title", "options"])
 
 
@@ -43,8 +43,8 @@ func _init_play() -> void:
 	_scenes["play"].connect("backed", self, "_transit", ["play", "title"])
 
 
-func _init_achievements_view() -> void:
-	_scenes["achievements_view"].connect("backed", self, "_transit", ["achievements_view", "title"])
+func _init_achievements() -> void:
+	_scenes["achievements"].connect("backed", self, "_transit", ["achievements", "title"])
 
 
 func _init_options() -> void:

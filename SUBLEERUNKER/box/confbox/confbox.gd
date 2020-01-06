@@ -23,6 +23,10 @@ func _v1() -> Dictionary:
 
 func set_fullscreen(b: bool) -> void:
 	OS.window_fullscreen = b
+	# NOTE: when flipping fullscreen, some global state actions
+	# don't get released. Releases all of the actions manually.
+	for action in InputMap.get_actions():
+		Input.action_release(action)
 	ref()["fullscreen"] = b
 
 

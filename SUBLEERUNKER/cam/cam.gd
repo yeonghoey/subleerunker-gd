@@ -1,5 +1,5 @@
-extends Camera2D
-"""The main Camera2D which will be attached to InGame.
+extends Node2D
+"""A Camera2D containing node which will be attached to InGame.
 
 Subclasses can override `on_<sigal>` methods which will get called when
 the signal emitted by the InGame.
@@ -8,6 +8,8 @@ Also, subclasses can make good use of `create_shake_animation`,
 which will create camera shaking animation programatically.
 """
 
+
+onready var _Camera2D := $Camera2D
 onready var _AnimationPlayer := $AnimationPlayer
 
 
@@ -25,7 +27,7 @@ func create_shake_animation(name: String, duration: float, step: float, shake_am
 	# Add 0.1 to make sure float comparision issue doesn't affect
 	var length := duration + 0.1
 	var reset_track := animation.add_track(Animation.TYPE_VALUE)
-	animation.track_set_path(reset_track, ".:offset")
+	animation.track_set_path(reset_track, "Camera2D:offset")
 	animation.track_insert_key(reset_track, length, Vector2(0, 0))
 	animation.length = length
 
@@ -37,7 +39,7 @@ func play(name: String) -> void:
 
 
 func _rand_offset(shake_amount: float) -> void:
-	offset = Vector2(
+	_Camera2D.offset = Vector2(
 	    rand_range(-1.0, 1.0) * shake_amount,
         rand_range(-1.0, 1.0) * shake_amount)
 

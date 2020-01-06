@@ -1,17 +1,17 @@
 extends "res://scene/scene.gd"
 
 signal play_selected()
-signal achievements_view_selected()
-signal options_control_selected()
+signal achievements_selected()
+signal options_selected()
 
 var _selection_index := 0
-var _selection_style := preload("res://scene/title/title_selection.tres")
+var _selection_style := preload("selection.tres")
 var _selection_empty := StyleBoxEmpty.new()
 
 onready var _menuitems = [
 	{name='play', label=find_node("Play")},
-	{name='achievements_view', label=find_node("Achievements")},
-	{name='options_control', label=find_node("Options")},
+	{name='achievements', label=find_node("Achievements")},
+	{name='options', label=find_node("Options")},
 ]
 
 

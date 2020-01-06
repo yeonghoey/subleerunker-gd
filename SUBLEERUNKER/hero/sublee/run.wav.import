@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/run.wav-8f834125035f117473893eeadb8e3562.sample"
+
+[deps]
+
+source_file="res://hero/sublee/run.wav"
+dest_files=[ "res://.import/run.wav-8f834125035f117473893eeadb8e3562.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

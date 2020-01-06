@@ -3,8 +3,8 @@ extends "res://mode/mode.gd"
 
 func _init().({
 	name = "sunmee",
-	icon_on = preload("sunmee_on.png"),
-	icon_off = preload("sunmee_off.png"),
+	icon_on = preload("icon_on.png"),
+	icon_off = preload("icon_off.png"),
 	labelcolor = Color("#ffffff"),
 	Background = preload("res://background/black/black.tscn"),
 	Hero = preload("res://hero/sunmee/sunmee.tscn"),

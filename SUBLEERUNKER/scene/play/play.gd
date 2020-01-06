@@ -1,16 +1,15 @@
 extends "res://scene/scene.gd"
 
-const Modebox := preload("res://modebox/modebox.gd")
-const Statbox := preload("res://statbox/statbox.gd")
-
+const Modebox := preload("res://box/modebox/modebox.gd")
+const Statbox := preload("res://box/statbox/statbox.gd")
 const Mode := preload("res://mode/mode.gd")
 const Stadium := preload("res://stadium/stadium.gd")
 const Stage := preload("res://stage/stage.gd")
-const Indicator := preload("res://scene/play/play_indicator.gd")
-
 const ModeSel := preload("res://stage/modesel/modesel.tscn")
 const Waiting := preload("res://stage/waiting/waiting.tscn")
 const InGame := preload("res://stage/ingame/ingame.tscn")
+
+const Indicator := preload("indicator.gd")
 
 signal backed()
 

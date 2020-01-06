@@ -1,8 +1,9 @@
 extends "res://stage/stage.gd"
 
 const Modebox := preload("res://box/modebox/modebox.gd")
-const Item := preload("res://stage/modesel/modesel_item.gd")
-const Item_ := preload("res://stage/modesel/modesel_item.tscn")
+
+const Item := preload("item.gd")
+const Item_ := preload("item.tscn")
 
 signal selected(modename)
 signal canceled()

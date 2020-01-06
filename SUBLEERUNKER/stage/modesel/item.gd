@@ -1,7 +1,7 @@
 extends PanelContainer
 
-const NORMAL := preload("modesel_item_normal.tres")
-const SELECTED := preload("modesel_item_selected.tres")
+const NORMAL := preload("item_normal.tres")
+const SELECTED := preload("item_selected.tres")
 
 var _name: String
 var _icon: Texture

@@ -9,7 +9,7 @@ func _init().({
 	Background = preload("res://background/black/black.tscn"),
 	Hero = preload("res://hero/sunmee/sunmee.tscn"),
 	HeroDying = preload("res://herodying/burning/burning.tscn"),
-	Drop = preload("res://drop/flame/flame.tscn"),
+	Drop = preload("res://drop/shower/shower.tscn"),
 	DropSpawner = preload("res://dropspawner/framerand/framerand.tscn"),
 	Pedal = preload("res://pedal/yellowbar/yellowbar.tscn"),
 	PedalHitting = preload("res://pedalhitting/xnum/xnum.tscn"),

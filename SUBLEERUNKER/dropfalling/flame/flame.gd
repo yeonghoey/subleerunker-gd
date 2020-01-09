@@ -1,4 +1,4 @@
-extends "res://drop/drop.gd"
+extends "res://dropfalling/dropfalling.gd"
 
 
 func init(boundary: Vector2, hero: Hero, hint = null) -> void:

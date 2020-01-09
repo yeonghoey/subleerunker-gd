@@ -3,7 +3,7 @@ extends "res://stage/stage.gd"
 const Mode := preload("res://mode/mode.gd")
 const Hero := preload("res://hero/hero.gd")
 const HeroDying := preload("res://herodying/herodying.gd")
-const Drop := preload("res://drop/drop.gd")
+const Drop := preload("res://dropfalling/dropfalling.gd")
 const DropLanding := preload("res://droplanding/droplanding.gd")
 const DropSpawner := preload("res://dropspawner/dropspawner.gd")
 const Pedal := preload("res://pedal/pedal.gd")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://drop/shower/shower.gd" type="Script" id=1]
-[ext_resource path="res://drop/shower/particles_texture.png" type="Texture" id=2]
+[ext_resource path="res://dropfalling/shower/shower.gd" type="Script" id=1]
+[ext_resource path="res://dropfalling/shower/particles_texture.png" type="Texture" id=2]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.5, 1 )
@@ -14,6 +14,7 @@ gradient = SubResource( 1 )
 flag_disable_z = true
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
+angular_velocity = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 color_ramp = SubResource( 2 )

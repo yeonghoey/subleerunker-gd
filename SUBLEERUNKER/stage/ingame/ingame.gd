@@ -74,9 +74,9 @@ func _add_dropspawner():
 	add_child(_dropspawner)
 
 
-func _on_dropspawner_cued(hints) -> void:
-	for hint in hints:
-		_cast_drop(hint)
+func _on_dropspawner_cued(drops: Array) -> void:
+	for drop in drops:
+		_cast_drop(drop)
 
 
 func _add_pedalspawner():
@@ -124,11 +124,10 @@ func _cast_herodying(hero: Hero):
 	_troupe.cast(herodying)
 
 
-func _cast_drop(hint):
-	var drop: Drop = _mode.make("Drop")
-	drop.init(rect_size, _hero, hint)
+func _cast_drop(drop: Drop):
+	drop.init(rect_size, _hero)
 	drop.connect("landed", self, "_on_drop_landed", [drop])
-	_dropspawner.on_drop_spawned(drop)
+	_dropspawner.on_drop_initialized(drop)
 	_troupe.cast(drop)
 
 

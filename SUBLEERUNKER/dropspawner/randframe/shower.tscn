@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://dropspawner/randframe/randframe.gd" type="Script" id=1]
+[ext_resource path="res://drop/shower/shower.tscn" type="PackedScene" id=2]
+
+[node name="ShowerSpawner" type="Node"]
+script = ExtResource( 1 )
+Drop_ = ExtResource( 2 )
+initial_spawn_per_sec = 5.0
+increase_accel_per_sec = 0.005
+num_drops_per_cue = 1

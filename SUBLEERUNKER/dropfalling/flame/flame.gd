@@ -1,7 +1,7 @@
 extends "res://dropfalling/dropfalling.gd"
 
 
-func init(boundary: Vector2, hero: Hero, hint = null) -> void:
+func init(boundary: Vector2, hero: Hero) -> void:
 	"""Place the drop in the top random of the boundary.
 	"""
 	var x = (boundary.x - width*2) * randf() + width

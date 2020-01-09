@@ -10,15 +10,14 @@ export(PackedScene) var DropLanding_: PackedScene
 signal landed()
 
 
-func init(boundary: Vector2, hero: Hero, hint = null) -> void:
+func init(boundary: Vector2, hero: Hero) -> void:
 	"""This will be called when a Spanwer decided to create this.
 
 	'boundary' represents the size of the game area and
 	'hero' is the hero which the player controls.
-	'hint' will be an arbitrary parameter of the hint.
 	"""
 	var dropfalling: DropFalling = DropFalling_.instance()
-	dropfalling.init(boundary, hero, hint)
+	dropfalling.init(boundary, hero)
 	dropfalling.connect("tree_exiting", self, "_on_dropfalling_tree_exiting", [dropfalling])
 	add_child(dropfalling)
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dispersing.png-753c98b861796bcc24f749103fedfd47.stex"
+path="res://.import/flame.png-79eaecdc1d38dd35c22232be986c6c01.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://droplanding/dispersing/dispersing.png"
-dest_files=[ "res://.import/dispersing.png-753c98b861796bcc24f749103fedfd47.stex" ]
+source_file="res://droplanding/flame/flame.png"
+dest_files=[ "res://.import/flame.png-79eaecdc1d38dd35c22232be986c6c01.stex" ]
 
 [params]
 

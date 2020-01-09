@@ -10,7 +10,6 @@ const SCHEMA: Dictionary = {
 	Hero = PackedScene,
 	HeroDying = PackedScene,
 	Drop = PackedScene,
-	DropLanding = PackedScene,
 	DropSpawner = PackedScene,
 	Pedal = PackedScene,
 	PedalHitting = PackedScene,

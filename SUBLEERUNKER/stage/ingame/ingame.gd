@@ -3,8 +3,7 @@ extends "res://stage/stage.gd"
 const Mode := preload("res://mode/mode.gd")
 const Hero := preload("res://hero/hero.gd")
 const HeroDying := preload("res://herodying/herodying.gd")
-const Drop := preload("res://dropfalling/dropfalling.gd")
-const DropLanding := preload("res://droplanding/droplanding.gd")
+const Drop := preload("res://drop/drop.gd")
 const DropSpawner := preload("res://dropspawner/dropspawner.gd")
 const Pedal := preload("res://pedal/pedal.gd")
 const PedalHitting := preload("res://pedalhitting/pedalhitting.gd")
@@ -134,17 +133,10 @@ func _cast_drop(hint):
 
 
 func _on_drop_landed(drop: Drop) -> void:
-	_cast_droplanding(drop)
 	if _is_hero_hit:
 		return
 	_score += _n_combo
 	emit_signal("scored", _score)
-
-
-func _cast_droplanding(drop: Drop) -> void:
-	var droplanding: DropLanding = _mode.make("DropLanding")
-	droplanding.init(drop)
-	_troupe.cast(droplanding)
 
 
 func _cast_pedal(hint) -> void:

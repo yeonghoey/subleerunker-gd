@@ -8,7 +8,6 @@ func _init().({
 	labelcolor = Color("#ffffff"),
 	Background = preload("res://background/black/black.tscn"),
 	Hero = preload("res://hero/sunmee/sunmee.tscn"),
-	HeroDying = preload("res://herodying/burning/burning.tscn"),
 	DropSpawner = preload("res://dropspawner/randframe/shower.tscn"),
 	Pedal = preload("res://pedal/yellowbar/yellowbar.tscn"),
 	PedalHitting = preload("res://pedalhitting/xnum/xnum.tscn"),

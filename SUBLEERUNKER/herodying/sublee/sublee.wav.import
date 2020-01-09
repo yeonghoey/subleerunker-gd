@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/burning.wav-388fff8ca6bc8c3f23ababab9d10fa6c.sample"
+path="res://.import/sublee.wav-35c480df9df5e1da50bbd967b99a92c1.sample"
 
 [deps]
 
-source_file="res://herodying/burning/burning.wav"
-dest_files=[ "res://.import/burning.wav-388fff8ca6bc8c3f23ababab9d10fa6c.sample" ]
+source_file="res://herodying/sublee/sublee.wav"
+dest_files=[ "res://.import/sublee.wav-35c480df9df5e1da50bbd967b99a92c1.sample" ]
 
 [params]
 

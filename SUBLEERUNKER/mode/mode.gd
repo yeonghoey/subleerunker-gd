@@ -8,7 +8,6 @@ const SCHEMA: Dictionary = {
 	labelcolor = TYPE_COLOR,
 	Background = PackedScene,
 	Hero = PackedScene,
-	HeroDying = PackedScene,
 	DropSpawner = PackedScene,
 	Pedal = PackedScene,
 	PedalHitting = PackedScene,

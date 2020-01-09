@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/run.wav-8f834125035f117473893eeadb8e3562.sample"
+path="res://.import/run.wav-662b4596f2df3d4be97f99e66e0d7974.sample"
 
 [deps]
 
-source_file="res://hero/sublee/run.wav"
-dest_files=[ "res://.import/run.wav-8f834125035f117473893eeadb8e3562.sample" ]
+source_file="res://heroalive/sublee/run.wav"
+dest_files=[ "res://.import/run.wav-662b4596f2df3d4be97f99e66e0d7974.sample" ]
 
 [params]
 

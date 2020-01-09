@@ -1,20 +1,11 @@
-extends "res://hero/hero.gd"
-
-const BLINK_CONTINUANCE = 4
+extends "res://heroalive/heroalive.gd"
 
 onready var _AnimationPlayer: AnimationPlayer = $AnimationPlayer
 onready var _Body: Sprite = $Body
-onready var _Head: Area2D = $Head
-
-var _counter := 0
 
 
-func _ready():
-	_Head.connect("area_entered", self, "_on_head_area_entered")
-
-
-func _on_head_area_entered(area):
-	hit()
+func _on_Head_area_entered(area):
+	queue_free()
 
 
 func _process_idle():

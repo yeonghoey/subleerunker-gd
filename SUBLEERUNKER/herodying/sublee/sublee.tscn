@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://herodying/burning/burning.gd" type="Script" id=1]
-[ext_resource path="res://herodying/burning/burning.png" type="Texture" id=2]
-[ext_resource path="res://herodying/burning/burning.wav" type="AudioStream" id=3]
+[ext_resource path="res://herodying/sublee/sublee.gd" type="Script" id=1]
+[ext_resource path="res://herodying/sublee/sublee.png" type="Texture" id=2]
+[ext_resource path="res://herodying/sublee/sublee.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"

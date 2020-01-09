@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle.png-d15f38c7d62d1bd35b464b61393c1362.stex"
+path="res://.import/walk.png-03149537d58fea346e6e02494d0f7fec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hero/sublee/idle.png"
-dest_files=[ "res://.import/idle.png-d15f38c7d62d1bd35b464b61393c1362.stex" ]
+source_file="res://heroalive/yeongho/walk.png"
+dest_files=[ "res://.import/walk.png-03149537d58fea346e6e02494d0f7fec.stex" ]
 
 [params]
 

@@ -2,7 +2,6 @@ extends "res://stage/stage.gd"
 
 const Mode := preload("res://mode/mode.gd")
 const Hero := preload("res://hero/hero.gd")
-const HeroDying := preload("res://herodying/herodying.gd")
 const Drop := preload("res://drop/drop.gd")
 const DropSpawner := preload("res://dropspawner/dropspawner.gd")
 const Pedal := preload("res://pedal/pedal.gd")
@@ -20,7 +19,6 @@ signal combo_hit(n_combo)
 signal combo_missed(n_combo, last_n_combo)
 signal hero_hit(final_score)
 signal ended()
-signal lr_changed(left, right)
 
 var _mode: Mode
 var _bgm: BGM
@@ -48,7 +46,6 @@ func _ready():
 	_add_pedalspawner()
 	_add_troupe()
 	_cast_hero()
-	_wire_input_to_hero()
 	_wire_events_to_cam()
 	_emit_started()
 
@@ -113,15 +110,8 @@ func _cast_hero():
 
 func _on_hero_hit():
 	_is_hero_hit = true
-	_cast_herodying(_hero)
 	var final_score := _score
 	emit_signal("hero_hit", final_score)
-
-
-func _cast_herodying(hero: Hero):
-	var herodying: HeroDying = _mode.make("HeroDying")
-	herodying.init(hero)
-	_troupe.cast(herodying)
 
 
 func _cast_drop(drop: Drop):
@@ -176,10 +166,6 @@ func _cast_pedalmissing(pedal: Pedal, last_n_combo: int) -> void:
 	_troupe.cast(pedalmissing)
 
 
-func _wire_input_to_hero() -> void:
-	connect("lr_changed", _hero, "handle_action_input")
-
-
 func _wire_events_to_cam() -> void:
 	connect("started", _cam, "on_started")
 	connect("scored", _cam, "on_scored")
@@ -191,11 +177,3 @@ func _wire_events_to_cam() -> void:
 
 func _emit_started() -> void:
 	emit_signal("started", _score, _n_combo)
-
-
-func _input(event):
-	if event.is_action("ui_left") or event.is_action("ui_right"):
-		emit_signal("lr_changed",
-			Input.is_action_pressed("ui_left"),
-			Input.is_action_pressed("ui_right"))
-		return

@@ -1,4 +1,4 @@
-extends "res://pedal/pedal.gd"
+extends "res://pedalactive/pedalactive.gd"
 
 var _succeeded := false
 

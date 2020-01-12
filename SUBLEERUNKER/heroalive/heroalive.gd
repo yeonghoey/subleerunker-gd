@@ -59,6 +59,8 @@ func _input(event: InputEvent) -> void:
 		var left := Input.is_action_pressed("ui_left")
 		var right := Input.is_action_pressed("ui_right")
 		_handle_action_input(left, right)
+	if event.is_action("ui_cancel"):
+		queue_free()
 
 
 func _handle_action_input(left: bool, right: bool) -> void:

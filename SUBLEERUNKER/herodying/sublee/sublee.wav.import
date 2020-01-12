@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sublee.wav-35c480df9df5e1da50bbd967b99a92c1.sample"
+
+[deps]
+
+source_file="res://herodying/sublee/sublee.wav"
+dest_files=[ "res://.import/sublee.wav-35c480df9df5e1da50bbd967b99a92c1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

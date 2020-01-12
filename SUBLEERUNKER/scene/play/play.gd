@@ -5,6 +5,8 @@ const Statbox := preload("res://box/statbox/statbox.gd")
 const Mode := preload("res://mode/mode.gd")
 const Stadium := preload("res://stadium/stadium.gd")
 const Stage := preload("res://stage/stage.gd")
+const Scorer := preload("res://scorer/scorer.gd")
+
 const ModeSel := preload("res://stage/modesel/modesel.tscn")
 const Waiting := preload("res://stage/waiting/waiting.tscn")
 const InGame := preload("res://stage/ingame/ingame.tscn")
@@ -89,37 +91,43 @@ func _on_waiting_canceled(waiting: Stage):
 	_present_modesel()
 
 
-func _present_ingame():
+func _present_ingame() -> void:
 	var ingame := InGame.instance()
 	var mode := _modebox.get_selected()
-	ingame.init(mode)
-	ingame.connect("started", self, "_on_ingame_started")
-	ingame.connect("scored", self, "_on_ingame_scored")
-	ingame.connect("combo_hit", self, "_on_ingame_combo_hit")
-	ingame.connect("combo_missed", self, "_on_ingame_combo_missed")
+	var scorer := _prepare_scorer()
+	ingame.init(mode, scorer)
 	ingame.connect("hero_hit", self, "_on_ingame_hero_hit", [mode.name])
 	ingame.connect("ended", self, "_on_ingame_ended", [ingame])
 	_Stadium.present(ingame)
 	_Indicator.display({score=true, combo=true})
 
 
-func _on_ingame_started(initial_score: int, initial_n_combo: int) -> void:
+func _prepare_scorer() -> Scorer:
+	var scorer := Scorer.new()
+	scorer.connect("initialized", self, "_on_scorer_initialized")
+	scorer.connect("scored", self, "_on_scorer_scored")
+	scorer.connect("combo_hit", self, "_on_scorer_combo_hit")
+	scorer.connect("combo_missed", self, "_on_scorer_combo_missed")
+	return scorer
+
+
+func _on_scorer_initialized(score: int, combo: int) -> void:
 	_Indicator.display({score=true, combo=true})
-	_Indicator.update_score(initial_score)
-	_Indicator.update_combo(initial_n_combo)
+	_Indicator.update_score(score)
+	_Indicator.update_combo(combo)
 
 
-func _on_ingame_scored(score: int) -> void:
+func _on_scorer_scored(score: int) -> void:
 	_Indicator.update_score(score)
 
 
-func _on_ingame_combo_hit(n_combo: int) -> void:
-	_Indicator.update_combo(n_combo)
+func _on_scorer_combo_hit(combo: int) -> void:
+	_Indicator.update_combo(combo)
 
 
-func _on_ingame_combo_missed(n_combo: int, last_n_combo:int) -> void:
-	# TODO: extend this to show some effects depending on last_n_combo
-	_Indicator.update_combo(n_combo)
+func _on_scorer_combo_missed(last_combo:int) -> void:
+	# TODO: extend this to show some effects depending on last_combo
+	_Indicator.update_combo(Scorer.COMBO_BASE)
 
 
 func _on_ingame_hero_hit(final_score: int, modename: String) -> void:

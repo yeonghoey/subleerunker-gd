@@ -1,22 +1,20 @@
 extends Node
 """Subclasses of this should call cue() when they decided to place a Pedal.
 
-The signal argument 'hints' should be array, the length of which represents
-the number of pedals decided to spawn, and each element will be passed to Pedal.init()
+The signal argument 'pedals' should be array, each element of which
+is a new Pedal instance.
 """
 
 const Pedal := preload("res://pedal/pedal.gd")
 
-signal cued(hints)
+signal cued(pedals)
 
 
-func cue(hints: Array) -> void:
-	emit_signal("cued", hints)
+func cue(pedals: Array) -> void:
+	emit_signal("cued", pedals)
 
 
-func on_pedal_spawned(pedal: Pedal) -> void:
-	"""on_pedal_spawned will be called with a newly spawned Pedal.
-
-	This can be used for signaling
+func on_pedal_initialized(pedal: Pedal) -> void:
+	"""on_pedal_initialized will be called with a newly spawned Pedal.
 	"""
 	pass

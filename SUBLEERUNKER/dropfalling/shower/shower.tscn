@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://dropfalling/shower/shower.gd" type="Script" id=1]
+[ext_resource path="res://dropfalling/shower/particles_texture.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 0.933333, 0.333333, 0.4, 1, 1, 0.603922, 0.317647, 1, 1, 0.866667, 0.4, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 3 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4, 3 )
+
+[node name="Shower" type="KinematicBody2D" groups=[
+"Flame",
+]]
+position = Vector2( 55.0574, 43.6155 )
+collision_layer = 4
+collision_mask = 16
+script = ExtResource( 1 )
+width = 24.0
+height = 16.0
+acceleration_amount = 1000.0
+max_speed = 1000.0
+
+[node name="Particles2D" type="Particles2D" parent="."]
+rotation = -1.5708
+amount = 64
+local_coords = false
+draw_order = 1
+process_material = SubResource( 3 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 5 )
+shape = SubResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 5 )
+shape = SubResource( 5 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

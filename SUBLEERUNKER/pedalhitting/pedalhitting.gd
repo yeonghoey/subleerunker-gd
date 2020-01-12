@@ -5,7 +5,7 @@ The subclasses are responsible for calling 'finish'
 when it's finished.
 """
 
-const Pedal := preload("res://pedal/pedal.gd")
+const Pedal := preload("res://pedalactive/pedalactive.gd")
 
 var _n_combo: int = 0
 

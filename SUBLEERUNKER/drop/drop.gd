@@ -1,45 +1,44 @@
-extends "res://mover/mover.gd"
-"""The base class of dropping objects like flames.
-"""
+extends Node
 
 const Hero := preload("res://hero/hero.gd")
+const Scorer := preload("res://scorer/scorer.gd")
+const DropFalling := preload("res://dropfalling/dropfalling.gd")
+const DropLanding := preload("res://droplanding/droplanding.gd")
 
-# Ingame size
-export(float) var width
-export(float) var height
-
-export(float) var acceleration_amount
-export(float) var friction_amount
-export(float) var max_speed
+export(PackedScene) var DropFalling_: PackedScene
+export(PackedScene) var DropLanding_: PackedScene
 
 signal landed()
 
 
-func init(boundary: Vector2, hero: Hero, hint = null) -> void:
+func init(boundary: Vector2, hero: Hero, scorer: Scorer) -> void:
 	"""This will be called when a Spanwer decided to create this.
 
 	'boundary' represents the size of the game area and
 	'hero' is the hero which the player controls.
-	'hint' will be an arbitrary parameter of the hint.
 	"""
-	pass
+	var dropfalling: DropFalling = DropFalling_.instance()
+	dropfalling.init(boundary, hero)
+	dropfalling.connect("tree_exiting", self, "_on_dropfalling_tree_exiting", [dropfalling, scorer])
+	add_child(dropfalling)
 
 
-func _physics_process(delta: float):
-	var collision := move(delta)
-	if collision:
-		if collision.collider.is_in_group("Floor"):
-			emit_signal("landed")
-			queue_free()
+func _on_dropfalling_tree_exiting(dropfalling: DropFalling, scorer: Scorer):
+	# When the drop hit the hero.
+	if dropfalling.landed:
+		_on_dropfalling_landed(dropfalling, scorer)
+	else:
+		_on_dropfalling_hit()
 
 
-func _acceleration() -> Vector2:
-	return Vector2(0, acceleration_amount)
+func _on_dropfalling_landed(dropfalling: DropFalling, scorer: Scorer) -> void:
+	scorer.score()
+	var droplanding: DropLanding = DropLanding_.instance()
+	droplanding.init(dropfalling)
+	droplanding.connect("tree_exiting", self, "queue_free")
+	add_child(droplanding)
+	emit_signal("landed")
 
 
-func _friction_amount() -> float:
-	return friction_amount
-
-
-func _max_speed() -> float:
-	return max_speed
+func _on_dropfalling_hit() -> void:
+	queue_free()

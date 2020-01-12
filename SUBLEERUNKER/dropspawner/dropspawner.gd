@@ -1,18 +1,18 @@
 extends Node
 """Subclasses of this should call cue()' when they decided to spawn a Drop.
 
-The signal argument 'hints' should be array, the length of which represents
-the number of drops decided to spawn, and each element will be passed to Drop.init()
+The signal argument 'drops' should be array, each element of which
+is a new Drop instance.
 """
 
 const Drop := preload("res://drop/drop.gd")
 
-signal cued(hints)
+signal cued(drops)
 
 
-func cue(hints: Array) -> void:
-	emit_signal("cued", hints)
+func cue(drops: Array) -> void:
+	emit_signal("cued", drops)
 
 
-func on_drop_spawned(drop: Drop) -> void:
+func on_drop_initialized(drop: Drop) -> void:
 	pass

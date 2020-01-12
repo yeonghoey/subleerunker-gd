@@ -5,9 +5,7 @@ const Scorer := preload("res://scorer/scorer.gd")
 const Hero := preload("res://hero/hero.gd")
 const Drop := preload("res://drop/drop.gd")
 const DropSpawner := preload("res://dropspawner/dropspawner.gd")
-const Pedal := preload("res://pedalactive/pedalactive.gd")
-const PedalHitting := preload("res://pedalhitting/pedalhitting.gd")
-const PedalMissing := preload("res://pedalmissing/pedalmissing.gd")
+const Pedal := preload("res://pedal/pedal.gd")
 const PedalSpawner := preload("res://pedalspawner/pedalspawner.gd")
 const BGM := preload("res://bgm/bgm.gd")
 const Cam := preload("res://cam/cam.gd")
@@ -126,37 +124,9 @@ func _on_drop_landed(drop: Drop) -> void:
 
 func _cast_pedal(hint) -> void:
 	var pedal: Pedal = _mode.make("Pedal")
-	pedal.init(rect_size, _hero, hint)
-	pedal.connect("triggered", self, "_on_pedal_triggered", [pedal])
-	pedal.connect("disappeared", self, "_on_pedal_disappeared", [pedal])
+	pedal.init(rect_size, _hero, _scorer, hint)
 	_pedalspawner.on_pedal_spawned(pedal)
 	_troupe.cast(pedal)
-
-
-func _on_pedal_triggered(pedal: Pedal) -> void:
-	if _is_hero_hit:
-		return
-	var n_combo := _scorer.hit_combo()
-	_cast_pedalhitting(pedal, n_combo)
-
-
-func _on_pedal_disappeared(pedal: Pedal) -> void:
-	if _is_hero_hit:
-		return
-	var last_combo := _scorer.miss_combo()
-	_cast_pedalmissing(pedal, last_combo)
-
-
-func _cast_pedalhitting(pedal: Pedal, n_combo: int) -> void:
-	var pedalhitting: PedalHitting = _mode.make("PedalHitting")
-	pedalhitting.init(pedal, n_combo)
-	_troupe.cast(pedalhitting)
-
-
-func _cast_pedalmissing(pedal: Pedal, last_n_combo: int) -> void:
-	var pedalmissing: PedalMissing = _mode.make("PedalMissing")
-	pedalmissing.init(pedal, last_n_combo)
-	_troupe.cast(pedalmissing)
 
 
 func _wire_events_to_cam() -> void:

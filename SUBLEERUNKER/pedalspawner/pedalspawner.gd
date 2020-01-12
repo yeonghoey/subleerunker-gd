@@ -5,7 +5,7 @@ The signal argument 'hints' should be array, the length of which represents
 the number of pedals decided to spawn, and each element will be passed to Pedal.init()
 """
 
-const Pedal := preload("res://pedalactive/pedalactive.gd")
+const Pedal := preload("res://pedal/pedal.gd")
 
 signal cued(hints)
 

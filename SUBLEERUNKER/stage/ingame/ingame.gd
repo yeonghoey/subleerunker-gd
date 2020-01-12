@@ -1,6 +1,7 @@
 extends "res://stage/stage.gd"
 
 const Mode := preload("res://mode/mode.gd")
+const Scorer := preload("res://scorer/scorer.gd")
 const Hero := preload("res://hero/hero.gd")
 const Drop := preload("res://drop/drop.gd")
 const DropSpawner := preload("res://dropspawner/dropspawner.gd")
@@ -10,17 +11,14 @@ const PedalMissing := preload("res://pedalmissing/pedalmissing.gd")
 const PedalSpawner := preload("res://pedalspawner/pedalspawner.gd")
 const BGM := preload("res://bgm/bgm.gd")
 const Cam := preload("res://cam/cam.gd")
-
 const Troupe := preload("troupe.gd")
 
-signal started(initial_score, initial_n_combo)
-signal scored(score)
-signal combo_hit(n_combo)
-signal combo_missed(n_combo, last_n_combo)
 signal hero_hit(final_score)
 signal ended()
 
 var _mode: Mode
+var _scorer: Scorer
+
 var _bgm: BGM
 var _cam: Cam
 var _dropspawner: DropSpawner
@@ -29,12 +27,11 @@ var _troupe: Troupe
 var _hero: Hero
 
 var _is_hero_hit := false
-var _score := 0
-var _n_combo := 1
 
 
-func init(mode: Mode) -> void:
+func init(mode: Mode, scorer: Scorer) -> void:
 	_mode = mode
+	_scorer = scorer
 
 
 func _ready():
@@ -47,7 +44,7 @@ func _ready():
 	_add_troupe()
 	_cast_hero()
 	_wire_events_to_cam()
-	_emit_started()
+	_start()
 
 
 func _add_bgm() -> void:
@@ -110,7 +107,7 @@ func _cast_hero():
 
 func _on_hero_hit():
 	_is_hero_hit = true
-	var final_score := _score
+	var final_score := _scorer.freeze()
 	emit_signal("hero_hit", final_score)
 
 
@@ -124,8 +121,7 @@ func _cast_drop(drop: Drop):
 func _on_drop_landed(drop: Drop) -> void:
 	if _is_hero_hit:
 		return
-	_score += _n_combo
-	emit_signal("scored", _score)
+	_scorer.score()
 
 
 func _cast_pedal(hint) -> void:
@@ -140,18 +136,15 @@ func _cast_pedal(hint) -> void:
 func _on_pedal_triggered(pedal: Pedal) -> void:
 	if _is_hero_hit:
 		return
-	_n_combo += 1
-	_cast_pedalhitting(pedal, _n_combo)
-	emit_signal("combo_hit", _n_combo)
+	var n_combo := _scorer.hit_combo()
+	_cast_pedalhitting(pedal, n_combo)
 
 
 func _on_pedal_disappeared(pedal: Pedal) -> void:
 	if _is_hero_hit:
 		return
-	var last_n_combo := _n_combo
-	_n_combo = 1
-	_cast_pedalmissing(pedal, last_n_combo)
-	emit_signal("combo_missed", _n_combo, last_n_combo)
+	var last_combo := _scorer.miss_combo()
+	_cast_pedalmissing(pedal, last_combo)
 
 
 func _cast_pedalhitting(pedal: Pedal, n_combo: int) -> void:
@@ -167,13 +160,13 @@ func _cast_pedalmissing(pedal: Pedal, last_n_combo: int) -> void:
 
 
 func _wire_events_to_cam() -> void:
-	connect("started", _cam, "on_started")
-	connect("scored", _cam, "on_scored")
-	connect("combo_hit", _cam, "on_combo_hit")
-	connect("combo_missed", _cam, "on_combo_missed")
-	connect("hero_hit", _cam, "on_hero_hit")
-	connect("ended", _cam, "on_ended")
+	_scorer.connect("initialized", _cam, "on_scorer_initialized")
+	_scorer.connect("scored", _cam, "on_scorer_scored")
+	_scorer.connect("combo_hit", _cam, "on_scorer_combo_hit")
+	_scorer.connect("combo_missed", _cam, "on_scorer_combo_missed")
+	connect("hero_hit", _cam, "on_ingame_hero_hit")
+	connect("ended", _cam, "on_ingame_ended")
 
 
-func _emit_started() -> void:
-	emit_signal("started", _score, _n_combo)
+func _start() -> void:
+	_scorer.initialize()

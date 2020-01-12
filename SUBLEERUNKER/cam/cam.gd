@@ -44,25 +44,25 @@ func _rand_offset(shake_amount: float) -> void:
         rand_range(-1.0, 1.0) * shake_amount)
 
 
-func on_started(initial_score: int, initial_n_combo: int) -> void:
+func on_scorer_initialized(score: int, combo: int) -> void:
 	pass
 
 
-func on_scored(score: int) -> void:
+func on_scorer_scored(score: int) -> void:
 	pass
 
 
-func on_combo_hit(n_combo: int) -> void:
+func on_scorer_combo_hit(combo: int) -> void:
 	pass
 
 
-func on_combo_missed(n_combo: int, last_n_combo: int) -> void:
+func on_scorer_combo_missed(last_combo: int) -> void:
 	pass
 
 
-func on_hero_hit(final_score: int) -> void:
+func on_ingame_hero_hit(final_score: int) -> void:
 	pass
 
 
-func on_ended() -> void:
+func on_ingame_ended() -> void:
 	pass

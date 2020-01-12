@@ -77,9 +77,9 @@ func _add_pedalspawner():
 	add_child(_pedalspawner)
 
 
-func _on_pedalspawner_cued(hints):
-	for hint in hints:
-		_cast_pedal(hint)
+func _on_pedalspawner_cued(pedals: Array) -> void:
+	for pedal in pedals:
+		_cast_pedal(pedal)
 
 
 func _add_troupe():
@@ -110,16 +110,9 @@ func _on_hero_hit():
 
 
 func _cast_drop(drop: Drop) -> void:
-	drop.init(rect_size, _hero)
-	drop.connect("landed", self, "_on_drop_landed", [drop])
+	drop.init(rect_size, _hero, _scorer)
 	_dropspawner.on_drop_initialized(drop)
 	_troupe.cast(drop)
-
-
-func _on_drop_landed(drop: Drop) -> void:
-	if _is_hero_hit:
-		return
-	_scorer.score()
 
 
 func _cast_pedal(pedal: Pedal) -> void:

@@ -1,6 +1,7 @@
 extends Node
 
 const Hero := preload("res://hero/hero.gd")
+const Scorer := preload("res://scorer/scorer.gd")
 const DropFalling := preload("res://dropfalling/dropfalling.gd")
 const DropLanding := preload("res://droplanding/droplanding.gd")
 
@@ -10,7 +11,7 @@ export(PackedScene) var DropLanding_: PackedScene
 signal landed()
 
 
-func init(boundary: Vector2, hero: Hero) -> void:
+func init(boundary: Vector2, hero: Hero, scorer: Scorer) -> void:
 	"""This will be called when a Spanwer decided to create this.
 
 	'boundary' represents the size of the game area and
@@ -18,19 +19,20 @@ func init(boundary: Vector2, hero: Hero) -> void:
 	"""
 	var dropfalling: DropFalling = DropFalling_.instance()
 	dropfalling.init(boundary, hero)
-	dropfalling.connect("tree_exiting", self, "_on_dropfalling_tree_exiting", [dropfalling])
+	dropfalling.connect("tree_exiting", self, "_on_dropfalling_tree_exiting", [dropfalling, scorer])
 	add_child(dropfalling)
 
 
-func _on_dropfalling_tree_exiting(dropfalling: DropFalling):
+func _on_dropfalling_tree_exiting(dropfalling: DropFalling, scorer: Scorer):
 	# When the drop hit the hero.
 	if dropfalling.landed:
-		_on_dropfalling_landed(dropfalling)
+		_on_dropfalling_landed(dropfalling, scorer)
 	else:
 		_on_dropfalling_hit()
 
 
-func _on_dropfalling_landed(dropfalling: DropFalling) -> void:
+func _on_dropfalling_landed(dropfalling: DropFalling, scorer: Scorer) -> void:
+	scorer.score()
 	var droplanding: DropLanding = DropLanding_.instance()
 	droplanding.init(dropfalling)
 	droplanding.connect("tree_exiting", self, "queue_free")

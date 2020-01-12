@@ -2,7 +2,6 @@ extends Node
 
 const Hero := preload("res://hero/hero.gd")
 const Scorer := preload("res://scorer/scorer.gd")
-
 const PedalActive := preload("res://pedalactive/pedalactive.gd")
 const PedalHitting := preload("res://pedalhitting/pedalhitting.gd")
 const PedalMissing := preload("res://pedalmissing/pedalmissing.gd")

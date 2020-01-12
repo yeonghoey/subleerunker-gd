@@ -2,6 +2,7 @@ extends "res://stage/stage.gd"
 
 const Mode := preload("res://mode/mode.gd")
 const Scorer := preload("res://scorer/scorer.gd")
+const Background := preload("res://background/background.gd")
 const Hero := preload("res://hero/hero.gd")
 const Drop := preload("res://drop/drop.gd")
 const DropSpawner := preload("res://dropspawner/dropspawner.gd")
@@ -19,6 +20,7 @@ var _scorer: Scorer
 
 var _bgm: BGM
 var _cam: Cam
+var _background: Background
 var _dropspawner: DropSpawner
 var _pedalspawner: PedalSpawner
 var _troupe: Troupe
@@ -56,8 +58,8 @@ func _add_cam() -> void:
 
 
 func _add_background():
-	var background := _mode.make("Background")
-	add_child(background)
+	_background = _mode.make("Background")
+	add_child(_background)
 
 
 func _add_dropspawner():
@@ -94,7 +96,7 @@ func _on_troup_cleared():
 
 func _cast_hero():
 	_hero = _mode.make("Hero")
-	_hero.init(rect_size)
+	_hero.init(_background)
 	_hero.connect("hit", _bgm, "queue_free")
 	_hero.connect("hit", _cam, "queue_free")
 	_hero.connect("hit", _dropspawner, "queue_free")

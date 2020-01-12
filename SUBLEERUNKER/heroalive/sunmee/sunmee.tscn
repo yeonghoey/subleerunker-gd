@@ -102,8 +102,6 @@ extents = Vector2( 16, 4 )
 ]]
 collision_mask = 8
 script = ExtResource( 1 )
-width = 48.0
-height = 72.0
 acceleration_amount = 3600.0
 friction_amount = 300.0
 max_speed = 300.0

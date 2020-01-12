@@ -109,7 +109,7 @@ func _on_hero_hit():
 	emit_signal("hero_hit", final_score)
 
 
-func _cast_drop(drop: Drop):
+func _cast_drop(drop: Drop) -> void:
 	drop.init(rect_size, _hero)
 	drop.connect("landed", self, "_on_drop_landed", [drop])
 	_dropspawner.on_drop_initialized(drop)
@@ -122,10 +122,9 @@ func _on_drop_landed(drop: Drop) -> void:
 	_scorer.score()
 
 
-func _cast_pedal(hint) -> void:
-	var pedal: Pedal = _mode.make("Pedal")
-	pedal.init(rect_size, _hero, _scorer, hint)
-	_pedalspawner.on_pedal_spawned(pedal)
+func _cast_pedal(pedal: Pedal) -> void:
+	pedal.init(rect_size, _hero, _scorer)
+	_pedalspawner.on_pedal_initialized(pedal)
 	_troupe.cast(pedal)
 
 

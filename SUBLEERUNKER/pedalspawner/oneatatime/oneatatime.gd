@@ -1,5 +1,7 @@
 extends "res://pedalspawner/pedalspawner.gd"
 
+export(PackedScene) var Pedal_: PackedScene
+
 export(float) var cooltime_min
 export(float) var cooltime_max
 
@@ -17,11 +19,12 @@ func _physics_process(delta: float):
 	if _cooltime > 0:
 		_cooltime = max(_cooltime - delta, 0)
 		return
-	cue([1])
+	var pedal := Pedal_.instance()
+	cue([pedal])
 	_exists = true
 
 
-func on_pedal_spawned(pedal: Pedal) -> void:
+func on_pedal_initialized(pedal: Pedal) -> void:
 	pedal.connect("triggered", self, "_reset")
 	pedal.connect("disappeared", self, "_reset")
 

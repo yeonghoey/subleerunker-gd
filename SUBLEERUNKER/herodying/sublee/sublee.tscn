@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[node name="Burning" type="Node2D"]
+[node name="Sublee" type="Node2D"]
 position = Vector2( 317.683, 278.174 )
 script = ExtResource( 1 )
 __meta__ = {

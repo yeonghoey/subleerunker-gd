@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://dropspawner/randframe/rgb.gd" type="Script" id=1]
+[ext_resource path="res://drop/flame/red.tscn" type="PackedScene" id=2]
+[ext_resource path="res://drop/flame/green.tscn" type="PackedScene" id=3]
+[ext_resource path="res://drop/flame/blue.tscn" type="PackedScene" id=4]
+
+[node name="RGB" type="Node"]
+script = ExtResource( 1 )
+initial_spawn_per_sec = 5.0
+increase_accel_per_sec = 0.005
+num_drops_per_cue = 1
+RedDrop = ExtResource( 2 )
+GreenDrop = ExtResource( 3 )
+BlueDrop = ExtResource( 4 )

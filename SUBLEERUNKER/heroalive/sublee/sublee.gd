@@ -12,17 +12,23 @@ var _hit_color := "red"
 
 
 func _on_Head_area_entered(area: Area2D):
-	if area.is_in_group("SubleeBlue"):
+	if area.is_in_group("green"):
+		_hit_color = "green"
+	if area.is_in_group("blue"):
 		_hit_color = "blue"
 	queue_free()
 
 
 func make_herodying() -> HeroDying:
-	var herodying: HeroDying
-	if _hit_color == "blue":
-		herodying = preload("res://herodying/sublee/blue.tscn").instance()
-	else:
-		herodying = preload("res://herodying/sublee/red.tscn").instance()
+	var packed_scene: PackedScene
+	match _hit_color:
+		"green":
+			packed_scene = preload("res://herodying/sublee/green.tscn")
+		"blue":
+			packed_scene = preload("res://herodying/sublee/blue.tscn")
+		_:
+			packed_scene = preload("res://herodying/sublee/red.tscn")
+	var herodying: HeroDying = packed_scene.instance()
 	herodying.position = position
 	return herodying
 

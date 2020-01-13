@@ -1,24 +1,24 @@
 extends Node
 
-const Hero := preload("res://hero/hero.gd")
 const Scorer := preload("res://scorer/scorer.gd")
 const DropFalling := preload("res://dropfalling/dropfalling.gd")
 const DropLanding := preload("res://droplanding/droplanding.gd")
 
 export(PackedScene) var DropFalling_: PackedScene
 export(PackedScene) var DropLanding_: PackedScene
+export(Vector2) var size: Vector2
 
 signal landed()
 
 
-func init(boundary: Vector2, hero: Hero, scorer: Scorer) -> void:
+func init(scorer: Scorer, starting_pos: Vector2) -> void:
 	"""This will be called when a Spanwer decided to create this.
 
 	'boundary' represents the size of the game area and
 	'hero' is the hero which the player controls.
 	"""
 	var dropfalling: DropFalling = DropFalling_.instance()
-	dropfalling.init(boundary, hero)
+	dropfalling.position = starting_pos
 	dropfalling.connect("tree_exiting", self, "_on_dropfalling_tree_exiting", [dropfalling, scorer])
 	add_child(dropfalling)
 

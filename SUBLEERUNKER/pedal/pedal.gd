@@ -2,7 +2,6 @@ extends Node
 
 const Hero := preload("res://hero/hero.gd")
 const Scorer := preload("res://scorer/scorer.gd")
-
 const PedalActive := preload("res://pedalactive/pedalactive.gd")
 const PedalHitting := preload("res://pedalhitting/pedalhitting.gd")
 const PedalMissing := preload("res://pedalmissing/pedalmissing.gd")
@@ -10,14 +9,15 @@ const PedalMissing := preload("res://pedalmissing/pedalmissing.gd")
 export(PackedScene) var PedalActive_: PackedScene
 export(PackedScene) var PedalHitting_: PackedScene
 export(PackedScene) var PedalMissing_: PackedScene
+export(Vector2) var size: Vector2
 
 signal triggered()
 signal disappeared()
 
 
-func init(boundary: Vector2, hero: Hero, scorer: Scorer, hint = null) -> void:
+func init(scorer: Scorer, starting_pos: Vector2) -> void:
 	var pedalactive: PedalActive = PedalActive_.instance()
-	pedalactive.init(boundary, hero, hint)
+	pedalactive.position = starting_pos
 	pedalactive.connect("tree_exiting", self, "_on_pedalactive_tree_exiting", [pedalactive, scorer])
 	add_child(pedalactive)
 

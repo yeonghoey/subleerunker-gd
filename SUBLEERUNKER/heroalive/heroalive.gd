@@ -2,8 +2,6 @@ extends "res://mover/mover.gd"
 """The base class of the alive player characters.
 
 Parameters:
-	- width: of desired ingame size
-	- height: of desired ingame size
 	- animation_player_path: NodePath to AnimationPlayer
 		- The AnimationPlayer should contain animations named 'idle', 'left', right'
 
@@ -25,10 +23,6 @@ enum {
 	ACTION_RIGHT,
 }
 
-# Ingame size
-export(float) var width
-export(float) var height
-
 export(float) var acceleration_amount
 export(float) var friction_amount
 export(float) var max_speed
@@ -36,15 +30,6 @@ export(float) var max_speed
 var _action := ACTION_REST
 # For handling when LR keys are pressed simultaneously
 var _action_overridden := false
-
-
-func init(boundary: Vector2) -> void:
-	"""Place the hero in the bottom center of the boundary.
-
-	This can be overriden if necessary.
-	Returns self so that this can be method-chained.
-	"""
-	position = Vector2(boundary.x/2, boundary.y - height/2)
 
 
 func _input(event: InputEvent) -> void:

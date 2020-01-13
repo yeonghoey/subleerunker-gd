@@ -8,3 +8,4 @@
 script = ExtResource( 1 )
 HeroAlive_ = ExtResource( 2 )
 HeroDying_ = ExtResource( 3 )
+size = Vector2( 48, 72 )

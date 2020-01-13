@@ -22,5 +22,7 @@ func _physics_process(delta):
 		var drops := []
 		for i in range(num_drops_per_cue):
 			var drop: Drop = Drop_.instance()
+			var starting_pos := rand_pos(drop.size)
+			drop.init(get_scorer(), starting_pos)
 			drops.append(drop)
 		cue(drops)

@@ -8,3 +8,4 @@
 script = ExtResource( 1 )
 DropFalling_ = ExtResource( 2 )
 DropLanding_ = ExtResource( 3 )
+size = Vector2( 24, 16 )

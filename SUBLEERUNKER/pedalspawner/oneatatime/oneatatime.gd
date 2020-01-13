@@ -20,13 +20,12 @@ func _physics_process(delta: float):
 		_cooltime = max(_cooltime - delta, 0)
 		return
 	var pedal := Pedal_.instance()
-	cue([pedal])
-	_exists = true
-
-
-func on_pedal_initialized(pedal: Pedal) -> void:
+	var starting_pos := rand_pos(pedal.size, true)
+	pedal.init(get_scorer(), starting_pos)
 	pedal.connect("triggered", self, "_reset")
 	pedal.connect("disappeared", self, "_reset")
+	cue([pedal])
+	_exists = true
 
 
 func _reset():

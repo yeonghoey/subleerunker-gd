@@ -8,6 +8,13 @@ func _on_Head_area_entered(area):
 	queue_free()
 
 
+func make_herodying() -> HeroDying:
+	# TODO: Implement herodying for yeongho
+	var herodying: HeroDying = preload("res://herodying/sublee/red.tscn").instance()
+	herodying.position = position
+	return herodying
+
+
 func _process_idle():
 	_AnimationPlayer.play("idle")
 

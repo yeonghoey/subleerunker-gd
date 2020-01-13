@@ -4,7 +4,6 @@ const HeroAlive := preload("res://heroalive/heroalive.gd")
 const HeroDying := preload("res://herodying/herodying.gd")
 
 export(PackedScene) var HeroAlive_: PackedScene
-export(PackedScene) var HeroDying_: PackedScene
 export(Vector2) var size: Vector2
 
 signal hit()
@@ -23,8 +22,7 @@ func init(starting_pos: Vector2) -> void:
 
 
 func _on_heroalive_tree_exiting(heroalive: HeroAlive):
-	var herodying: HeroDying = HeroDying_.instance()
-	herodying.init(heroalive)
+	var herodying: HeroDying = heroalive.make_herodying()
 	herodying.connect("tree_exiting", self, "queue_free")
 	add_child(herodying)
 	emit_signal("hit")

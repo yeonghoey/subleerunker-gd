@@ -21,8 +21,12 @@ func _physics_process(delta):
 	if randf() < threshold:
 		var drops := []
 		for i in range(num_drops_per_cue):
-			var drop: Drop = Drop_.instance()
+			var drop: Drop = packed_drop().instance()
 			var starting_pos := rand_pos(drop.size)
 			drop.init(get_scorer(), starting_pos)
 			drops.append(drop)
 		cue(drops)
+
+
+func packed_drop() -> PackedScene:
+	return Drop_

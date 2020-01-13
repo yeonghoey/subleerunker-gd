@@ -7,47 +7,43 @@ const PedalHitting := preload("res://pedalhitting/pedalhitting.gd")
 const PedalMissing := preload("res://pedalmissing/pedalmissing.gd")
 
 export(PackedScene) var PedalActive_: PackedScene
-export(PackedScene) var PedalHitting_: PackedScene
-export(PackedScene) var PedalMissing_: PackedScene
 export(Vector2) var size: Vector2
 
-signal triggered()
-signal disappeared()
+signal hit()
+signal missed()
 
 
 func init(scorer: Scorer, starting_pos: Vector2) -> void:
 	var pedalactive: PedalActive = PedalActive_.instance()
 	pedalactive.position = starting_pos
-	pedalactive.connect("tree_exiting", self, "_on_pedalactive_tree_exiting", [pedalactive, scorer])
+	pedalactive.connect("tree_exiting", self, "_on_pedalactive_tree_exiting", [scorer, pedalactive])
 	add_child(pedalactive)
 
 
-func _on_pedalactive_tree_exiting(pedalactive: PedalActive, scorer: Scorer) -> void:
-	if pedalactive.triggered:
-		_on_pedalactive_triggered(pedalactive, scorer)
+func _on_pedalactive_tree_exiting(scorer: Scorer, pedalactive: PedalActive) -> void:
+	if pedalactive.is_hit:
+		_on_pedalactive_hit(scorer, pedalactive)
 	else:
-		_on_pedalactive_disappeared(pedalactive, scorer)
+		_on_pedalactive_missed(scorer, pedalactive)
 
 
-func _on_pedalactive_triggered(pedalactive: PedalActive, scorer: Scorer) -> void:
+func _on_pedalactive_hit(scorer: Scorer, pedalactive: PedalActive) -> void:
 	var combo := scorer.hit_combo()
 	if combo == Scorer.FREEZED:
 		queue_free()
 		return
-	var pedalhitting: PedalHitting = PedalHitting_.instance()
-	pedalhitting.init(pedalactive, combo)
+	var pedalhitting: PedalHitting = pedalactive.make_pedalhitting(combo)
 	pedalhitting.connect("tree_exiting", self, "queue_free")
 	add_child(pedalhitting)
-	emit_signal("triggered")
+	emit_signal("hit")
 
 
-func _on_pedalactive_disappeared(pedalactive: PedalActive, scorer: Scorer):
+func _on_pedalactive_missed(scorer: Scorer, pedalactive: PedalActive):
 	var last_combo := scorer.miss_combo()
 	if last_combo == Scorer.FREEZED:
 		queue_free()
 		return
-	var pedalmissing: PedalMissing = PedalMissing_.instance()
-	pedalmissing.init(pedalactive, last_combo)
+	var pedalmissing: PedalMissing = pedalactive.make_pedalmissing(last_combo)
 	pedalmissing.connect("tree_exiting", self, "queue_free")
 	add_child(pedalmissing)
-	emit_signal("disappeared")
+	emit_signal("missed")

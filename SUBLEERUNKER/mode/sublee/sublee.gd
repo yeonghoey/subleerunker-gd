@@ -9,7 +9,6 @@ func _init().({
 	Background = preload("res://background/black/black.tscn"),
 	Hero = preload("res://hero/sublee/sublee.tscn"),
 	DropSpawner = preload("res://dropspawner/randframe/flame.tscn"),
-	Pedal = preload("res://pedal/yellowbar/yellowbar.tscn"),
 	PedalSpawner = preload("res://pedalspawner/oneatatime/oneatatime.tscn"),
 	BGM = preload("res://bgm/dddd/dddd.tscn"),
 	Cam = preload("res://cam/randshake/randshake.tscn"),

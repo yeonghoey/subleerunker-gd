@@ -17,6 +17,8 @@ Signals:
 	- hit
 """
 
+const HeroDying := preload("res://herodying/herodying.gd")
+
 enum {
 	ACTION_REST,
 	ACTION_LEFT,
@@ -74,6 +76,13 @@ func on_action_changed(prev_action: int, action: int) -> void:
 	"""Subclasses can override this for their specific implementation.
 	"""
 	pass
+
+
+func make_herodying() -> HeroDying:
+	"""Subclasses are responsible for creating their HeroDying instances
+	"""
+	assert(false) # Not implemented
+	return null
 
 
 func _process(delta):

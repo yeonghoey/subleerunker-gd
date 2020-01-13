@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flame.png-79eaecdc1d38dd35c22232be986c6c01.stex"
+path="res://.import/red.png-5578ee2dadb0a6b57dd6e966e7fcb97c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://droplanding/flame/flame.png"
-dest_files=[ "res://.import/flame.png-79eaecdc1d38dd35c22232be986c6c01.stex" ]
+source_file="res://herodying/sublee/red.png"
+dest_files=[ "res://.import/red.png-5578ee2dadb0a6b57dd6e966e7fcb97c.stex" ]
 
 [params]
 

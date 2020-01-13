@@ -17,6 +17,8 @@ Signals:
 	- hit
 """
 
+const HeroDying := preload("res://herodying/herodying.gd")
+
 enum {
 	ACTION_REST,
 	ACTION_LEFT,
@@ -76,10 +78,11 @@ func on_action_changed(prev_action: int, action: int) -> void:
 	pass
 
 
-func dyingmessage() -> String:
-	"""Subclasses can override this to pass specific message to herodying.
+func make_herodying() -> HeroDying:
+	"""Subclasses are responsible for creating their HeroDying instances
 	"""
-	return ""
+	assert(false) # Not implemented
+	return null
 
 
 func _process(delta):

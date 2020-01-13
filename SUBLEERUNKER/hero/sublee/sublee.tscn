@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://hero/sublee/sublee.gd" type="Script" id=1]
+[ext_resource path="res://hero/hero.gd" type="Script" id=1]
 [ext_resource path="res://heroalive/sublee/sublee.tscn" type="PackedScene" id=2]
-[ext_resource path="res://herodying/sublee/sublee.tscn" type="PackedScene" id=3]
-[ext_resource path="res://herodying/sublee/blue.tscn" type="PackedScene" id=4]
 
 [node name="Sublee" type="Node"]
 script = ExtResource( 1 )
 HeroAlive_ = ExtResource( 2 )
 size = Vector2( 48, 72 )
-RedDying = ExtResource( 3 )
-BlueDying = ExtResource( 4 )

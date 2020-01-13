@@ -13,8 +13,14 @@ func _on_Head_area_entered(area):
 	queue_free()
 
 
-func dyingmessage() -> String:
-	return _hit_color
+func make_herodying() -> HeroDying:
+	var herodying: HeroDying
+	if _hit_color == "blue":
+		herodying = preload("res://herodying/sublee/blue.tscn").instance()
+	else:
+		herodying = preload("res://herodying/sublee/red.tscn").instance()
+	herodying.position = position
+	return herodying
 
 
 func _process_idle():

@@ -76,6 +76,12 @@ func on_action_changed(prev_action: int, action: int) -> void:
 	pass
 
 
+func dyingmessage() -> String:
+	"""Subclasses can override this to pass specific message to herodying.
+	"""
+	return ""
+
+
 func _process(delta):
 	match _action:
 		ACTION_REST:

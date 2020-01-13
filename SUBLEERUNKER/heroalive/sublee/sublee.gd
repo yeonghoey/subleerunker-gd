@@ -8,10 +8,7 @@ onready var _Eyelids: Sprite = $Eyelids
 onready var _AudioRun: AudioStreamPlayer = $AudioRun
 
 var _counter := 0
-
-
-func _on_Head_area_entered(area):
-	queue_free()
+var _hit_color := "red"
 
 
 func on_action_changed(prev_action: int, action: int) -> void:
@@ -20,6 +17,16 @@ func on_action_changed(prev_action: int, action: int) -> void:
 			_AudioRun.play()
 		[ACTION_LEFT, ACTION_REST], [ACTION_RIGHT, ACTION_REST]:
 			_AudioRun.stop()
+
+
+func _on_Head_area_entered(area: Area2D):
+	if area.is_in_group("SubleeBlue"):
+		_hit_color = "blue"
+	queue_free()
+
+
+func dyingmessage() -> String:
+	return _hit_color
 
 
 func _process(delta):

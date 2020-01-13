@@ -4,11 +4,6 @@
 [ext_resource path="res://droplanding/flame/red.png" type="Texture" id=2]
 [ext_resource path="res://droplanding/flame/flame.wav" type="AudioStream" id=3]
 
-
-
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "default"
 length = 0.12
@@ -26,7 +21,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[node name="Dispersing" type="Node2D" groups=[
+[node name="Flame" type="Node2D" groups=[
 "Object",
 ]]
 position = Vector2( 157.484, 136.194 )

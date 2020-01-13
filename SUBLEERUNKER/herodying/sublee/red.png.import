@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sublee.png-2a0759f00d70653accbf275fca9069ed.stex"
+path="res://.import/red.png-5578ee2dadb0a6b57dd6e966e7fcb97c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://herodying/sublee/sublee.png"
-dest_files=[ "res://.import/sublee.png-2a0759f00d70653accbf275fca9069ed.stex" ]
+source_file="res://herodying/sublee/red.png"
+dest_files=[ "res://.import/red.png-5578ee2dadb0a6b57dd6e966e7fcb97c.stex" ]
 
 [params]
 

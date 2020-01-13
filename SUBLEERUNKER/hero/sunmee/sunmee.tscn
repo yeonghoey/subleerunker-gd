@@ -8,4 +8,4 @@
 script = ExtResource( 1 )
 HeroAlive_ = ExtResource( 2 )
 HeroDying_ = ExtResource( 3 )
-ingame_size = Vector2( 48, 72 )
+size = Vector2( 48, 72 )

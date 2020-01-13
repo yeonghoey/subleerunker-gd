@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://droplanding/flame/flame.gd" type="Script" id=1]
-[ext_resource path="res://droplanding/flame/flame.png" type="Texture" id=2]
+[ext_resource path="res://droplanding/flame/red.png" type="Texture" id=2]
 [ext_resource path="res://droplanding/flame/flame.wav" type="AudioStream" id=3]
+
 
 
 

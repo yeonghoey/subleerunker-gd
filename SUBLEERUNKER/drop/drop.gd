@@ -5,7 +5,6 @@ const DropFalling := preload("res://dropfalling/dropfalling.gd")
 const DropLanding := preload("res://droplanding/droplanding.gd")
 
 export(PackedScene) var DropFalling_: PackedScene
-export(PackedScene) var DropLanding_: PackedScene
 export(Vector2) var size: Vector2
 
 signal landed()
@@ -33,8 +32,7 @@ func _on_dropfalling_tree_exiting(dropfalling: DropFalling, scorer: Scorer):
 
 func _on_dropfalling_landed(dropfalling: DropFalling, scorer: Scorer) -> void:
 	scorer.score()
-	var droplanding: DropLanding = DropLanding_.instance()
-	droplanding.init(dropfalling)
+	var droplanding := dropfalling.make_droplanding()
 	droplanding.connect("tree_exiting", self, "queue_free")
 	add_child(droplanding)
 	emit_signal("landed")

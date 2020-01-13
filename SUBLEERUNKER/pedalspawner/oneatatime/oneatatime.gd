@@ -22,8 +22,8 @@ func _physics_process(delta: float):
 	var pedal := Pedal_.instance()
 	var starting_pos := rand_pos(pedal.size, true)
 	pedal.init(get_scorer(), starting_pos)
-	pedal.connect("triggered", self, "_reset")
-	pedal.connect("disappeared", self, "_reset")
+	pedal.connect("hit", self, "_reset")
+	pedal.connect("missed", self, "_reset")
 	cue([pedal])
 	_exists = true
 

@@ -9,8 +9,8 @@ const PedalMissing := preload("res://pedalmissing/pedalmissing.gd")
 export(PackedScene) var PedalActive_: PackedScene
 export(Vector2) var size: Vector2
 
-signal triggered()
-signal disappeared()
+signal hit()
+signal missed()
 
 
 func init(scorer: Scorer, starting_pos: Vector2) -> void:
@@ -21,13 +21,13 @@ func init(scorer: Scorer, starting_pos: Vector2) -> void:
 
 
 func _on_pedalactive_tree_exiting(scorer: Scorer, pedalactive: PedalActive) -> void:
-	if pedalactive.triggered:
-		_on_pedalactive_triggered(scorer, pedalactive)
+	if pedalactive.is_hit:
+		_on_pedalactive_hit(scorer, pedalactive)
 	else:
-		_on_pedalactive_disappeared(scorer, pedalactive)
+		_on_pedalactive_missed(scorer, pedalactive)
 
 
-func _on_pedalactive_triggered(scorer: Scorer, pedalactive: PedalActive) -> void:
+func _on_pedalactive_hit(scorer: Scorer, pedalactive: PedalActive) -> void:
 	var combo := scorer.hit_combo()
 	if combo == Scorer.FREEZED:
 		queue_free()
@@ -35,10 +35,10 @@ func _on_pedalactive_triggered(scorer: Scorer, pedalactive: PedalActive) -> void
 	var pedalhitting: PedalHitting = pedalactive.make_pedalhitting(combo)
 	pedalhitting.connect("tree_exiting", self, "queue_free")
 	add_child(pedalhitting)
-	emit_signal("triggered")
+	emit_signal("hit")
 
 
-func _on_pedalactive_disappeared(scorer: Scorer, pedalactive: PedalActive):
+func _on_pedalactive_missed(scorer: Scorer, pedalactive: PedalActive):
 	var last_combo := scorer.miss_combo()
 	if last_combo == Scorer.FREEZED:
 		queue_free()
@@ -46,4 +46,4 @@ func _on_pedalactive_disappeared(scorer: Scorer, pedalactive: PedalActive):
 	var pedalmissing: PedalMissing = pedalactive.make_pedalmissing(last_combo)
 	pedalmissing.connect("tree_exiting", self, "queue_free")
 	add_child(pedalmissing)
-	emit_signal("disappeared")
+	emit_signal("missed")

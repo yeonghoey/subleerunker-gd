@@ -23,11 +23,11 @@ func _ready():
 
 
 func _on_area_entered(area):
-	trigger()
+	hit()
 
 
 func _on_animation_finished(name):
-	disappear()
+	miss()
 
 
 func _physics_process(delta):

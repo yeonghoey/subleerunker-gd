@@ -103,6 +103,7 @@ func _on_dropspawner_cued(drops: Array) -> void:
 
 func _add_pedalspawner():
 	_pedalspawner = _mode.make("PedalSpawner")
+	_pedalspawner.init(_scorer, _background, _hero)
 	_pedalspawner.connect("cued", self, "_on_pedalspawner_cued")
 	_hero.connect("hit", _pedalspawner, "queue_free")
 	add_child(_pedalspawner)
@@ -110,13 +111,7 @@ func _add_pedalspawner():
 
 func _on_pedalspawner_cued(pedals: Array) -> void:
 	for pedal in pedals:
-		_cast_pedal(pedal)
-
-
-func _cast_pedal(pedal: Pedal) -> void:
-	pedal.init(rect_size, _hero, _scorer)
-	_pedalspawner.on_pedal_initialized(pedal)
-	_troupe.cast(pedal)
+		_troupe.cast(pedal)
 
 
 func _wire_events_to_cam() -> void:

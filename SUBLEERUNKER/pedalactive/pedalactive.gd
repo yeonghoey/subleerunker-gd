@@ -6,17 +6,7 @@ Subclasses should call two methods when:
 	- disappear, when running out of duration.
 """
 
-const Hero := preload("res://hero/hero.gd")
-
-export(float) var width
-export(float) var height
-
 var triggered := false
-
-
-func init(boundary: Vector2, hero: Hero, hint = null) -> void:
-	var x = (boundary.x - width*2) * randf() + width
-	position = Vector2(x, boundary.y - height)
 
 
 func trigger():

@@ -11,14 +11,14 @@ export(Vector2) var size: Vector2
 signal landed()
 
 
-func init(scorer: Scorer, staring_pos: Vector2) -> void:
+func init(scorer: Scorer, starting_pos: Vector2) -> void:
 	"""This will be called when a Spanwer decided to create this.
 
 	'boundary' represents the size of the game area and
 	'hero' is the hero which the player controls.
 	"""
 	var dropfalling: DropFalling = DropFalling_.instance()
-	dropfalling.position = staring_pos
+	dropfalling.position = starting_pos
 	dropfalling.connect("tree_exiting", self, "_on_dropfalling_tree_exiting", [dropfalling, scorer])
 	add_child(dropfalling)
 

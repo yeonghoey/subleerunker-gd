@@ -22,24 +22,7 @@ func _physics_process(delta):
 		var drops := []
 		for i in range(num_drops_per_cue):
 			var drop: Drop = Drop_.instance()
-			var starting_pos = _sample_pos(drop.size)
+			var starting_pos := rand_pos(drop.size)
 			drop.init(get_scorer(), starting_pos)
 			drops.append(drop)
 		cue(drops)
-
-
-func _sample_pos(size: Vector2) -> Vector2:
-	var area: Rect2 = _background.play_area()
-	var w := size.x
-	var h := size.y
-	#+----------------------------
-	#          <---     b     --->
-	# <-- a -->[w/2]    *    [w/2]
-	#          <-- c -->^
-	# <---    x     --->|
-	var a := area.position.x
-	var b := area.size.x
-	var c := (b - w) * randf() + w/2
-	var x := a + c
-	var y := -h/2
-	return Vector2(x, y)

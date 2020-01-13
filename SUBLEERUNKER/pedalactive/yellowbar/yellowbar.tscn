@@ -56,8 +56,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-width = 32.0
-height = 8.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"

@@ -18,19 +18,19 @@ func init(scorer: Scorer, starting_pos: Vector2) -> void:
 	"""
 	var dropfalling: DropFalling = DropFalling_.instance()
 	dropfalling.position = starting_pos
-	dropfalling.connect("tree_exiting", self, "_on_dropfalling_tree_exiting", [dropfalling, scorer])
+	dropfalling.connect("tree_exiting", self, "_on_dropfalling_tree_exiting", [scorer, dropfalling])
 	add_child(dropfalling)
 
 
-func _on_dropfalling_tree_exiting(dropfalling: DropFalling, scorer: Scorer):
+func _on_dropfalling_tree_exiting(scorer: Scorer, dropfalling: DropFalling):
 	# When the drop hit the hero.
 	if dropfalling.landed:
-		_on_dropfalling_landed(dropfalling, scorer)
+		_on_dropfalling_landed(scorer, dropfalling)
 	else:
 		_on_dropfalling_hit()
 
 
-func _on_dropfalling_landed(dropfalling: DropFalling, scorer: Scorer) -> void:
+func _on_dropfalling_landed(scorer: Scorer, dropfalling: DropFalling) -> void:
 	scorer.score()
 	var droplanding := dropfalling.make_droplanding()
 	droplanding.connect("tree_exiting", self, "queue_free")

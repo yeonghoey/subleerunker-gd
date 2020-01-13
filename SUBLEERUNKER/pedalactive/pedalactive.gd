@@ -6,7 +6,20 @@ Subclasses should call two methods when:
 	- disappear, when running out of duration.
 """
 
+const PedalHitting := preload("res://pedalhitting/pedalhitting.gd")
+const PedalMissing := preload("res://pedalmissing/pedalmissing.gd")
+
 var triggered := false
+
+
+func make_pedalhitting(combo: int) -> PedalHitting:
+	assert(false) # Not implemented
+	return null
+
+
+func make_pedalmissing(last_combo: int) -> PedalMissing:
+	assert(false) # Not implemented
+	return null
 
 
 func trigger():

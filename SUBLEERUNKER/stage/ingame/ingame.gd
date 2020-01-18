@@ -41,6 +41,7 @@ func init(mode: Mode, scorer: Scorer) -> void:
 	add_child(_bgm)
 
 	_cam = _mode.make("Cam")
+	_cam.init(_scorer)
 	add_child(_cam)
 
 	_troupe = Troupe.new()

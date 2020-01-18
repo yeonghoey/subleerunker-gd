@@ -8,9 +8,15 @@ Also, subclasses can make good use of `create_shake_animation`,
 which will create camera shaking animation programatically.
 """
 
+const Scorer := preload("res://scorer/scorer.gd")
+
 
 onready var _Camera2D := $Camera2D
 onready var _AnimationPlayer := $AnimationPlayer
+
+
+func init(scorer: Scorer) -> void:
+	pass
 
 
 func create_shake_animation(name: String, duration: float, step: float, shake_amount: float) -> void:
@@ -42,27 +48,3 @@ func _rand_offset(shake_amount: float) -> void:
 	_Camera2D.offset = Vector2(
 	    rand_range(-1.0, 1.0) * shake_amount,
         rand_range(-1.0, 1.0) * shake_amount)
-
-
-func on_scorer_initialized(score: int, combo: int) -> void:
-	pass
-
-
-func on_scorer_scored(score: int) -> void:
-	pass
-
-
-func on_scorer_combo_hit(combo: int) -> void:
-	pass
-
-
-func on_scorer_combo_missed(last_combo: int) -> void:
-	pass
-
-
-func on_ingame_hero_hit(final_score: int) -> void:
-	pass
-
-
-func on_ingame_ended() -> void:
-	pass

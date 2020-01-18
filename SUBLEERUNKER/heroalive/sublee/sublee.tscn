@@ -187,12 +187,13 @@ anims/idle = SubResource( 1 )
 anims/run = SubResource( 2 )
 
 [node name="Body" type="Sprite" parent="."]
+position = Vector2( 0, 3 )
 texture = ExtResource( 4 )
 hframes = 8
 frame = 1
 
 [node name="Eyelids" type="Sprite" parent="."]
-position = Vector2( 0, -25 )
+position = Vector2( 0, -22 )
 texture = ExtResource( 5 )
 hframes = 8
 frame = 1
@@ -203,6 +204,7 @@ shape = SubResource( 3 )
 
 [node name="Head" type="Area2D" parent="."]
 editor/display_folded = true
+position = Vector2( 0, 3 )
 collision_layer = 2
 collision_mask = 4
 

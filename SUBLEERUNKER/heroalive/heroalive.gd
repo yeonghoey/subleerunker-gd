@@ -11,10 +11,6 @@ Parameters:
 	- acceleration_amount: float
 	- friction_amount: float
 	- max_speed: float
-
-Signals:
-	- action_changed
-	- hit
 """
 
 const HeroDying := preload("res://herodying/herodying.gd")

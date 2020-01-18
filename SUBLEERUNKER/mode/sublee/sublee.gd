@@ -6,7 +6,7 @@ func _init().({
 	icon_on = preload("icon_on.png"),
 	icon_off = preload("icon_off.png"),
 	labelcolor = Color("#ffffff"),
-	Background = preload("res://background/black/black.tscn"),
+	Background = preload("res://background/waterwell/waterwell.tscn"),
 	Hero = preload("res://hero/sublee/sublee.tscn"),
 	DropSpawner = preload("res://dropspawner/randframe/flame.tscn"),
 	PedalSpawner = preload("res://pedalspawner/oneatatime/oneatatime.tscn"),

@@ -15,6 +15,10 @@ onready var _menuitems = [
 ]
 
 
+onready var _Move := $Move
+onready var _Select := $Select
+
+
 func _ready():
 	_move_selection(0)
 
@@ -35,6 +39,8 @@ func _move_selection(di: int) -> void:
 	_deselect(selection_old)
 	_select(selection_new)
 	_selection_index = selection_new
+	if di != 0:
+		_Move.play()
 
 
 func _deselect(idx: int) -> void:
@@ -51,3 +57,6 @@ func _run_selection():
 	var name: String = _menuitems[_selection_index]["name"]
 	var signal_name = "%s_selected" % name
 	emit_signal(signal_name)
+	mark_closing()
+	_Select.play()
+	_Select.connect("finished", self, "close", [], CONNECT_ONESHOT)

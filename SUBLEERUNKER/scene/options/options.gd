@@ -46,6 +46,7 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed("ui_cancel"):
 		emit_signal("backed")
+		close()
 
 
 func _move_selection(di: int) -> void:

@@ -66,6 +66,7 @@ func _on_modesel_selected(name: String, modesel: Stage):
 func _on_modesel_canceled(modesel: Stage):
 	request_ready()
 	emit_signal("backed")
+	close()
 
 
 func _present_waiting():

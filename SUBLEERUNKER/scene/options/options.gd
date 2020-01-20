@@ -20,6 +20,8 @@ onready var _layout = [
 	_Sound,
 ]
 
+onready var _Move: AudioStreamPlayer = $Move
+
 var _selection := 0
 
 
@@ -30,7 +32,7 @@ func init(confbox: Confbox):
 func _ready():
 	for item in _layout:
 		_show_conf(item)
-	_move_selection(_selection)
+	_move_selection(0)
 
 
 func _unhandled_input(event):
@@ -54,6 +56,8 @@ func _move_selection(di: int) -> void:
 	_layout[_selection].deselect()
 	_selection = (_selection + di + n ) % n
 	_layout[_selection].select()
+	if di != 0:
+		_Move.play()
 
 
 func _show_conf(item: Item) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scene/options/options.gd" type="Script" id=1]
 [ext_resource path="res://misc/press_start_2p_16.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scene/options/item_hidecursor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scene/options/item_music.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scene/options/item_sound.tscn" type="PackedScene" id=6]
+[ext_resource path="res://misc/audio/move.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 2 )
@@ -21,6 +22,7 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 32
@@ -56,3 +58,5 @@ custom_constants/separation = 64
 margin_top = 286.0
 margin_bottom = 310.0
 custom_constants/separation = 64
+
+[node name="Move" parent="." instance=ExtResource( 7 )]

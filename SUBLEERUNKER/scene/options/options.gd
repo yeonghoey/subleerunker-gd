@@ -21,6 +21,7 @@ onready var _layout = [
 ]
 
 onready var _Move: AudioStreamPlayer = $Move
+onready var _Click: AudioStreamPlayer = $Click
 
 var _selection := 0
 
@@ -70,3 +71,4 @@ func _flip_conf(item: Item):
 	_confbox.call("set_%s" % item.key, not b)
 	_confbox.save()
 	_show_conf(item)
+	_Click.play()

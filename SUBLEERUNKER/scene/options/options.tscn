@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scene/options/options.gd" type="Script" id=1]
 [ext_resource path="res://misc/press_start_2p_16.tres" type="DynamicFont" id=2]
@@ -7,11 +7,12 @@
 [ext_resource path="res://scene/options/item_music.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scene/options/item_sound.tscn" type="PackedScene" id=6]
 [ext_resource path="res://misc/audio/move.tscn" type="PackedScene" id=7]
+[ext_resource path="res://misc/audio/click.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 2 )
 
-[node name="OptionsControl" type="Control"]
+[node name="Options" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -60,3 +61,5 @@ margin_bottom = 310.0
 custom_constants/separation = 64
 
 [node name="Move" parent="." instance=ExtResource( 7 )]
+
+[node name="Click" parent="." instance=ExtResource( 8 )]

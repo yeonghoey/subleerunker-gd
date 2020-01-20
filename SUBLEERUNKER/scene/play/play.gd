@@ -21,6 +21,8 @@ var _statbox: Statbox
 onready var _Stadium: Stadium = find_node("Stadium")
 onready var _Indicator: Indicator = find_node("Indicator")
 
+onready var _Back: AudioStreamPlayer = $Audio/Back
+
 
 func init(modebox: Modebox, statbox: Statbox) -> void:
 	_modebox = modebox
@@ -66,6 +68,9 @@ func _on_modesel_selected(name: String, modesel: Stage):
 func _on_modesel_canceled(modesel: Stage):
 	request_ready()
 	emit_signal("backed")
+	mark_closing()
+	_Back.play()
+	yield(_Back, "finished")
 	close()
 
 

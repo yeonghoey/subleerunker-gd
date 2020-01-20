@@ -57,7 +57,7 @@ func _run_selection():
 	var name: String = _menuitems[_selection_index]["name"]
 	var signal_name = "%s_selected" % name
 	emit_signal(signal_name)
-	_Select.play()
 	mark_closing()
+	_Select.play()
 	yield(_Select, "finished")
 	close()

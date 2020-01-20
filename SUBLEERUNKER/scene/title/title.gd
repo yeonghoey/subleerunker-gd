@@ -14,6 +14,8 @@ onready var _menuitems = [
 	{name='options', label=find_node("Options")},
 ]
 
+
+onready var _Move := $Move
 onready var _Select := $Select
 
 
@@ -37,6 +39,8 @@ func _move_selection(di: int) -> void:
 	_deselect(selection_old)
 	_select(selection_new)
 	_selection_index = selection_new
+	if di != 0:
+		_Move.play()
 
 
 func _deselect(idx: int) -> void:

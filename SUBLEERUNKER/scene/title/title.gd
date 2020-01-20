@@ -15,8 +15,8 @@ onready var _menuitems = [
 ]
 
 
-onready var _Move := $Move
-onready var _Select := $Select
+onready var _Move: AudioStreamPlayer = $Audio/Move
+onready var _Select: AudioStreamPlayer = $Audio/Select
 
 
 func _ready():
@@ -59,4 +59,5 @@ func _run_selection():
 	emit_signal(signal_name)
 	mark_closing()
 	_Select.play()
-	_Select.connect("finished", self, "close", [], CONNECT_ONESHOT)
+	yield(_Select, "finished")
+	close()

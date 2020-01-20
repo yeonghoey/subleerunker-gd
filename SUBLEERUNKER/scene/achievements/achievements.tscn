@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scene/achievements/achievements.gd" type="Script" id=1]
+[ext_resource path="res://misc/audio/back.tscn" type="PackedScene" id=2]
 
 [node name="AchievementsView" type="Control"]
 anchor_right = 1.0
@@ -15,3 +16,7 @@ text = "Achievements
 Work in Progress
 
 Press ESC to go back"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Back" parent="Audio" instance=ExtResource( 2 )]

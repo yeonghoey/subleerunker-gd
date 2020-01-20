@@ -176,6 +176,8 @@ script = ExtResource( 5 )
 autoplay = "enter"
 anims/enter = SubResource( 6 )
 
-[node name="Move" parent="." instance=ExtResource( 6 )]
+[node name="Audio" type="Node" parent="."]
 
-[node name="Select" parent="." instance=ExtResource( 7 )]
+[node name="Move" parent="Audio" instance=ExtResource( 6 )]
+
+[node name="Select" parent="Audio" instance=ExtResource( 7 )]

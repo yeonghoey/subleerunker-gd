@@ -20,8 +20,9 @@ onready var _layout = [
 	_Sound,
 ]
 
-onready var _Move: AudioStreamPlayer = $Move
-onready var _Click: AudioStreamPlayer = $Click
+onready var _Move: AudioStreamPlayer = $Audio/Move
+onready var _Click: AudioStreamPlayer = $Audio/Click
+onready var _Back: AudioStreamPlayer = $Audio/Back
 
 var _selection := 0
 
@@ -49,6 +50,9 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed("ui_cancel"):
 		emit_signal("backed")
+		_Back.play()
+		mark_closing()
+		yield(_Back, "finished")
 		close()
 
 

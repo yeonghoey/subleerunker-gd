@@ -14,6 +14,8 @@ onready var _menuitems = [
 	{name='options', label=find_node("Options")},
 ]
 
+onready var _Select := $Select
+
 
 func _ready():
 	_move_selection(0)
@@ -51,3 +53,6 @@ func _run_selection():
 	var name: String = _menuitems[_selection_index]["name"]
 	var signal_name = "%s_selected" % name
 	emit_signal(signal_name)
+	mark_closing()
+	_Select.play()
+	_Select.connect("finished", self, "close", [], CONNECT_ONESHOT)

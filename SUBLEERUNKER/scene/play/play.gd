@@ -35,8 +35,8 @@ func _present_modesel():
 	var modesel := ModeSel.instance()
 	var catalog := _compile_catalog()
 	modesel.init(catalog)
-	modesel.connect("selected", self, "_on_modesel_selected", [modesel])
-	modesel.connect("canceled", self, "_on_modesel_canceled", [modesel])
+	modesel.connect("selected", self, "_on_modesel_selected", [modesel], CONNECT_ONESHOT)
+	modesel.connect("canceled", self, "_on_modesel_canceled", [modesel], CONNECT_ONESHOT)
 	_Stadium.present(modesel)
 	_Indicator.display({score=false, combo=false})
 
@@ -64,7 +64,6 @@ func _on_modesel_selected(name: String, modesel: Stage):
 
 
 func _on_modesel_canceled(modesel: Stage):
-	modesel.close()
 	request_ready()
 	emit_signal("backed")
 
@@ -74,8 +73,8 @@ func _present_waiting():
 	var mode := _modebox.get_selected()
 	var modestat := _statbox.export_modestat(mode.take("name"))
 	waiting.init(mode, modestat)
-	waiting.connect("started", self, "_on_waiting_started", [waiting])
-	waiting.connect("canceled", self, "_on_waiting_canceled", [waiting])
+	waiting.connect("started", self, "_on_waiting_started", [waiting], CONNECT_ONESHOT)
+	waiting.connect("canceled", self, "_on_waiting_canceled", [waiting], CONNECT_ONESHOT)
 	_Stadium.present(waiting)
 	_Indicator.display({score=true, combo=false})
 	_Indicator.update_score(modestat["last_score"])
@@ -96,8 +95,8 @@ func _present_ingame() -> void:
 	var mode := _modebox.get_selected()
 	var scorer := _prepare_scorer()
 	ingame.init(mode, scorer)
-	ingame.connect("hero_hit", self, "_on_ingame_hero_hit", [mode.name])
-	ingame.connect("ended", self, "_on_ingame_ended", [ingame])
+	ingame.connect("hero_hit", self, "_on_ingame_hero_hit", [mode.name], CONNECT_ONESHOT)
+	ingame.connect("ended", self, "_on_ingame_ended", [ingame], CONNECT_ONESHOT)
 	_Stadium.present(ingame)
 	_Indicator.display({score=true, combo=true})
 

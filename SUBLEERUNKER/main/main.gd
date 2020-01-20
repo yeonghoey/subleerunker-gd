@@ -18,6 +18,10 @@ onready var _modebox := Modebox.new(MODES)
 onready var _statbox := Statbox.new()
 onready var _confbox := Confbox.new()
 
+onready var _AnimationPlayer := $AnimationPlayer
+
+# This flag is for making sure there is only one ongoing transition.
+var _transiting := false
 
 func _ready():
 	_init_intro()
@@ -59,9 +63,15 @@ func _show_intro() -> void:
 func _transit(from: String, to: String):
 	# There can be a timing issue when directly
 	# adding/removing scenes here
-	call_deferred("_change_scene", _scenes[from], _scenes[to])
+	if not _transiting:
+		_transiting = false
+		call_deferred("_change_scene", _scenes[from], _scenes[to])
 
 
 func _change_scene(from: Node, to: Node) -> void:
+	_AnimationPlayer.play("fade")
+	yield(_AnimationPlayer, "animation_finished")
 	remove_child(from)
 	add_child(to)
+	_transiting = false
+	_AnimationPlayer.play_backwards("fade")

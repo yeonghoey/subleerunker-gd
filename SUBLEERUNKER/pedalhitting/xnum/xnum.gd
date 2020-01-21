@@ -1,6 +1,6 @@
 extends "res://pedalhitting/pedalhitting.gd"
 
-const WaitAll := preload("res://misc/wait_all.gd")
+const WaitAll := preload("res://misc/util/wait_all.gd")
 
 const AUDIO_BY_COMBO := [
 	null,

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/xnum_c.wav-bd4866b9444b691cae7010bcfd373fdc.sample"
+
+[deps]
+
+source_file="res://pedalhitting/xnum/xnum_c.wav"
+dest_files=[ "res://.import/xnum_c.wav-bd4866b9444b691cae7010bcfd373fdc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -4,6 +4,7 @@ const Modebox := preload("res://box/modebox/modebox.gd")
 const Statbox := preload("res://box/statbox/statbox.gd")
 const Confbox := preload("res://box/confbox/confbox.gd")
 const Scene := preload("res://scene/scene.gd")
+const WaitAll := preload("res://misc/wait_all.gd")
 
 const MODES := ["sublee", "sunmee", "yeongho"]
 
@@ -71,8 +72,10 @@ func _transit(from: String, to: String):
 
 func _change_scene(from: Scene, to: Scene) -> void:
 	_AnimationPlayer.play("fade")
-	yield(_AnimationPlayer, "animation_finished")
-	yield(from.wait_closed(), "completed")
+	yield(WaitAll.new([
+		[_AnimationPlayer, "animation_finished"],
+		[from.wait_closed(), "completed"],
+	]), "done")
 	remove_child(from)
 	add_child(to)
 	_transiting = false

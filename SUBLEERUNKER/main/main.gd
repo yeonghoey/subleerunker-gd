@@ -4,7 +4,7 @@ const Modebox := preload("res://box/modebox/modebox.gd")
 const Statbox := preload("res://box/statbox/statbox.gd")
 const Confbox := preload("res://box/confbox/confbox.gd")
 const Scene := preload("res://scene/scene.gd")
-const WaitAll := preload("res://misc/wait_all.gd")
+const WaitAll := preload("res://misc/util/wait_all.gd")
 
 const MODES := ["sublee", "sunmee", "yeongho"]
 

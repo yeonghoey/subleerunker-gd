@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://pedalhitting/xnum/xnum.gd" type="Script" id=1]
-[ext_resource path="res://misc/press_start_2p_16.tres" type="DynamicFont" id=2]
+[ext_resource path="res://misc/font/press_start_2p_16.tres" type="DynamicFont" id=2]
 [ext_resource path="res://pedalhitting/xnum/xnum_c.wav" type="AudioStream" id=3]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"

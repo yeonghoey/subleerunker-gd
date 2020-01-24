@@ -188,28 +188,26 @@ anims/run = SubResource( 2 )
 
 [node name="Body" type="Sprite" parent="."]
 position = Vector2( 0, 3 )
-texture = ExtResource( 4 )
-hframes = 8
-frame = 1
+texture = ExtResource( 2 )
+hframes = 7
+frame = 5
 
 [node name="Eyelids" type="Sprite" parent="."]
 position = Vector2( 0, -22 )
-texture = ExtResource( 5 )
-hframes = 8
-frame = 1
+texture = ExtResource( 3 )
+hframes = 7
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 3 )
 
 [node name="Head" type="Area2D" parent="."]
-editor/display_folded = true
-position = Vector2( 0, 3 )
+position = Vector2( 0, -17 )
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
-position = Vector2( 0, -20 )
 shape = SubResource( 4 )
 __meta__ = {
 "_edit_group_": true
@@ -220,10 +218,10 @@ stream = ExtResource( 6 )
 bus = "Sound"
 
 [node name="Feet" type="Area2D" parent="."]
+position = Vector2( 0, 31 )
 collision_layer = 64
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Feet"]
-position = Vector2( 0.140884, 29.0184 )
 shape = SubResource( 5 )
 [connection signal="area_entered" from="Head" to="." method="_on_Head_area_entered"]

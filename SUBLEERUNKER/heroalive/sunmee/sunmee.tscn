@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://heroalive/sunmee/sunmee.gd" type="Script" id=1]
 [ext_resource path="res://heroalive/sunmee/idle.png" type="Texture" id=2]
-[ext_resource path="res://heroalive/sunmee/run.png" type="Texture" id=3]
+[ext_resource path="res://heroalive/sunmee/idle_eyelids.png" type="Texture" id=3]
+[ext_resource path="res://heroalive/sunmee/run.png" type="Texture" id=4]
+[ext_resource path="res://heroalive/sunmee/run_eyelids.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -45,6 +47,42 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Eyelids:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Eyelids:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Eyelids:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "run"
@@ -61,7 +99,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 2.54912 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body:hframes")
@@ -87,6 +125,42 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Eyelids:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Eyelids:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Eyelids:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 24, 36 )
@@ -100,8 +174,12 @@ extents = Vector2( 16, 4 )
 [node name="Sunmee" type="KinematicBody2D" groups=[
 "Player",
 ]]
+position = Vector2( 47.1544, 38.6239 )
 collision_mask = 8
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 acceleration_amount = 4800.0
 friction_amount = 4800.0
 max_speed = 200.0
@@ -113,16 +191,22 @@ anims/run = SubResource( 2 )
 
 [node name="Body" type="Sprite" parent="."]
 position = Vector2( 0, 4 )
-texture = ExtResource( 2 )
-hframes = 7
+texture = ExtResource( 4 )
+hframes = 8
+frame = 7
 
 [node name="Eyelids" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+offset = Vector2( 0, 4 )
+hframes = 8
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 3 )
 
 [node name="Head" type="Area2D" parent="."]
+visible = false
 position = Vector2( 0, -16 )
 collision_layer = 2
 collision_mask = 4

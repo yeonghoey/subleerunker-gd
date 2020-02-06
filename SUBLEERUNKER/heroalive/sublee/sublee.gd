@@ -1,6 +1,6 @@
 extends "res://heroalive/heroalive.gd"
 
-const BLINK_CONTINUANCE = 4
+const BLINK_CONTINUANCE := 4
 
 onready var _AnimationPlayer: AnimationPlayer = $AnimationPlayer
 onready var _Body: Sprite = $Body

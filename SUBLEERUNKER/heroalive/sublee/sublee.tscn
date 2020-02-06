@@ -203,6 +203,7 @@ visible = false
 shape = SubResource( 3 )
 
 [node name="Head" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0, -17 )
 collision_layer = 2
 collision_mask = 4
@@ -218,6 +219,7 @@ stream = ExtResource( 6 )
 bus = "Sound"
 
 [node name="Feet" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0, 31 )
 collision_layer = 64
 collision_mask = 32

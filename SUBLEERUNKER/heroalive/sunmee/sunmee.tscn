@@ -2,7 +2,7 @@
 
 [ext_resource path="res://heroalive/sunmee/sunmee.gd" type="Script" id=1]
 [ext_resource path="res://heroalive/sunmee/idle.png" type="Texture" id=2]
-[ext_resource path="res://heroalive/sublee/run.png" type="Texture" id=3]
+[ext_resource path="res://heroalive/sunmee/run.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -59,7 +59,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 2.54912 ),
 "update": 1,
 "values": [ ExtResource( 3 ) ]
 }
@@ -102,9 +102,9 @@ extents = Vector2( 16, 4 )
 ]]
 collision_mask = 8
 script = ExtResource( 1 )
-acceleration_amount = 3600.0
-friction_amount = 300.0
-max_speed = 300.0
+acceleration_amount = 4800.0
+friction_amount = 4800.0
+max_speed = 200.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -115,6 +115,8 @@ anims/run = SubResource( 2 )
 position = Vector2( 0, 4 )
 texture = ExtResource( 2 )
 hframes = 7
+
+[node name="Eyelids" type="Sprite" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

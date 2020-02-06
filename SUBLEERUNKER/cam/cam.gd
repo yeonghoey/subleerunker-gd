@@ -46,5 +46,5 @@ func play(name: String) -> void:
 
 func _rand_offset(shake_amount: float) -> void:
 	_Camera2D.offset = Vector2(
-	    rand_range(-1.0, 1.0) * shake_amount,
-        rand_range(-1.0, 1.0) * shake_amount)
+		rand_range(-1.0, 1.0) * shake_amount,
+		rand_range(-1.0, 1.0) * shake_amount)

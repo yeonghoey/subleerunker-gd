@@ -13,4 +13,4 @@ func _init().({
 	BGM = preload("res://bgm/dddd/dddd.tscn"),
 	Cam = preload("res://cam/randshake/randshake.tscn"),
 }):
-    pass
+	pass
